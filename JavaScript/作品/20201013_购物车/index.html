@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <style>
+        .trolley {
+            margin: 50px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            width: 600px;
+            border: 1px solid #F44336;
+            background-color: #F9F9F9;
+            text-align: center;
+            user-select: none;
+        }
+
+        .trolley * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        .trolley .title {
+            margin-bottom: 15px;
+            color: #F44336;
+        }
+
+        /* 列表 */
+
+        .trolley ul {
+            list-style-type: none;
+            text-align: left;
+        }
+        .trolley ul li {
+            position: relative;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            height: 80px;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            /* border: 1px solid #9E9E9E; */
+            background-color: #FFF;
+            font-size: 0;
+        }
+        .trolley ul li > div {
+            display: inline-block;
+        }
+        /* 列表 - 多选 */
+        .trolley ul li .item-checkbox input {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            height: 20px;
+            width: 20px;
+            transform: translateY(-50%);
+        }
+        /* 列表 - 图片 */
+        .trolley ul li .thumb {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            height: 60px;
+            width: 60px;
+            border: 1px solid #9E9E9E;
+            transform: translateY(-50%);
+        }
+        .trolley ul li .thumb img {
+            height: 100%;
+        }
+        /* 列表 - 信息文本 */
+        .trolley ul li .info {
+            position: absolute;
+            top: 50%;
+            left: 125px;
+            transform: translateY(-50%);
+        }
+        .trolley ul li .info > span {
+            display: block;
+            font-size: 16px;
+        }
+        .trolley ul li .info > span.name {
+            font-weight: bold;
+        }
+        .trolley ul li .info > span i {
+            font-style: normal;
+        }
+        /* 列表 - 数量 */
+        .trolley ul li .quantity {
+            position: absolute;
+            top: 50%;
+            right: 32px;
+            transform: translateY(-50%);
+        }
+        .trolley ul li .quantity input {
+            vertical-align: middle;
+            height: 25px;
+            border: 1px solid #000;
+            border-radius: 0;
+            background-color: #FFF;
+            text-align: center;
+        }
+        .trolley ul li .quantity input[type="button"] {
+            width: 25px;
+            cursor: pointer;
+        }
+        .trolley ul li .quantity input[type="text"] {
+            margin: 0 5px;
+            padding: 0 5px;
+            box-sizing: border-box;
+            width: 100px;
+            font-size: 16px;
+        }
+
+        /* 购物车信息 */
+
+        .trolley .trolley-info {
+            text-align: left;
+        }
+        .trolley .trolley-info .check-all {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="trolley" class="trolley">
+        <h3 class="title">我的购物车</h3>
+        <ul id="list" class="list">
+            <li>
+                <div class="item-checkbox"><input type="checkbox" /></div>
+                <div class="thumb"><img src="./thumb.jpg" alt="缩略图" /></div>
+                <div class="info">
+                    <span class="name">棉被</span>
+                    <span class="price">价格：<i>200</i></span>
+                </div>
+                <div class="quantity">
+                    <input type="button" class="quantity-remove" value="-" />
+                    <input type="text" class="quantity-info" value="1" />
+                    <input type="button" class="quantity-add" value="+" />
+                </div>
+            </li>
+            <li>
+                <div class="item-checkbox"><input type="checkbox" checked /></div>
+                <div class="thumb"><img src="./thumb.jpg" alt="缩略图" /></div>
+                <div class="info">
+                    <span class="name">棉被</span>
+                    <span class="price">价格：<i>300</i></span>
+                </div>
+                <div class="quantity">
+                    <input type="button" class="quantity-remove" value="-" />
+                    <input type="text" class="quantity-info" value="1" />
+                    <input type="button" class="quantity-add" value="+" />
+                </div>
+            </li>
+            <li>
+                <div class="item-checkbox"><input type="checkbox" /></div>
+                <div class="thumb"><img src="./thumb.jpg" alt="缩略图" /></div>
+                <div class="info">
+                    <span class="name">棉被</span>
+                    <span class="price">价格：<i>400</i></span>
+                </div>
+                <div class="quantity">
+                    <input type="button" class="quantity-remove" value="-" />
+                    <input type="text" class="quantity-info" value="1" />
+                    <input type="button" class="quantity-add" value="+" />
+                </div>
+            </li>
+        </ul>
+        <div id="trolley-info" class="trolley-info">
+            <input type="checkbox" id="check-all" class="check-all" title="全选" />
+            <span>订单总金额：¥</span>
+            <span id="total-price">0</span>
+        </div>
+    </div>
+    
+    <script>
+        var items = [];
+
+        window.onload = function () {
+            // 商品项目复选框
+            var itemCheckbox = document.querySelectorAll('.item-checkbox input');
+            // 商品列表项目
+            var listItems = document.querySelectorAll('#list li');
+            // 商品价格
+            var itemPrice = document.querySelectorAll('.price i');
+            // 商品数量调整
+            var btnAdd = document.querySelectorAll('.quantity-add');
+            var btnRemove = document.querySelectorAll('.quantity-remove');
+            var itemQuantity = document.querySelectorAll('.quantity-info');
+
+            // 全选
+            var eleCheckAll = document.querySelector('#check-all');
+            // 总金额
+            var eleTotalPrice = document.querySelector('#total-price');
+
+            // 刷新数据数组
+            // 参数：数据数组，全选复选框元素，价格文本元素
+            function refreshData(data, eleCheckbox, elePrice) {
+                var totalChecked = 0; // 选中数量
+                var totalPrice = 0;   // 总价格
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i]['checked']) {
+                        totalChecked += 1;
+                        totalPrice += data[i]['price'] * data[i]['quantity'];
+                    }
+                }
+                // 是否已全选
+                if (totalChecked == data.length) {
+                    eleCheckbox.checked = true;
+                } else {
+                    eleCheckbox.checked = false;
+                }
+                // 更新显示总金额
+                elePrice.textContent = totalPrice;
+            }
+
+            // 修改数量
+            // 参数：模式（+、-、数值），数据数组，当前行显示数量的元素，当前行下标
+            function modifyQuantity(mode, data, ele, index) {
+                var flag = true; // 标记：修改的数量是否有效
+                switch (mode) {
+                    case '+':
+                        data[index]['quantity'] += 1;
+                        break;
+                    case '-':
+                        if (data[index]['quantity'] > 1) {
+                            data[index]['quantity'] -= 1;
+                        } else {
+                            flag = false;
+                        }
+                        break;
+                    default:
+                        if (mode > 0) {
+                            data[index]['quantity'] = mode;
+                        } else {
+                            flag = false;
+                        }
+                        break;
+                }
+                if (!flag) {
+                    alert('数量应为数字，且至少为 1。');
+                }
+                ele.value = data[index]['quantity'];
+                refreshData(items, eleCheckAll, eleTotalPrice);
+                return flag;
+            }
+
+            // 初始化
+            for (var i = 0; i < listItems.length; i++) {
+                // 商品价格
+                var currentPrice = parseInt(itemPrice[i].textContent);
+                // 商品数量
+                var currentQuantity = parseInt(itemQuantity[i].value);
+                // 商品是否选中
+                var currentChecked = itemCheckbox[i].checked;
+
+                items.push(
+                    {
+                        price: currentPrice,
+                        quantity: currentQuantity,
+                        checked: currentChecked
+                    }
+                );
+            }
+
+            // 商品复选框
+            for (var j = 0; j < itemCheckbox.length; j++) {
+                itemCheckbox[j].index = j;
+                itemCheckbox[j].onchange = function () {
+                    items[this.index]['checked'] = this.checked;
+                    refreshData(items, eleCheckAll, eleTotalPrice);
+                }
+            }
+
+            // 商品数量调整
+            for (var k = 0; k < itemQuantity.length; k++) {
+                btnAdd[k].index = k;
+                btnRemove[k].index = k;
+                itemQuantity[k].index = k;
+
+                // 增加数量
+                btnAdd[k].onclick = function () {
+                    modifyQuantity('+', items, itemQuantity[this.index], this.index);
+                }
+                // 减少数量
+                btnRemove[k].onclick = function () {
+                    modifyQuantity('-', items, itemQuantity[this.index], this.index);
+                }
+                // 手动填写数量
+                itemQuantity[k].onchange = function () {
+                    var quantity = parseInt(itemQuantity[this.index].value);
+                    modifyQuantity(quantity, items, itemQuantity[this.index], this.index);
+                }
+            }
+
+            // 全选
+            eleCheckAll.onchange = function () {
+                for (var i = 0; i < itemCheckbox.length; i++) {
+                    itemCheckbox[i].checked = this.checked;
+                    items[i]['checked'] = this.checked;
+                }
+                refreshData(items, eleCheckAll, eleTotalPrice);
+            }
+
+            refreshData(items, eleCheckAll, eleTotalPrice);
+        }
+    </script>
+</body>
+</html>

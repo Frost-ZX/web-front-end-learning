@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星级评分</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="rate" class="rate">
+        <ul>
+            <li>
+                <div class="text">物流速度：</div>
+                <div class="stars">
+                    <div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </li>
+            <li>
+                <div class="text">商品质量：</div>
+                <div class="stars">
+                    <div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </li>
+            <li>
+                <div class="text">客服服务：</div>
+                <div class="stars">
+                    <div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </li>
+        </ul>
+        <div class="result">
+            <div>物流速度：<span>0</span>星</div>
+            <div>商品质量：<span>0</span>星</div>
+            <div>客服服务：<span>0</span>星</div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var eleResults = document.querySelectorAll('#rate .result div span');
+            var starLines = document.querySelectorAll('#rate .stars');
+
+            // 设置事件
+            // 参数：星星元素，显示评分结果的元素
+            function setEvent(eleStars, eleResult) {
+                for (var i = 0; i < eleStars.length; i++) {
+                    eleStars[i].score = i + 1; // 当前星星对应的评分
+                    eleStars[i].onclick = function () {
+                        if (this.score.toString() == eleResult.textContent) {
+                            // 点击相同的评分
+                            for (var j = 0; j < eleStars.length; j++) {
+                                eleStars[j].className = '';
+                            }
+                            eleResult.textContent = '0';
+                        } else {
+                            // 点击不同的评分
+                            for (var j = 0; j < eleStars.length; j++) {
+                                j < this.score ? eleStars[j].className = 'active' : eleStars[j].className = '';
+                            }
+                            eleResult.textContent = this.score;
+                        }
+                    }
+                }
+            }
+
+            for (var i = 0; i < starLines.length; i++) {
+                var stars = starLines[i].querySelectorAll('div')
+                setEvent(stars, eleResults[i]);
+            }
+        }
+    </script>
+</body>
+</html>

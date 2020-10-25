@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隔行变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list {
+            display: inline-block;
+            margin: 10px;
+            list-style: none;
+            border: 1px solid #CCC;
+        }
+        #list li {
+            display: block;
+            margin: 5px;
+            padding: 5px 15px;
+            width: 50em;
+            border: 1px solid #CCC;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>风从海上来：一家世界 500 强的广州布局</li>
+        <li>广州市党政代表团赴上海和浙江学习考察，学习借鉴先进经验，推进实现高质量发展</li>
+        <li>去年广州查处假冒专利案件 1734 件，这个项目又获第一</li>
+        <li>以 5G 推动数字化转型，白云今年将建成 5G 基站 1942 个</li>
+        <li>快速通关，南沙上半年平行进口汽车同比增长近五成</li>
+        <li>广州连续两年实现 PM2.5 达标：摸清症结坚决打赢蓝天保卫战</li>
+        <li>广州中考独立批录取 1620 人，9 所高中自招未招满</li>
+        <li>一枚免费公章背后的营商环境改革“实验”</li>
+    </ul>
+
+    <script>
+        var list = document.getElementById('list');
+        var listItem = list.getElementsByTagName('li');
+        var HighlightColorOdd = 'rgb(200, 239, 212)'; // 奇数行颜色
+        var HighlightColorEven = 'rgb(251, 207, 208)'; // 偶数行颜色
+
+        for (var i = 0; i < listItem.length; i++) {
+            if (i % 2 == 0) {
+                // 索引值偶数行
+                listItem[i].style.backgroundColor = HighlightColorOdd;
+                listItem[i].onmouseout = function () {
+                    this.style.backgroundColor = HighlightColorOdd;
+                }
+            } else {
+                // 索引值奇数行
+                listItem[i].style.backgroundColor = HighlightColorEven;
+                listItem[i].onmouseout = function () {
+                    this.style.backgroundColor = HighlightColorEven
+                }
+            }
+            listItem[i].onmouseover = function () {
+                this.style.backgroundColor = 'rgb(242, 242, 242)'
+            }
+        }
+    </script>
+</body>
+</html>

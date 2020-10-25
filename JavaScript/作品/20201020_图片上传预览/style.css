@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F9F9F9;
+}
+
+.image-upload * {
+    margin: 0;
+    padding: 0;
+}
+
+.image-upload {
+    display: inline-block;
+    position: relative;
+    margin: 50px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: auto;
+    width: 690px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #FFF;
+    font-size: 0;
+    transition: box-shadow 0.25s;
+}
+.image-upload:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 图片列表 */
+
+.image-upload .image-list ul {
+    display: block;
+    height: auto;
+    width: 100%;
+    list-style-type: none;
+}
+
+/* 图片列表 - 图片 */
+.image-upload .image-list ul li {
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    top: 5px;
+    margin: 0 10px 10px 0;
+    height: 150px;
+    width: 150px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.25s;
+}
+.image-upload .image-list ul li:hover {
+    border-color: #2196F3;
+}
+.image-upload .image-list ul li:not(:last-child) {
+    /* background-image: url("./test_01.jpg"); */
+    background-position: center;
+    background-size: cover;
+}
+.image-upload .image-list ul li:not(:last-child)::after {
+    content: "点击移除";
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: calc(50% - 15px);
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-size: 20px;
+    color: #FFF;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.image-upload .image-list ul li:not(:last-child):hover::after {
+    opacity: 1;
+}
+
+/* 图片列表 - 添加图片 */
+.image-upload .image-list ul li:last-child {
+    position: relative;
+    vertical-align: top;
+    border-style: dashed;
+}
+.image-upload .image-list ul li:last-child::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    font-weight: lighter;
+    color: #AAA;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: color 0.25s;
+}
+.image-upload .image-list ul li:last-child:hover::after {
+    color: #2196F3;
+}
+.image-upload .image-list ul li:last-child input {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍列表</title>
+    <style>
+        #inp {
+            margin-right: 10px;
+            padding: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        #btn-submit {
+            padding: 4px 10px;
+            font-size: 14px;
+        }
+
+        #book-list {
+            width: 350px;
+        }
+        #book-list li span {
+            float: right;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    添加书名称到列表中：
+    1. 没有这本书，添加这到列表中，标记数量
+    2. 有这本书，当前书数量 +1
+    -->
+    <input type="text" placeholder="请输入书名" id="inp"><button id="btn-submit">添加</button><br>
+    <h4>书籍列表</h4>
+    <ul id="book-list"></ul>
+
+    <script>
+        var inp = document.getElementById('inp');
+        var btnSubmit = document.getElementById('btn-submit');
+        var bookList = document.getElementById('book-list');
+
+        var books = [
+            {
+                name: '天龙八部',
+                count: 2
+            }
+        ];
+
+        function loadBooks(data, target) {
+            var str = '';
+            // for (var i = 0; i < data.length; i++) {
+            //     str += '<li>' + data[i].name +  '<span>数量：' + data[i].count + '</span></li>';
+            // }
+            data.forEach(function (item, index) {
+                str += '<li>' + item.name +  '<span>数量：' + item.count + '</span></li>';
+            });
+            target.innerHTML = str;
+        }
+
+        loadBooks(books, bookList); // 加载列表
+
+        btnSubmit.onclick = function () {
+            var bookName = inp.value;
+            if (bookName != '') {
+                // 是否已存在
+                var bookIndex = books.findIndex(function (value) {
+                    return value.name == bookName;
+                });
+                if (bookIndex != -1) {
+                    // 存在（数量+1）
+                    books[bookIndex].count += 1;
+                } else {
+                    // 不存在（添加）
+                    books.push({
+                        name: bookName,
+                        count: 1
+                    });
+                }
+                loadBooks(books, bookList); // 加载列表
+            }
+        }
+    </script>
+</body>
+</html>

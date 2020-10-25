@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* -- 初始化 -- */
+
+body,
+.captcha * {
+    margin: 0;
+    padding: 0;
+}
+
+/* -- 主体 -- */
+
+.captcha {
+    display: inline-block;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    height: 350px;
+    width: 300px;
+    border: 2px solid #4CAF50;
+    font-size: 0;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+/* -- 图片 -- */
+
+.captcha .image {
+    border-bottom: 2px solid #4CAF50;
+}
+
+.captcha .image img {
+    width: 100%;
+}
+
+/* -- 块 -- */
+
+.captcha .block {
+    /* height: 100%; */
+    width: 100%;
+}
+
+.captcha .block::before {
+    content: '请将滑块拖动到正确的位置';
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    height: 31px;
+    width: inherit;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.captcha .block > div {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: #000;
+}
+
+.captcha .block .blank-block {
+    top: 40%;
+    left: 210px;
+    box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.5);
+    background-color: #FFF;
+}
+
+.captcha .block .image-block {
+    top: 40%;
+    left: 5px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
+    background-image: url('');
+    background-repeat: no-repeat;
+
+    /* X：- 空白块 left */
+    /* Y：自身 top - 自身 height */
+    background-position: -210px calc(40% - 40px);
+    /* 与图片显示大小一致 */
+    background-size: 300px;
+}
+
+.captcha .block .slide-block {
+    bottom: 4px;
+    left: 4px;
+    opacity: 0.5;
+    cursor: pointer;
+}

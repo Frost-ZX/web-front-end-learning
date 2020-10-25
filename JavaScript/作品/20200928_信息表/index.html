@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息表</title>
+    <style>
+        #info-table {
+            width: 600px;
+            border-collapse: collapse;
+        }
+        #info-table th,
+        #info-table td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <p>名称：<input type="text" name="name" id="name"></p>
+        <p>年龄：<input type="text" name="age" id="age"></p>
+        <p>
+            性别：
+            <input type="radio" id="gender-man" name="gender" value="男" checked>
+            <label for="gender-man">男</label>
+            <input type="radio" id="gender-women" value="女" name="gender">
+            <label for="gender-women">女</label>
+        </p>
+        <p>
+            喜好：
+            <select name="hobby" id="hobby">
+                <option value="吃饭">吃饭</option>
+                <option value="睡觉">睡觉</option>
+                <option value="打游戏">打游戏</option>
+            </select>
+        </p>
+        <p><input type="button" value="提交" id="submit"></p>
+    </form>
+    <table id="info-table">
+        <tr>
+            <th>名称</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>喜好</th>
+        </tr>
+    </table>
+    <script>
+        var inpName = document.getElementById('name');
+        var inpAge = document.getElementById('age');
+        var inpGender = document.getElementsByName('gender');
+        var inpHobby = document.getElementById('hobby');
+        var btnSubmit = document.getElementById('submit');
+        var table = document.getElementById('info-table');
+
+        btnSubmit.onclick = function () {
+            if (inpName.value && inpAge.value) {
+                // // 判断已选的性别
+                // var selectedgender = inpGender[0].checked ? inpGender[0].value : inpGender[1].checked ? inpGender[1].value : '';
+                // // 拼接并显示
+                // table.innerHTML += '<tr><td>' + inpName.value + '</td><td>' + inpAge.value + '</td>'
+                // + '<td>' + selectedgender + '</td><td>' + inpHobby.value + '</td></tr>';
+
+                var obj = {
+                    name: inpName.value,
+                    age: inpAge.value,
+                    gender: inpGender[0].checked ? inpGender[0].value : inpGender[1].checked ? inpGender[1].value : '',
+                    hobby: inpHobby.value
+                };
+                table.innerHTML += '<tr><td>' + obj.name + '</td><td>' + obj.age + '</td>'
+                + '<td>' + obj.gender + '</td><td>' + obj.hobby + '</td></tr>';
+            }
+        }
+    </script>
+</body>
+</html>

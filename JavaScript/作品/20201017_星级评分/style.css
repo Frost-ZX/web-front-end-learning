@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+body {
+    margin: 20px;
+    background-color: #F5F5F5;
+}
+
+.rate {
+    display: inline-block;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    font-size: 20px;
+    user-select: none;
+}
+
+.rate * {
+    margin: 0;
+    padding: 0;
+}
+
+.rate ul {
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #9E9E9E;
+    list-style-type: none;
+}
+
+.rate ul li > div {
+    display: inline-block;
+}
+
+.rate .stars {
+    vertical-align: middle;
+}
+
+.rate .stars > div {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url('star_normal.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.rate .stars > div.active {
+    background-image: url('star_active.png');
+}

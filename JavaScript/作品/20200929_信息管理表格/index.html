@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息管理系统</title>
+    <style>
+        #main {
+            display: inline-block;
+            text-align: center;
+        }
+
+        #info-table {
+            width: 700px;
+            border-collapse: collapse;
+        }
+
+        #info-table th,
+        #info-table td {
+            padding: 5px 0px;
+            border: 1px solid #000;
+        }
+
+        #info-table td input[type="button"] {
+            color: #FF0000;
+        }
+
+        #add-info p.input {
+            margin-left: -3em;
+        }
+
+        #add-info p input[type="text"],
+        #add-info p input[type="button"] {
+            padding: 5px;
+            border: 1px solid #000;
+            outline: none;
+            font-size: 16px;
+        }
+
+        #add-info p input[type="button"] {
+            padding: 5px 50px;
+            background-color: #FFF;
+            color: #4CAF50;
+        }
+
+        #add-info p input[type="button"]:hover {
+            background-color: #4CAF50;
+            color: #FFF;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <!-- form -->
+        <h2>添加</h2>
+        <form action="" id="add-info">
+            <p class="input">
+                <span>名称：</span><input type="text">
+            </p>
+            <p class="input">
+                <span>性别：</span><input type="text">
+            </p>
+            <p class="input">
+                <span>学校：</span><input type="text">
+            </p>
+            <p class="input">
+                <span>专业：</span><input type="text">
+            </p>
+            <p>
+                <input type="button" value="添加">
+            </p>
+        </form>
+        <!-- table -->
+        <h2>信息管理系统</h2>
+        <table id="info-table">
+            <tr>
+                <th>id</th><th>名称</th><th>性别</th><th>学校</th><th>专业</th><th>操作</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var table = document.getElementById('info-table');
+
+        var form = document.getElementById('add-info');
+        var inputs = form.getElementsByTagName('input');
+        var submit = inputs[inputs.length - 1];
+
+        var keys = ['id', 'name', 'gender', 'school', 'major', '操作'];
+        var infoList = [
+            {
+                name: '张三',
+                gender: '男',
+                school: '清华大学',
+                major: '挖掘机'
+            },
+            {
+                name: '李四',
+                gender: '男',
+                school: '广州大学',
+                major: '软件'
+            }
+        ]
+
+        // 清空表格，保留第一行
+        // 参数：目标表格
+        function clearTable(targetTable) {
+            for (var i = (table.children.length - 1); i >= 1; i--) {
+                targetTable.removeChild(targetTable.children[i]);
+            }
+        }
+
+        // 加载数据
+        // 参数：目标表格，数据列表，数据列表的键
+        function loadList(targetTable, dataList, dataKeys) {
+            var currentID = 0;
+
+            clearTable(table);                                         // 清空表格原有内容
+
+            dataList.forEach(function (infoValue, infoIndex) {
+                var line = document.createElement('tr');               // 表格 - 行
+
+                currentID += 1;
+
+                dataKeys.forEach(function (keyValue, keyIndex) {
+                    var item = document.createElement('td');           // 表格 - 列
+                    var content;                                       // 表格 - 列 - 内容
+
+                    if (keyValue == 'id') {
+                        // 设置 ID //
+                        content = document.createTextNode(currentID);
+                    } else if (keyValue == '操作') {
+                        // 添加操作按钮 //
+                        content = document.createElement('input');
+                        content.type = 'button';
+                        content.value = '删除';
+                        content.onclick = function () {
+                            var selfLine = this.parentNode.parentNode; // 当前行（tr）
+                            var id = selfLine.children[0].innerText;   // 获取 ID
+                            dataList.splice(id - 1, 1);                // 删除对应的数据
+                            loadList(table, infoList, keys);           // 加载数据
+                        }
+                    } else {
+                        // 添加文本 //
+                        content = document.createTextNode(infoValue[keyValue]);
+                    }
+                    // 插入节点
+                    item.appendChild(content);
+                    line.appendChild(item);
+                });
+                // 插入节点
+                targetTable.appendChild(line);
+            });
+        }
+
+        loadList(table, infoList, keys);
+
+        submit.onclick = function () {
+            // 校验
+            for (var i = 0; i < (inputs.length - 1); i++) {
+                if (inputs[i].value == '' || inputs[i].value == ' ') {
+                    alert('未填写完毕');
+                    return false;
+                }
+            }
+            if (inputs[1].value != '男' && inputs[1].value != '女') {
+                alert('性别填写错误');
+                return false;
+            }
+            
+            // 写入数据
+            infoList.push({
+                name: inputs[0].value,
+                gender: inputs[1].value,
+                school: inputs[2].value,
+                major: inputs[3].value
+            });
+
+            // 清空已填内容
+            // for (var i = 0; i < (inputs.length - 1); i++) {
+            //     inputs[i].value = '';
+            // }
+
+            loadList(table, infoList, keys);
+        }
+    </script>
+</body>
+</html>

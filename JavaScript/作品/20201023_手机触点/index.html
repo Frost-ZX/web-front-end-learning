@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>触点</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .bg {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: url("./background.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .point {
+            position: fixed;
+            top: 20%;
+            left: 0;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            background-image: url("./point.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div id="point" class="point"></div>
+    <script>
+        window.onload = function () {
+
+            var point = document.querySelector('#point');
+
+            point.ontouchstart = function (e) {
+                var selfStyle = this.style;
+
+                // 触摸位置
+                var touchStartX = e.changedTouches[0].pageX;
+                var touchStartY = e.changedTouches[0].pageY;
+                var touchCurrX = 0;
+                var touchCurrY = 0;
+
+                // 触点位置
+                var pointX = this.offsetLeft;
+                var pointY = this.offsetTop;
+                var pointPosX = 0;
+                var pointPosY = 0;
+
+                // 边界
+                var maxX = window.innerWidth - this.clientWidth;
+                var maxY = window.innerHeight - this.clientHeight;
+
+                var centerX = maxX / 2;
+                var centerY = maxY / 2;
+
+                // 过渡效果
+                selfStyle.opacity = '0.8';
+                selfStyle.transition = '';
+
+                this.ontouchmove = function (e) {
+                    touchCurrX = e.changedTouches[0].pageX;
+                    touchCurrY = e.changedTouches[0].pageY;
+                    pointPosX = pointX + touchCurrX - touchStartX;
+                    pointPosY = pointY + touchCurrY - touchStartY;
+
+                    // 边界限制
+                    pointPosX = pointPosX < 0 ? 0 : (pointPosX > maxX ? maxX : pointPosX);
+                    pointPosY = pointPosY < 0 ? 0 : (pointPosY > maxY ? maxY : pointPosY);
+
+                    selfStyle.left = `${pointPosX}px`;
+                    selfStyle.top = `${pointPosY}px`;
+                }
+
+                point.ontouchend = function (e) {
+                    var distance = {
+                        top: pointPosY,
+                        right: maxX - pointPosX,
+                        bottom: maxY - pointPosY,
+                        left: pointPosX
+                    }
+                    var keyMin = 'top'; // 最小值的键名
+
+                    for (var key in distance) {
+                        if (distance[key] < distance[keyMin]) {
+                            keyMin = key;
+                        }
+                    }
+
+                    setTimeout(function () {
+                        // 过渡效果
+                        selfStyle.transition = 'all 0.25s';
+                        selfStyle.opacity = '';
+
+                        switch (keyMin) {
+                            case 'top':
+                                selfStyle.top = '0';
+                                break;
+                            case 'right':
+                                selfStyle.left = `${maxX}px`;
+                                break;
+                            case 'bottom':
+                                selfStyle.top = `${maxY}px`;
+                                break;
+                            case 'left':
+                                selfStyle.left = '0';
+                                break;
+                            default:
+                                break;
+                        }
+                    }, 400);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

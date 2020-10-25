@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+</head>
+<body>
+    <script>
+        // 工具库
+        var utils = {
+            words: [
+                'A', 'B', 'C', 'D', 'E', 'F', 'G',
+                'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+                'V', 'W', 'X', 'Y', 'Z',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g',
+                'h', 'i', 'j', 'k', 'l', 'm', 'n', 
+                'o', 'p', 'q', 'r', 's', 't', 'u',
+                'v', 'w', 'x', 'y', 'z',
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+            ],
+            // 从数组中随机获取一个元素
+            getRandomElement: function (arr) {
+                var max = arr.length;
+                // 生成 0 - max 的随机数
+                var index = Math.floor(Math.random() * max);
+                return arr[index];
+            },
+            // 随机生成 n 位验证码, 可以自定义排除不生成的验证码字符
+            // 生成的验证码不能存在相同的字符
+            createValidCode: function (n, filter) {
+                var validCode = ''; // 存放结果
+                for (var i = 1; i <= n; i++) {
+                    // 当前获取的元素
+                    var created = this.getRandomElement(this.words);
+                    // 判断元素是否在排除列表中，是否在已生成的字符中
+                    if (filter.indexOf(created) > -1 || validCode.indexOf(created) > -1) {
+                        i--;                  // 回退
+                    } else {
+                        validCode += created; // 拼接
+                    }
+                }
+                return validCode;
+            }
+        };
+        var filter = ['I', 'i', 'L', 'l', 'O', 'o', 0, 1]; // 排除列表
+        var result = utils.createValidCode(5, filter);
+        console.log('验证码：' + result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- 主体 -->
+    <div id="view" class="view">
+        <div id="zoom" class="zoom">
+            <!-- 图片 -->
+            <div class="img-box">
+                <img src="" />
+            </div>
+            <!-- 遮罩 - 放大的区域 -->
+            <div class="mask-zoom"></div>
+            <!-- 遮罩 - 图片区域 -->
+            <div class="mask-image"></div>
+            <!-- 放大视图 -->
+            <div class="zoom-view"></div>
+        </div>
+        <div id="select" class="select">
+            <ul></ul>
+        </div>
+    </div>
+    <!-- 测试 -->
+    <div id="test" class="test" title="测试">
+        <div class="size">
+            <span>主体大小：</span>
+            <button class="decrease">-</button>
+            <button class="increase">+</button>
+            <span class="info"></span>
+        </div>
+        <div class="scale">
+            <span>放大倍数：</span>
+            <button class="decrease">-</button>
+            <button class="increase">+</button>
+            <span class="info"></span>
+        </div>
+    </div>
+    <!-- Script -->
+    <script src="./script.js"></script>
+</body>
+</html>

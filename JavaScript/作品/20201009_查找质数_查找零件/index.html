@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    <script>
+        // 在指定范围查找质数，将查找到的质数保存为数组并返回
+        // 范围：2 - 200
+        // 质数：在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。
+
+        function findPrimeNumber(min, max) {
+            var arr = []; // 保存质数
+            for (var i = min; i <= max; i++) {
+                for (var j = 2; j < i; j++) {
+                    // 能与非 1、非自身整除，不是质数
+                    if (i % j == 0) {
+                        break;
+                    }
+                }
+                // 是质数，保存
+                if (j == i) {
+                    arr.push(i);
+                }
+            }
+            return arr;
+        }
+        var result = findPrimeNumber(2, 200);
+        console.log('200 以内的质数：\n' + result);
+
+        // 在指定数量的零件中，只知道好的零件比坏的零件多（否则重新生成）
+        // 设计一个算法，找出所有好的零件和坏的零件，随意指定一个零件可以得出该零件的好坏
+        // 备注：使用随机数 Math.random() 生成，好的零件概率和坏的零件概率一致
+        // 2000 个零件
+        // 0 <= x < 0.5 生成好的零件
+        // 0.5 <= x < 1 生成坏的零件
+        
+        // 生成零件
+        function genMachinePart(count) {
+            var mpGood = [];
+            var mpBad = [];
+            if (!count > 0) {
+                return false;
+            }
+            // 生成零件
+            for (var i = 1; i <= count; i++) {
+                var mp = 'mp' + i; // 当前零件
+                // 决定零件的好坏
+                var status = Math.random();
+                if (status < 0.5) {
+                    // 好零件
+                    mpGood.push(mp);
+                } else {
+                    // 坏零件
+                    mpBad.push(mp);
+                }
+            }
+            // 好的零件是否比坏的零件多
+            if (mpGood.length > mpBad.length) {
+                // console.log('符合预期');
+                // 返回
+                return [mpGood, mpBad];
+            } else {
+                // console.log('不符合预期');
+                // 重新生成
+                return arguments.callee(count);
+            }
+        }
+
+        // 查找零件
+        function findMP(mps, name) {
+            if (mps[0].indexOf(name) != -1) {
+                return '好零件';
+            } else if (mps[1].indexOf(name) != -1) {
+                return '坏零件';
+            } else {
+                return '零件不存在';
+            }
+        }
+
+        var mps = genMachinePart(2000);                             // 生成的零件
+        var findList = ['mp10', 'mp25', 'mp300', 'mp320', 'mp400']; // 查找的零件
+
+        console.log('生成的零件', mps);
+        findList.forEach(function (value, index) {
+            var result = value + '：' + findMP(mps, value);
+            console.log(result);
+        });
+    </script>
+</body>
+</html>
