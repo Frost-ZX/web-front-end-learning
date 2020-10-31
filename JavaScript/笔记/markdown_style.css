@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+a {
+    color: #2196F3;
+}
+
+blockquote {
+    margin-bottom: 5px;
+    padding: 11px 15px 1px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-left-color: #009688;
+    /* background-color: #FFF; */
+}
+
+code {
+    color: #009688;
+}
+
+h1, h2, h3 {
+    margin-top: 20px !important;
+}

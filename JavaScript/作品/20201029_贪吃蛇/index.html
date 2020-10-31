@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="snack-game" class="snack-game">
+        <div class="info">
+            分数：<span class="score">-1</span>
+            速度：<span class="speed">-1</span>
+        </div>
+        <div class="map"></div>
+        <div class="ctrl">
+            <button class="btn-start">开始游戏</button>
+            <button class="btn-pause">暂停游戏</button>
+        </div>
+        <div class="help">
+            <p>使用 <strong>WASD</strong> 或 <strong>上下左右</strong> 键控制移动</p>
+            <p>按下空格可 <strong>暂停 / 开始</strong> 游戏</p>
+            <p>可穿墙到另外一边；每获得 <strong>5</strong> 分，速度 <strong>+0.5</strong></p>
+        </div>
+        <div class="alert-box"></div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

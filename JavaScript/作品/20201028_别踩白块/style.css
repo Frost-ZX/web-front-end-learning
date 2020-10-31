@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+html {
+    font-size: 16px;
+}
+
+body, .white-tile-game * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.white-tile-game {
+    display: inline-block;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    border: 0.16rem solid #2196F3;
+    background-color: #FFF;
+    transform: translateX(-50%);
+    user-select: none;
+}
+
+.white-tile-game > div {
+    border: 0.1rem solid #2196F3;
+}
+
+.white-tile-game .info {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    color: #2196F3;
+}
+.white-tile-game .info span {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.white-tile-game .tiles {
+    height: 25rem;
+    width: 25rem;
+    font-size: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.white-tile-game .tiles .rows {
+    position: relative;
+    left: 0;
+    /*
+      top: calc(值 / 每行方块数量);
+      在最上方添加一行时，值 -100%
+    */
+    top: calc(0% / 4);
+    height: 100%;
+    width: 100%;
+}
+
+.white-tile-game .tiles .rows .row {
+    height: calc(100% / 4);
+    width: 100%;
+}
+
+.white-tile-game .tiles .rows .row > div {
+    display: inline-block;
+    height: 100%;
+    width: calc(100% / 4);
+    border: 0.1rem solid #CCC;
+    background-color: #FFF;
+}
+
+.white-tile-game .tiles .rows .row > div.black {
+    background-color: #000;
+}
+
+.white-tile-game .ctrl {
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.white-tile-game .ctrl button {
+    padding: 0.6rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #2196F3;
+    font-size: 1rem;
+    color: #FFF;
+    transition: background 0.25s;
+}
+.white-tile-game .ctrl button:hover {
+    background-color: #00BCD4;
+}
+.white-tile-game .ctrl button:disabled {
+    opacity: 0.5;
+}
+.white-tile-game .ctrl button:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.alert-box {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    padding: 1rem 2rem;
+    box-shadow: 0 0.25rem 0.6rem rgb(0 0 0 / 0.1);
+    border-radius: 0.25rem;
+    background-color: #2196F3;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #FFF;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.25s;
+    pointer-events: none;
+    user-select: none;
+}

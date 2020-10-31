@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+body, .slide-image * {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.slide-image {
+    display: inline-block;
+    position: relative;
+    margin: 20px;
+    height: 380px;
+    width: 820px;
+    /* border: 1px solid #000; */
+    background-color: #FFF;
+    font-size: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+.slide-image .images {
+    position: relative;
+    top: 0;
+    /*
+      left: -1 * 下标 * 100%
+    */
+    left: 0%;
+    white-space: nowrap;
+    transition: left 0.25s;
+}
+
+.slide-image .images > div {
+    display: inline-block;
+    height: 340px;
+    width: 100%;
+    /* background-image: url("./images/1.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide-image .tabs {
+    height: 40px;
+    width: 100%;
+}
+
+.slide-image .tabs ul {
+    height: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+.slide-image .tabs ul li {
+    display: inline-block;
+    height: calc(100% - 2px);
+    /*
+      width: 100% / 图片数量
+    */
+    /* width: calc(100% / 5); */
+    border-bottom: 2px solid transparent;
+    background-color: #EEE;
+    list-style-type: none;
+    line-height: calc(2.8 * 100%);
+    font-size: 14px;
+    color: #222;
+}
+.slide-image .tabs ul li.active {
+    border-color: #CEA861;
+    background-color: #FFF;
+    color: #CEA861;
+}

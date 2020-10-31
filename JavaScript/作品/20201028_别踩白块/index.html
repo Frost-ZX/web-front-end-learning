@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>别踩白块</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="white-tile-game" class="white-tile-game">
+        <div class="info">
+            分数：<span class="score">0</span>
+            速度：<span class="speed">1</span>
+        </div>
+        <div class="tiles">
+            <div class="rows">
+                <div class="row">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+                <div class="row">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+                <div class="row">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+                <div class="row">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+        </div>
+        <div class="ctrl">
+            <button class="btn-start">开始</button>
+            <button class="btn-pause" disabled>暂停</button>
+            <button class="btn-resume" disabled>继续</button>
+        </div>
+    </div>
+    <div id="alert-box" class="alert-box"></div>
+    <script src="./script.js"></script>
+</body>
+</html>

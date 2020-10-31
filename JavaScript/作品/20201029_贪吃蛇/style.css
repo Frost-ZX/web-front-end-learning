@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+body, .snack-game * {
+    margin: 0;
+    padding: 0;
+}
+
+.snack-game {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.25);
+    background-color: #FFF;
+    transform: translateX(-50%);
+    user-select: none;
+}
+
+.snack-game .info {
+    padding: 15px;
+    background-color: #222;
+    text-align: left;
+    font-size: 18px;
+    color: #FFF;
+}
+
+.snack-game .info span {
+    display: inline-block;
+}
+.snack-game .info span:not(:last-child) {
+    margin-right: 10px;
+}
+
+.snack-game .map {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    background-color: #FFF;
+}
+
+.snack-game .map > div {
+    position: absolute;
+}
+
+.snack-game .ctrl {
+    padding: 4px;
+    background-color: #222;
+    text-align: center;
+    font-size: 0;
+}
+
+.snack-game .ctrl button {
+    margin: 0 2px;
+    padding: 8px 16px;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    background-color: #FFF;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.snack-game .ctrl button:hover {
+    background-color: #444;
+    color: #FFF;
+}
+.snack-game .ctrl button:disabled {
+    opacity: 0.5;
+}
+
+.snack-game .help {
+    padding: 1em 1.5em;
+    background-color: #4CAF50;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.snack-game .alert-box {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    padding: 1em 1.5em;
+    box-shadow: 0 0.2em 0.8em rgb(0 0 0 / 0.25);
+    background-color: #222;
+    text-align: center;
+    font-size: 18px;
+    color: #FFF;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.25s;
+    pointer-events: none;
+    user-select: none;
+}

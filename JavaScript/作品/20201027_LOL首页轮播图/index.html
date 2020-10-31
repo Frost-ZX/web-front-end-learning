@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL首页轮播图</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="slide-image" class="slide-image">
+        <div class="images"></div>
+        <div class="tabs"><ul></ul></div>
+    </div>
+
+    <script>
+        // 1. 自动轮播功能
+        // 2. 鼠标在盒子里内，停止轮播；鼠标在盒子外，继续自动轮播。
+        // 3. 鼠标移入文字，切换到对应的图片; 鼠标移出，继续自动轮播。
+
+        window.onload = function () {
+
+            function SlideImage(selector, imageData, delay) {
+                // selector：CSS 选择器（目标轮播图主体元素）
+                // imageData：图片数据
+                // delay: 图片切换间隔（秒）
+
+                var main = document.querySelector(selector);
+                var elemImages = main.querySelector('.images');
+                var elemTabs = main.querySelector('.tabs ul');
+                var imageCount = imageData.length; // 图片数量
+
+                this.selector = selector;
+                this.imageData = imageData;
+                this.delay = delay;
+                this.currentImage = 0;             // 标记：当前图片
+                this.autoSwitch = true;            // 标记：自动切换图片
+
+                // 切换图片
+                this.switchImage = function (index) {
+                    // index：要切换到的图片的索引
+
+                    var tabs = elemTabs.children;
+
+                    // 标签                
+                    tabs[this.currentImage].className = '';
+                    tabs[index].className = 'active';
+                    // 图片
+                    elemImages.style.left = `${-1 * index * 100}%`;
+
+                    // 更新标记
+                    this.currentImage = index;
+                }
+                // 初始化
+                this.init = function () {
+                    var self = this;
+
+                    // 遍历图片数据，生成元素
+                    self.imageData.forEach(function (item, index) {
+                        // 图片
+                        var elemImage = document.createElement('div');
+                        elemImage.style.backgroundImage = `url("${item.image}")`;
+
+                        // 标签
+                        var elemTab = document.createElement('li');
+                        if (index === 0) {
+                            elemTab.className = 'active';
+                        }
+                        elemTab.style.width = `calc(100% / ${imageCount})`; // 标签宽度自适应
+                        elemTab.textContent = item.title;                   // 标签标题
+                        elemTab.onmouseover = function () {
+                            self.switchImage(index);
+                        }
+
+                        // 插入
+                        elemImages.appendChild(elemImage);
+                        elemTabs.append(elemTab);
+                    });
+
+                    // 自动切换图片
+                    var switchImage = setInterval(function () {
+                        if (self.autoSwitch) {
+                            var nextImage = self.currentImage + 1;
+                            if (nextImage >= imageCount) {
+                                nextImage = 0;
+                            }
+                            self.switchImage(nextImage);
+                        }
+                    }, self.delay * 1000);
+
+                    main.onmouseover = function () {
+                        self.autoSwitch = false;
+                    }
+                    main.onmouseout = function () {
+                        self.autoSwitch = true;
+                    }
+                }
+            }
+
+            var images = [
+                {
+                    title: 'FPX冠军皮肤',
+                    image: './images/1.jpg'
+                },
+                {
+                    title: '魔女 婕拉 至臻',
+                    image: './images/2.jpg'
+                },
+                {
+                    title: '2020LPL春季赛季后赛',
+                    image: './images/3.jpg'
+                },
+                {
+                    title: '挑战主播赢现金',
+                    image: './images/4.jpg'
+                },
+                {
+                    title: '每周限时优惠',
+                    image: './images/5.jpg'
+                }
+            ];
+
+            var slideImage = new SlideImage('#slide-image', images, 5);
+            slideImage.init();
+
+        }
+    </script>
+</body>
+</html>
