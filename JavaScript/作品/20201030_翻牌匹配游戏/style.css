@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+body, .flip-game * {
+    margin: 0;
+    padding: 0;
+}
+
+.flip-game {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #F5F5F5;
+    user-select: none;
+}
+
+.flip-game > div:not(.alert-box) {
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: 0 0.2em 0.5em rgb(0 0 0 / 0.1);
+    background-color: #FFF;
+    font-size: 16px;
+}
+
+.flip-game .side-bar {
+    top: 0;
+    bottom: 0;
+    left: -200px;
+    width: 200px;
+    opacity: 0;
+    animation: slideBar 0.5s 0.25s forwards;
+}
+
+.flip-game .side-bar > div {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.flip-game .side-bar .ctrl {
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.flip-game .side-bar .ctrl > div:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.flip-game .side-bar .ctrl .difficulty select {
+    padding: 0.5em 3em 0.5em 1.0em;
+    outline: none;
+    border-color: #CCC;
+    border-radius: 0;
+    appearance: none;
+    background-color: #FFF;
+    background-image: url("./images/arrow.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #222;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.flip-game .side-bar .ctrl .info span {
+    color: #F44336;
+}
+
+.flip-game .side-bar .ctrl .btn {
+    display: inline-block;
+    padding: 0.6em 2em;
+    border-radius: 6px;
+    background-color: #2196F3;
+    color: #FFF;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.25s;
+}
+.flip-game .side-bar .ctrl .btn:hover {
+    background-color: #00BCD4;
+}
+
+.flip-game .side-bar .help {
+    bottom: 0;
+    padding: 2em 1em;
+    width: 100%;
+    text-align: left;
+}
+
+.flip-game .map {
+    top: 50%;
+    left: calc(100px + 50%);
+    padding: 0;
+    height: 600px;
+    width: 600px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: fadeIn 0.5s 0.25s linear forwards;
+}
+
+.flip-game .map .row {
+    /*
+      height：按格子数量计算
+    */
+    height: calc(100% / 4);
+    width: 100%;
+    font-size: 0;
+    white-space: nowrap;
+}
+.flip-game .map .row > div {
+    display: inline-block;
+    height: 100%;
+    /*
+      width：按格子数量计算
+    */
+    width: calc(100% / 4);
+    box-sizing: border-box;
+    border: 1px solid #EEE;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.flip-game .map .row > div:hover {
+    background-color: #2196F3;
+}
+.flip-game .map .row > div span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-image: url("./images/1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    backface-visibility: hidden;
+    opacity: 1;
+    transform: rotateY(180deg);
+    transition: background 0.5s, opacity 0.25s, transform 0.25s;
+}
+.flip-game .map .row > div[data-show="1"] span {
+    opacity: 1;
+    transform: rotateY(0deg);
+    cursor: not-allowed;
+}
+.flip-game .map .row > div[data-ok="1"] span {
+    background-color: #00BCD4;
+    opacity: 1;
+    transform: rotateY(0deg);
+}
+
+.flip-game .alert-box {
+    display: block;
+    position: absolute;
+    top: -50%;
+    left: calc(100px + 50%);
+    padding: 1em 2em;
+    box-shadow: 0 0.2em 0.8em rgb(0 0 0 / 0.1);
+    background-color: #2196F3;
+    text-align: center;
+    font-size: 18px;
+    color: #FFF;
+    transform: translateX(-50%);
+    transition: top 0.5s;
+    user-select: none;
+}
+.flip-game .alert-box.active {
+    top: 10%;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideBar {
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}

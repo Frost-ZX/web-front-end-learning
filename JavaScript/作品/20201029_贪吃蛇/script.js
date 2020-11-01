@@ -45,7 +45,7 @@ SnackGame.prototype.alert = function (content, time) {
     setTimeout(function () {
         alertBox.style.opacity = '0';
     }, time * 1000);
-},
+};
 
 // 初始化地图
 SnackGame.prototype.initMap = function () {
@@ -120,7 +120,7 @@ SnackGame.prototype.removeSnack = function () {
             this.mapElem.removeChild(this.snackBody[i].elem);
         }
     }
-}
+};
 
 // 创建食物
 SnackGame.prototype.createFood = function () {
@@ -157,7 +157,7 @@ SnackGame.prototype.createFood = function () {
 // 删除食物
 SnackGame.prototype.removeFood = function () {
     this.mapElem.removeChild(this.foodInfo.elem);
-}
+};
 
 // 蛇移动
 SnackGame.prototype.snackMove = function () {
@@ -239,7 +239,7 @@ SnackGame.prototype.snackMove = function () {
 
     this.removeSnack()
     this.createSnack();
-}
+};
 
 // 更新分数和速度
 SnackGame.prototype.updateScore = function () {
@@ -254,7 +254,7 @@ SnackGame.prototype.updateScore = function () {
 
     scoreElem.textContent = this.score;
     speedElem.textContent = this.speed;
-}
+};
 
 // 游戏开始
 SnackGame.prototype.startGame = function () {
@@ -269,7 +269,7 @@ SnackGame.prototype.startGame = function () {
     self.timer = setInterval(function () {
         self.snackMove();
     }, 400 / this.speed);
-}
+};
 
 // 游戏结束
 SnackGame.prototype.stopGame = function (isOver) {
@@ -280,7 +280,7 @@ SnackGame.prototype.stopGame = function (isOver) {
         this.over = true;
         this.alert(`[游戏结束]<br>您的分数为 ${this.score}`, 5);
     }
-}
+};
 
 // 初始化事件
 SnackGame.prototype.initEvents = function () {
@@ -373,7 +373,7 @@ SnackGame.prototype.init = function () {
     this.initEvents();
 
     this.alert('贪吃蛇<br>Snake', 2);
-}
+};
 
 var game = new SnackGame({
     gameElem: document.querySelector('#snack-game'),
@@ -383,3 +383,4 @@ var game = new SnackGame({
     speedUpRate: 0.5,
     canCross: true
 });
+    

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻牌匹配</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="flip-game" class="flip-game">
+        <!-- 侧边栏 -->
+        <div class="side-bar">
+            <!-- 控制 -->
+            <div class="ctrl">
+                <!-- 信息 -->
+                <div class="info">
+                    <p>用时 <span class="time">0</span> 秒</p>
+                    <p>你已经进行了 <span class="step">0</span> 步</p>
+                    <p>游戏进度：<span class="progress">0 / 0</span></p>
+                </div>
+                <!-- 难度设置 -->
+                <div class="difficulty">
+                    <select id="ctrl-difficulty">
+                        <option value="-1">-- 选择难度 --</option>
+                        <option value="2">2 x 2</option>
+                        <option value="4">4 x 4</option>
+                        <option value="6">6 x 6</option>
+                        <option value="8">8 x 8</option>
+                        <option value="10">10 x 10</option>
+                        <option value="12">12 x 12</option>
+                    </select>
+                </div>
+                <!-- 新游戏 -->
+                <div id="btn-startgame" class="btn">开始游戏</div>
+                <div id="btn-newgame" class="btn">新的游戏</div>
+            </div>
+            <!-- 帮助 -->
+            <div class="help">
+                <p><strong>游戏规则</strong></p>
+                <p>翻开两个格子，如果图案一致则配对成功，如果图案不一致则隐藏；</p>
+                <p>直到所有格子都配对完成，游戏结束。</p>
+                <p>每次操作，步数 +1。</p>
+            </div>
+        </div>
+        <!-- 游戏地图 -->
+        <div class="map">
+            <!-- <div class="row">
+                <div><span></span></div>
+                <div data-show><span></span></div>
+                <div><span></span></div>
+                <div data-show data-ok><span></span></div>
+            </div> -->
+        </div>
+        <!-- 提示框 -->
+        <div class="alert-box"></div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
