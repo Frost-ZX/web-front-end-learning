@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴</title>
+    <style>
+        body, .image-box {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-attachment: fixed;
+            background-image: url("./img/bg.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .image-box {
+            display: inline-block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            height: 430px;
+            width: 1090px;
+            font-size: 0;
+            white-space: nowrap;
+            user-select: none;
+            transform: translate(-50%, -50%);
+        }
+
+        .image-box .image {
+            display: inline-block;
+            height: 100%;
+            width: 100px;
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .image-box .image:nth-child(1) {
+            background-image: url("./img/1.jpg");
+        }
+        .image-box .image:nth-child(2) {
+            background-image: url("./img/2.jpg");
+        }
+        .image-box .image:nth-child(3) {
+            background-image: url("./img/3.jpg");
+        }
+        .image-box .image:nth-child(4) {
+            background-image: url("./img/4.jpg");
+        }
+
+        .image-box .image .title {
+            position: relative;
+            height: 100%;
+            width: 100px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFF;
+        }
+        .image-box .image .title span {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1em;
+            font-size: 18px;
+            white-space: normal;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="image-box">
+        <div class="image" style="width: 789px;">
+            <div class="title">
+                <span>我的个人拉萨之旅｜｜故事之城</span>
+            </div>
+        </div>
+        <div class="image">
+            <div class="title">
+                <span>我的个人拉萨之旅｜｜故事之城</span>
+            </div>
+        </div>
+        <div class="image">
+            <div class="title">
+                <span>我的个人拉萨之旅｜｜故事之城</span>
+            </div>
+        </div>
+        <div class="image">
+            <div class="title">
+                <span>我的个人拉萨之旅｜｜故事之城</span>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.3.5.1.min.js"></script>
+    <script>
+        $('.image-box .image').hover(function () {
+            $(this).stop().animate({
+                'width': 789
+            }, 500).siblings().stop().animate({
+                'width': 100
+            }, 500);
+        });
+    </script>
+</body>
+</html>

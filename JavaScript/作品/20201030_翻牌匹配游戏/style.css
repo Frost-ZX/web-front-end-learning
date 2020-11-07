@@ -132,7 +132,7 @@ body, .flip-game * {
     background-repeat: no-repeat;
     background-size: contain;
     backface-visibility: hidden;
-    opacity: 1;
+    opacity: 0;
     transform: rotateY(180deg);
     transition: background 0.5s, opacity 0.25s, transform 0.25s;
 }

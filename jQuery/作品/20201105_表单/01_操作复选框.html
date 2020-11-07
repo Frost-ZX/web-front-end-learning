@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作复选框</title>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="请输入选项名" class="add-input" />
+        <button class="add-submit">添加</button>
+    </div>
+    <div class="btn-ctrl">
+        <button>全选</button>
+        <button>全不选</button>
+        <button>反选</button>
+        <button>删除所选</button>
+    </div>
+    <div class="checks">
+        <p><label><input type="checkbox" />家里没宽带</label></p>
+        <p><label><input type="checkbox" />网速不够快</label></p>
+        <p><label><input type="checkbox" />手机没流量</label></p>
+        <p><label><input type="checkbox" />学校无 WiFi</label></p>
+    </div>
+    <script src="../js/jquery.3.5.1.min.js"></script>
+    <script>
+        $('.add-submit').click(function () {
+            var optName = $('.add-input').val();
+
+            if (optName != '') {
+                $('.checks').append($(`<p><label><input type="checkbox" />${optName}</label></p>`));
+            }
+        });
+
+        $('.btn-ctrl button').click(function () {
+            var index = $(this).index();
+            var checks = $('.checks input');
+
+            switch (index) {
+                // 全选
+                case 0:
+                    checks.prop('checked', true);
+                    break;
+                // 全不选
+                case 1:
+                    checks.prop('checked', false);
+                    break;
+                // 反选
+                case 2:
+                    checks.each(function (index, elem) {
+                        elem.checked = !elem.checked;
+                    });
+                    break;
+                // 删除所选
+                case 3:
+                    checks.each(function (index, elem) {
+                        if ($(elem).prop('checked')) {
+                            $(elem).parents('p').remove();
+                        }
+                    });
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

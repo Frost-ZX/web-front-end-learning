@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画返回顶部</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+    
+        .back {
+            display: none;
+            position: fixed;
+            right: 40px;
+            bottom: 90px;
+            padding: 6px 11px;
+            box-sizing: border-box;
+            height: 50px;
+            width: 50px;
+            background-color: #009688;
+            color: #FFF;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+    
+        .container {
+            margin: 400px auto;
+            height: 500px;
+            width: 800px;
+            background-color: #03A9F4;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">返回顶部</div>
+    <div class="container"></div>
+
+    <script src="../js/jquery.3.5.1.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 600) {
+                $('.back').stop().fadeIn(200);
+            } else {
+                $('.back').stop().fadeOut(200);
+            }
+        });
+
+        $('.back').click(function () {
+            $('html, body').stop().animate({
+                scrollTop: 0
+            }, 500).animate({
+                scrollTop: 10
+            }, 100).animate({
+                scrollTop: 0
+            }, 100);
+        });
+    </script>
+</body>
+</html>
