@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    text-align: center;
+    color: #FFF;
+    user-select: none;
+}
+
+.dice > div,
+.dice > h2 {
+    margin: 10px 0;
+}
+
+/* 盒子 */
+.dice {
+    padding: 50px 0;
+}
+.dice > div {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 450px;
+    border: 5px solid #FFF;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 0;
+}
+/* 骰子 */
+.dice > div .item {
+    display: inline-flex;
+    vertical-align: top;
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    background-color: #FFF;
+}
+/* 点 */
+.dice > div .point {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #222;
+}
+
+/* 一点 */
+
+.dice .one .item:nth-child(1) {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.dice .one .item:nth-child(2) {
+    justify-content: center;
+    align-items: center;
+}
+
+.dice .one .item:nth-child(3) {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+
+/* 两点 */
+
+.dice .two .item:nth-child(1) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.dice .two .item:nth-child(2) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.dice .two .item:nth-child(3) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dice .two .item:nth-child(4) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.dice .two .item:nth-child(5) {
+    flex-direction: row;
+}
+.dice .two .item:nth-child(5).item .point:nth-child(2) {
+    align-self: center;
+}
+
+.dice .two .item:nth-child(6) {
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dice .two .item:nth-child(6).item .point:nth-child(2) {
+    align-self: flex-end;
+}
+
+/* 三点 */
+
+.dice .three .item:nth-child(1) {
+    justify-content: space-between;
+}
+.dice .three .item:nth-child(1) .point:nth-child(1) {
+    align-self: flex-start;
+}
+.dice .three .item:nth-child(1) .point:nth-child(2) {
+    align-self: center;
+}
+.dice .three .item:nth-child(1) .point:nth-child(3) {
+    align-self: flex-end;
+}
+
+/* 四点 */
+
+.dice .four .item:nth-child(1) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+.dice .four .item:nth-child(1) .row {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.dice .four .item:nth-child(2) {
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+.dice .four .item:nth-child(2) .row {
+    display: inline-flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+
+/* 五点 */
+
+.dice .five .item:nth-child(1) {
+    flex-wrap: wrap;
+}
+.dice .five .item:nth-child(1) .row {
+    display: inline-flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+.dice .five .item:nth-child(1) .row:nth-child(2) {
+    justify-content: center;
+}
+
+/* 六点 */
+
+.dice .six .item:nth-child(1) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+}
+
+.dice .six .item:nth-child(2) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+}
+
+.dice .six .item:nth-child(3) {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.dice .six .item:nth-child(3) .row {
+    display: inline-flex;
+    flex-basis: 100%;
+    justify-content: space-around;
+}
+.dice .six .item:nth-child(3) .row:nth-child(3){
+    justify-content: space-between;
+}
+
+/* 九点 */
+
+.dice .nine .item:nth-child(1) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}

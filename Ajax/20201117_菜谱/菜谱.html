@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜谱</title>
+    <style>
+        body,
+        .wrapper,
+        .wrapper * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #F5F5F5;
+            text-align: center;
+        }
+
+        .wrapper {
+            display: inline-block;
+            position: relative;
+            padding: 20px 0;
+            width: 100%;
+            min-width: 375px;
+            max-width: 600px;
+            text-align: left;
+            user-select: none;
+        }
+
+        .wrapper .recipe-list {
+            width: 100%;
+        }
+
+        .wrapper .recipe-list .list-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #FFF;
+            box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+            border-radius: 8px;
+            white-space: nowrap;
+            font-size: 0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .wrapper .recipe-list .list-item > div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .wrapper .recipe-list .list-item .thumb {
+            position: relative;
+            /* padding-top 宽度 25% */
+            padding-top: 25%;
+            height: 0;
+            width: 25%;
+            border-radius: 8px;
+            /* background-image: url(./thumb.jpg); */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .wrapper .recipe-list .list-item .info {
+            padding-left: 2%;
+            box-sizing: border-box;
+            height: 80%;
+            width: 75%;
+            white-space: normal;
+            font-size: 16px;
+        }
+        .wrapper .recipe-list .list-item .info > * {
+            color: #222;
+        }
+        .wrapper .recipe-list .list-item .info h2 {
+            margin: 5px 0;
+            font-size: 20px;
+        }
+        .wrapper .recipe-list .list-item .info p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        @media screen and (max-width: 540px) {
+            .wrapper .recipe-list .list-item .info p {
+                -webkit-line-clamp: 3;
+            }
+        }
+        @media screen and (max-width: 440px) {
+            .wrapper .recipe-list .list-item .info p {
+                -webkit-line-clamp: 2;
+            }
+        }
+
+        .wrapper .recipe-detail {
+            display: block;
+            position: fixed;
+            top: 100%;
+            left: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            max-width: inherit;
+            background-color: #FFF;
+            overflow-y: scroll;
+            transition: top 0.5s;
+            transform: translateX(-50%);
+        }
+        .wrapper .recipe-detail.show {
+            top: 0;
+        }
+        .wrapper .recipe-detail .thumb {
+            margin-bottom: 15px;
+            padding-top: 100%;
+            width: 100%;
+            box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+            border-radius: 8px;
+            /* background-image: url(./thumb.jpg); */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .wrapper .recipe-detail .content > * {
+            margin-bottom: 10px;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="recipe-list">
+            <!-- <div class="list-item" data-recipe-id="26105">
+                <div class="thumb"></div>
+                <div class="info">
+                    <h2>标题标题</h2>
+                    <p>描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+                </div>
+            </div> -->
+        </div>
+        <div class="recipe-detail">
+            <!-- <div class="thumb"></div>
+            <div class="content">
+                <h2>标题标题</h2>
+                <p class="description">描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+                <h2>用料</h2>
+                <p>材料：用量</p>
+                <p>材料：用量</p>
+                <h2>步骤</h2>
+                <p><img src="./thumb.jpg"></p>
+                <p>步骤描述</p>
+                <p><img src="./thumb.jpg"></p>
+                <p>步骤描述</p>
+            </div> -->
+        </div>
+    </div>
+    <script src="./jsonp.js"></script>
+    <script>
+        var recipeList = document.querySelector('.recipe-list');
+        var recipeDetail = document.querySelector('.recipe-detail');
+
+        jsonp({
+            url: 'https://api.binstd.com/recipe/byclass',
+            data: {
+                classid: 282,
+                start: 0,
+                num: 10,
+                appkey: 'e8be48a2f2b9e310'
+            },
+            success: function (result) {
+                if (result.msg != 'ok') {
+                    return false;
+                }
+
+                // 数据
+                var datas = result.result.list;
+
+                // 清空
+                recipeList.innerHTML = '';
+
+                datas.forEach(function (item, index) {
+                    var listItem = document.createElement('div');
+
+                    listItem.className = 'list-item';
+                    listItem.dataset.recipeId = item.id;
+                    listItem.innerHTML = `<div class="thumb" style="background-image: url('${item.pic}')"></div>
+                    <div class="info"><h2>${item.name}</h2><p>${item.content}</p></div>`;
+
+                    recipeList.appendChild(listItem);
+                });
+            }
+        });
+
+        recipeDetail.onclick = function () {
+            // 隐藏详情
+            recipeDetail.classList.remove('show');
+        }
+
+        recipeList.onclick = function (e) {
+            var target = e.target || window.event.srcElement;
+
+            while (!target.classList.contains('list-item')) {
+                target = target.parentElement;
+            }
+
+            // 获取需要显示的菜谱的 ID
+            var recipeId = target.dataset.recipeId;
+
+            // 发送请求
+            jsonp({
+                url: 'https://api.binstd.com/recipe/detail',
+                data: {
+                    id: recipeId,
+                    appkey: 'e8be48a2f2b9e310'
+                },
+                success: function (result) {
+                    if (result.msg != 'ok') {
+                        return false;
+                    }
+
+                    // 数据
+                    var datas = result.result;
+
+                    // 拼接内容
+                    var content = `<div class="thumb" style="background-image: url('${datas.pic}')"></div>
+                    <div class="content"><h2>${datas.name}</h2><p class="description">${datas.content}</p>`;
+                    // 用料
+                    content += '<h2>用料</h2>';
+                    datas.material.forEach(function (item, index) {
+                        content += `<p>${item.mname}：${item.amount}</p>`;
+                    });
+                    // 步骤
+                    content += '<h2>步骤</h2>';
+                    datas.process.forEach(function (item, index) {
+                        content += `<p><img src="${item.pic}"></p><p>${item.pcontent}</p>`;
+                    });
+                    content += '</div>';
+
+                    // 更新内容
+                    recipeDetail.innerHTML = content;
+
+                    // 显示详情
+                    recipeDetail.classList.add('show');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,27 +1,113 @@
 @charset "UTF-8";
 
+:root {
+    --color-primary: #009688;
+    --color-secondary: #2196F3;
+}
+
 a {
-    color: #2196F3;
+    color: var(--color-primary);
+}
+a:focus {
+    outline: none;
+}
+a:hover {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+html, body {
+    scroll-behavior: smooth;
 }
 
 body {
     padding-bottom: 50px;
+    font-weight: 600;
 }
 
 blockquote {
     margin-bottom: 10px;
     padding: 11px 15px 1px 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-left-color: #009688;
+    border-left-color: var(--color-primary);
     /* background-color: #FFF; */
 }
 
 code {
-    color: #009688;
+    color: var(--color-primary);
 }
 
 h1, h2, h3, h4 {
     margin-top: 20px !important;
     margin-bottom: 20px !important;
     font-weight: bold;
+}
+
+/* 悬浮按钮 */
+.btn-float {
+    display: block;
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+}
+.btn-float > div {
+    display: block;
+    padding: 12px 10px;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    font-weight: normal;
+    color: #FFF;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+.btn-float > div:not(:last-child) {
+    margin-bottom: 10px;
+}
+.btn-float > div:hover {
+    opacity: 1.0;
+}
+/* 悬浮按钮 - 返回顶部 */
+.btn-totop {
+    
+}
+/* 悬浮按钮 - 返回上一页 */
+.btn-back {
+    
+}
+
+/* 目录 */
+.contents+h1,
+.contents+h2 {
+    padding: 32px 20px;
+    border: none;
+    background-color: #F9F9F9;
+    text-align: center;
+    font-weight: normal;
+    color: #000;
+}
+.contents+h1+ul,
+.contents+h2+ul {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    padding: 32px 25px 32px 50px;
+    box-sizing: border-box;
+    height: 100%;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.2);
+    border-left: 1px solid var(--color-primary);
+    background-color: #FFF;
+    font-family: monospace;
+    font-size: 16px;
+    overflow-y: auto;
+    transform: translateX(calc(100% - 20px));
+    transition: border 0.5s, transform 0.5s;
+}
+.contents+h1+ul:hover,
+.contents+h2+ul:hover {
+    border-left-color: transparent;
+    transform: translateX(0);
 }

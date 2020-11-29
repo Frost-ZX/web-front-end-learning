@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bootstrap</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="bootstrap">Bootstrap</h1>
+<ul>
+<li><a href="#bootstrap">Bootstrap</a></li>
+<li><a href="#%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9">补充内容</a>
+<ul>
+<li><a href="#rem-%E5%8D%95%E4%BD%8D">rem 单位</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E4%BC%98%E5%8A%BF">优势</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2">媒体查询</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-1">简介</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83">语法规范</a>
+<ul>
+<li><a href="#%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B-mediatype">媒体类型（mediatype）</a></li>
+<li><a href="#%E5%85%B3%E9%94%AE%E5%AD%97">关键字</a></li>
+<li><a href="#%E5%AA%92%E4%BD%93%E7%89%B9%E6%80%A7">媒体特性</a></li>
+<li><a href="#%E4%B9%A6%E5%86%99%E8%A7%84%E5%88%99">书写规则</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%BC%95%E5%85%A5%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%B7%E5%BC%8F%E8%A1%A8">使用媒体查询引入不同的样式表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#bootstrap-1">Bootstrap</a>
+<ul>
+<li><a href="#bootstrap-%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">Bootstrap 相关网站</a>
+<ul>
+<li><a href="#%E5%AE%98%E7%BD%91">官网</a></li>
+<li><a href="#%E4%B8%AD%E6%96%87%E7%BD%91">中文网</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8">布局容器</a>
+<ul>
+<li><a href="#container">.container</a></li>
+<li><a href="#container-fluid">.container-fluid</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%85%E6%A0%BC">栅格</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="补充内容">补充内容</h1>
+<h2 id="rem-单位">rem 单位</h2>
+<h3 id="简介">简介</h3>
+<ul>
+<li><code>rem (root em)</code> 是一个相对于根元素（html）的字体大小单位，类似 <code>em</code>（em 相对于自身字体大小）。</li>
+</ul>
+<h3 id="优势">优势</h3>
+<ul>
+<li>可以通过修改根元素的字体大小控制整个页面的元素大小。</li>
+</ul>
+<h3 id="例子">例子</h3>
+<ul>
+<li>
+<p>根元素（html）设置 <code>font-size=12px</code>，非根元素设置 <code>font-size=2rem</code> 则实际为 <code>font-size=24px</code></p>
+<pre><code class="language-css"><div><span class="hljs-comment">/* 根元素字体大小 12px */</span>
+<span class="hljs-selector-tag">html</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
+}
+<span class="hljs-comment">/* 此时 div 的字体大小为 24px */</span>      
+<span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;
+}
+</div></code></pre>
+</li>
+</ul>
+<h2 id="媒体查询">媒体查询</h2>
+<h3 id="简介-1">简介</h3>
+<ul>
+<li>媒体查询（Media Query）是 CSS3 新语法。</li>
+<li>使用 @media 媒体查询，可以针对不同的媒体类型定义不同的样式。</li>
+<li>@media 媒体查询可以针对不同的屏幕尺寸设置不同的样式。</li>
+<li>在重置浏览器窗口大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面 。</li>
+<li>目前针对苹果手机、Android 手机，平板等设备都需要用到多媒体查询。</li>
+</ul>
+<h3 id="语法规范">语法规范</h3>
+<pre><code class="language-css"><div><span class="hljs-keyword">@media</span> mediatype <span class="hljs-keyword">and</span>|<span class="hljs-keyword">not</span>|<span class="hljs-keyword">only</span> (media feature) {
+  <span class="hljs-selector-tag">CSS-Code</span>;
+}
+</div></code></pre>
+<ul>
+<li>以 <code>@media</code> 开头</li>
+<li>媒体类型（mediatype）：<code>all</code>、<code>print</code>、<code>screen</code></li>
+<li>关键字：<code>and</code>、<code>not</code>、<code>only</code></li>
+<li>媒体特性（media feature）：<code>width</code>、<code>min-width</code>、<code>max-width</code>、...（必须被小括号包裹）</li>
+</ul>
+<h4 id="媒体类型-mediatype">媒体类型（mediatype）</h4>
+<ul>
+<li>将不同的终端设备划分成不同的类型，称为媒体类型。</li>
+<li>常用 <code>screen</code></li>
+</ul>
+<h4 id="关键字">关键字</h4>
+<ul>
+<li>关键字将媒体类型或多个媒体特性连接到一起作为媒体查询的条件。</li>
+<li><code>and</code><br>
+可以将多个媒体特性连接到一起，相当于“且”。</li>
+<li><code>not</code><br>
+排除某个媒体类型，相当于“非”（可以省略）。</li>
+<li><code>only</code><br>
+指定某个特定的媒体类型（可以省略）。</li>
+</ul>
+<h4 id="媒体特性">媒体特性</h4>
+<ul>
+<li>每种媒体类型都具体各自不同的特性，根据不同媒体类型的媒体特性设置不同的展示风格。</li>
+<li>注意
+<ul>
+<li>媒体特性必须被小括号 <code>()</code> 包裹</li>
+<li>媒体特性属性名与属性值之间使用 <code>:</code> 号分隔，而不是 <code>=</code> 号</li>
+<li>部分媒体特性属性值需要带 <code>px</code> 单位（例如：<code>width</code>、<code>min-width</code>、<code>max-width</code>）</li>
+<li>需要在 HTML 中加入 <code>视口</code> 属性标记，否则媒体查询会失效。</li>
+<li><code>min-width</code> - 大于等于，<code>max-width</code> - 小于等于</li>
+</ul>
+</li>
+</ul>
+<h4 id="书写规则">书写规则</h4>
+<ul>
+<li>为了防止混乱，媒体查询要按照 <code>从小到大</code> 或 <code>从大到小</code> 的顺序来写</li>
+<li>常用：从小到大</li>
+</ul>
+<h4 id="使用媒体查询引入不同的样式表">使用媒体查询引入不同的样式表</h4>
+<ul>
+<li>
+<p>当样式比较繁多的时候，可以针对不同的媒体使用不同样式表。</p>
+</li>
+<li>
+<p>原理：直接在 <code>link</code> 中判断设备的尺寸，然后引入不同的 CSS 文件</p>
+</li>
+<li>
+<p>语法规范</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;mediatype and|not|only (media feature)&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;CSS 文件路径&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>例子</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;screen and (min-width: 400px)&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style_1.css&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h1 id="bootstrap-1">Bootstrap</h1>
+<h2 id="bootstrap-相关网站">Bootstrap 相关网站</h2>
+<h3 id="官网">官网</h3>
+<ul>
+<li><a href="https://getbootstrap.com/">https://getbootstrap.com/</a></li>
+</ul>
+<h3 id="中文网">中文网</h3>
+<ul>
+<li><a href="https://v4.bootcss.com/">https://v4.bootcss.com/</a></li>
+<li><a href="https://code.z01.com/v4/">https://code.z01.com/v4/</a></li>
+</ul>
+<h2 id="布局容器">布局容器</h2>
+<ul>
+<li>使用 Bootstrap 时需要为页面内容和栅格系统包裹一个 <code>.container</code> 或者 <code>.container-fluid</code> 容器</li>
+<li>这两个类是 Bootstrap 提供的预定义类</li>
+</ul>
+<h3 id="container">.container</h3>
+<blockquote>
+<p>固定自适应方式</p>
+</blockquote>
+<h3 id="container-fluid">.container-fluid</h3>
+<blockquote>
+<p>流体 100% 自适应方式</p>
+</blockquote>
+<ul>
+<li>流式布局容器，宽度 100%</li>
+<li>占据全部视口（viewport）的容器</li>
+<li>适合于单独做移动端开发</li>
+</ul>
+<h2 id="栅格">栅格</h2>
+
+    </body>
+    </html>

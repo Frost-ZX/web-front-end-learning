@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代浏览器博物馆</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <style>
+        /* 导航栏 */
+        .navbar .nav-item.active {
+            background-color: #000;
+        }
+
+        /* 轮播图 */
+        .slide-image {
+            margin-top: 80px;
+        }
+        .slide-image .carousel .carousel-item {
+            max-height: 500px;
+        }
+
+        /* 介绍 */
+        .tabDesc .tab-content h2 small {
+            font-size: 0.45em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav id="site-nav" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark py-0">
+        <div class="container">
+            <a class="navbar-brand" href="#">现代浏览器博物馆</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active py-2">
+                        <a class="nav-link" href="#">综述<span class="sr-only">（当前）</span></a>
+                    </li>
+                    <li class="nav-item py-2">
+                        <a class="nav-link" href="#">简述</a>
+                    </li>
+                    <li class="nav-item dropdown py-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">特点</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#tabChrome">Chrome</a>
+                            <a class="dropdown-item" href="#tabFirefox">Firefox</a>
+                            <a class="dropdown-item" href="#tabSafari">Safari</a>
+                            <a class="dropdown-item" href="#tabOpera">Opera</a>
+                            <a class="dropdown-item" href="#tabIE">IE</a>
+                        </div>
+                    </li>
+                    <li class="nav-item py-2">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModalLong">关于</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 轮播图 -->
+    <div class="slide-image">
+        <div id="carouselExampleCaptions" class="carousel slide mb-5" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./images/chrome-big.jpg" class="d-block w-100" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Chrome</h5>
+                        <p>Google Chrome，又称 Google 浏览器，是一个由 Google（谷歌）公司开发的网页浏览器。</p>
+                        <a href="#" class="btn btn-primary">点我下载</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/firefox-big.jpg" class="d-block w-100" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Firefox</h5>
+                        <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。</p>
+                        <a href="#" class="btn btn-primary">点我下载</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/safari-big.jpg" class="d-block w-100" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Safari，是苹果计算机的最新操作系统Mac</h5>
+                        <p>Safari，是苹果计算机的最新操作系统 Mac OS X 中的浏览器。</p>
+                        <a href="#" class="btn btn-primary">点我下载</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/opera-big.jpg" class="d-block w-100" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Opera</h5>
+                        <p>Opera 浏览器，是一款由挪威 Opera Software ASA 公司制作的支持多页面标签式浏览的网络浏览器。</p>
+                        <a href="#" class="btn btn-primary">点我下载</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/ie-big.jpg" class="d-block w-100" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>IE</h5>
+                        <p>Internet Explorer，简称 IE，是微软公司推出的一款网页浏览器。</p>
+                        <a href="#" class="btn btn-primary">点我下载</a>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">前</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">后</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 简介 -->
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img class="img-circle" src="./images/chrome-logo-small.jpg" />
+                <h2>Chrome</h2>
+                <p>Google Chrome，又称 Google 浏览器，是一个由 Google（谷歌）公司开发的网页浏览器。</p>
+                <a href="#" class="btn btn-outline-secondary">点击下载</a>
+            </div>
+            
+            <div class="col-md-4">
+                <img src="./images/firefox-logo-small.jpg" />
+                <h2>Firefox</h2>
+                <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。</p>
+                <a href="#" class="btn btn-outline-secondary">点击下载</a>
+            </div>
+            <div class="col-md-4">
+                <img src="./images/safari-logo-small.jpg" />
+                <h2>Safari</h2>
+                <p>Safari，是苹果计算机的最新操作系统 Mac OS X 中的浏览器。</p>
+                <a href="#" class="btn btn-outline-secondary">点击下载</a>
+            </div>
+        </div>
+        <hr class="my-5">
+    </div>
+
+    <!-- 介绍 -->
+    <div class="container tabDesc">
+        <ul class="nav nav-tabs" id="tabDesc" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="chrome-tab" data-toggle="tab" href="#tabChrome" role="tab">Chrome</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="firefox-tab" data-toggle="tab" href="#tabFirefox" role="tab">Firefox</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="safari-tab" data-toggle="tab" href="#tabSafari" role="tab">Safari</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="opera-tab" data-toggle="tab" href="#tabOpera" role="tab">Opera</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="ie-tab" data-toggle="tab" href="#tabIE" role="tab">IE</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tabDescContent">
+            <div class="tab-pane fade py-3 show active" id="tabChrome" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-7 align-self-center">
+                        <h2 class="text-primary display-4">Google Chrome<small class="text-secondary ml-2">使用最广的浏览器</small></h2>
+                        <p class="lead">Google Chrome，又称 Google 浏览器，是一个由 Google（谷歌）公司开发的网页浏览器。该浏览器是基于其他开源软件所撰写，包括 WebKit，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="./images/chrome-logo.jpg" class="w-100">
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade py-3" id="tabFirefox" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="./images/firefox-logo.jpg" class="w-100">
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <h2 class="text-primary display-4">Mozilla Firefox<small class="text-secondary ml-2">美丽的狐狸</small></h2>
+                        <p class="lead">Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器，使用 Gecko 引擎（非 IE 内核），支持多种操作系统如 Windows、Mac 和 Linux。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade py-3" id="tabSafari" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-7 align-self-center">
+                        <h2 class="text-primary display-4">Safari<small class="text-secondary ml-2">Mac 用户首选</small></h2>
+                        <p class="lead">Safari，是苹果计算机的最新操作系统 Mac OS X 中的浏览器，使用了 KDE 的 KHTML 作为浏览器的运算核心。Safari 在 2003 年 1 月 7 日首度发行测试版，并成为 Mac OS X v10.3 与之后的默认浏览器，也是 iPhone 与 iPAD 和 iPod touch 的指定浏览器。</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="./images/safari-logo.jpg" class="w-100">
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade py-3" id="tabOpera" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="./images/opera-logo.jpg" class="w-100">
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <h2 class="text-primary display-4">Opera<small class="text-secondary ml-2">小众但易用</small></h2>
+                        <p class="lead">Opera 浏览器，是一款由挪威 Opera Software ASA 公司制作的支持多页面标签式浏览的网络浏览器。是跨平台浏览器，可以在 Windows、Mac 和 Linux 三个操作系统平台上运行。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade py-3" id="tabIE" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-7 align-self-center">
+                        <h2 class="text-primary display-4">IE<small class="text-secondary ml-2">你懂的</small></h2>
+                        <p class="lead">Internet Explorer，原称 Microsoft Internet Explorer（6 版本以前）和 Windows Internet Explorer（7、8、9、10 版本），简称 IE，是美国微软公司推出的一款网页浏览器。它采用的排版引擎（俗称内核）为 Trident。</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="./images/ie-logo.jpg" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="container pt-3 mb-5">
+        <p class="float-left">&copy;2020 H5</p>
+        <p class="float-right"><a href="#top">回到顶部</a></p>
+    </footer>
+
+    <!-- 模态框 - 关于 -->
+    <div class="modal fade" id="aboutModalLong" tabindex="-1" role="dialog" aria-labelledby="aboutModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLongTitle">关于</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Google Chrome，又称 Google 浏览器，是一个由 Google（谷歌）公司开发的网页浏览器。</p>
+                    <p>该浏览器是基于其他开源软件所撰写，包括 WebKit，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。</p>
+                    <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器，使用 Gecko 引擎（非 IE 内核），支持多种操作系统如 Windows、Mac 和 Linux。</p>
+                    <p>Safari，是苹果计算机的最新操作系统 Mac OS X 中的浏览器，使用了 KDE 的 KHTML 作为浏览器的运算核心。</p>
+                    <p>Safari 在 2003 年 1 月 7 日首度发行测试版，并成为 Mac OS X v10.3 与之后的默认浏览器，也是 iPhone 与 iPAD 和 iPod touch 的指定浏览器。</p>
+                    <p>Opera 浏览器，是一款由挪威 Opera Software ASA 公司制作的支持多页面标签式浏览的网络浏览器。</p>
+                    <p>是跨平台浏览器，可以在 Windows、Mac 和 Linux 三个操作系统平台上运行。</p>
+                    <p>Internet Explorer，原称 Microsoft Internet Explorer（6 版本以前）和 Windows Internet Explorer（7、8、9、10 版本），简称 IE，是美国微软公司推出的一款网页浏览器。</p>
+                    <p>它采用的排版引擎（俗称内核）为 Trident。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">了解了</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="./bootstrap/js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $('#site-nav a.dropdown-item').on('click', function () {
+            var href = $(this).attr('href');
+            $('#tabDesc a[href="' + href + '"]').tab('show');
+        });
+    </script>
+</body>
+</html>

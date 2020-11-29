@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载动画</title>
+    <style>
+        :root {
+            --translate-center: translate(-50%, -50%);
+            --main-color: #FFFF00;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+        }
+
+        .loading,
+        .loading::after,
+        .loading .line {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: var(--translate-center);
+        }
+
+        .loading {
+            width: 200px;
+            height: 200px;
+            font-size: 0;
+            box-shadow: 0 0 10px #000;
+            /* 淡入 */
+            opacity: 0;
+            animation: fadeIn 2s linear 1s forwards;
+            user-select: none;
+        }
+        .loading::after {
+            content: "LOADING";
+            color: var(--main-color);
+            text-shadow: 0 0 10px var(--main-color);
+            font-size: 25px;
+            letter-spacing: 5px;
+        }
+
+        .loading .line {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--main-color);
+            border-left: 4px solid #555;
+            border-bottom: 4px solid #555;
+            /* 淡入 -> 旋转 */
+            opacity: 0;
+            animation: fadeIn 2s linear 2s forwards, rotation 2s linear 2s infinite;
+        }
+        .loading .line::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: 16px;
+            bottom: 18px;
+            width: 20px;
+            height: 20px;
+            box-shadow: 0 0 15px var(--main-color);
+            border-radius: 50%;
+            background-color: var(--main-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotation {
+            from {
+                transform: var(--translate-center) rotate(0deg);
+            }
+            to {
+                transform: var(--translate-center) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="line"></div>
+    </div>
+</body>
+</html>

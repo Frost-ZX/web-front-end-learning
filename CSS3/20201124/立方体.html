@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立方体</title>
+    <style>
+        :root {
+            --cube-size: 200px;
+            --cube-half: 100px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            perspective: 800px;
+        }
+
+        .cube {
+            display: inline-block;
+            position: relative;
+            margin-top: 150px;
+            width: var(--cube-size);
+            height: var(--cube-size);
+            line-height: var(--cube-size);
+            user-select: none;
+            transform-style: preserve-3d;
+            transform: rotate3d(1, 1, 0, -45deg);
+            transition: transform 4s;
+        }
+        .cube:hover {
+            transform: rotate3d(1, 1, 0, 45deg) rotateY(180deg);
+        }
+        .cube > div {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #222;
+            font-size: 50px;
+            color: #FFF;
+            opacity: 0.8;
+        }
+
+        .cube .front {
+            background-color: red;
+            transform: translateZ(var(--cube-half));
+        }
+        .cube .back {
+            background-color: orange;
+            transform: translateZ(calc(var(--cube-half) * -1)) rotateY(180deg);
+        }
+
+        .cube .left {
+            background-color: yellow;
+            transform: translateX(calc(var(--cube-half) * -1)) rotateY(-90deg);
+        }
+        .cube .right {
+            background-color: green;
+            transform: translateX(var(--cube-half)) rotateY(90deg);
+        }
+
+        .cube .top {
+            background-color: aqua;
+            transform: translateY(calc(var(--cube-half) * -1)) rotateX(90deg);
+        }
+        .cube .bottom {
+            background-color: blue;
+            transform: translateY(var(--cube-half)) rotateX(-90deg) rotateZ(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="front">前</div>
+        <div class="back">后</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="top">上</div>
+        <div class="bottom">下</div>
+    </div>
+</body>
+</html>

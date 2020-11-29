@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安卓机器人</title>
+    <style>
+        :root {
+            --android-color: rgb(164, 202, 57);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .android {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .android .head {
+            position: relative;
+            width: 256px;
+            height: 128px;
+            border-width: 128px 0 0 0;
+            border-style: solid;
+            border-color: var(--android-color);
+            border-radius: 50%;
+        }
+        .android .head::before,
+        .android .head::after {
+            content: "";
+            position: absolute;
+            top: -70px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #FFF;
+        }
+        .android .head::before {
+            left: 65px;
+        }
+        .android .head::after {
+            right: 65px;
+        }
+
+        .android .body {
+            position: relative;
+            top: -115px;
+            width: 256px;
+            height: 256px;
+            border-radius: 0 0 32px 32px;
+            background-color: var(--android-color);
+        }
+
+        .android .arm-l,
+        .android .arm-r {
+            position: absolute;
+            top: 175px;
+            width: 64px;
+            height: 118px;
+            background-color: var(--android-color);
+        }
+        .android .arm-l::before,
+        .android .arm-l::after,
+        .android .arm-r::before,
+        .android .arm-r::after {
+            content: "";
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: var(--android-color);
+        }
+        .android .arm-l::before,
+        .android .arm-r::before {
+            top: -32px;
+        }
+        .android .arm-l::after,
+        .android .arm-r::after {
+            bottom: -32px;
+        }
+        .android .arm-l {
+            left: -75px;
+        }
+        .android .arm-r {
+            right: -75px;
+        }
+
+        .android .leg-l,
+        .android .leg-r {
+            position: absolute;
+            top: 390px;
+            width: 64px;
+            height: 70px;
+            background-color: var(--android-color);
+        }
+        .android .leg-l::after,
+        .android .leg-r::after {
+            content: "";
+            position: absolute;
+            bottom: -32px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: var(--android-color);
+        }
+        .android .leg-l {
+            left: 40px;
+        }
+        .android .leg-r {
+            right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="android">
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arm-l"></div>
+        <div class="arm-r"></div>
+        <div class="leg-l"></div>
+        <div class="leg-r"></div>
+    </div>
+</body>
+</html>

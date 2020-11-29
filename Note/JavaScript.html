@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JavaScript</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="javascript">JavaScript</h1>
+<ul>
+<li><a href="#javascript">JavaScript</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF">循环</a>
+<ul>
+<li><a href="#for-%E5%BE%AA%E7%8E%AF">for 循环</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+</ul>
+</li>
+<li><a href="#break-%E5%92%8C-continue">break 和 continue</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E">函数的声明</a>
+<ul>
+<li><a href="#%E4%B8%80%E8%88%AC%E6%96%B9%E5%BC%8F">一般方式</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0">函数表达式（匿名函数）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E6%95%B0">参数</a>
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0">调用函数</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC">返回值</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0-arguments">函数 arguments</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E7%BB%84">数组</a>
+<ul>
+<li><a href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84">多维数组</a>
+<ul>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84">二维数组</a>
+<ul>
+<li><a href="#%E6%8E%92%E5%BA%8F">排序</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E7%BB%B4%E6%95%B0%E7%BB%84">三维数组</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E8%81%94%E6%95%B0%E7%BB%84">关联数组</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7">添加属性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1">对象</a>
+<ul>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%88%90%E5%91%98">对象成员</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84">对象结构</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95">对象方法</a></li>
+</ul>
+</li>
+<li><a href="#this">this</a>
+<ul>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%8C%87%E5%90%91">修改指向</a>
+<ul>
+<li><a href="#call">call</a></li>
+<li><a href="#apply">apply</a></li>
+<li><a href="#bind">bind</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1">包装类型对象</a>
+<ul>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>
+<ul>
+<li><a href="#api">API</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF%E8%A7%A3%E6%9E%90">字符串模板解析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#date">Date</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96">获取</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B9%B4%E4%BB%BD">获取年份</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E8%B7%9D%E7%A6%BB1900%E5%B9%B4%E7%9A%84%E5%B9%B4%E4%BB%BD">获取距离1900年的年份</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%9C%88%E4%BB%BD-0-11">获取月份（0 - 11）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%97%A5">获取日</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%98%9F%E6%9C%9F-0-6">获取星期（0-6）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%97%B6-0-23">获取时（0 - 23）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%88%86">获取分</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%A7%92">获取秒</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%AF%AB%E7%A7%92">获取毫秒</a></li>
+<li><a href="#%E6%97%B6%E9%97%B4%E6%88%B3">时间戳</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%BE%E7%BD%AE">设置</a></li>
+</ul>
+</li>
+<li><a href="#math">Math</a>
+<ul>
+<li><a href="#%E5%B8%B8%E9%87%8F">常量</a>
+<ul>
+<li><a href="#%E5%9C%86%E5%91%A8%E7%8E%87">圆周率</a></li>
+<li><a href="#%E8%87%AA%E7%84%B6%E6%95%B0-e">自然数 e</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95-%E5%8F%AA%E8%83%BD%E7%94%B1-math-%E5%AF%B9%E8%B1%A1%E8%B0%83%E7%94%A8">常用静态方法（只能由 Math 对象调用）</a>
+<ul>
+<li><a href="#%E5%90%91%E4%B8%8B%E5%8F%96%E6%95%B4">向下取整</a></li>
+<li><a href="#%E5%90%91%E4%B8%8A%E5%8F%96%E6%95%B4">向上取整</a></li>
+<li><a href="#%E5%8E%BB%E9%99%A4%E5%B0%8F%E6%95%B0%E4%BD%8D">去除小数位</a></li>
+<li><a href="#%E9%9A%8F%E6%9C%BA%E6%95%B0">随机数</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E4%B8%80%E7%BB%84%E6%95%B0%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC">获取一组数中的最大值</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E4%B8%80%E7%BB%84%E6%95%B0%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC">获取一组数中的最小值</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E4%B8%80%E4%B8%AA%E6%95%B0%E7%9A%84%E5%B9%82">计算一个数的幂</a></li>
+<li><a href="#%E7%AE%97%E6%9C%AF%E5%B9%B3%E6%96%B9%E6%A0%B9">算术平方根</a></li>
+<li><a href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0-%E5%BA%A6%E6%95%B0%E6%98%AF%E5%BC%A7%E5%BA%A6">三角函数（度数是弧度）</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%BC%A6">正弦</a></li>
+<li><a href="#%E4%BD%99%E5%BC%A6">余弦</a></li>
+<li><a href="#%E6%AD%A3%E5%88%87">正切</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5">四舍五入</a></li>
+<li><a href="#%E7%BB%9D%E5%AF%B9%E5%80%BC">绝对值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dom">DOM</a>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9">获取节点</a>
+<ul>
+<li><a href="#%E9%80%9A%E8%BF%87-id-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9">通过 id 获取节点</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87%E7%B1%BB%E5%90%8D-class-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9">通过类名（class）获取节点</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87%E6%A0%87%E7%AD%BE%E5%90%8D%E7%A7%B0%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9">通过标签名称获取节点</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87-name-%E5%B1%9E%E6%80%A7%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9">通过 name 属性获取节点</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87-css-%E9%80%89%E6%8B%A9%E5%99%A8%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9">通过 CSS 选择器获取节点</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%88%B6%E8%8A%82%E7%82%B9">获取父节点</a></li>
+</ul>
+</li>
+<li><a href="#%E8%8A%82%E7%82%B9%E5%86%85%E5%AE%B9%E6%93%8D%E4%BD%9C">节点内容操作</a>
+<ul>
+<li><a href="#%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9">文本内容</a></li>
+<li><a href="#%E6%A0%87%E7%AD%BE%E5%86%85%E5%AE%B9">标签内容</a></li>
+<li><a href="#%E8%A1%A8%E5%8D%95%E6%A0%87%E7%AD%BE%E5%86%85%E5%AE%B9">表单标签内容</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6">表单控件</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E6%A0%B7%E5%BC%8F">节点样式</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E5%B1%9E%E6%80%A7">节点属性</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7">获取属性</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E5%B1%9E%E6%80%A7">修改属性</a></li>
+<li><a href="#%E7%A7%BB%E9%99%A4%E5%B1%9E%E6%80%A7">移除属性</a></li>
+<li><a href="#%E6%89%80%E6%9C%89%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%AD%E5%A4%A7%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7">所有标签的六大公共属性</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7-data">自定义属性（data-*）</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96-1">获取</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%88%96%E6%96%B0%E5%A2%9E">修改或新增</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E8%8A%82%E7%82%B9">关系节点</a>
+<ul>
+<li><a href="#%E7%88%B6%E5%AD%90%E5%85%B3%E7%B3%BB">父子关系</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%88%B6%E8%8A%82%E7%82%B9-1">获取父节点</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%88%B6%E5%85%83%E7%B4%A0%E7%9A%84%E5%AD%90%E8%8A%82%E7%82%B9">获取父元素的子节点</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%8C%E8%83%9E%E5%85%B3%E7%B3%BB">同胞关系</a>
+<ul>
+<li><a href="#%E4%B8%8A%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9-%E6%96%87%E6%9C%AC-%E5%85%83%E7%B4%A0-%E5%85%B6%E4%BB%96">上一个节点（文本、元素、其他）</a></li>
+<li><a href="#%E4%B8%8A%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9">上一个元素节点</a></li>
+<li><a href="#%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9-%E6%96%87%E6%9C%AC-%E5%85%83%E7%B4%A0-%E5%85%B6%E4%BB%96">下一个节点（文本、元素、其他）</a></li>
+<li><a href="#%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9">下一个元素节点</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E5%85%B3%E7%B3%BB">其他关系</a></li>
+</ul>
+</li>
+<li><a href="#%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C">节点操作</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9">创建节点</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA">创建</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0">添加</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9">插入节点</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9">删除节点</a></li>
+<li><a href="#%E6%9B%BF%E6%8D%A2%E8%8A%82%E7%82%B9">替换节点</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E7%BC%96%E7%A8%8B">事件编程</a>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B">事件类型</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC">事件监听</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0-1">添加</a></li>
+<li><a href="#%E7%A7%BB%E9%99%A4">移除</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91">事件触发</a>
+<ul>
+<li><a href="#%E6%8D%95%E8%8E%B7%E8%A7%A6%E5%8F%91">捕获触发</a></li>
+<li><a href="#%E5%86%92%E6%B3%A1%E8%A7%A6%E5%8F%91">冒泡触发</a></li>
+<li><a href="#%E9%98%BB%E6%AD%A2%E5%86%92%E6%B3%A1">阻止冒泡</a></li>
+<li><a href="#%E9%98%BB%E6%AD%A2%E6%B5%8F%E8%A7%88%E5%99%A8%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA">阻止浏览器默认行为</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9A%E6%97%B6%E5%99%A8">定时器</a>
+<ul>
+<li><a href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AE%9A%E6%97%B6%E5%99%A8">一次性定时器</a></li>
+<li><a href="#%E6%97%A0%E9%99%90%E6%AC%A1%E5%AE%9A%E6%97%B6%E5%99%A8">无限次定时器</a></li>
+</ul>
+</li>
+<li><a href="#bom">BOM</a>
+<ul>
+<li><a href="#location">location</a>
+<ul>
+<li><a href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E8%B7%AF%E5%BE%84">完整的路径</a></li>
+<li><a href="#%E8%B7%B3%E8%BD%AC">跳转</a></li>
+<li><a href="#%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2">刷新页面</a></li>
+</ul>
+</li>
+<li><a href="#history">history</a></li>
+<li><a href="#screen">screen</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B1%8F%E5%B9%95%E5%88%86%E8%BE%A8%E7%8E%87">获取屏幕分辨率</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95">正则表达式语法</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%9B%BA%E5%AE%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">创建固定正则表达式</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">创建动态正则表达式</a></li>
+<li><a href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%BC%8F">预定义模式</a>
+<ul>
+<li><a href="#%E5%8C%B9%E9%85%8D%E6%95%B0%E5%AD%97">匹配数字</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E6%B1%89%E5%AD%97">匹配汉字</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E6%95%B0%E5%AD%97-%E5%AD%97%E6%AF%8D-%E4%B8%8B%E5%88%92%E7%BA%BF">匹配数字、字母、下划线</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E7%A9%BA%E7%99%BD%E7%AC%A6">匹配空白符</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E5%8D%95%E8%AF%8D%E8%BE%B9%E7%95%8C">匹配单词边界</a></li>
+<li><a href="#%E5%8F%96%E5%8F%8D">取反</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E9%9D%9E%E6%95%B0%E5%AD%97">匹配非数字</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E9%9D%9E%E6%95%B0%E5%AD%97-%E5%AD%97%E6%AF%8D-%E4%B8%8B%E5%88%92%E7%BA%BF">匹配非数字、字母、下划线</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E9%9D%9E%E7%A9%BA%E7%99%BD%E7%AC%A6">匹配非空白符</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E9%9D%9E%E5%8D%95%E8%AF%8D%E8%BE%B9%E7%95%8C">匹配非单词边界</a></li>
+<li><a href="#%E5%8C%B9%E9%85%8D%E9%99%A4%E6%8D%A2%E8%A1%8C%E7%AC%A6-n-r-%E4%BB%A5%E5%A4%96%E7%9A%84%E5%85%B6%E4%BB%96%E5%AD%97%E7%AC%A6">匹配除换行符（\n、\r）以外的其他字符</a></li>
+</ul>
+</li>
+<li><a href="#%E9%87%8F%E8%AF%8D%E7%AC%A6">量词符</a>
+<ul>
+<li><a href="#">?</a></li>
+<li><a href="#-1">*</a></li>
+<li><a href="#-2">+</a></li>
+<li><a href="#m-n">{m, n}</a></li>
+<li><a href="#%E5%9C%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9C%80%E5%89%8D%E6%96%B9%E6%97%B6">^（在正则表达式最前方时）</a></li>
+<li><a href="#-3">$</a>
+<ul>
+<li><a href="#x">(?=x)</a></li>
+<li><a href="#x-1">(?|x)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#-4">()</a></li>
+<li><a href="#-5">|</a></li>
+<li><a href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6">修饰符</a></li>
+<li><a href="#%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F">贪婪模式</a></li>
+<li><a href="#%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F">懒惰模式</a></li>
+<li><a href="#%E8%BD%AC%E4%B9%89">转义</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a>
+<ul>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%AD%A3%E5%88%99">修改正则</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E5%8C%B9%E9%85%8D%E6%AD%A3%E5%88%99%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">查询匹配正则的字符串</a>
+<ul>
+<li><a href="#%E6%97%A0%E7%BB%84%E5%90%8D">无组名</a></li>
+<li><a href="#%E6%9C%89%E7%BB%84%E5%90%8D">有组名</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%94%AF%E6%8C%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95">支持正则表达式的字符串方法</a>
+<ul>
+<li><a href="#match">match()</a></li>
+<li><a href="#replace">replace()</a></li>
+<li><a href="#search">search()</a></li>
+<li><a href="#split">split()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#json">JSON</a>
+<ul>
+<li><a href="#json-%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82">JSON 数据格式要求</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95-1">方法</a>
+<ul>
+<li><a href="#%E5%B0%86%E6%95%B0%E7%BB%84%E6%88%96%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96-%E8%BD%AC%E6%8D%A2-%E4%B8%BA-json-%E5%AD%97%E7%AC%A6%E4%B8%B2">将数组或对象序列化（转换）为 JSON 字符串</a></li>
+<li><a href="#%E5%B0%86-json-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-%E8%BD%AC%E6%8D%A2-%E4%B8%BA%E6%95%B0%E7%BB%84%E6%88%96%E5%AF%B9%E8%B1%A1">将 JSON 反序列化（转换）为数组或对象</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%97%AD%E5%8C%85">闭包</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E9%97%AD%E5%8C%85">创建闭包</a>
+<ul>
+<li><a href="#%E6%AD%A5%E9%AA%A4">步骤</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0">高阶函数</a>
+<ul>
+<li><a href="#%E6%9D%A1%E4%BB%B6-%E6%BB%A1%E8%B6%B3%E5%85%B6%E4%B8%AD%E4%B8%80%E6%9D%A1%E5%8D%B3%E5%8F%AF">条件（满足其中一条即可）</a></li>
+<li><a href="#%E5%BA%94%E7%94%A8">应用</a>
+<ul>
+<li><a href="#%E6%9F%AF%E9%87%8C%E5%8C%96-%E9%83%A8%E5%88%86%E6%B1%82%E5%80%BC">柯里化（部分求值）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">对象自定义属性</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">添加自定义属性</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">添加多个自定义属性</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E5%8F%AF%E9%81%8D%E5%8E%86%E7%9A%84%E5%B1%9E%E6%80%A7-%E9%94%AE%E5%90%8D">获取对象可遍历的属性（键名）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E5%8F%AF%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%8D%E5%8F%AF%E9%81%8D%E5%8E%86%E7%9A%84%E5%B1%9E%E6%80%A7-%E9%94%AE%E5%90%8D">获取对象可遍历和不可遍历的属性（键名）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E6%8C%87%E5%AE%9A%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE">获取对象指定属性的属性配置</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE">获取对象所有属性的属性配置</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%8A%B6%E6%80%81">对象的三大状态</a>
+<ul>
+<li><a href="#%E9%98%B2%E6%89%A9%E5%B1%95">防扩展</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE-1">设置</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD">判断</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%86%E5%B0%81">密封</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE-2">设置</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD-1">判断</a></li>
+</ul>
+</li>
+<li><a href="#%E5%86%BB%E7%BB%93">冻结</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE-3">设置</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD-2">判断</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="循环">循环</h1>
+<h2 id="for-循环">for 循环</h2>
+<h3 id="语法">语法</h3>
+<ul>
+<li><code>for (初始条件值; 条件; 修改条件初始值) { }</code></li>
+</ul>
+<h2 id="break-和-continue">break 和 continue</h2>
+<ul>
+<li>break：打断循环</li>
+<li>continue：跳过本轮循环，直接进入下一轮循环</li>
+</ul>
+<h1 id="函数">函数</h1>
+<blockquote>
+<p>一段可重复调用的代码块<br>
+函数具有函数作用域（局部作用域）</p>
+<blockquote>
+<p>作用域：变量的有效范围</p>
+</blockquote>
+</blockquote>
+<h2 id="函数的声明">函数的声明</h2>
+<h3 id="一般方式">一般方式</h3>
+<blockquote>
+<p>本方式的声明会提前</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> 函数名(<span class="hljs-params">参数</span>) </span>{
+    <span class="hljs-comment">// 函数体</span>
+}
+</div></code></pre>
+<h3 id="函数表达式-匿名函数">函数表达式（匿名函数）</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">参数</span>) </span>{
+    <span class="hljs-comment">// 函数体</span>
+}
+fn();
+</div></code></pre>
+<h2 id="参数">参数</h2>
+<blockquote>
+<p>当函数某些东西不确定时，可以使用参数来表示</p>
+</blockquote>
+<ul>
+<li>形参：形式参数，在函数定义时传递的参数</li>
+<li>实参：实际参数，在函数调用时传递的参数</li>
+</ul>
+<h3 id="构造函数">构造函数</h3>
+<ul>
+<li><code>var fn = new Function();</code></li>
+</ul>
+<h2 id="调用函数">调用函数</h2>
+<ul>
+<li><code>函数名(参数);</code></li>
+</ul>
+<h2 id="返回值">返回值</h2>
+<ul>
+<li><code>return</code>（只有函数有）</li>
+</ul>
+<h2 id="函数-arguments">函数 arguments</h2>
+<blockquote>
+<p>实际参数对象</p>
+</blockquote>
+<ul>
+<li>只能在函数内部使用</li>
+<li>当形参个数不确定时使用</li>
+<li>arguments 对象是一个 <code>类数组</code> 对象（长得像数组但不是数组）</li>
+<li><code>arguments.callee(参数)</code>：函数自身，相当于 <code>函数名(参数)</code></li>
+</ul>
+<h1 id="数组">数组</h1>
+<blockquote>
+<p>一组变量集合</p>
+</blockquote>
+<h2 id="多维数组">多维数组</h2>
+<h3 id="二维数组">二维数组</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> arr = [
+    [元素<span class="hljs-number">1</span>, 元素<span class="hljs-number">2</span>, ...],
+    [元素<span class="hljs-number">1</span>, 元素<span class="hljs-number">2</span>, ...]
+];
+</div></code></pre>
+<h4 id="排序">排序</h4>
+<blockquote>
+<p><a href="https://www.runoob.com/w3cnote/sort-algorithm-summary.html">排序算法总结</a></p>
+</blockquote>
+<ul>
+<li>
+<p>冒泡排序</p>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sort</span>(<span class="hljs-params">arr</span>)</span>{
+    <span class="hljs-keyword">var</span> temp; <span class="hljs-comment">// 临时变量</span>
+    <span class="hljs-keyword">var</span> flag; <span class="hljs-comment">// 是否交换的标记</span>
+
+    <span class="hljs-comment">// 一共进行 arr.length-1 次</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length - <span class="hljs-number">1</span>; i++){
+        <span class="hljs-comment">// 重置标记</span>
+        flag = <span class="hljs-literal">false</span>;
+        <span class="hljs-comment">// 选出当前排序的最大值往后移动</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = arr.length - <span class="hljs-number">1</span>; j &gt; i; j--){
+            <span class="hljs-keyword">if</span>(arr[j] &lt; arr[j - <span class="hljs-number">1</span>]) {
+                temp = arr[j];
+                arr[j] = arr[j - <span class="hljs-number">1</span>];
+                arr[j - <span class="hljs-number">1</span>] = temp;
+                <span class="hljs-comment">// 标记</span>
+                flag = <span class="hljs-literal">true</span>;
+            }
+        }
+        <span class="hljs-comment">// 判断后面的元素是否已经有序</span>
+        <span class="hljs-keyword">if</span>(!flag) {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+}
+</div></code></pre>
+</li>
+</ul>
+<h3 id="三维数组">三维数组</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> arr = [
+    [
+        [元素<span class="hljs-number">1</span>, 元素<span class="hljs-number">2</span>, ...],
+        [元素<span class="hljs-number">1</span>, 元素<span class="hljs-number">2</span>, ...]
+    ],
+    [
+        [元素<span class="hljs-number">1</span>, 元素<span class="hljs-number">2</span>, ...],
+        [元素<span class="hljs-number">1</span>, 元素<span class="hljs-number">2</span>, ...]
+    ]
+];
+</div></code></pre>
+<h2 id="关联数组">关联数组</h2>
+<ul>
+<li>组成：<code>key - value</code>（键值对）</li>
+<li>length 为 0（无效）</li>
+<li>获取不存在的键名，返回 <code>undefined</code></li>
+</ul>
+<h3 id="添加属性">添加属性</h3>
+<ul>
+<li>通过 <code>点</code> 语法添加固定属性名称</li>
+<li>通过 <code>[]</code> 方式添加动态键名</li>
+</ul>
+<h1 id="对象">对象</h1>
+<blockquote>
+<p>一组无序属性集合</p>
+</blockquote>
+<h2 id="对象成员">对象成员</h2>
+<ul>
+<li>属性</li>
+<li>方法</li>
+</ul>
+<h2 id="对象结构">对象结构</h2>
+<blockquote>
+<p>键值对 key:value</p>
+</blockquote>
+<pre><code class="language-javascript"><div>{
+    属性名<span class="hljs-number">1</span>: 值<span class="hljs-number">1</span>,
+    属性名<span class="hljs-number">2</span>: 值<span class="hljs-number">2</span>,
+    ...
+}
+</div></code></pre>
+<h2 id="对象方法">对象方法</h2>
+<ul>
+<li>移除属性：<code>delete 对象.属性名</code></li>
+</ul>
+<h1 id="this">this</h1>
+<blockquote>
+<p>值随时执行当前使用对象</p>
+</blockquote>
+<h2 id="修改指向">修改指向</h2>
+<blockquote>
+<p>修改方法的执行环境<br>
+若不需要改变 <code>this</code>，把 <code>修改后的 this 指向</code> 设为 <code>null</code>。</p>
+</blockquote>
+<h3 id="call">call</h3>
+<ul>
+<li><code>call(修改后的 this 指向, 函数参数1, 函数参数2, ...)</code></li>
+</ul>
+<h3 id="apply">apply</h3>
+<ul>
+<li><code>apply(修改后的 this 指向, [函数参数1, 函数参数2, ...])</code></li>
+</ul>
+<h3 id="bind">bind</h3>
+<blockquote>
+<p>返回绑定 this 后的函数，不会立即执行函数。</p>
+</blockquote>
+<ul>
+<li><code>bind(修改后的 this 指向, 函数参数1, 函数参数2, ...)</code></li>
+</ul>
+<h1 id="包装类型对象">包装类型对象</h1>
+<ul>
+<li>数值（Number）</li>
+<li>布尔（Boolean）</li>
+<li>字符串（String）</li>
+</ul>
+<h2 id="字符串">字符串</h2>
+<h3 id="api">API</h3>
+<ul>
+<li><code>charCodeAt()</code>：将指定位置（默认 0）的字符转成 Unicode</li>
+<li><code>String.fromCharCode()</code>：将 Unicode 转换为字符（静态方法）</li>
+<li><code>slice(m, n)</code>：截取字符串
+<blockquote>
+<p>m：开始截取的下标<br>
+n：结束截取的下标（实际：n - 1）<br>
+省略 n，取 m 后所有字符<br>
+下标可用负数</p>
+</blockquote>
+</li>
+<li><code>substring(m, n)</code>：字符串截取
+<blockquote>
+<p>m：开始截取的下标<br>
+n：结束截取的下标（实际：n - 1）<br>
+省略 n，取 m 后所有字符<br>
+下标不可用负数</p>
+</blockquote>
+</li>
+<li><code>substr(m, n)</code>：字符串截取
+<blockquote>
+<p>m：开始截取的下标<br>
+n：截取的字符个数<br>
+用法和数组的 splice() 方法相同<br>
+下标可用负数</p>
+</blockquote>
+</li>
+<li><code>concat()</code>：拼接字符串</li>
+<li><code>toUpperCase()</code>：转换为大写</li>
+<li><code>toLowerCase()</code>：转换为小写</li>
+<li><code>charAt(下标)</code>：获取字符串指定位置的字符</li>
+<li><code>indexOf(m, n)</code>：从开始位置查找字符
+<blockquote>
+<p>m：查找的字符<br>
+n：开始查找的位置（默认 0）</p>
+</blockquote>
+</li>
+<li><code>lastIndexOf(m, n)</code>：从末尾开始查找字符
+<blockquote>
+<p>m：查找的字符<br>
+n：开始查找的位置（默认 0）</p>
+</blockquote>
+</li>
+<li><code>split(分隔符)</code>：切割字符串，返回一个数组</li>
+<li><code>trim()</code>：去除字符串左右空格</li>
+</ul>
+<h3 id="字符串模板解析">字符串模板解析</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str1 = <span class="hljs-string">&#x27;a&#x27;</span>;
+<span class="hljs-keyword">var</span> str2 = <span class="hljs-string">&#x27;b&#x27;</span>;
+<span class="hljs-keyword">var</span> str3 = <span class="hljs-string">`<span class="hljs-subst">${str1}</span><span class="hljs-subst">${str2}</span>`</span>;
+<span class="hljs-built_in">console</span>.log(str3); <span class="hljs-comment">// &#x27;ab&#x27;</span>
+</div></code></pre>
+<h1 id="date">Date</h1>
+<blockquote>
+<p>Date 对象用于处理日期和时间。<br>
+可以通过 new 关键词来定义 Date 对象。<br>
+<code>var today = new Date()</code></p>
+</blockquote>
+<h2 id="获取">获取</h2>
+<h3 id="获取年份">获取年份</h3>
+<ul>
+<li><code>today.getFullYear()</code></li>
+</ul>
+<h3 id="获取距离1900年的年份">获取距离1900年的年份</h3>
+<ul>
+<li><code>today.getYear()</code></li>
+</ul>
+<h3 id="获取月份-0-11">获取月份（0 - 11）</h3>
+<ul>
+<li><code>today.getMonth()</code></li>
+</ul>
+<h3 id="获取日">获取日</h3>
+<ul>
+<li><code>today.getDate()</code></li>
+</ul>
+<h3 id="获取星期-0-6">获取星期（0-6）</h3>
+<blockquote>
+<p>星期日为 <code>0</code>，星期一为 <code>1</code></p>
+</blockquote>
+<ul>
+<li><code>today.getDay()</code></li>
+</ul>
+<h3 id="获取时-0-23">获取时（0 - 23）</h3>
+<ul>
+<li><code>today.getHours()</code></li>
+</ul>
+<h3 id="获取分">获取分</h3>
+<ul>
+<li><code>today.getMinutes()</code></li>
+</ul>
+<h3 id="获取秒">获取秒</h3>
+<ul>
+<li><code>today.getSeconds()</code></li>
+</ul>
+<h3 id="获取毫秒">获取毫秒</h3>
+<ul>
+<li><code>today.getMilliseconds()</code></li>
+</ul>
+<h3 id="时间戳">时间戳</h3>
+<blockquote>
+<p>距离 1970-01-01 00:00:00 的毫秒数<br>
+一般用于唯一标志</p>
+</blockquote>
+<ul>
+<li><code>today.getTime()</code></li>
+</ul>
+<h2 id="设置">设置</h2>
+<blockquote>
+<p><code>星期</code> 由时间自动推断，不能设置。</p>
+</blockquote>
+<ul>
+<li><code>setFullYear()</code></li>
+<li><code>setMonth()</code></li>
+<li><code>setDate()</code></li>
+<li><code>setHours()</code></li>
+<li><code>setMinutes()</code></li>
+<li><code>setSeconds()</code></li>
+</ul>
+<h1 id="math">Math</h1>
+<blockquote>
+<p>JavaScript 内置对象<br>
+<code>Math</code> 不是构造函数，不能被 <code>new</code>。</p>
+</blockquote>
+<h2 id="常量">常量</h2>
+<h3 id="圆周率">圆周率</h3>
+<ul>
+<li><code>Math.PI</code></li>
+</ul>
+<h3 id="自然数-e">自然数 e</h3>
+<ul>
+<li><code>Math.E</code></li>
+</ul>
+<h2 id="常用静态方法-只能由-math-对象调用">常用静态方法（只能由 Math 对象调用）</h2>
+<h3 id="向下取整">向下取整</h3>
+<ul>
+<li><code>Math.floor()</code></li>
+</ul>
+<h3 id="向上取整">向上取整</h3>
+<ul>
+<li><code>Math.ceil()</code></li>
+</ul>
+<h3 id="去除小数位">去除小数位</h3>
+<ul>
+<li><code>Math.trunc()</code></li>
+</ul>
+<h3 id="随机数">随机数</h3>
+<blockquote>
+<p>范围：[0, 1)</p>
+</blockquote>
+<ul>
+<li><code>Math.random()</code></li>
+</ul>
+<h3 id="获取一组数中的最大值">获取一组数中的最大值</h3>
+<ul>
+<li><code>Math.max()</code></li>
+</ul>
+<h3 id="获取一组数中的最小值">获取一组数中的最小值</h3>
+<ul>
+<li><code>Math.min()</code></li>
+</ul>
+<h3 id="计算一个数的幂">计算一个数的幂</h3>
+<ul>
+<li><code>Math.pow(底数, 幂)</code></li>
+</ul>
+<h3 id="算术平方根">算术平方根</h3>
+<ul>
+<li><code>Math.sqrt()</code></li>
+</ul>
+<h3 id="三角函数-度数是弧度">三角函数（度数是弧度）</h3>
+<h4 id="正弦">正弦</h4>
+<ul>
+<li><code>Math.sin()</code></li>
+</ul>
+<h4 id="余弦">余弦</h4>
+<ul>
+<li><code>Math.cos()</code></li>
+</ul>
+<h4 id="正切">正切</h4>
+<ul>
+<li><code>Math.tan()</code></li>
+</ul>
+<h3 id="四舍五入">四舍五入</h3>
+<ul>
+<li><code>Math.round()</code></li>
+</ul>
+<h3 id="绝对值">绝对值</h3>
+<ul>
+<li><code>Math.abs()</code></li>
+</ul>
+<h1 id="dom">DOM</h1>
+<blockquote>
+<p>DOM：文档对象模型（Document Object Model）</p>
+</blockquote>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>当页面加载完成后执行 <code>document.write()</code>，会将页面 <code>body</code> 中的内容全部替换。</li>
+<li><code>节点列表</code> 是 <code>类数组对象</code>，不是数组。</li>
+</ul>
+<h2 id="获取节点">获取节点</h2>
+<h3 id="通过-id-获取节点">通过 id 获取节点</h3>
+<blockquote>
+<p>返回一个原生 DOM 元素（标签）</p>
+</blockquote>
+<ul>
+<li><code>document.getElementById()</code></li>
+</ul>
+<h3 id="通过类名-class-获取节点">通过类名（class）获取节点</h3>
+<blockquote>
+<p>返回节点列表</p>
+</blockquote>
+<ul>
+<li><code>document.getElementsByClassName()</code></li>
+</ul>
+<h3 id="通过标签名称获取节点">通过标签名称获取节点</h3>
+<blockquote>
+<p>返回节点列表</p>
+</blockquote>
+<ul>
+<li><code>document.getElementsByTagName()</code></li>
+</ul>
+<h3 id="通过-name-属性获取节点">通过 name 属性获取节点</h3>
+<blockquote>
+<p>返回节点列表</p>
+</blockquote>
+<ul>
+<li><code>document.getElementsByName()</code></li>
+</ul>
+<h3 id="通过-css-选择器获取节点">通过 CSS 选择器获取节点</h3>
+<ul>
+<li><code>document.querySelector()</code></li>
+</ul>
+<blockquote>
+<p>返回获取到的第一个原生 DOM 元素</p>
+</blockquote>
+<ul>
+<li><code>document.querySelectorAll()</code></li>
+</ul>
+<blockquote>
+<p>返回节点列表</p>
+</blockquote>
+<h3 id="获取父节点">获取父节点</h3>
+<ul>
+<li><code>.parentNode</code></li>
+</ul>
+<h2 id="节点内容操作">节点内容操作</h2>
+<h3 id="文本内容">文本内容</h3>
+<ul>
+<li><s><code>.innerText</code></s></li>
+<li><code>.textContent</code></li>
+</ul>
+<h3 id="标签内容">标签内容</h3>
+<ul>
+<li><code>.innerHTML</code></li>
+</ul>
+<h3 id="表单标签内容">表单标签内容</h3>
+<blockquote>
+<p>input、textarea</p>
+</blockquote>
+<ul>
+<li><code>.value</code></li>
+</ul>
+<h2 id="表单控件">表单控件</h2>
+<h2 id="节点样式">节点样式</h2>
+<ul>
+<li>
+<p><code>DOM节点.style.CSS属性 = 属性值</code></p>
+<blockquote>
+<p><code>CSS属性</code> 不能使用 <code>-</code>，要变为大小写。<br>
+例如：<code>font-size</code> -&gt; <code>style.fontSize</code></p>
+</blockquote>
+</li>
+<li>
+<p><code>DOM节点.className = 类名</code></p>
+</li>
+<li>
+<p><code>getComputedStyle(DOM节点).CSS属性</code></p>
+<blockquote>
+<p>获取计算样式（只读），字符串</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="节点属性">节点属性</h2>
+<h3 id="获取属性">获取属性</h3>
+<ul>
+<li><code>DOM节点.getAttribute(标签属性名)</code></li>
+</ul>
+<h3 id="修改属性">修改属性</h3>
+<ul>
+<li><code>DOM节点.setAttribute(标签属性名, 属性值)</code></li>
+</ul>
+<h3 id="移除属性">移除属性</h3>
+<ul>
+<li><code>DOM节点.removeAttribute(标签属性名)</code></li>
+</ul>
+<h3 id="所有标签的六大公共属性">所有标签的六大公共属性</h3>
+<ul>
+<li><code>class</code></li>
+<li><code>data-*</code>（自定义属性）</li>
+<li><code>id</code></li>
+<li><code>name</code></li>
+<li><code>style</code></li>
+<li><code>title</code></li>
+</ul>
+<h3 id="自定义属性-data">自定义属性（data-*）</h3>
+<h4 id="获取-1">获取</h4>
+<ul>
+<li><code>DOM节点.dataset.自定义属性名</code>;</li>
+</ul>
+<h4 id="修改或新增">修改或新增</h4>
+<ul>
+<li><code>DOM节点.dataset.自定义属性名 = 属性值</code>;</li>
+</ul>
+<h2 id="关系节点">关系节点</h2>
+<h3 id="父子关系">父子关系</h3>
+<h4 id="获取父节点-1">获取父节点</h4>
+<ul>
+<li><code>DOM节点.parentNode</code></li>
+<li><code>DOM节点.parentElement</code></li>
+</ul>
+<h4 id="获取父元素的子节点">获取父元素的子节点</h4>
+<ul>
+<li><code>DOM节点.childNodes</code></li>
+<li><code>DOM节点.children</code></li>
+</ul>
+<h3 id="同胞关系">同胞关系</h3>
+<h4 id="上一个节点-文本-元素-其他">上一个节点（文本、元素、其他）</h4>
+<ul>
+<li><code>DOM节点.previousSibling</code></li>
+</ul>
+<h4 id="上一个元素节点">上一个元素节点</h4>
+<ul>
+<li><code>DOM节点.previousElementSibling</code></li>
+</ul>
+<h4 id="下一个节点-文本-元素-其他">下一个节点（文本、元素、其他）</h4>
+<ul>
+<li><code>DOM节点.nextSibling</code></li>
+</ul>
+<h4 id="下一个元素节点">下一个元素节点</h4>
+<ul>
+<li><code>DOM节点.nextElementSibling</code></li>
+</ul>
+<h3 id="其他关系">其他关系</h3>
+<h2 id="节点操作">节点操作</h2>
+<h3 id="创建节点">创建节点</h3>
+<h4 id="创建">创建</h4>
+<ul>
+<li><code>document.createElement(标签名)</code></li>
+</ul>
+<h4 id="添加">添加</h4>
+<ul>
+<li>
+<p><code>DOM节点.appendChild(创建的节点)</code></p>
+<blockquote>
+<p>将 <code>创建的节点</code> 添加到 <code>DOM节点</code> 中</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="插入节点">插入节点</h4>
+<ul>
+<li>
+<p><code>DOM节点.insertBefore(新节点, 已有节点);</code></p>
+<blockquote>
+<p>将 <code>新节点</code> 插入到 <code>已有节点</code> 前</p>
+</blockquote>
+</li>
+<li>
+<p><code>DOM节点.insertAfter(新节点, 已有节点);</code></p>
+<blockquote>
+<p>将 <code>新节点</code> 插入到 <code>已有节点</code> 后</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="删除节点">删除节点</h3>
+<ul>
+<li><code>DOM节点.remove()</code>：移除自身</li>
+<li><code>DOM节点.removeChild()</code>：移除子节点</li>
+</ul>
+<h3 id="替换节点">替换节点</h3>
+<ul>
+<li><code>DOM节点.replaceChild(新节点, 旧节点)</code></li>
+</ul>
+<h2 id="事件编程">事件编程</h2>
+<h3 id="注意">注意</h3>
+<ul>
+<li>
+<p>任何事件的回调函数都有一个事件对象参数</p>
+<pre><code class="language-javascript"><div>DOM节点.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;事件对象&#x27;</span>, e);
+}
+</div></code></pre>
+</li>
+</ul>
+<h3 id="事件类型">事件类型</h3>
+<ul>
+<li><code>change</code>：域内容发生改变</li>
+<li><code>click</code>：点击
+<ul>
+<li>获取相对于页面的鼠标坐标
+<ul>
+<li><code>事件对象.pageX</code></li>
+<li><code>事件对象.pageY</code></li>
+</ul>
+</li>
+<li>获取相对于绑定事件的元素的鼠标坐标
+<ul>
+<li><code>事件对象.offsetX</code></li>
+<li><code>事件对象.offsetY</code></li>
+</ul>
+</li>
+<li>获取绑定事件的元素的偏移距离
+<ul>
+<li><code>this.offsetLeft</code></li>
+<li><code>this.offsetTop</code></li>
+</ul>
+</li>
+<li>获取当前点击的目标元素
+<ul>
+<li><code>事件对象.target</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>dblclick</code>：双击</li>
+<li><code>input</code>：输入</li>
+<li><code>focus</code>：获得焦点</li>
+<li><code>blur</code>：失去焦点</li>
+<li><code>mouseover</code>：鼠标进入（冒泡）</li>
+<li><code>onmouseout</code>：鼠标离开（冒泡）</li>
+<li><code>onmouseenter</code>：鼠标进入</li>
+<li><code>mouseleave</code>：鼠标离开</li>
+<li><code>mousemove</code>：鼠标移动</li>
+<li><code>onmousedown</code>：鼠标按下
+<ul>
+<li><code>事件对象.button</code>：按下的键（0：左键，1：中键，2：右键）</li>
+</ul>
+</li>
+<li><code>onmouseup</code>：鼠标松开</li>
+<li><code>oncontextmenu</code>：右键菜单</li>
+</ul>
+<h3 id="事件监听">事件监听</h3>
+<h4 id="添加-1">添加</h4>
+<ul>
+<li><code>addEventListener(事件类型, 事件执行的回调函数, 是否为捕获阶段触发)</code></li>
+</ul>
+<h4 id="移除">移除</h4>
+<ul>
+<li><code>removeEventListener()</code></li>
+</ul>
+<h3 id="事件触发">事件触发</h3>
+<blockquote>
+<p>事件触发只能在一个阶段触发（捕获阶段 / 冒泡阶段）。<br>
+先捕获触发，再冒泡触发。<br>
+默认情况下，事件是冒泡触发的。</p>
+</blockquote>
+<h4 id="捕获触发">捕获触发</h4>
+<ul>
+<li>从根元素开始，到目标元素终止（从外到内）。</li>
+</ul>
+<blockquote>
+<p>目标元素：触发事件的元素</p>
+</blockquote>
+<h4 id="冒泡触发">冒泡触发</h4>
+<ul>
+<li>从目标元素开始，到根元素终止（从内到外）。</li>
+</ul>
+<h4 id="阻止冒泡">阻止冒泡</h4>
+<blockquote>
+<p><code>事件对象.stopPropagation()</code></p>
+</blockquote>
+<h4 id="阻止浏览器默认行为">阻止浏览器默认行为</h4>
+<blockquote>
+<p><code>事件对象.preventDefault()</code></p>
+</blockquote>
+<h1 id="定时器">定时器</h1>
+<blockquote>
+<p>定时器函数都是 <code>异步任务</code><br>
+<code>异步任务</code> 在所有 <code>同步任务</code> 执行完毕后再执行</p>
+</blockquote>
+<h2 id="一次性定时器">一次性定时器</h2>
+<blockquote>
+<p><code>setTimeout()</code></p>
+</blockquote>
+<h2 id="无限次定时器">无限次定时器</h2>
+<blockquote>
+<p><code>setInterval()</code></p>
+</blockquote>
+<h1 id="bom">BOM</h1>
+<blockquote>
+<p>BOM (Browser Object Model)</p>
+</blockquote>
+<h2 id="location">location</h2>
+<blockquote>
+<p>定位<br>
+BOM (Browser Object Model)</p>
+</blockquote>
+<h3 id="完整的路径">完整的路径</h3>
+<ul>
+<li><code>协议://主机:端口/文件夹/文件?查询参数1&amp;参数2&amp;...#锚点</code></li>
+</ul>
+<h3 id="跳转">跳转</h3>
+<ul>
+<li><code>location.href = 目标路径</code>：可返回</li>
+<li><code>location.assign(目标路径)</code>：可返回</li>
+<li><code>location.replace(目标路径)</code>：替换当前，不可返回</li>
+</ul>
+<h3 id="刷新页面">刷新页面</h3>
+<ul>
+<li><code>location.reload(目标路径);</code></li>
+</ul>
+<h2 id="history">history</h2>
+<ul>
+<li><code>history.go(n)</code></li>
+</ul>
+<blockquote>
+<p>n 为整数<br>
+n &lt; 0：返回上级<br>
+n = 0：刷新页面<br>
+n &gt; 0：前进</p>
+</blockquote>
+<h2 id="screen">screen</h2>
+<h3 id="获取屏幕分辨率">获取屏幕分辨率</h3>
+<ul>
+<li><code>screen.height</code>：高度</li>
+<li><code>screen.width</code>：宽度</li>
+<li><code>screen.availHeight</code>：可用高度（不包括 Windows 任务栏）</li>
+<li><code>screen.availWidth</code>：可用宽度（不包括 Windows 任务栏）</li>
+</ul>
+<h1 id="正则表达式">正则表达式</h1>
+<blockquote>
+<p>一种文本匹配模式，通常用于表单验证。</p>
+</blockquote>
+<h2 id="正则表达式语法">正则表达式语法</h2>
+<ul>
+<li><code>/匹配模式/</code></li>
+</ul>
+<h2 id="创建固定正则表达式">创建固定正则表达式</h2>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/匹配模式/</span>;
+</div></code></pre>
+<h2 id="创建动态正则表达式">创建动态正则表达式</h2>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> m = <span class="hljs-string">&#x27;匹配模式&#x27;</span>;
+<span class="hljs-keyword">var</span> n = <span class="hljs-string">&#x27;修饰符&#x27;</span>;
+<span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(m, n);
+</div></code></pre>
+<h2 id="预定义模式">预定义模式</h2>
+<blockquote>
+<p><code>[]</code>：字符集<br>
+若在 <code>字符集</code> 内没有量词控制，只需要匹配 <code>字符集</code> 其中一个字符。</p>
+</blockquote>
+<h3 id="匹配数字">匹配数字</h3>
+<ul>
+<li><code>[0123456789]</code></li>
+<li><code>[0-9]</code></li>
+<li><code>\d</code></li>
+</ul>
+<h3 id="匹配汉字">匹配汉字</h3>
+<ul>
+<li><code>[\u4e00-\u9fa5]</code></li>
+</ul>
+<h3 id="匹配数字-字母-下划线">匹配数字、字母、下划线</h3>
+<ul>
+<li><code>[0-9A-Za-z_]</code></li>
+<li><code>\w</code></li>
+</ul>
+<h3 id="匹配空白符">匹配空白符</h3>
+<ul>
+<li><code>[ \n\r\t\v\f]</code></li>
+<li><code>\s</code></li>
+</ul>
+<h3 id="匹配单词边界">匹配单词边界</h3>
+<ul>
+<li><code>\b</code></li>
+</ul>
+<blockquote>
+<p>单词一般以空格等为边界（也可以为其他符号）<br>
+例如：<code>\btest</code> 匹配 <code>This is a test.</code> 中的 <code>test</code>（不带空格）</p>
+</blockquote>
+<h3 id="取反">取反</h3>
+<ul>
+<li><code>^</code>（脱字符，在 <code>字符集</code> 内时）</li>
+</ul>
+<h3 id="匹配非数字">匹配非数字</h3>
+<ul>
+<li><code>[^0123456789]</code></li>
+<li><code>[^0-9]</code></li>
+<li><code>\D</code></li>
+</ul>
+<h3 id="匹配非数字-字母-下划线">匹配非数字、字母、下划线</h3>
+<ul>
+<li><code>[^0-9A-Za-z_]</code></li>
+<li><code>\W</code></li>
+</ul>
+<h3 id="匹配非空白符">匹配非空白符</h3>
+<ul>
+<li><code>[^ \n\r\t\v\f]</code></li>
+<li><code>\S</code></li>
+</ul>
+<h3 id="匹配非单词边界">匹配非单词边界</h3>
+<ul>
+<li><code>\B</code></li>
+</ul>
+<h3 id="匹配除换行符-n-r-以外的其他字符">匹配除换行符（\n、\r）以外的其他字符</h3>
+<ul>
+<li><code>.</code></li>
+</ul>
+<h2 id="量词符">量词符</h2>
+<h3 id="">?</h3>
+<ul>
+<li><code>?</code> 前方字符至多存在一个（&lt;= 1）</li>
+<li>可有可无，若有，则只有一个。</li>
+</ul>
+<h3 id="-1">*</h3>
+<ul>
+<li><code>*</code> 前方字符可有无限个（&gt;= 0）</li>
+<li>可有可无，若有，则可有无限个。</li>
+</ul>
+<h3 id="-2">+</h3>
+<ul>
+<li><code>+</code> 前方字符至少存在一个（&gt; 0）</li>
+<li>可有一个或无限个。</li>
+</ul>
+<h3 id="m-n">{m, n}</h3>
+<ul>
+<li><code>{m, n}</code> 前方的字符至少存在 <code>m</code> 个，至多存在 <code>n</code> 个。</li>
+<li><code>n</code> 可省略，表示必须存在 <code>m</code> 个。</li>
+</ul>
+<h3 id="在正则表达式最前方时">^（在正则表达式最前方时）</h3>
+<ul>
+<li>开头匹配</li>
+<li>文本必须以 <code>^</code> 后方内容开头</li>
+</ul>
+<h3 id="-3">$</h3>
+<ul>
+<li>结尾匹配</li>
+<li>文本必须以 <code>^$</code> 前方内容开头</li>
+</ul>
+<h4 id="x">(?=x)</h4>
+<ul>
+<li><code>x</code> 为任意内容（例如：<code>(?=a)</code>、<code>(?=[A-Z])</code>）</li>
+<li>匹配 <code>(?=x)</code> 前方字符串后紧跟 <code>x</code> 的内容</li>
+<li>例如：<code>test(?=a)</code> 匹配 <code>testabcd</code> 中的 <code>test</code></li>
+</ul>
+<h4 id="x-1">(?|x)</h4>
+<ul>
+<li><code>x</code> 为任意内容（例如：<code>(?|a)</code>、<code>(?|[A-Z])</code>）</li>
+<li>匹配 <code>(?|x)</code> 前方字符串后不跟 <code>x</code> 的内容</li>
+<li>例如：<code>test(?|e)</code> 匹配 <code>testabcd</code> 中的 <code>test</code></li>
+</ul>
+<h2 id="-4">()</h2>
+<ul>
+<li>组</li>
+<li>如果匹配成功，可以获取 <code>组</code> 匹配的内容（获取匹配的第 n 个内容：<code>RegExp.$n</code>）</li>
+</ul>
+<h2 id="-5">|</h2>
+<ul>
+<li>或</li>
+</ul>
+<h2 id="修饰符">修饰符</h2>
+<ul>
+<li><code>i</code>：忽略大小写</li>
+<li><code>m</code>：多行匹配</li>
+<li><code>g</code>：全局匹配</li>
+</ul>
+<h2 id="贪婪模式">贪婪模式</h2>
+<blockquote>
+<p><code>x</code> 为任意内容</p>
+</blockquote>
+<ul>
+<li><code>x.*</code>：匹配 <code>x</code> 和 <code>x</code> 后方任意内容（<code>x</code> 后方可以没有内容）</li>
+<li><code>x.+</code>：匹配 <code>x</code> 和 <code>x</code> 后方任意内容（<code>x</code> 后方至少有一个字符）</li>
+</ul>
+<h2 id="懒惰模式">懒惰模式</h2>
+<blockquote>
+<p><code>x</code> 为任意内容</p>
+</blockquote>
+<ul>
+<li><code>x.*?</code>：匹配 <code>x</code></li>
+<li><code>x.+?</code>：匹配 <code>x</code> 后方一个字符</li>
+</ul>
+<h2 id="转义">转义</h2>
+<ul>
+<li>在需要转义的字符前添加 <code>\</code> 进行转义，例如：<code>\.</code></li>
+</ul>
+<h2 id="方法">方法</h2>
+<h3 id="修改正则">修改正则</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/匹配模式/</span>修饰符;
+reg.compile(匹配模式, 修饰符);
+</div></code></pre>
+<h3 id="查询匹配正则的字符串">查询匹配正则的字符串</h3>
+<blockquote>
+<p>成功：返回一个数组<br>
+不成功：返回 <code>null</code></p>
+</blockquote>
+<h4 id="无组名">无组名</h4>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/匹配模式/</span>修饰符;
+<span class="hljs-keyword">var</span> str = 字符串;
+reg.exec(str);
+</div></code></pre>
+<h4 id="有组名">有组名</h4>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(?&lt;组名&gt;匹配模式)/</span>修饰符;
+<span class="hljs-keyword">var</span> str = 字符串;
+reg.exec(str);
+</div></code></pre>
+<h2 id="支持正则表达式的字符串方法">支持正则表达式的字符串方法</h2>
+<h3 id="match">match()</h3>
+<ul>
+<li>匹配字符（类似正则表达式的 <code>exec</code>）</li>
+<li>找到：返回一个数组</li>
+<li>找不到：返回 <code>null</code></li>
+</ul>
+<h3 id="replace">replace()</h3>
+<ul>
+<li>替换字符串</li>
+<li><code>字符串.replace(被替换的内容, 新内容)</code></li>
+<li>返回替换后的字符串</li>
+</ul>
+<h3 id="search">search()</h3>
+<ul>
+<li>查找字符</li>
+<li>找到：返回字符下标</li>
+<li>找不到：返回 <code>-1</code></li>
+</ul>
+<h3 id="split">split()</h3>
+<ul>
+<li>切割字符串</li>
+<li>返回一个数组</li>
+</ul>
+<h1 id="json">JSON</h1>
+<blockquote>
+<p>一种数据文本交换格式，一般用于前后端交互。<br>
+JavaScript 对象使用模式<br>
+特点：体积小、传输较快、便于阅读</p>
+</blockquote>
+<h2 id="json-数据格式要求">JSON 数据格式要求</h2>
+<ul>
+<li>键名、字符串必须使用双引号（<code>&quot;&quot;</code>）包括</li>
+<li>值支持的数据类型：<code>字符串</code>、<code>数字</code>、<code>对象</code>（JSON 对象）、<code>数组</code>、<code>布尔</code>、<code>Null</code></li>
+</ul>
+<h2 id="方法-1">方法</h2>
+<h3 id="将数组或对象序列化-转换-为-json-字符串">将数组或对象序列化（转换）为 JSON 字符串</h3>
+<ul>
+<li>
+<p><code>JSON.stringify(value[, replacer[, space]])</code></p>
+<blockquote>
+<p><strong>value</strong>（必需）</p>
+<p>要转换的 JavaScript 值（通常为对象或数组）</p>
+<p><strong>replacer</strong>（可选）</p>
+<p>用于转换结果的函数或数组<br>
+如果 <code>replacer</code> 为函数，则 <code>JSON.stringify</code> 将调用该函数，并传入每个成员的键和值。<br>
+使用返回值而不是原始值。如果此函数返回 <code>undefined</code>，则排除成员。根对象的键是一个空字符串：<code>&quot;&quot;</code>。<br>
+如果 <code>replacer</code> 是一个数组，则仅转换该数组中具有键值的成员。成员的转换顺序与键在数组中的顺序一样。</p>
+<p><strong>space</strong>（可选）</p>
+<p>文本添加缩进、空格和换行符<br>
+如果 <code>space</code> 是一个数字，则返回值文本在每个级别缩进指定数目的空格。<br>
+如果 <code>space</code> 大于 10，则文本缩进 10 个空格。<code>space</code> 也可以使用非数字，如：<code>\t</code>。</p>
+<p><strong>注意</strong></p>
+<p>与 <code>.toString()</code> 不同，本方法转换后会保留原结构。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="将-json-反序列化-转换-为数组或对象">将 JSON 反序列化（转换）为数组或对象</h3>
+<ul>
+<li><code>JSON.parse(JSON 字符串)</code></li>
+</ul>
+<blockquote>
+<p>JSON 格式必须正确，否则会报错。</p>
+</blockquote>
+<h1 id="闭包">闭包</h1>
+<blockquote>
+<p>一个有权访问函数局部变量的函数<br>
+一般情况下，函数的局部变量会随着函数调用完毕销毁（<code>闭包</code> 例外）。<br>
+闭包可避免全局污染，变量可以受保护。<br>
+每次调用 <code>外层函数</code> 都会产生受保护的局部变量的副本</p>
+</blockquote>
+<h2 id="创建闭包">创建闭包</h2>
+<h3 id="步骤">步骤</h3>
+<ol>
+<li>使用 <code>外层函数</code> 声明一个或多个受保护的 <code>局部变量</code></li>
+<li>在 <code>外层函数</code> 内部声明一个 <code>内层函数</code>，<code>内层函数</code> 操作 <code>外层函数</code> 中受保护的 <code>局部变量</code></li>
+<li><code>外层函数</code> 将 <code>内层函数</code> 返回（<code>return</code>）到外部（保存）</li>
+<li><code>内层函数</code> 在外部被反复调用</li>
+</ol>
+<h3 id="例子">例子</h3>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnOut</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// 受保护的变量</span>
+    <span class="hljs-comment">// 函数 fnOut() 调用完成后不被销毁</span>
+    <span class="hljs-keyword">var</span> n = <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">// 内层函数</span>
+    <span class="hljs-comment">// 函数 fnOut() 调用完成后被销毁</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnIn</span>(<span class="hljs-params"></span>) </span>{
+        n++;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;n ==&gt;&#x27;</span>, n);
+    }
+
+    <span class="hljs-keyword">return</span> fnIn;
+}
+
+<span class="hljs-comment">// 调用 fnOut() 函数，fnOut() 返回一个内层函数 fnIn()</span>
+<span class="hljs-keyword">var</span> func = fnOut(); <span class="hljs-comment">// 引用</span>
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;func ==&gt;&#x27;</span>, func);
+
+<span class="hljs-comment">// 访问 fnOut() 的私有变量 n</span>
+func(); <span class="hljs-comment">// n ==&gt; 2</span>
+func(); <span class="hljs-comment">// n ==&gt; 3</span>
+</div></code></pre>
+<h1 id="高阶函数">高阶函数</h1>
+<h2 id="条件-满足其中一条即可">条件（满足其中一条即可）</h2>
+<ul>
+<li>函数可以作为函数的参数传递</li>
+<li>函数可以作为函数的返回值输出（例如 <code>闭包</code>）</li>
+</ul>
+<h2 id="应用">应用</h2>
+<h3 id="柯里化-部分求值">柯里化（部分求值）</h3>
+<ul>
+<li>首先接受一些参数，并没有真正求值，而是将参数记录。</li>
+<li>等待需要求值时（例如不传递参数时），再将所有参数的最终结果返回。</li>
+</ul>
+<h1 id="对象自定义属性">对象自定义属性</h1>
+<h3 id="添加自定义属性">添加自定义属性</h3>
+<ul>
+<li>
+<p><code>Object.defineProperty(原对象, 属性名称, 属性配置)</code></p>
+<blockquote>
+<p>定义后的属性默认不能被修改、删除、遍历<br>
+属性配置添加 <code>writable: true</code> 后可修改<br>
+属性配置添加 <code>configurable: true</code> 后可删除<br>
+属性配置添加 <code>enumerable: true</code> 后可遍历</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">Object</span>.defineProperty(原对象, 属性名称, {
+    <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
+    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
+    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
+});
+</div></code></pre>
+</li>
+</ul>
+<h3 id="添加多个自定义属性">添加多个自定义属性</h3>
+<ul>
+<li>
+<p><code>Object.defineProperties(原对象, 属性集合)</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">Object</span>.defineProperties(原对象, {
+    属性名称: {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
+        <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
+        <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
+        <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
+    },
+    属性名称: {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
+        <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
+        <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
+        <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
+    }
+});
+</div></code></pre>
+</li>
+</ul>
+<h3 id="获取对象可遍历的属性-键名">获取对象可遍历的属性（键名）</h3>
+<ul>
+<li>
+<p><code>Object.keys(对象)</code></p>
+<blockquote>
+<p>返回一个数组</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="获取对象可遍历和不可遍历的属性-键名">获取对象可遍历和不可遍历的属性（键名）</h3>
+<ul>
+<li>
+<p><code>Object.getOwnPropertyNames(对象)</code></p>
+<blockquote>
+<p>返回一个数组</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="获取对象指定属性的属性配置">获取对象指定属性的属性配置</h3>
+<ul>
+<li><code>Object.getOwnPropertyDescriptor(对象, 属性)</code></li>
+</ul>
+<h3 id="获取对象所有属性的属性配置">获取对象所有属性的属性配置</h3>
+<ul>
+<li><code>Object.getOwnPropertyDescriptors(对象)</code></li>
+</ul>
+<h1 id="对象的三大状态">对象的三大状态</h1>
+<h2 id="防扩展">防扩展</h2>
+<blockquote>
+<p>不能添加属性，可删除属性，可修改属性</p>
+</blockquote>
+<h3 id="设置-1">设置</h3>
+<ul>
+<li><code>Object.preventExtensions(对象)</code></li>
+</ul>
+<h3 id="判断">判断</h3>
+<ul>
+<li>
+<p><code>Object.isExtensible(对象)</code></p>
+<blockquote>
+<p>返回布尔值</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="密封">密封</h2>
+<blockquote>
+<p>不能添加、删除属性，可修改属性</p>
+</blockquote>
+<h3 id="设置-2">设置</h3>
+<ul>
+<li><code>Object.seal(对象)</code></li>
+</ul>
+<h3 id="判断-1">判断</h3>
+<ul>
+<li>
+<p><code>Object.isSealed(对象)</code></p>
+<blockquote>
+<p>返回布尔值</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="冻结">冻结</h2>
+<blockquote>
+<p>不能添加、删除、修改属性</p>
+</blockquote>
+<h3 id="设置-3">设置</h3>
+<ul>
+<li><code>Object.freeze(对象)</code></li>
+</ul>
+<h3 id="判断-2">判断</h3>
+<ul>
+<li>
+<p><code>Object.isFrozen(对象)</code></p>
+<blockquote>
+<p>返回布尔值</p>
+</blockquote>
+</li>
+</ul>
+
+    </body>
+    </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 封装</title>
+</head>
+<body>
+    <script src="./ajax.js"></script>
+    <script>
+        // 1. 可以发送 GET 请求
+        // 2. 可以发送 GET 请求，携带参数
+        // 3. 可以发送 POST 请求
+        // 4. 可以发送 POST 请求，携带参数，通过 send() 方法发送，并设置请求头
+        // 5. 传递到服务器的参数可以是字符串，也可以是 JSON
+        // 6. 可以自动将服务端传回来的 JSON 字符串转为 JSON 对象
+        // 7. 有一些默认参数（例如默认请求方式为 GET）
+
+        // ajax({
+        //     url: 'http://127.0.0.1:3000/getTest1',
+        //     type: 'get',
+        //     success: function (result) {
+        //         console.log(result);
+        //     }
+        // });
+
+        // ajax({
+        //     url: 'http://127.0.0.1:3000/getTest3',
+        //     type: 'get',
+        //     data: {
+        //         name: '张三',
+        //         age: 23,
+        //         sex: '男'
+        //     },
+        //     success: function (result) {
+        //         console.log(JSON.parse(result));
+        //     }
+        // });
+
+        // ajax({
+        //     url: 'http://127.0.0.1:3000/postTest3',
+        //     type: 'post',
+        //     data: {
+        //         name: '张三',
+        //         age: 23,
+        //         sex: '男'
+        //     },
+        //     success: function (result) {
+        //         console.log(JSON.parse(result));
+        //     }
+        // });
+
+        ajax({
+            url: 'http://127.0.0.1:3000/postTest3',
+            type: 'post',
+            data: {
+                name: '张三',
+                age: 23,
+                sex: '男'
+            },
+            header: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两面翻转的盒子</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            perspective: 800px;
+        }
+
+        .box {
+            display: inline-block;
+            position: relative;
+            margin-top: 50px;
+            width: 400px;
+            height: 400px;
+            line-height: 400px;
+            user-select: none;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        .box:hover {
+            transform: rotateY(-180deg);
+        }
+        .box > div {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #222;
+            font-size: 50px;
+            color: #FFF;
+        }
+
+        .box .front {
+            background-color: pink;
+            transform: translateZ(0.25px);
+        }
+        .box .back {
+            background-color: purple;
+            transform: translateZ(-0.25px) rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="front">第一面</div>
+        <div class="back">第二面</div>
+    </div>
+</body>
+</html>

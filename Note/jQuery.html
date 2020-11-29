@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="jquery">jQuery</h1>
+<ul>
+<li><a href="#jquery">jQuery</a></li>
+<li><a href="#%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0">入口函数</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F-1">方式 1</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F-2-%E7%AE%80%E5%86%99-%E6%8E%A8%E8%8D%90">方式 2（简写，推荐）</a></li>
+</ul>
+</li>
+<li><a href="#jquery-%E5%AF%B9%E8%B1%A1%E4%B8%8E-dom-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB">jQuery 对象与 DOM 对象的区别</a>
+<ul>
+<li><a href="#jquery-%E5%AF%B9%E8%B1%A1">jQuery 对象</a></li>
+<li><a href="#dom-%E5%AF%B9%E8%B1%A1">DOM 对象</a></li>
+<li><a href="#jquery-%E5%AF%B9%E8%B1%A1%E8%BD%AC-dom-%E5%AF%B9%E8%B1%A1">jQuery 对象转 DOM 对象</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-1">方法 1</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95-2">方法 2</a></li>
+</ul>
+</li>
+<li><a href="#dom-%E5%AF%B9%E8%B1%A1%E8%BD%AC-jquery-%E5%AF%B9%E8%B1%A1">DOM 对象转 jQuery 对象</a></li>
+</ul>
+</li>
+<li><a href="#%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8">基础选择器</a></li>
+<li><a href="#%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8">层级选择器</a></li>
+<li><a href="#%E7%AD%9B%E9%80%89%E9%80%89%E6%8B%A9%E5%99%A8">筛选选择器</a>
+<ul>
+<li><a href="#%E7%AD%9B%E9%80%89%E6%96%B9%E6%B3%95">筛选方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%9A%90%E5%BC%8F%E8%BF%AD%E4%BB%A3">隐式迭代</a></li>
+<li><a href="#%E6%8E%92%E4%BB%96%E6%80%9D%E6%83%B3">排他思想</a>
+<ul>
+<li><a href="#%E5%BD%93%E5%89%8D%E5%85%83%E7%B4%A0%E8%AE%BE%E7%BD%AE%E6%A0%B7%E5%BC%8F-%E5%85%B6%E4%BD%99%E7%9A%84%E5%85%84%E5%BC%9F%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%A0%B7%E5%BC%8F">当前元素设置样式，其余的兄弟元素清除样式</a></li>
+</ul>
+</li>
+<li><a href="#%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B">链式编程</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%B4%A2%E5%BC%95%E5%8F%B7">获取索引号</a></li>
+<li><a href="#%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C">样式操作</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96-%E8%AE%BE%E7%BD%AE-css-%E6%A0%B7%E5%BC%8F">获取 / 设置 CSS 样式</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96">获取</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE">设置</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%A4%9A%E4%B8%AA">设置多个</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%B1%BB%E5%90%8D">设置类名</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E7%B1%BB%E5%90%8D">添加类名</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%B1%BB%E5%90%8D">删除类名</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2%E7%B1%BB%E5%90%8D">切换类名</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%88%87%E6%8D%A2">事件切换</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">动画效果</a>
+<ul>
+<li><a href="#%E5%8F%82%E6%95%B0">参数</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F">显示隐藏</a>
+<ul>
+<li><a href="#%E6%98%BE%E7%A4%BA">显示</a></li>
+<li><a href="#%E9%9A%90%E8%97%8F">隐藏</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2">切换</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8A%E6%BB%91%E4%B8%8B%E6%BB%91">上滑下滑</a>
+<ul>
+<li><a href="#%E4%B8%8A%E6%BB%91">上滑</a></li>
+<li><a href="#%E4%B8%8B%E6%BB%91">下滑</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2-1">切换</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B7%A1%E5%85%A5%E6%B7%A1%E5%87%BA">淡入淡出</a>
+<ul>
+<li><a href="#%E6%B7%A1%E5%85%A5">淡入</a></li>
+<li><a href="#%E6%B7%A1%E5%87%BA">淡出</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2-2">切换</a></li>
+<li><a href="#%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E4%B8%8D%E9%80%8F%E6%98%8E%E5%BA%A6">到指定的不透明度</a></li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E7%94%BB">自定义动画</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+</ul>
+</li>
+<li><a href="#%E5%81%9C%E6%AD%A2%E5%8A%A8%E7%94%BB%E9%98%9F%E5%88%97">停止动画队列</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-1">方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E5%B1%9E%E6%80%A7">操作属性</a>
+<ul>
+<li><a href="#%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0%E5%9B%BA%E6%9C%89%E5%B1%9E%E6%80%A7">操作元素固有属性</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96-1">获取</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE-1">设置</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">操作元素自定义属性</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96-2">获取</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE-2">设置</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4">删除</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%93%8D%E4%BD%9C-html-%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9">操作 HTML、文本内容</a>
+<ul>
+<li><a href="#html">html()</a></li>
+<li><a href="#text">text()</a></li>
+<li><a href="#val">val()</a></li>
+</ul>
+</li>
+<li><a href="#%E9%81%8D%E5%8E%86">遍历</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-2">方法</a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E">说明</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%83%E7%B4%A0%E6%93%8D%E4%BD%9C">元素操作</a>
+<ul>
+<li><a href="#%E9%81%8D%E5%8E%86%E5%85%83%E7%B4%A0">遍历元素</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-3">方法</a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E-1">说明</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%85%83%E7%B4%A0">创建元素</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0">添加元素</a>
+<ul>
+<li><a href="#%E5%86%85%E9%83%A8%E6%B7%BB%E5%8A%A0">内部添加</a></li>
+<li><a href="#%E5%A4%96%E9%83%A8%E6%B7%BB%E5%8A%A0">外部添加</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-1">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0">删除元素</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-4">方法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-2">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%8B%E9%9A%86%E5%85%83%E7%B4%A0">克隆元素</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-5">方法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">参数说明</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%B0%BA%E5%AF%B8-%E4%BD%8D%E7%BD%AE%E6%93%8D%E4%BD%9C">尺寸、位置操作</a>
+<ul>
+<li><a href="#%E5%B0%BA%E5%AF%B8%E6%93%8D%E4%BD%9C">尺寸操作</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-6">方法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-3">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%8D%E7%BD%AE%E6%93%8D%E4%BD%9C">位置操作</a>
+<ul>
+<li><a href="#offset">offset()</a></li>
+<li><a href="#position">position()</a></li>
+<li><a href="#scrolltop-scrollleft">scrollTop() / scrollLeft()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6">事件</a>
+<ul>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E6%B3%A8%E5%86%8C">事件注册</a>
+<ul>
+<li><a href="#%E6%B3%A8%E5%86%8C%E5%8D%95%E4%B8%AA%E4%BA%8B%E4%BB%B6">注册单个事件</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86">事件处理</a>
+<ul>
+<li><a href="#%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6-on">绑定事件：on()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-1">语法</a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E-2">说明</a></li>
+<li><a href="#%E4%BC%98%E5%8A%BF">优势</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A7%A3%E7%BB%91%E4%BA%8B%E4%BB%B6-off">解绑事件：off()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-2">语法</a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E-3">说明</a></li>
+<li><a href="#%E4%BE%8B%E5%A6%82">例如</a></li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6-trigger">自动触发事件：trigger()</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E6%B3%95-click">第一种触发方法：click()</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E6%B3%95-trigger">第二种触发方法：trigger()</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E6%B3%95-triggerhandler">第三种触发方法：triggerHandler()</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-4">注意</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1">事件对象</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-3">语法</a></li>
+<li><a href="#%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA">阻止默认行为</a></li>
+<li><a href="#%E9%98%BB%E6%AD%A2%E5%86%92%E6%B3%A1">阻止冒泡</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E5%BA%93%E5%85%B1%E5%AD%98">多库共存</a>
+<ul>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%A6%82%E8%BF%B0">问题概述</a></li>
+<li><a href="#%E5%AE%A2%E8%A7%82%E9%9C%80%E6%B1%82">客观需求</a></li>
+<li><a href="#jquery-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">jQuery 解决方案</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6">插件扩展机制</a>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E6%A0%BC%E5%BC%8F">格式</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95-4">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-5">注意</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="入口函数">入口函数</h1>
+<blockquote>
+<p>如果要在 DOM 结构出现之前操作 DOM，需要使用 jQuery 的入口函数。</p>
+</blockquote>
+<h3 id="方式-1">方式 1</h3>
+<pre><code class="language-javascript"><div>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;入口函数 - 方式 1&#x27;</span>);
+});
+</div></code></pre>
+<h3 id="方式-2-简写-推荐">方式 2（简写，推荐）</h3>
+<pre><code class="language-javascript"><div>$(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;入口函数 - 方式 2&#x27;</span>);
+});
+</div></code></pre>
+<h1 id="jquery-对象与-dom-对象的区别">jQuery 对象与 DOM 对象的区别</h1>
+<h2 id="jquery-对象">jQuery 对象</h2>
+<ul>
+<li>通过 jQuery 方法得到的对象</li>
+<li>只能使用 jQuery 提供的方法和属性</li>
+</ul>
+<h2 id="dom-对象">DOM 对象</h2>
+<ul>
+<li>通过 DOM 元素获取的对象供的方法和属性</li>
+<li>只能使用 DOM 元素提供的方法和属性</li>
+</ul>
+<h2 id="jquery-对象转-dom-对象">jQuery 对象转 DOM 对象</h2>
+<h3 id="方法-1">方法 1</h3>
+<ul>
+<li>
+<p><code>jQuery 对象[索引号]</code></p>
+<blockquote>
+<p>索引号从 0 开始</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="方法-2">方法 2</h3>
+<ul>
+<li>
+<p><code>jQuery 对象.get(索引号)</code></p>
+<blockquote>
+<p>索引号从 0 开始</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="dom-对象转-jquery-对象">DOM 对象转 jQuery 对象</h2>
+<ul>
+<li><code>$(DOM 对象)</code></li>
+</ul>
+<h1 id="选择器">选择器</h1>
+<blockquote>
+<p><code>$('选择器')</code><br>
+里面选择器直接写 CSS 选择器即可，但是要加引号。</p>
+</blockquote>
+<h2 id="基础选择器">基础选择器</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全选选择器</td>
+<td>$('*')</td>
+<td>匹配所有元素</td>
+</tr>
+<tr>
+<td>标签选择器</td>
+<td>$('div')</td>
+<td>获取同一类标签的所有元素</td>
+</tr>
+<tr>
+<td>ID选择器</td>
+<td>$('#id')</td>
+<td>获取指定 ID 的元素</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>$('.class')</td>
+<td>获取同一类 class 的元素</td>
+</tr>
+<tr>
+<td>并集选择器</td>
+<td>$('div, p, li')</td>
+<td>获取多个元素</td>
+</tr>
+<tr>
+<td>交集选择器</td>
+<td>$('li.current')</td>
+<td>交集元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="层级选择器">层级选择器</h2>
+<blockquote>
+<p>最常用的：<code>后代选择器</code> 和 <code>子代选择器</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子代选择器</td>
+<td>$('ul&gt;li')</td>
+<td>使用 <code>&gt;</code> 号，获取亲儿子层级的元素<br>（并不会获取孙子层级的元素）</td>
+</tr>
+<tr>
+<td>后代选择器</td>
+<td>$('ul li')</td>
+<td>使用 <code>空格</code>，代表后代选择器，<br>获取 <code>ul</code> 下的所有 <code>li</code> 元素，包括孙子等</td>
+</tr>
+</tbody>
+</table>
+<h2 id="筛选选择器">筛选选择器</h2>
+<blockquote>
+<p>在所有的选项中选择满足条件的进行筛选选择</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:first</td>
+<td>$('li:first')</td>
+<td>获取第一个 li 元素</td>
+</tr>
+<tr>
+<td>:last</td>
+<td>$('li:last')</td>
+<td>获取最后一个 li 元素</td>
+</tr>
+<tr>
+<td>:eq(index)</td>
+<td>$('li:eq(2)')</td>
+<td>获取索引号为 2 的 li 元素<br>索引号从 0 开始</td>
+</tr>
+<tr>
+<td>:odd</td>
+<td>$('li:odd')</td>
+<td>获取索引号为奇数的 li 元素<br>索引号从 0 开始</td>
+</tr>
+<tr>
+<td>:even</td>
+<td>$('li:even')</td>
+<td>获取索引号为偶数的 li 元素<br>索引号从 0 开始</td>
+</tr>
+</tbody>
+</table>
+<h3 id="筛选方法">筛选方法</h3>
+<blockquote>
+<p>类似 DOM 中的通过一个节点找另外一个节点，父、子、兄以外有所加强。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parent( [表达式] )</td>
+<td>$('li').parent()</td>
+<td>查找父级（上一级）</td>
+</tr>
+<tr>
+<td>parents( [表达式] )</td>
+<td>$('li').parents()</td>
+<td>查找全部父级（到 <code>html</code>）</td>
+</tr>
+<tr>
+<td>children( [表达式] )</td>
+<td>$('ul').children('li')</td>
+<td>相当于 <code>$('ul&gt;li')</code>，最近一级（亲儿子）</td>
+</tr>
+<tr>
+<td>find( 表达式 )</td>
+<td>$('ul').find('li')</td>
+<td>相当于 <code>$('ul li')</code>，后代选择器</td>
+</tr>
+<tr>
+<td>siblings( [表达式] )</td>
+<td>$('.first').siblings('li')</td>
+<td>查找兄弟节点，不包括自己</td>
+</tr>
+<tr>
+<td>nextAll( [表达式] )</td>
+<td>$('.first').nextAll()</td>
+<td>查找当前元素之后所有的同级元素</td>
+</tr>
+<tr>
+<td>prevAll( [表达式] )</td>
+<td>$('.last').prevAll()</td>
+<td>查找当前元素之前所有的同级元素</td>
+</tr>
+<tr>
+<td>hasClass( 类名 )</td>
+<td>$('div').hasClass('abc')</td>
+<td>检查当前的元素是否含有某个特定的类，有则返回 true</td>
+</tr>
+<tr>
+<td>eq( 索引号 )</td>
+<td>$('li').eq(2)</td>
+<td>相当于 <code>$('li:eq(2)')</code>，索引号从 0 开始</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>重要：<code>parent()</code> 、<code>children()</code> 、<code>find()</code> 、<code>siblings()</code> 、<code>eq()</code></strong></li>
+</ul>
+<h1 id="隐式迭代">隐式迭代</h1>
+<ul>
+<li>不需要自己写循环，jQuery 会自动遍历内部 DOM 元素（伪数组形式存储）。</li>
+</ul>
+<h1 id="排他思想">排他思想</h1>
+<h3 id="当前元素设置样式-其余的兄弟元素清除样式">当前元素设置样式，其余的兄弟元素清除样式</h3>
+<pre><code class="language-javascript"><div>$(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;red&#x27;</span>);
+$(<span class="hljs-built_in">this</span>).siblings().css(<span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+</div></code></pre>
+<h1 id="链式编程">链式编程</h1>
+<blockquote>
+<p>链式编程是为了节省代码量，看起来更优雅。</p>
+</blockquote>
+<pre><code class="language-javascript"><div>$(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;red&#x27;</span>).siblings().css(<span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>);
+</div></code></pre>
+<blockquote>
+<p><strong>注意：使用链式编程一定要注意是对哪个对象执行</strong></p>
+</blockquote>
+<h1 id="获取索引号">获取索引号</h1>
+<blockquote>
+<p><code>$(selector).index( [element] )</code><br>
+<code>$(selector).index( [selector] )</code></p>
+</blockquote>
+<ul>
+<li>搜索匹配的元素，并返回相应元素的索引值，从 0 开始计数。</li>
+<li>如果不传递 <code>element</code> 参数，返回值是 <code>$(selector)</code> 集合中第一个元素相对于其 <code>同级元素</code> 的位置。</li>
+<li>如果 <code>element</code> 参数是 <code>DOM 元素</code> 或者 <code>jQuery 对象</code>，返回值是 <code>element</code> 相对于 <code>$(selector)</code> 集合的位置。</li>
+<li>如果 <code>element</code> 参数是 <code>jQuery 对象集合</code>，返回值是 <code>element</code> 集合中第一个元素相对于 <code>$(selector)</code> 集合的位置。</li>
+</ul>
+<h1 id="样式操作">样式操作</h1>
+<h2 id="获取-设置-css-样式">获取 / 设置 CSS 样式</h2>
+<blockquote>
+<p><code>属性名</code> 需要加 <code>引号</code><br>
+如果 <code>属性值</code> 是数字，可以不加 <code>单位</code> 和 <code>引号</code></p>
+</blockquote>
+<h3 id="获取">获取</h3>
+<ul>
+<li><code>.css(属性名)</code></li>
+</ul>
+<h3 id="设置">设置</h3>
+<blockquote>
+<p><code>.css(属性名, 属性值)</code></p>
+</blockquote>
+<h3 id="设置多个">设置多个</h3>
+<blockquote>
+<p><code>属性名</code> 使用 <code>驼峰法</code> 时，可以不加 <code>引号</code>。</p>
+</blockquote>
+<pre><code class="language-javascript"><div>.css({
+    属性名: 属性值,
+    属性名: 属性值,
+    ...
+});
+</div></code></pre>
+<h2 id="设置类名">设置类名</h2>
+<blockquote>
+<p>作用等同于原生 JavaScript 的 classList 相关方法</p>
+</blockquote>
+<pre><code class="language-javascript"><div>.className;            <span class="hljs-comment">// 获取类名</span>
+.classList.add();      <span class="hljs-comment">// 添加类名</span>
+.classList.remove();   <span class="hljs-comment">// 移除类名</span>
+.classList.contains(); <span class="hljs-comment">// 是否包含指定类名</span>
+.classList.toggle();   <span class="hljs-comment">// 切换类名</span>
+</div></code></pre>
+<h3 id="添加类名">添加类名</h3>
+<ul>
+<li>
+<p><code>.addClass()</code></p>
+<blockquote>
+<p>可同时添加多个，例如：<code>.addClass('a b c d')</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="删除类名">删除类名</h3>
+<ul>
+<li>
+<p><code>.removeClass()</code></p>
+<blockquote>
+<p>不传参数时删除全部</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="切换类名">切换类名</h3>
+<ul>
+<li><code>.toggleClass()</code></li>
+</ul>
+<h1 id="事件切换">事件切换</h1>
+<blockquote>
+<p>功能类似 CSS 中的伪类 <code>:hover</code></p>
+</blockquote>
+<h3 id="语法">语法</h3>
+<blockquote>
+<p><code>hover( in[, out] )</code></p>
+</blockquote>
+<ul>
+<li><strong>in</strong>：鼠标移入元素时触发的函数</li>
+<li><strong>out</strong>：鼠标移出元素时触发的函数</li>
+<li>如果只写 <code>in</code>，则鼠标移入和移出元素是都会触发。</li>
+</ul>
+<h1 id="动画效果">动画效果</h1>
+<h2 id="参数">参数</h2>
+<ul>
+<li>此处的参数都可以省略（<strong><code>fadeTo</code> 除外，需要 <code>speed</code></strong>），表示无动画直接显示。</li>
+<li><code>speed</code><br>
+三种预定速度之一的字符串（<code>slow</code>、<code>normal</code>、<code>fast</code>）或表示动画时长的毫秒数值（例如：<code>1000</code>）。</li>
+<li><code>easing</code><br>
+指定动画曲线，默认是 <code>swing</code>，可用参数 <code>linear</code>。</li>
+<li><code>fn</code><br>
+回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ul>
+<h2 id="显示隐藏">显示隐藏</h2>
+<h3 id="显示">显示</h3>
+<ul>
+<li><code>show(speed, easing, fn)</code></li>
+</ul>
+<h3 id="隐藏">隐藏</h3>
+<ul>
+<li><code>hide(speed, easing, fn)</code></li>
+</ul>
+<h3 id="切换">切换</h3>
+<ul>
+<li><code>toggle(speed, easing, fn)</code></li>
+</ul>
+<h2 id="上滑下滑">上滑下滑</h2>
+<h3 id="上滑">上滑</h3>
+<ul>
+<li><code>slideUp(speed, easing, fn)</code></li>
+</ul>
+<h3 id="下滑">下滑</h3>
+<ul>
+<li><code>slideDown(speed, easing, fn)</code></li>
+</ul>
+<h3 id="切换-1">切换</h3>
+<ul>
+<li><code>slideToggle(speed, easing, fn)</code></li>
+</ul>
+<h2 id="淡入淡出">淡入淡出</h2>
+<h3 id="淡入">淡入</h3>
+<ul>
+<li><code>fadeIn(speed, easing, fn)</code></li>
+</ul>
+<h3 id="淡出">淡出</h3>
+<ul>
+<li><code>fadeOut(speed, easing, fn)</code></li>
+</ul>
+<h3 id="切换-2">切换</h3>
+<ul>
+<li><code>fadeToggle(speed, easing, fn)</code></li>
+</ul>
+<h3 id="到指定的不透明度">到指定的不透明度</h3>
+<ul>
+<li>
+<p><code>fadeTo(speed, opacity, easing, fn)</code></p>
+<blockquote>
+<p><strong>opactiy</strong>（必需）：透明度，取值为 <code>0 ~ 1</code> 之间的数，包括 <code>0</code> 和 <code>1</code>。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="自定义动画">自定义动画</h2>
+<h3 id="方法">方法</h3>
+<ul>
+<li>
+<p><code>animate( params, [speed], [easing], [fn] )</code></p>
+<blockquote>
+<p><strong>params</strong>（必需）：想要执行动画的样式 <code>属性名</code> 以及对应的 <code>属性值</code>，以 <code>对象形式</code> 传递（属性名可以不带引号）。<br>
+如果是 <code>复合属性</code> 则需要使用 <code>驼峰命名法</code>（例如：borderLeft）。</p>
+<p><strong>注意</strong><br>
+此方法设置背景颜色时，没有过渡效果，需要使用 <code>jquery-color</code> 插件。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="停止动画队列">停止动画队列</h2>
+<blockquote>
+<p>默认动画效果一旦触发就会执行直到结束，如果多次触发，就导致多个动画或者效果排队执行。</p>
+</blockquote>
+<h3 id="方法-1">方法</h3>
+<ul>
+<li><code>stop()</code> 方法用于停止动画或效果</li>
+<li><code>stop()</code> 写到动画或效果的 <code>前面</code>，结束上一次的动画。<br>
+（先调用 <code>stop()</code>，再调用动画）</li>
+</ul>
+<h1 id="操作属性">操作属性</h1>
+<h2 id="操作元素固有属性">操作元素固有属性</h2>
+<blockquote>
+<p>元素本身自带的属性<br>
+例如：a 标签的 <code>href</code>、input 标签的 <code>type</code></p>
+</blockquote>
+<h3 id="获取-1">获取</h3>
+<ul>
+<li><code>prop('属性名')</code></li>
+</ul>
+<h3 id="设置-1">设置</h3>
+<ul>
+<li><code>prop('属性名', '属性值')</code></li>
+</ul>
+<h3 id="注意">注意</h3>
+<ul>
+<li><code>prop()</code> 除了操作普通属性，更适合操作表单属性：
+<ul>
+<li>disabled</li>
+<li>checked</li>
+<li>selected</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作元素自定义属性">操作元素自定义属性</h2>
+<blockquote>
+<p>用户自己给元素添加的属性<br>
+例如：给 div 添加 <code>index=&quot;1&quot;</code></p>
+</blockquote>
+<h3 id="获取-2">获取</h3>
+<ul>
+<li>
+<p><code>attr('属性名')</code></p>
+<blockquote>
+<p>类似原生中的 <code>getAttribute('属性名')</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="设置-2">设置</h3>
+<ul>
+<li>
+<p><code>attr('属性名', '属性值')</code></p>
+<blockquote>
+<p>类似原生中的 <code>setAttribute('属性名', '属性值')</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="删除">删除</h3>
+<ul>
+<li>
+<p><code>removeAttr('属性名')</code></p>
+<blockquote>
+<p>类似原生中的 <code>removeAttribute('属性名')</code></p>
+</blockquote>
+</li>
+</ul>
+<h1 id="操作-html-文本内容">操作 HTML、文本内容</h1>
+<blockquote>
+<p>不加参数时为获取<br>
+加参数时为设置</p>
+</blockquote>
+<h3 id="html">html()</h3>
+<ul>
+<li>
+<p>获取 / 设置标签内的所有内容</p>
+<blockquote>
+<p>解析 HTML 标签</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="text">text()</h3>
+<ul>
+<li>
+<p>获取 / 设置标签内的文本内容</p>
+<blockquote>
+<p>不解析 HTML 标签</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="val">val()</h3>
+<ul>
+<li>获取 / 设置表单的值</li>
+</ul>
+<h1 id="遍历">遍历</h1>
+<h2 id="方法-2">方法</h2>
+<ul>
+<li><code>$.each( object , function( index , element ) { } )</code></li>
+</ul>
+<h2 id="说明">说明</h2>
+<ul>
+<li><code>$.each()</code> 方法可用于遍历任何对象</li>
+<li>主要用于数据处理，例如：数组、对象</li>
+<li><code>index</code>：每个元素的索引号</li>
+<li><code>element</code>：当前遍历到的项</li>
+</ul>
+<h1 id="元素操作">元素操作</h1>
+<h2 id="遍历元素">遍历元素</h2>
+<blockquote>
+<p>访问一组元素中的每个元素</p>
+</blockquote>
+<h3 id="方法-3">方法</h3>
+<ul>
+<li><code>.each( function( index, domElement ) { } )</code></li>
+</ul>
+<h3 id="说明-1">说明</h3>
+<ul>
+<li><code>each()</code> 方法主要用于 DOM 处理</li>
+<li><code>index</code><br>
+每个元素的索引号</li>
+<li><code>domElement</code><br>
+当前遍历到的 DOM 元素对象</li>
+<li>如果要对 <code>domElement</code> 使用 <code>jQuery 方法</code>，需要使用 <code>$(domElement)</code> 将其转换为 <code>jQuery 对象</code>。</li>
+</ul>
+<h2 id="创建元素">创建元素</h2>
+<ul>
+<li><code>$('&lt;标签名&gt;标签内容&lt;/标签名&gt;')</code></li>
+</ul>
+<h2 id="添加元素">添加元素</h2>
+<h3 id="内部添加">内部添加</h3>
+<ul>
+<li>
+<p><code>element.append('内容')</code></p>
+<blockquote>
+<p>把内容放入 <code>element</code> 元素内部的最后面<br>
+类似原生的 <code>appendChild()</code></p>
+</blockquote>
+</li>
+<li>
+<p><code>element.prepend('内容')</code></p>
+<blockquote>
+<p>把内容放入 <code>element</code> 元素内部的最前面</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="外部添加">外部添加</h3>
+<ul>
+<li>
+<p><code>element.after('内容')</code></p>
+<blockquote>
+<p>把内容放到 <code>element</code> 元素的后面</p>
+</blockquote>
+</li>
+<li>
+<p><code>element.before('内容')</code></p>
+<blockquote>
+<p>把内容放到 <code>element</code> 元素的前面</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="注意-1">注意</h3>
+<ul>
+<li><code>内部添加</code> 元素，生成后，它们是 <code>父子关系</code></li>
+<li><code>外部添加</code> 元素，生成后，它们是 <code>兄弟关系</code></li>
+</ul>
+<h2 id="删除元素">删除元素</h2>
+<h3 id="方法-4">方法</h3>
+<ul>
+<li>
+<p><code>element.remove()</code></p>
+<blockquote>
+<p>删除 <code>element</code> 自身</p>
+</blockquote>
+</li>
+<li>
+<p><code>element.empty()</code></p>
+<blockquote>
+<p>清空 <code>element</code> 的内容</p>
+</blockquote>
+</li>
+<li>
+<p><code>element.html('')</code></p>
+<blockquote>
+<p>清空 <code>element</code> 的内容</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="注意-2">注意</h3>
+<ul>
+<li><code>element</code> 可以是单个元素，也可以是多个元素的集合。</li>
+<li><code>empty()</code> 和 <code>html()</code> 作用等价，但 <code>html()</code> 可以设置内容。</li>
+</ul>
+<h2 id="克隆元素">克隆元素</h2>
+<h3 id="方法-5">方法</h3>
+<ul>
+<li>
+<p><code>clone( [true] )</code></p>
+<blockquote>
+<p>克隆调用该方法的元素</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="参数说明">参数说明</h3>
+<ul>
+<li><code>true</code> 可选
+<ul>
+<li>如果填写，该元素绑定的事件也会被克隆。</li>
+<li>如果不填写或为 <code>false</code>，只会克隆元素本身。</li>
+</ul>
+</li>
+</ul>
+<h1 id="尺寸-位置操作">尺寸、位置操作</h1>
+<h2 id="尺寸操作">尺寸操作</h2>
+<blockquote>
+<p>不同的 API 对应不同的盒子模型</p>
+</blockquote>
+<h3 id="方法-6">方法</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width(值)</code><br><code>height(值)</code></td>
+<td>元素宽度和高度<br>只算 width / height</td>
+</tr>
+<tr>
+<td><code>innerWidth(值)</code><br><code>innerHeight(值)</code></td>
+<td>元素宽度和高度<br>包含 padding</td>
+</tr>
+<tr>
+<td><code>outerWidth(值)</code><br><code>outerHeight(值)</code></td>
+<td>元素宽度和高度<br>包含 padding、border</td>
+</tr>
+<tr>
+<td><code>outerWidth(值, true)</code><br><code>outerHeight(值, true)</code></td>
+<td>元素宽度和高度<br>包含 padding、border、margin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注意-3">注意</h3>
+<ul>
+<li>参数 <code>值</code> 为 <code>空</code> 时，获取对应的值，返回 <code>Number</code>。</li>
+<li>参数 <code>值</code> 为 <code>数字</code> 时，修改对应的值。</li>
+<li>参数 <code>值</code> 可以不写单位</li>
+</ul>
+<h2 id="位置操作">位置操作</h2>
+<h3 id="offset">offset()</h3>
+<blockquote>
+<p>用于 <code>获取</code> 或 <code>设置</code> 元素相对于文档的偏移坐标（与父级没有关系）</p>
+</blockquote>
+<ul>
+<li>该方法有 2 个属性：
+<ul>
+<li><code>offset().top</code>：距离文档顶部的距离</li>
+<li><code>offset().left</code>：距离文档左侧的距离</li>
+</ul>
+</li>
+<li>设置元素的偏移坐标：<code>offset( { top: 值, left: 值 } )</code></li>
+</ul>
+<h3 id="position">position()</h3>
+<blockquote>
+<p>用于 <code>获取</code> 元素相对于带有非静态定位的父级偏移坐标<br>
+如果所有父级都没有定位，则以文档为准。</p>
+</blockquote>
+<ul>
+<li>该方法有 2 个属性：
+<ul>
+<li><code>position().top</code>：距离文档顶部的距离</li>
+<li><code>position().left</code>：距离文档左侧的距离</li>
+</ul>
+</li>
+</ul>
+<h3 id="scrolltop-scrollleft">scrollTop() / scrollLeft()</h3>
+<blockquote>
+<p>用于 <code>获取</code> 或 <code>设置</code> 元素被卷去的顶部距离和左侧距离</p>
+</blockquote>
+<ul>
+<li>无参数时获取对应的值</li>
+<li>参数为不带单位的数字时设置对应的值</li>
+</ul>
+<h1 id="事件">事件</h1>
+<blockquote>
+<p><strong>优点：</strong><br>
+操作简单，且不用担心事件覆盖等问题。<br>
+<strong>缺点：</strong><br>
+普通的事件注册不能做事件委托，且无法实现事件解绑，需要借助其他方法。</p>
+</blockquote>
+<h2 id="事件注册">事件注册</h2>
+<h3 id="注册单个事件">注册单个事件</h3>
+<ul>
+<li>
+<p>语法</p>
+<pre><code class="language-javascript"><div>element.不带on的事件名(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ })
+</div></code></pre>
+</li>
+<li>
+<p>例如</p>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;div&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ })
+</div></code></pre>
+<blockquote>
+<p>其他事件与原生基本一致<br>
+<code>mouseover</code>、<code>mouseout</code>、<code>blur</code>、<code>focus</code>、<code>change</code>、<code>keydown</code>、<code>keyup</code>、<code>resize</code>、<code>scroll</code>、...</p>
+</blockquote>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>部分原生事件没有在 jQuery 中提供（例如 <code>input</code> 事件）</li>
+</ul>
+</li>
+</ul>
+<h2 id="事件处理">事件处理</h2>
+<blockquote>
+<p>因为普通注册事件方法的不足，jQuery 又开发了多个处理方法：<br>
+<code>bind()</code>、<code>live()</code>、<code>delegate()</code>、<code>on()</code> 等，其中最好用的是 <code>on()</code>。</p>
+</blockquote>
+<h3 id="绑定事件-on">绑定事件：on()</h3>
+<blockquote>
+<p>用于在匹配元素上绑定一个或多个事件的事件处理函数</p>
+</blockquote>
+<h4 id="语法-1">语法</h4>
+<ul>
+<li><code>element.on(events, [selector], fn)</code></li>
+</ul>
+<h4 id="说明-2">说明</h4>
+<ul>
+<li><code>events</code><br>
+一个或多个用空格分隔的事件类型，例如 <code>click</code>、<code>keydown</code></li>
+<li><code>selector</code><br>
+元素的子元素选择器</li>
+<li><code>fn</code><br>
+回调函数</li>
+</ul>
+<h4 id="优势">优势</h4>
+<ul>
+<li>
+<p>可以绑定多个事件，多个事件处理程序</p>
+<blockquote>
+<p>使用对象的形式写事件名以及对应的事件处理程序</p>
+</blockquote>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;div&#x27;</span>).on({
+    <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ },
+    <span class="hljs-attr">mouseover</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ },
+    <span class="hljs-attr">mouseout</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ },
+    ...
+});
+</div></code></pre>
+<blockquote>
+<p>如果事件处理程序相同，还可以以空格分隔事件类型</p>
+</blockquote>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;div&#x27;</span>).on(<span class="hljs-string">&#x27;mouseover mouseout&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ });
+</div></code></pre>
+</li>
+<li>
+<p>可以进行事件委派操作</p>
+<blockquote>
+<p>把 <code>li</code> 的事件绑定到 <code>ul</code> 上</p>
+</blockquote>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;ul&#x27;</span>).on(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ });
+</div></code></pre>
+</li>
+<li>
+<p>可以给动态生成的元素绑定事件</p>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;div&#x27;</span>).on(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    alert(<span class="hljs-string">&#x27;给动态生成的元素绑定事件&#x27;</span>);
+});
+
+$(<span class="hljs-string">&#x27;div&#x27;</span>).append( $(<span class="hljs-string">&#x27;&lt;p&gt;动态创建的元素&lt;/p&gt;&#x27;</span>) );
+</div></code></pre>
+</li>
+</ul>
+<h3 id="解绑事件-off">解绑事件：off()</h3>
+<blockquote>
+<p>jQuery 提供了多种事件解绑方法：<br>
+<code>die()</code>、<code>undelegate()</code>、<code>off()</code> 等<br>
+甚至还有只触发一次的事件绑定方法 <code>one()</code></p>
+</blockquote>
+<h4 id="语法-2">语法</h4>
+<blockquote>
+<p><code>$(selector).off(event, selector, function(eventObj), map)</code></p>
+</blockquote>
+<h4 id="说明-3">说明</h4>
+<ul>
+<li><code>event</code><br>
+可选。指定要从被选元素移除的一个或多个事件或命名空间。<br>
+由空格分隔多个事件值，必须是有效的事件。</li>
+<li><code>selector</code><br>
+可选。指定添加事件处理程序时最初传递给 on() 方法的选择器。</li>
+<li><code>function(eventObj)</code><br>
+可选。指定当事件发生时运行的函数。</li>
+<li><code>map</code><br>
+指定事件映射 (<code>{event:function, event:function, ...}</code>)，<br>
+包含要添加到元素的一个或多个事件，以及当事件发生时运行的函数。</li>
+</ul>
+<h4 id="例如">例如</h4>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;p&#x27;</span>).off();               <span class="hljs-comment">// 解绑 p 元素上所有事件处理程序</span>
+$(<span class="hljs-string">&#x27;p&#x27;</span>).off(<span class="hljs-string">&#x27;click&#x27;</span>);        <span class="hljs-comment">// 解绑 p 元素上的点击事件</span>
+$(<span class="hljs-string">&#x27;ul&#x27;</span>).off(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;li&#x27;</span>); <span class="hljs-comment">// 解绑事件委托</span>
+</div></code></pre>
+<blockquote>
+<p><strong>注意：</strong><br>
+如果有的事件只需要触发一次，可以使用 <code>one()</code> 绑定事件。</p>
+</blockquote>
+<h3 id="自动触发事件-trigger">自动触发事件：trigger()</h3>
+<blockquote>
+<p>在某些特定的条件下，需要让某些事件能自动触发。<br>
+例如轮播图模拟点击右侧按钮实现自动轮播，可以利用定时器自动触发右侧按钮的点击事件。<br>
+jQuery 为提供了两个触发事件的方法：<code>trigger()</code> 和 <code>triggerHandler()</code></p>
+</blockquote>
+<h4 id="第一种触发方法-click">第一种触发方法：click()</h4>
+<ul>
+<li>
+<p><code>element.click()</code></p>
+<blockquote>
+<p>触发点击事件</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="第二种触发方法-trigger">第二种触发方法：trigger()</h4>
+<ul>
+<li><code>element.trigger('type')</code></li>
+</ul>
+<h4 id="第三种触发方法-triggerhandler">第三种触发方法：triggerHandler()</h4>
+<ul>
+<li><code>element.triggerHandler('type')</code></li>
+</ul>
+<h4 id="注意-4">注意</h4>
+<ul>
+<li><code>trigger()</code> 会触发元素的默认行为</li>
+<li><code>triggerHandler()</code> 不会触发元素的默认行为</li>
+</ul>
+<h2 id="事件对象">事件对象</h2>
+<blockquote>
+<p>jQuery 对 DOM 中的事件对象进行了封装，兼容性更好，获取更方便，使用方式与原生区别不大。<br>
+只要事件被触发，就会产生事件对象。</p>
+</blockquote>
+<h3 id="语法-3">语法</h3>
+<ul>
+<li><code>element.on(event, [selector], function(e) { })</code></li>
+</ul>
+<h3 id="阻止默认行为">阻止默认行为</h3>
+<ul>
+<li><code>e.preventDefault()</code></li>
+<li><code>return false</code></li>
+</ul>
+<h3 id="阻止冒泡">阻止冒泡</h3>
+<ul>
+<li><code>e.stopPropagation()</code></li>
+</ul>
+<h1 id="多库共存">多库共存</h1>
+<h2 id="问题概述">问题概述</h2>
+<ul>
+<li>jQuery 把 <code>$</code> 作为标识符，随着 <code>jQuery</code> 的流行，其他 JavaScript 库也会把 <code>$</code> 作为标识符，一起使用时会导致冲突。</li>
+</ul>
+<h2 id="客观需求">客观需求</h2>
+<ul>
+<li>需要一个解决方案，让 jQuery 和其他的 JavaScript 库不产生冲突，可以同时存在，这就叫做 <code>多库共存</code>。</li>
+</ul>
+<h2 id="jquery-解决方案">jQuery 解决方案</h2>
+<ul>
+<li>
+<p>把 <code>$</code> 符号统一改为 <code>jQuery</code></p>
+<blockquote>
+<p>例如：<code>jQuery('div')</code></p>
+</blockquote>
+</li>
+<li>
+<p>jQuery 变量规定新的名称：<code>$.noConflict()</code></p>
+<blockquote>
+<p>例如：<code>var newName = $.noConflict()</code></p>
+</blockquote>
+</li>
+</ul>
+<h1 id="插件扩展机制">插件扩展机制</h1>
+<h2 id="介绍">介绍</h2>
+<ul>
+<li>如果需要实现某一个功能，需要用到一个方法，但是 jQuery 并没有封装这个方法供 jQuery 对象使用，就需要对方法进行扩展。</li>
+<li>jQuery 预留了一个扩展方法的接口</li>
+</ul>
+<h2 id="格式">格式</h2>
+<ul>
+<li><code>$.fn.extend(object)</code></li>
+<li><code>jQuery.fn.extend(object)</code></li>
+</ul>
+<h2 id="语法-4">语法</h2>
+<pre><code class="language-javascript"><div>$.fn.extend({
+    方法名: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ },
+    方法名: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ },
+    ...
+});
+</div></code></pre>
+<blockquote>
+<p>方法中的 <code>this</code> 指向 <code>jQuery 对象</code></p>
+</blockquote>
+<h2 id="注意-5">注意</h2>
+<ul>
+<li>在整个 jQuery 中，除了扩展方法中的 <code>this</code> 指向 <code>jQuery对象</code>，其它地方都是指向 <code>DOM 对象</code>。</li>
+</ul>
+<pre><code class="language-javascript"><div>$(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// 本方法中的 this 是 DOM 对象</span>
+    <span class="hljs-comment">// $(this) 是 jQuery 对象</span>
+});
+</div></code></pre>
+
+    </body>
+    </html>

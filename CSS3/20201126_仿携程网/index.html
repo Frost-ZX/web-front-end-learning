@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿携程网手机端页面</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <!-- 页面 -->
+    <div class="wrapper">
+        
+        <div class="nav hcenter-fit">
+            <div class="search">
+                <input type="text" placeholder="搜索：目的地/酒店/景点/航班号" />
+                <div class="search-icon"></div>
+            </div>
+            <div class="mine">
+                <div class="avatar bg-contain"></div>
+                <div class="text">我 的</div>
+            </div>
+        </div>
+
+        <div class="banner-shadow hcenter-fit"></div>
+        <div class="banner bg-cover" style="background-image: url('./img/banner.jpg');"></div>
+
+        <div class="grid-top">
+            <div class="item">
+                <div class="item-icon"></div>
+                <div class="item-text">攻略·景点</div>
+            </div>
+            <div class="item">
+                <div class="item-icon"></div>
+                <div class="item-text">门票·玩乐</div>
+            </div>
+            <div class="item">
+                <div class="item-icon"></div>
+                <div class="item-text">美食林</div>
+            </div>
+            <div class="item">
+                <div class="item-icon"></div>
+                <div class="item-text">周边游</div>
+            </div>
+            <div class="item">
+                <div class="item-icon"></div>
+                <div class="item-text">一日游</div>
+            </div>
+        </div>
+
+        <div class="grid-middle">
+            <div class="row">
+                <div class="item"><span>酒店</span></div>
+                <div class="item"><span>民宿·客栈</span></div>
+                <div class="item"><span>特价·爆款</span></div>
+            </div>
+            <div class="row">
+                <div class="item"><span>机票</span></div>
+                <div class="item"><span>火车票</span></div>
+                <div class="item"><span>汽车·船票</span></div>
+                <div class="item"><span>专车·租车</span></div>
+            </div>
+            <div class="row">
+                <div class="item"><span>旅游</span></div>
+                <div class="item"><span>高铁游</span></div>
+                <div class="item"><span>邮轮游</span></div>
+                <div class="item"><span>定制游</span></div>
+            </div>
+        </div>
+
+        <div class="grid-bottom">
+            <div class="row">
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">自由行</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">WiFi电话卡</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">保险·签证</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">换钞·购物</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">向导·包车</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">特价机票</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">礼品卡</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">申卡·借钱</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">旅拍</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-text">更多</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="bar">
+                <div class="item">
+                    <div class="item-icon bg-contain" style="background-image: url(./icon/phone.svg);"></div>
+                    <div class="item-text">电话预定</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon bg-contain" style="background-image: url(./icon/download.svg);"></div>
+                    <div class="item-text">下载客户端</div>
+                </div>
+                <div class="item">
+                    <div class="item-icon bg-contain" style="background-image: url(./icon/mine-normal.svg);"></div>
+                    <div class="item-text">我的</div>
+                </div>
+            </div>
+            <div class="links">
+                <div class="row">
+                    <a href="#">网站地图</a>
+                    <span class="sep">|</span>
+                    <a href="#">Language</a>
+                    <span class="sep">|</span>
+                    <a href="#">电脑版</a>
+                </div>
+                <div class="row">
+                    <a href="./index.html">©<label id="copyno">2020</label>携程旅行</a>
+                    <span class="sep">|</span>
+                    <a href="http://www.miibeian.gov.cn/">沪ICP备08023580号</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('load', function () {
+            var navBar = document.querySelector('.wrapper .nav');
+            var className = 'nav-fixed';
+
+            if (window.scrollY >= 10) {
+                navBar.classList.add(className);
+            }
+
+            window.addEventListener('scroll', function () {
+                var flagScroll = (window.scrollY >= 10);
+                var flagClass = navBar.classList.contains(className);
+
+                if (flagScroll && !flagClass) {
+                    navBar.classList.add(className);
+                } else if (!flagScroll && flagClass) {
+                    navBar.classList.remove(className);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

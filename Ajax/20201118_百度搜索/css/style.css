@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+}
+
+.search {
+    display: inline-block;
+    margin-top: 50px;
+    user-select: none;
+}
+
+/* -- LOGO -- */
+
+.search .logo {
+    display: inline-block;
+    margin-bottom: 8px;
+    width: 300px;
+    cursor: pointer;
+}
+.search .logo img {
+    width: 100%;
+}
+
+/* -- 输入栏 -- */
+
+.search .input {
+    position: relative;
+    text-align: left;
+    font-size: 0;
+}
+.search .input > div {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+}
+/* 图标 */
+.search .input .icon {
+    position: absolute;
+    top: 12px;
+    left: 510px;
+    cursor: pointer;
+}
+.search .input .icon i {
+    font-size: 20px;
+    color: #888;
+}
+.search .input .icon:hover i {
+    color: #4E6EF2;
+}
+/* 输入框 */
+.search .input input[type="text"] {
+    position: relative;
+    padding: 0 40px 0 15px;
+    box-sizing: border-box;
+    height: 45px;
+    width: 540px;
+    border: 2px solid #C4C7CE;
+    border-right: none;
+    border-radius: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    outline: none;
+    font-size: 16px;
+}
+.search .input input[type="text"]:hover {
+    border-color: #A7AAB5;
+}
+.search .input input[type="text"]:focus {
+    border-color: #4E6EF2;
+}
+/* 输入框 - 有关键词建议时 */
+.search .input input[type="text"].suggest:focus {
+    border-bottom-color: transparent;
+    border-bottom-left-radius: 0;
+}
+.search .input input[type="text"].suggest:focus ~ .word-list {
+    /* 显示 */
+    visibility: visible;
+    opacity: 1;
+}
+/* 关键词建议 */
+.search .input .word-list {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 43px;
+    left: 0;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    width: calc(540px + 2px);
+    box-sizing: border-box;
+    border: 2px solid #4E6EF2;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /* 默认隐藏 */
+    visibility: hidden;
+    opacity: 0;
+    /* 延时隐藏 */
+    transition: visibility 0.5s;
+}
+.search .input .word-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2.5%;
+    height: 2px;
+    width: 95%;
+    background-color: #EEE;
+}
+.search .input .word-list > div {
+    padding: 4px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.search .input .word-list > div:hover {
+    color: #4E6EF2;
+}
+/* 关键词建议 - 输入的关键词 */
+.search .input .word-list > div span {
+    color: #555;
+}
+/* 搜索按钮 */
+.search .input .btn-search {
+    position: relative;
+    height: 45px;
+    width: 110px;
+    border-radius: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #4E6EF2;
+    line-height: 45px;
+    text-align: center;
+    color: #FFF;
+    cursor: pointer;
+}
+.search .input .btn-search:hover {
+    background-color: #4662D9;
+}

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS3</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="css3">CSS3</h1>
+<ul>
+<li><a href="#css3">CSS3</a></li>
+<li><a href="#%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a>
+<ul>
+<li><a href="#%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8">属性选择器</a>
+<ul>
+<li><a href="#%E4%B8%8E-css2-%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB">与 CSS2 属性选择器的区别</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">结构伪类选择器</a>
+<ul>
+<li><a href="#nth-child-n">nth-child(n)</a></li>
+<li><a href="#nth-of-type-n">nth-of-type(n)</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8">伪元素选择器</a></li>
+<li><a href="#%E4%BC%AA%E5%85%83%E7%B4%A0-e-before-%E5%92%8C-e-after">伪元素（E::before 和 E::after）</a></li>
+<li><a href="#%E9%94%9A%E7%82%B9-target">锚点（:target）</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%92%E5%AD%90%E9%98%B4%E5%BD%B1-box-shadow">盒子阴影（box-shadow）</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E6%9C%AC%E9%98%B4%E5%BD%B1-text-shadow">文本阴影（text-shadow）</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-1">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-1">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BE%B9%E6%A1%86%E5%9C%86%E8%A7%92-border-radius">边框圆角（border-radius）</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%A4%9A%E4%B8%AA">设置多个</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%8D%95%E4%B8%AA">设置单个</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B-box-sizing">盒子模型（box-sizing）</a>
+<ul>
+<li><a href="#box-sizing-content-box">box-sizing: content-box</a></li>
+<li><a href="#box-sizing-border-box">box-sizing: border-box</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%87%E6%B8%A1-transition">过渡（transition）</a>
+<ul>
+<li><a href="#%E4%BD%9C%E7%94%A8">作用</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95-2">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-2">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%98%E5%BD%A2-transform">变形（transform）</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E5%8F%98%E5%BD%A2%E5%8E%9F%E7%82%B9-transform-origin">设置元素变形原点：transform-origin()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-3">语法</a></li>
+</ul>
+</li>
+<li><a href="#%E7%A7%BB%E5%8A%A8-translate">移动：translate()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-4">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-3">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%8B%E8%BD%AC-rotate">旋转：rotate()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-5">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-4">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BC%A9%E6%94%BE-scale">缩放：scale()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-6">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-5">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%80%BE%E6%96%9C-skew">倾斜：skew()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-7">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-6">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA%E5%8F%98%E5%BD%A2%E5%B1%9E%E6%80%A7%E5%80%BC">同时使用多个变形属性值</a>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F-7">注意</a></li>
+</ul>
+</li>
+<li><a href="#3d-%E5%8F%98%E5%BD%A2">3D 变形</a>
+<ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7">相关属性</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-8">语法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8A%A8%E7%94%BB-animation">动画（animation）</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%8A%A8%E7%94%BB">创建动画</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80">方式一</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C">方式二</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8A%A8%E7%94%BB">使用动画</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-9">语法</a></li>
+<li><a href="#animation-timing-function">animation-timing-function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a>
+<ul>
+<li><a href="#%E6%B8%90%E5%8F%98">渐变</a>
+<ul>
+<li><a href="#%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98">线性渐变</a></li>
+<li><a href="#%E5%BE%84%E5%90%91%E6%B8%90%E5%8F%98">径向渐变</a></li>
+</ul>
+</li>
+<li><a href="#background-attachment">background-attachment</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-10">语法</a></li>
+</ul>
+</li>
+<li><a href="#background-size">background-size</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-11">语法</a></li>
+</ul>
+</li>
+<li><a href="#background-origin">background-origin</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-12">语法</a></li>
+</ul>
+</li>
+<li><a href="#background-clip">background-clip</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-13">语法</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E8%83%8C%E6%99%AF">多背景</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BE%B9%E6%A1%86%E5%9B%BE%E7%89%87">边框图片</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-14">语法</a></li>
+</ul>
+</li>
+<li><a href="#web-%E5%AD%97%E4%BD%93">Web 字体</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93">定义字体</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-15">语法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E5%88%97">多列</a>
+<ul>
+<li><a href="#%E5%A4%9A%E5%88%97%E5%B1%9E%E6%80%A7">多列属性</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90">弹性盒子</a></li>
+<li><a href="#%E7%BB%98%E5%88%B6%E4%B8%89%E8%A7%92%E5%BD%A2">绘制三角形</a>
+<ul>
+<li><a href="#%E4%B8%8A">上</a></li>
+<li><a href="#%E4%B8%8B">下</a></li>
+<li><a href="#%E5%B7%A6">左</a></li>
+<li><a href="#%E5%8F%B3">右</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="选择器">选择器</h1>
+<blockquote>
+<p>注意：类选择器、属性选择器、伪类选择器的权重为 10</p>
+</blockquote>
+<h2 id="属性选择器">属性选择器</h2>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[attribute^=value]</code></td>
+<td>选择每一个 attribute 属性的值以 <code>value</code> 开头的元素</td>
+</tr>
+<tr>
+<td><code>[attribute$=value]</code></td>
+<td>选择每一个 attribute 属性的值以 <code>value</code> 结尾的元素</td>
+</tr>
+<tr>
+<td><code>[attribute*=value]</code></td>
+<td>选择每一个 attribute 属性的值包含子字符串 <code>value</code> 的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="与-css2-属性选择器的区别">与 CSS2 属性选择器的区别</h3>
+<ul>
+<li>主要是 <code>[attribute~=value]</code> 与 <code>[attribute*=value]</code> 以及 <code>[attribute|=value]</code> 与 <code>[attribute^=value]</code> 的区别</li>
+<li>CSS2 的属性选择器以 <code>单词</code> 为单位，CSS3 的属性选择器以 <code>字符串</code> 为单位</li>
+</ul>
+<h2 id="结构伪类选择器">结构伪类选择器</h2>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td>匹配父元素中的第一个子元素 E</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>匹配父元素中最后一个子元素 E</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td>匹配父元素中的第 n 个子元素 E</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>指定类型 E 的第一个</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>指定类型 E 的最后一个</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>指定类型 E 的第 n 个</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nth-child-n">nth-child(n)</h3>
+<ul>
+<li>
+<p>n 可以是数字、关键字和公式</p>
+</li>
+<li>
+<p>n 为数字时，则选择第 n 个（从 1 开始）</p>
+</li>
+<li>
+<p>常用的关键字：<code>even</code>（偶数）、<code>odd</code>（奇数）</p>
+</li>
+<li>
+<p>n 为公式时，n 从 <code>0</code> 开始 <code>自动递增</code> 计算，但为 <code>0</code>、<code>负数</code> 或 <code>超出元素的个数</code> 时会被忽略</p>
+</li>
+<li>
+<p>常用的公式</p>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2n</td>
+<td>偶数</td>
+</tr>
+<tr>
+<td>2n+1</td>
+<td>奇数</td>
+</tr>
+<tr>
+<td>5n</td>
+<td>0、5、10、15、...</td>
+</tr>
+<tr>
+<td>n+5</td>
+<td>从第 5 个开始（包含第五个），到最后</td>
+</tr>
+<tr>
+<td>-n+5</td>
+<td>前 5 个（包含第 5 个）</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<blockquote>
+<p>注意：<code>nth-child</code> 从所有子级开始计算（可能不是同一种类型的标签）</p>
+</blockquote>
+<h3 id="nth-of-type-n">nth-of-type(n)</h3>
+<ul>
+<li><code>nth-of-type</code> 指定同一种类型的子级标签</li>
+<li>例如：<code>ul li:nth-of-type(2)</code> 选择第 2 个 li</li>
+</ul>
+<h2 id="伪元素选择器">伪元素选择器</h2>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E::first-letter</td>
+<td>文本的第一个字符</td>
+</tr>
+<tr>
+<td>E::first-line</td>
+<td>文本的第一行</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>选中的文本</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：<code>E::selection</code> 只可以应用于少数的 CSS 属性（<code>color</code>、<code>background-color</code>、<code>text-shadow</code>）</p>
+</blockquote>
+<h2 id="伪元素-e-before-和-e-after">伪元素（E::before 和 E::after）</h2>
+<ul>
+<li>在 E 元素内部的开始位置或末尾位置创建一个元素。</li>
+<li>创建的元素为行内元素，且必须要结合 <code>content</code> 属性使用。</li>
+</ul>
+<h2 id="锚点-target">锚点（:target）</h2>
+<ul>
+<li>结合锚点进行使用，处于当前锚点的元素会被选中。</li>
+</ul>
+<h1 id="盒子阴影-box-shadow">盒子阴影（box-shadow）</h1>
+<h3 id="语法">语法</h3>
+<pre><code class="language-css"><div>选择器 {
+    <span class="hljs-attribute">box-shadow</span>: h-shadow v-shadow blur spread color inset;
+    <span class="hljs-attribute">box-shadow</span>: 阴影水平位置 阴影垂直位置 模糊距离 阴影尺寸 阴影颜色 阴影类型;
+}
+</div></code></pre>
+<h3 id="注意">注意</h3>
+<ul>
+<li>可以同时添加多个盒子阴影，多个阴影之间使用 <code>,</code> 分隔。</li>
+<li><code>h-shadow</code> 和 <code>v-shadow</code> 必须填写，其余可省略。</li>
+<li>默认阴影类型是外阴影 (outset) ，不需要设置。</li>
+</ul>
+<h1 id="文本阴影-text-shadow">文本阴影（text-shadow）</h1>
+<h3 id="语法-1">语法</h3>
+<pre><code class="language-css"><div>选择器 {
+    <span class="hljs-attribute">text-shadow</span>: h-shadow v-shadow blur color;
+    <span class="hljs-attribute">text-shadow</span>: 阴影水平位置 阴影垂直位置 模糊距离 阴影颜色;
+}
+</div></code></pre>
+<h3 id="注意-1">注意</h3>
+<ul>
+<li>可以同时添加多个文本阴影，多个阴影之间使用 <code>,</code> 分隔。</li>
+<li><code>h-shadow</code> 和 <code>v-shadow</code> 必须填写，其余可省略。</li>
+</ul>
+<h1 id="边框圆角-border-radius">边框圆角（border-radius）</h1>
+<h3 id="设置多个">设置多个</h3>
+<ul>
+<li>
+<p>四个角相同</p>
+<ul>
+<li><code>border-radius：值</code></li>
+</ul>
+</li>
+<li>
+<p>左上角、右上角、右下角、左下角</p>
+<ul>
+<li><code>border-radius: 值 值 值 值</code></li>
+</ul>
+</li>
+<li>
+<p>左上角和右下角、右上角和左下角</p>
+<ul>
+<li><code>border-radius: 值 值</code></li>
+</ul>
+</li>
+<li>
+<p>左上角、右上角和左下角、右下角</p>
+<ul>
+<li><code>border-radius: 值 值 值</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="设置单个">设置单个</h3>
+<ul>
+<li><code>border-top-left-radius</code></li>
+<li><code>border-top-right-radius</code></li>
+<li><code>border-bottom-left-radius</code></li>
+<li><code>border-bottom-right-radius</code></li>
+</ul>
+<blockquote>
+<p>这四个属性的值可以为 1 个或 2 个<br>
+第 1 个值表示水平半径，第 2 个值表示垂直半径。<br>
+如果设置 1 个值，表示水平半径与垂直半径相等。</p>
+</blockquote>
+<h1 id="盒子模型-box-sizing">盒子模型（box-sizing）</h1>
+<h3 id="box-sizing-content-box">box-sizing: content-box</h3>
+<ul>
+<li>盒子大小为：元素大小 + padding + border</li>
+<li>content-box 为 <code>默认值</code>，让元素维持 W3C 的标准 <code>Box Mode</code></li>
+</ul>
+<h3 id="box-sizing-border-box">box-sizing: border-box</h3>
+<ul>
+<li>盒子大小为：元素大小（padding 和 border 包含到元素大小中）</li>
+</ul>
+<h1 id="过渡-transition">过渡（transition）</h1>
+<h3 id="作用">作用</h3>
+<ul>
+<li>当元素从一种样式变换为另一种样式时有过渡效果（补间动画）。</li>
+</ul>
+<h3 id="语法-2">语法</h3>
+<ul>
+<li><code>transition: property duration timing-function delay</code></li>
+<li>可以有多组属性变化，使用 <code>,</code> 分隔。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transition</td>
+<td>简写属性，用于在一个属性中设置四个过渡属性。</td>
+</tr>
+<tr>
+<td>transition-property</td>
+<td>定义应用过渡的 CSS 属性的名称。<br>（<code>all</code> 可表示所有的属性）</td>
+</tr>
+<tr>
+<td>transition-duration</td>
+<td>定义过渡效果花费的时间，默认是 <code>0</code>。</td>
+</tr>
+<tr>
+<td>transition-timing-function</td>
+<td>定义过渡效果的时间曲线，默认是 <code>ease</code>。</td>
+</tr>
+<tr>
+<td>transition-delay</td>
+<td>定义过渡效果何时开始，默认是 <code>0</code>。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注意-2">注意</h3>
+<ul>
+<li>只能产生从 <code>某个值</code> 到另外一个 <code>具体值</code> 的过渡</li>
+</ul>
+<h1 id="变形-transform">变形（transform）</h1>
+<blockquote>
+<p>参考：<br>
+<a href="https://www.runoob.com/cssref/css3-pr-transform.html">https://www.runoob.com/cssref/css3-pr-transform.html</a><br>
+<a href="https://www.runoob.com/css3/css3-2dtransforms.html">https://www.runoob.com/css3/css3-2dtransforms.html</a><br>
+<a href="https://www.runoob.com/css3/css3-3dtransforms.html">https://www.runoob.com/css3/css3-3dtransforms.html</a></p>
+<p>注意：<br>
+变形时不影响其他元素</p>
+</blockquote>
+<h2 id="设置元素变形原点-transform-origin">设置元素变形原点：transform-origin()</h2>
+<h3 id="语法-3">语法</h3>
+<ul>
+<li><code>transform-origin(x, y, z)</code></li>
+<li>x、y、z 可以是 <code>带单位的具体值</code></li>
+<li>x 可以是 <code>left</code>、<code>center</code>、<code>right</code>、<code>百分比</code></li>
+<li>y 可以是 <code>top</code>、<code>center</code>、<code>bottom</code>、<code>百分比</code></li>
+</ul>
+<h2 id="移动-translate">移动：translate()</h2>
+<h3 id="语法-4">语法</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>translate(x, y)</td>
+<td>定义 2D 转换</td>
+</tr>
+<tr>
+<td>translate3d(x, y, z)</td>
+<td>定义 3D 转换</td>
+</tr>
+<tr>
+<td>translateX(x)</td>
+<td>定义沿着 X 轴的 3D 旋转</td>
+</tr>
+<tr>
+<td>translateY(y)</td>
+<td>定义沿着 Y 轴的 3D 旋转</td>
+</tr>
+<tr>
+<td>translateZ(z)</td>
+<td>定义沿着 Z 轴的 3D 旋转</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注意-3">注意</h3>
+<ul>
+<li>对 <code>行内元素</code> 没有效果</li>
+<li><code>z</code> 只能使用具体的带单位数值（不能使用百分比）</li>
+</ul>
+<h2 id="旋转-rotate">旋转：rotate()</h2>
+<h3 id="语法-5">语法</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rotate(angle)</td>
+<td>定义 2D 旋转（沿着 Z 轴）</td>
+</tr>
+<tr>
+<td>rotate3d(x, y, z, angle)</td>
+<td>定义 3D 旋转（沿着自定义轴）</td>
+</tr>
+<tr>
+<td>rotateX(angle)</td>
+<td>定义沿着 X 轴的 3D 旋转</td>
+</tr>
+<tr>
+<td>rotateY(angle)</td>
+<td>定义沿着 Y 轴的 3D 旋转</td>
+</tr>
+<tr>
+<td>rotateZ(angle)</td>
+<td>定义沿着 Z 轴的 3D 旋转</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注意-4">注意</h3>
+<ul>
+<li><code>angle</code> 单位为 <code>deg</code></li>
+<li><code>angle</code> 可以是负数</li>
+</ul>
+<h2 id="缩放-scale">缩放：scale()</h2>
+<h3 id="语法-6">语法</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scale(x, [y])</td>
+<td>定义 2D 缩放转换</td>
+</tr>
+<tr>
+<td>scale3d(x, y, z)</td>
+<td>定义 3D 缩放转换</td>
+</tr>
+<tr>
+<td>scaleX(x)</td>
+<td>通过设置 X 轴的值来定义缩放转换</td>
+</tr>
+<tr>
+<td>scaleY(y)</td>
+<td>通过设置 Y 轴的值来定义缩放转换</td>
+</tr>
+<tr>
+<td>scaleZ(z)</td>
+<td>通过设置 Z 轴的值来定义 3D 缩放转换</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注意-5">注意</h3>
+<ul>
+<li>x、y、z 不带单位</li>
+<li>值 &gt; 1 时放大，值 &gt; 0 且 &lt; 1 时缩小，值 &lt; 0 时先缩小后放大并翻转</li>
+<li>只填一个参数时，同时设置 x 和 y</li>
+</ul>
+<h2 id="倾斜-skew">倾斜：skew()</h2>
+<h3 id="语法-7">语法</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>skew(x angle, y angle)</td>
+<td>沿 X 轴和 Y 轴倾斜</td>
+</tr>
+<tr>
+<td>skewX(angle)</td>
+<td>沿 X 轴倾斜</td>
+</tr>
+<tr>
+<td>skewY(angle)</td>
+<td>沿 Y 轴倾斜</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注意-6">注意</h3>
+<ul>
+<li><code>angle</code> 单位为 <code>deg</code></li>
+<li><code>angle</code> 可以是负数</li>
+</ul>
+<h2 id="同时使用多个变形属性值">同时使用多个变形属性值</h2>
+<ul>
+<li>可同时使用多个变形属性</li>
+<li>多个属性值之间使用空格分隔</li>
+</ul>
+<h3 id="注意-7">注意</h3>
+<ul>
+<li>先写位移，后写旋转。</li>
+<li>如果先写旋转，会改变坐标轴方向。</li>
+</ul>
+<h2 id="3d-变形">3D 变形</h2>
+<h3 id="相关属性">相关属性</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backface-visibility</td>
+<td>定义元素在不面对屏幕时是否可见</td>
+</tr>
+<tr>
+<td>perspective</td>
+<td>规定 3D 元素的透视效果（给父元素设置）<br>默认为 0px，数值越小表示距离越近，一般为 500px - 1000px。</td>
+</tr>
+<tr>
+<td>perspective-origin</td>
+<td>规定 3D 元素的底部位置</td>
+</tr>
+<tr>
+<td>transform-style</td>
+<td>指定嵌套元素是怎样在三维空间中呈现</td>
+</tr>
+</tbody>
+</table>
+<h4 id="语法-8">语法</h4>
+<ul>
+<li>
+<p><code>transform-style: flat | preserve-3d</code></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flat</td>
+<td>表示所有子元素在 2D 平面呈现（默认）</td>
+</tr>
+<tr>
+<td>preserve-3d</td>
+<td>表示所有子元素在 3D 空间中呈现</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h1 id="动画-animation">动画（animation）</h1>
+<blockquote>
+<p>参考：<br>
+<a href="https://www.runoob.com/css3/css3-animations.html">https://www.runoob.com/css3/css3-animations.html</a><br>
+<a href="https://www.runoob.com/cssref/css3-pr-animation.html">https://www.runoob.com/cssref/css3-pr-animation.html</a></p>
+</blockquote>
+<h2 id="创建动画">创建动画</h2>
+<h3 id="方式一">方式一</h3>
+<pre><code class="language-css"><div><span class="hljs-keyword">@keyframes</span> 动画名称 {
+    <span class="hljs-selector-tag">from</span> {
+        样式属性名: 样式属性值;
+        样式属性名: 样式属性值;
+        ...
+    }
+    <span class="hljs-selector-tag">to</span> {
+        样式属性名: 样式属性值;
+        样式属性名: 样式属性值;
+        ...
+    }
+}
+</div></code></pre>
+<h3 id="方式二">方式二</h3>
+<pre><code class="language-css"><div><span class="hljs-keyword">@keyframes</span> 动画名称 {
+    百分比 {
+        样式属性名: 样式属性值;
+        样式属性名: 样式属性值;
+        ...
+    }
+    百分比 {
+        样式属性名: 样式属性值;
+        样式属性名: 样式属性值;
+        ...
+    }
+    ...
+}
+</div></code></pre>
+<h2 id="使用动画">使用动画</h2>
+<h3 id="语法-9">语法</h3>
+<ul>
+<li><code>animation: name duration timing-function delay iteration-count direction fill-mode play-state</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>animation-name</td>
+<td>指定要绑定到选择器的关键帧的名称</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>动画指定需要多少秒或毫秒完成</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>设置动画将如何完成一个周期</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>设置动画在启动前的延迟间隔</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>定义动画的播放次数</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>指定是否应该轮流反向播放动画</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时）<br>应用到元素的样式</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>指定动画是否正在运行或已暂停</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>设置属性为其默认值 <a href="https://www.runoob.com/cssref/css-initial.html">关于 initial 的介绍</a></td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>从父元素继承属性 <a href="https://www.runoob.com/cssref/css-inherit.html">关于 initinherital 的介绍</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：可同时使用多个动画，使用 <code>,</code> 分隔。</p>
+</blockquote>
+<h3 id="animation-timing-function">animation-timing-function</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linear</td>
+<td>动画从头到尾的速度都相同</td>
+</tr>
+<tr>
+<td>ease</td>
+<td>默认值，动画以低速开始，然后加快，在结束前变慢。</td>
+</tr>
+<tr>
+<td>ease-in</td>
+<td>动画以低速开始</td>
+</tr>
+<tr>
+<td>ease-out</td>
+<td>动画以低速结束</td>
+</tr>
+<tr>
+<td>ease-in-out</td>
+<td>动画以低速开始和结束</td>
+</tr>
+<tr>
+<td>cubic-bezier(n, n, n, n)</td>
+<td>在 cubic-bezier 函数中自己的值（从 0 到 1 的数值）</td>
+</tr>
+<tr>
+<td>steps(n, [ start / end ])</td>
+<td>第一个参数 n 表示阶跃次数（正整数）<br>第二个参数表示阶跃点<br>start：一开始就先进行阶跃，end：默认，每阶段完成后再进行阶跃</td>
+</tr>
+</tbody>
+</table>
+<h1 id="背景">背景</h1>
+<h2 id="渐变">渐变</h2>
+<h3 id="线性渐变">线性渐变</h3>
+<ul>
+<li><code>background-image: linear-gradient(direction, color-stop-1, color-stop2, ...);</code></li>
+<li><code>background-image: repeating-linear-gradient(angle | to side-or-corner, color-stop1, color-stop2, ...);</code></li>
+</ul>
+<h3 id="径向渐变">径向渐变</h3>
+<ul>
+<li><code>background-image: radial-gradient(shape size at position, start-color, ..., last-color);</code></li>
+<li><code>background-image: repeating-radial-gradient(shape size at position, start-color, ..., last-color);</code></li>
+</ul>
+<h2 id="background-attachment">background-attachment</h2>
+<h3 id="语法-10">语法</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scroll</td>
+<td>背景图片随着页面的滚动而滚动，默认值</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>背景图片不会随着页面的滚动而滚动</td>
+</tr>
+<tr>
+<td>local</td>
+<td>背景图片会随着元素内容的滚动而滚动</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>设置该属性的默认值</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>指定 <code>background-attachment</code> 的设置应该从父元素继承</td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-size">background-size</h2>
+<h3 id="语法-11">语法</h3>
+<blockquote>
+<p><code>background-size: length | percentage | cover | contain;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length</td>
+<td>设置背景图片高度和宽度<br>第一个值设置宽度，第二个值设置高度。<br>如果只给出一个值，第二个值自动设置为 auto。</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>将计算相对于背景定位区域的百分比<br>第一个值设置宽度，第二个值设置高度。<br>如果只给出一个值，第二个值自动设置为 auto。</td>
+</tr>
+<tr>
+<td>cover</td>
+<td>保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小</td>
+</tr>
+<tr>
+<td>contain</td>
+<td>保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小</td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-origin">background-origin</h2>
+<h3 id="语法-12">语法</h3>
+<blockquote>
+<p><code>background-origin: padding-box | border-box | content-box;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>padding-box</td>
+<td>背景图像填充框的相对位置</td>
+</tr>
+<tr>
+<td>border-box</td>
+<td>背景图像边界框的相对位置</td>
+</tr>
+<tr>
+<td>content-box</td>
+<td>背景图像的相对位置的内容框</td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-clip">background-clip</h2>
+<h3 id="语法-13">语法</h3>
+<blockquote>
+<p><code>background-clip: border-box | padding-box | content-box;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>border-box</td>
+<td>背景绘制在边框方框内（剪切成边框方框），默认值</td>
+</tr>
+<tr>
+<td>padding-box</td>
+<td>背景绘制在衬距方框内（剪切成衬距方框）</td>
+</tr>
+<tr>
+<td>content-box</td>
+<td>背景绘制在内容方框内（剪切成内容方框）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多背景">多背景</h2>
+<ul>
+<li>一个元素可以设置多组背景图像属性值。</li>
+<li>每组属性值之间使用 <code>,</code> 分隔。</li>
+<li>如果设置的多重背景图之间存在交集（重叠），前面的背景图会覆盖在后面的背景图上。</li>
+<li>如果需要设置背景色，通常定义在最后一组属性值上。</li>
+</ul>
+<h1 id="边框图片">边框图片</h1>
+<h3 id="语法-14">语法</h3>
+<blockquote>
+<p><code>border-image: source slice width outset repeat|initial|inherit;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>border-image-source</td>
+<td>用于指定要用于绘制边框的图像的位置</td>
+</tr>
+<tr>
+<td>border-image-slice</td>
+<td>图像边界向内偏移</td>
+</tr>
+<tr>
+<td>border-image-width</td>
+<td>图像边界的宽度</td>
+</tr>
+<tr>
+<td>border-image-outset</td>
+<td>用于指定在边框外部绘制 border-image-area 的量</td>
+</tr>
+<tr>
+<td>border-image-repeat</td>
+<td>用于设置图像边界是否应重复（repeat）、拉伸（stretch）或铺满（round）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="web-字体">Web 字体</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/css3/css3-fonts.html">https://www.runoob.com/css3/css3-fonts.html</a></p>
+</blockquote>
+<h2 id="定义字体">定义字体</h2>
+<h3 id="语法-15">语法</h3>
+<blockquote>
+<p><code>@font-face { }</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>描述符</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>font-family</td>
+<td>name</td>
+<td>必需，定义字体的名称。</td>
+</tr>
+<tr>
+<td>src</td>
+<td>URL</td>
+<td>必需，定义字体文件的 URL。</td>
+</tr>
+<tr>
+<td>font-stretch</td>
+<td>normal<br>condensed<br>ultra-condensed<br>extra-condensed<br>semi-condensed<br>expanded<br>semi-expanded<br>extra-expanded<br>ultra-expanded</td>
+<td>可选，定义如何拉伸字体，默认 <code>normal</code>。</td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>normal<br>italic<br>oblique</td>
+<td>可选，定义字体的样式，默认 <code>normal</code>。</td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>normal<br>bold<br>100<br>200<br>300<br>400<br>500<br>600<br>700<br>800<br>900</td>
+<td>可选，定义字体的粗细，默认 <code>normal</code>。</td>
+</tr>
+<tr>
+<td>unicode-range</td>
+<td>unicode-range</td>
+<td>可选，定义字体支持的 UNICODE 字符范围，默认 <code>U+0-10FFFF</code>。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="多列">多列</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/css3/css3-multiple-columns.html">https://www.runoob.com/css3/css3-multiple-columns.html</a></p>
+</blockquote>
+<h3 id="多列属性">多列属性</h3>
+<ul>
+<li>column-count</li>
+<li>column-gap</li>
+<li>column-rule-style</li>
+<li>column-rule-width</li>
+<li>column-rule-color</li>
+<li>column-rule</li>
+<li>column-span</li>
+<li>column-width</li>
+</ul>
+<h1 id="弹性盒子">弹性盒子</h1>
+<blockquote>
+<p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a><br>
+<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">http://www.ruanyifeng.com/blog/2015/07/flex-examples.html</a><br>
+<a href="https://www.runoob.com/css3/css3-flexbox.html">https://www.runoob.com/css3/css3-flexbox.html</a></p>
+</blockquote>
+<h1 id="绘制三角形">绘制三角形</h1>
+<h3 id="上">上</h3>
+<pre><code class="language-css"><div>选择器 {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border-left</span>: <span class="hljs-number">50px</span> solid transparent;
+    <span class="hljs-attribute">border-right</span>: <span class="hljs-number">50px</span> solid transparent;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">100px</span> solid <span class="hljs-number">#2196F3</span>;
+}
+</div></code></pre>
+<div style="width: 0; height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-bottom: 100px solid #2196F3;"></div>
+<h3 id="下">下</h3>
+<pre><code class="language-css"><div>选择器 {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">100px</span> solid <span class="hljs-number">#2196F3</span>;
+    <span class="hljs-attribute">border-left</span>: <span class="hljs-number">50px</span> solid transparent;
+    <span class="hljs-attribute">border-right</span>: <span class="hljs-number">50px</span> solid transparent;
+}
+</div></code></pre>
+<div style="width: 0; height: 0;
+border-top: 100px solid #2196F3;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;"></div>
+<h3 id="左">左</h3>
+<pre><code class="language-css"><div>选择器 {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">50px</span> solid transparent;
+    <span class="hljs-attribute">border-right</span>: <span class="hljs-number">100px</span> solid <span class="hljs-number">#2196F3</span>;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">50px</span> solid transparent;
+}
+</div></code></pre>
+<div style="width: 0; height: 0;
+border-top: 50px solid transparent;
+border-right: 100px solid #2196F3;
+border-bottom: 50px solid transparent;"></div>
+<h3 id="右">右</h3>
+<pre><code class="language-css"><div>选择器 {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">50px</span> solid transparent;
+    <span class="hljs-attribute">border-left</span>: <span class="hljs-number">100px</span> solid <span class="hljs-number">#2196F3</span>;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">50px</span> solid transparent;
+}
+</div></code></pre>
+<div style="width: 0; height: 0;
+border-top: 50px solid transparent;
+border-left: 100px solid #2196F3;
+border-bottom: 50px solid transparent;"></div>
+
+    </body>
+    </html>

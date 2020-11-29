@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JavaScript &#x9762;&#x5411;&#x5BF9;&#x8C61;</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="javascript-面向对象">JavaScript 面向对象</h1>
+<ul>
+<li><a href="#javascript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">JavaScript 面向对象</a></li>
+<li><a href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%92%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB">面向过程和面向对象的区别</a>
+<ul>
+<li><a href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B">面向过程</a></li>
+<li><a href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">面向对象</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">使用构造函数批量创建对象</a>
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">创建对象</a></li>
+<li><a href="#new-%E5%85%B3%E9%94%AE%E5%AD%97">new 关键字</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%92%8C%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98">静态成员和实例成员</a>
+<ul>
+<li><a href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98">静态成员</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7">添加静态属性</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">添加静态方法</a></li>
+<li><a href="#%E8%AE%BF%E9%97%AE">访问</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98">实例成员</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98">构造函数的问题</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype-%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B">构造函数原型（prototype，显式原型）</a>
+<ul>
+<li><a href="#%E6%89%A9%E5%B1%95%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95">扩展内置对象方法</a></li>
+<li><a href="#%E5%90%8C%E6%97%B6%E7%BB%99%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E6%96%B9%E6%B3%95">同时给原型对象添加多个方法</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%9E%8B-%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B">对象原型（隐式原型）</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E9%93%BE">原型链</a>
+<ul>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E6%9F%A5%E6%89%BE%E6%9C%BA%E5%88%B6">原型链的查找机制</a></li>
+<li><a href="#es5-%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1-call-%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF">ES5 使用构造函数原型对象 + call 实现继承</a>
+<ul>
+<li><a href="#%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7">继承属性</a></li>
+<li><a href="#%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95">继承方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="面向过程和面向对象的区别">面向过程和面向对象的区别</h1>
+<h3 id="面向过程">面向过程</h3>
+<ul>
+<li>想到什么功能就写什么功能，最多把功能封装到函数中，按照步骤一步一步调用函数。</li>
+<li>面向过程主要注重过程，分步骤。</li>
+</ul>
+<h3 id="面向对象">面向对象</h3>
+<ul>
+<li>一种设计思想，把每个功能分配给不同的对象，指挥对象工作。</li>
+<li>特点：封装（把对象封装到函数中）、继承（子类可以继承父类的属性和方法）、多态（多种形态）</li>
+</ul>
+<h1 id="使用构造函数批量创建对象">使用构造函数批量创建对象</h1>
+<blockquote>
+<p>构造函数也是函数的一种，但它主要用于创建对象。</p>
+</blockquote>
+<h3 id="构造函数">构造函数</h3>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> 构造函数名称(<span class="hljs-params">参数<span class="hljs-number">1</span>, 参数<span class="hljs-number">2</span>, ...</span>) </span>{
+    <span class="hljs-built_in">this</span>.属性<span class="hljs-number">1</span> = 参数<span class="hljs-number">1</span>;             <span class="hljs-comment">// 动态</span>
+    <span class="hljs-built_in">this</span>.属性<span class="hljs-number">2</span> = 属性值;            <span class="hljs-comment">// 固定</span>
+
+    <span class="hljs-built_in">this</span>.方法名<span class="hljs-number">1</span> = 参数<span class="hljs-number">2</span>;           <span class="hljs-comment">// 动态</span>
+    <span class="hljs-built_in">this</span>.方法名<span class="hljs-number">2</span> = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ }; <span class="hljs-comment">// 固定</span>
+}
+</div></code></pre>
+<h3 id="创建对象">创建对象</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> 对象名 = <span class="hljs-keyword">new</span> 构造函数名称(参数<span class="hljs-number">1</span>, 参数<span class="hljs-number">2</span>, ...);
+</div></code></pre>
+<h3 id="new-关键字">new 关键字</h3>
+<ul>
+<li>构造函数一般会配合 <code>new</code> 关键字使用</li>
+<li><code>new</code> 关键字专门用于实例化对象</li>
+<li><code>new</code> 关键字在构造函数中实现了：
+<ol>
+<li>在构造函数中创建一个空对象</li>
+<li>把构造函数中的 <code>this</code> 指向这个空对象</li>
+<li>执行构造函数中的代码，给这个空对象初始化属性和方法</li>
+<li>返回这个对象（因此使用 <code>new</code> 关键字后，不需要在构造函数中 <code>return</code> 这个对象）</li>
+</ol>
+</li>
+</ul>
+<h1 id="静态成员和实例成员">静态成员和实例成员</h1>
+<h3 id="静态成员">静态成员</h3>
+<ul>
+<li>在构造函数本身上添加的成员，只能由函数本身访问。</li>
+</ul>
+<h4 id="添加静态属性">添加静态属性</h4>
+<pre><code class="language-javascript"><div>构造函数名.属性名 = 属性值
+</div></code></pre>
+<h4 id="添加静态方法">添加静态方法</h4>
+<pre><code class="language-javascript"><div>构造函数名.方法名 = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ }
+</div></code></pre>
+<h4 id="访问">访问</h4>
+<ul>
+<li><code>构造函数名.属性名</code></li>
+<li><code>构造函数名.方法名()</code></li>
+</ul>
+<h3 id="实例成员">实例成员</h3>
+<ul>
+<li>在构造函数内部创建的对象成员，只能由实例化的对象访问。</li>
+</ul>
+<h1 id="构造函数的问题">构造函数的问题</h1>
+<ul>
+<li>构造方法存在浪费内存的问题
+<ul>
+<li>构造函数方法每次创建一个实例，就会单独创建一个空间来存放一个函数。</li>
+<li>对象之间的方法不共享，即使是同一个方法。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> 构造函数(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">this</span>.方法 = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ };
+}
+
+<span class="hljs-keyword">var</span> 对象<span class="hljs-number">1</span> = <span class="hljs-keyword">new</span> 构造函数();
+<span class="hljs-keyword">var</span> 对象<span class="hljs-number">2</span> = <span class="hljs-keyword">new</span> 构造函数();
+
+<span class="hljs-built_in">console</span>.log(对象<span class="hljs-number">1.</span>方法 == 对象<span class="hljs-number">2.</span>方法);  <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(对象<span class="hljs-number">1.</span>方法 === 对象<span class="hljs-number">2.</span>方法); <span class="hljs-comment">// false</span>
+</div></code></pre>
+<h1 id="构造函数原型-prototype-显式原型">构造函数原型（prototype，显式原型）</h1>
+<blockquote>
+<p>每个构造函数都有一个属性 <code>prototype</code>，且值都是对象<br>
+因此也称 <code>prototype</code> 为原型对象<br>
+主要用于共享方法</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> 构造函数(<span class="hljs-params"></span>) </span>{ }
+
+构造函数.prototype.方法 = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ }
+
+<span class="hljs-keyword">var</span> 对象<span class="hljs-number">1</span> = <span class="hljs-keyword">new</span> 构造函数();
+<span class="hljs-keyword">var</span> 对象<span class="hljs-number">2</span> = <span class="hljs-keyword">new</span> 构造函数();
+
+<span class="hljs-built_in">console</span>.log(对象<span class="hljs-number">1.</span>方法 == 对象<span class="hljs-number">2.</span>方法);  <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(对象<span class="hljs-number">1.</span>方法 === 对象<span class="hljs-number">2.</span>方法); <span class="hljs-comment">// true</span>
+</div></code></pre>
+<h3 id="扩展内置对象方法">扩展内置对象方法</h3>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">Array</span>.prototype.getSum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+
+    <span class="hljs-built_in">this</span>.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{
+        sum += item;
+    });
+
+    <span class="hljs-keyword">return</span> sum;
+}
+
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>];
+<span class="hljs-keyword">var</span> result = arr.getSum();
+
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// 150</span>
+</div></code></pre>
+<h3 id="同时给原型对象添加多个方法">同时给原型对象添加多个方法</h3>
+<h1 id="对象原型-隐式原型">对象原型（隐式原型）</h1>
+<blockquote>
+<p>构造函数身上有一个 prototype 属性，称为 <code>原型对象</code>。<br>
+每个实例成员对象身上也有一个 <code>__proto__</code>。<br>
+只要是对象，都是 <code>__proto__</code> 属性。<br>
+<code>__proto__</code> 是对象原型，用于指向构造函数的原型对象。<br>
+因为有 <code>__proto__</code> 属性的存在，使用实例对象才可以使用构造函数的方法。<br>
+<code>__proto__</code> 是非标准属性。</p>
+</blockquote>
+<h1 id="原型链">原型链</h1>
+<blockquote>
+<p>因为 <code>原型对象</code> 也是对象，所以 <code>原型对象</code> 也有一个 <code>__proto__</code>（指向上一层构造函数的 <code>prototype</code>）。</p>
+</blockquote>
+<h3 id="原型链的查找机制">原型链的查找机制</h3>
+<h3 id="es5-使用构造函数原型对象-call-实现继承">ES5 使用构造函数原型对象 + call 实现继承</h3>
+<h4 id="继承属性">继承属性</h4>
+<h4 id="继承方法">继承方法</h4>
+
+    </body>
+    </html>

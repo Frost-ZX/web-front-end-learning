@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻转盒子</title>
+    <style>
+        body {
+            background-color: #FFF;
+            text-align: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .flip-box {
+            display: inline-block;
+            position: relative;
+            margin-top: 50px;
+            width: 300px;
+            height: 300px;
+            user-select: none;
+        }
+
+        .flip-box .front,
+        .flip-box .back {
+            display: inline-block;
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: transform 1s;
+        }
+
+        .flip-box .front {
+            background-image: url("./img/circle_front.png");
+        }
+        .flip-box:hover .front {
+            transform: rotateY(180deg);
+        }
+
+        .flip-box .back {
+            background-image: url("./img/circle_back.png");
+            transform: rotateY(-180deg);
+        }
+        .flip-box:hover .back {
+            transform: rotateY(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="flip-box">
+        <div class="back"></div>
+        <div class="front"></div>
+    </div>
+</body>
+</html>

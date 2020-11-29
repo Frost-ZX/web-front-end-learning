@@ -1,8 +1,11 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
 
-# 笔记
+# JavaScript
 
-- [笔记](#笔记)
+- [JavaScript](#javascript)
 - [循环](#循环)
   - [for 循环](#for-循环)
     - [语法](#语法)
@@ -19,6 +22,7 @@
 - [数组](#数组)
   - [多维数组](#多维数组)
     - [二维数组](#二维数组)
+      - [排序](#排序)
     - [三维数组](#三维数组)
   - [关联数组](#关联数组)
     - [添加属性](#添加属性)
@@ -147,15 +151,15 @@
     - [匹配除换行符（\n、\r）以外的其他字符](#匹配除换行符-n-r-以外的其他字符)
   - [量词符](#量词符)
     - [?](#)
-    - [*](#ul-li-li-ul)
-    - [+](#ul-li-li-ul-1)
+    - [*](#-1)
+    - [+](#-2)
     - [{m, n}](#m-n)
     - [^（在正则表达式最前方时）](#在正则表达式最前方时)
-    - [$](#-1)
+    - [$](#-3)
       - [(?=x)](#x)
       - [(?|x)](#x-1)
-  - [()](#-2)
-  - [|](#-3)
+  - [()](#-4)
+  - [|](#-5)
   - [修饰符](#修饰符)
   - [贪婪模式](#贪婪模式)
   - [懒惰模式](#懒惰模式)
@@ -283,6 +287,39 @@ var arr = [
     [元素1, 元素2, ...]
 ];
 ```
+
+#### 排序
+
+> [排序算法总结](https://www.runoob.com/w3cnote/sort-algorithm-summary.html)
+
+- 冒泡排序
+
+   ```javascript
+   function sort(arr){
+       var temp; // 临时变量
+       var flag; // 是否交换的标记
+   
+       // 一共进行 arr.length-1 次
+       for (var i = 0; i < arr.length - 1; i++){
+           // 重置标记
+           flag = false;
+           // 选出当前排序的最大值往后移动
+           for (var j = arr.length - 1; j > i; j--){
+               if(arr[j] < arr[j - 1]) {
+                   temp = arr[j];
+                   arr[j] = arr[j - 1];
+                   arr[j - 1] = temp;
+                   // 标记
+                   flag = true;
+               }
+           }
+           // 判断后面的元素是否已经有序
+           if(!flag) {
+               break;
+           }
+       }
+   }
+   ```
 
 ### 三维数组
 

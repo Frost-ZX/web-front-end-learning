@@ -1,8 +1,11 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
 
-# 笔记
+# JavaScript 面向对象
 
-- [笔记](#笔记)
+- [JavaScript 面向对象](#javascript-面向对象)
 - [面向过程和面向对象的区别](#面向过程和面向对象的区别)
     - [面向过程](#面向过程)
     - [面向对象](#面向对象)

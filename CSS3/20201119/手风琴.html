@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+            text-align: center;
+        }
+
+        .news-list {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+            width: 256px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+            text-align: left;
+            user-select: none;
+        }
+        
+        .news-list .item .title {
+            padding: 10px;
+            background-color: #00BCD4;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFF;
+        }
+        .news-list .item .title:not(:last-child) {
+            border-bottom: 1px solid #FFF;
+        }
+
+        .news-list .item .content {
+            padding: 0 10px;
+            height: 0;
+            background-color: #FFF;
+            transition: height 0.5s, padding 0.5s;
+            overflow: hidden;
+        }
+        .news-list .item:hover .content {
+            padding: 10px;
+            height: 100px;
+        }
+        .news-list .item .content .subitem {
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .news-list .item .content .subitem:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="news-list">
+        <div class="item">
+            <div class="title">市内新闻</div>
+            <div class="content">
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">省内新闻</div>
+            <div class="content">
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">国内新闻</div>
+            <div class="content">
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">国际新闻</div>
+            <div class="content">
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+                <div class="subitem">新闻标题 News Title</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

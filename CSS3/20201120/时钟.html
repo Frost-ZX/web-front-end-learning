@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟</title>
+    <style>
+        :root {
+            --translate-center: translate(-50%, -50%);
+            /* 增加的角度 */
+            --angle-add: 0deg;
+            /* 时钟运行状态 */
+            --clock-state: paused;
+        }
+
+        body {
+            background-color: #F9F9F9;
+            overflow: hidden;
+        }
+
+        .clock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            box-sizing: border-box;
+            width: 400px;
+            height: 400px;
+            box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+            border: 12px solid #607D8B;
+            border-radius: 50%;
+            background-color: #FFF;
+            font-size: 0;
+            transform: var(--translate-center);
+            user-select: none;
+        }
+
+        /* 第一层和第二层 div */
+        /* 占满钟面 */
+
+        .clock>div,
+        .clock>div>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 刻度 */
+
+        .clock .marks>div::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            width: 8px;
+            height: 20px;
+            background-color: #607D8B;
+            transform: translateX(-50%);
+        }
+        .clock .marks>div:nth-child(1) {
+            transform: rotate(0deg);
+        }
+        .clock .marks>div:nth-child(2) {
+            transform: rotate(30deg);
+        }
+        .clock .marks>div:nth-child(3) {
+            transform: rotate(60deg);
+        }
+        .clock .marks>div:nth-child(4) {
+            transform: rotate(90deg);
+        }
+        .clock .marks>div:nth-child(5) {
+            transform: rotate(120deg);
+        }
+        .clock .marks>div:nth-child(6) {
+            transform: rotate(150deg);
+        }
+        .clock .marks>div:nth-child(7) {
+            transform: rotate(180deg);
+        }
+        .clock .marks>div:nth-child(8) {
+            transform: rotate(210deg);
+        }
+        .clock .marks>div:nth-child(9) {
+            transform: rotate(240deg);
+        }
+        .clock .marks>div:nth-child(10) {
+            transform: rotate(270deg);
+        }
+        .clock .marks>div:nth-child(11) {
+            transform: rotate(300deg);
+        }
+        .clock .marks>div:nth-child(12) {
+            transform: rotate(330deg);
+        }
+
+        /* 指针 */
+
+        .clock .indicator::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #607D8B;
+            transform: translate(-50%, -50%);
+        }
+        .clock .indicator>div {
+            animation-name: rotation;
+            animation-iteration-count: infinite;
+            animation-play-state: var(--clock-state);
+        }
+        .clock .indicator>div::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            /* top: 90px; */
+            left: 50%;
+            /* width: 12px; */
+            /* height: 100px; */
+            /* background-color: #000; */
+            transform: translateX(-50%);
+        }
+        /* 指针 - 时针 */
+        .clock .indicator>div:nth-child(1) {
+            animation-duration: 43200s;
+            animation-timing-function: linear;
+        }
+        .clock .indicator>div:nth-child(1)::before {
+            top: 85px;
+            width: 12px;
+            height: 105px;
+            background-color: #F44336;
+        }
+        /* 指针 - 分针 */
+        .clock .indicator>div:nth-child(2) {
+            animation-duration: 3600s;
+            animation-timing-function: linear;
+        }
+        .clock .indicator>div:nth-child(2)::before {
+            top: 75px;
+            width: 8px;
+            height: 115px;
+            background-color: #8BC34A;
+        }
+        /* 指针 - 秒针 */
+        .clock .indicator>div:nth-child(3) {
+            animation-duration: 60s;
+            animation-timing-function: steps(60);
+        }
+        .clock .indicator>div:nth-child(3)::before {
+            top: 65px;
+            width: 4px;
+            height: 125px;
+            background-color: #2196F3;
+        }
+        /* 指针 - 毫秒 */
+        .clock .indicator>div:nth-child(4) {
+            animation-duration: 10s;
+            animation-timing-function: linear;
+        }
+        .clock .indicator>div:nth-child(4)::before {
+            top: 0;
+            width: 10px;
+            height: 4px;
+            background-color: #9E9E9E;
+        }
+
+        /* 动画 */
+        @keyframes rotation {
+            from {
+                transform: rotate(calc(0deg + var(--angle-add)));
+            }
+            to {
+                transform: rotate(calc(360deg + var(--angle-add)));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <!-- 刻度 -->
+        <div class="marks">
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+        <!-- 指针 -->
+        <div class="indicator">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+            <div class="millisecond"></div>
+        </div>
+    </div>
+    <script>
+        // 同步系统时间
+        function clockSync(indicators) {
+            // indicators：指针元素（时、分、秒、毫秒）
+
+            // 当前时间
+            // var timeCurrent = new Date('2020-11-25 12:00:00');
+            var timeCurrent = new Date();
+            var year = timeCurrent.getFullYear();
+            var month = timeCurrent.getMonth() + 1;
+            var day = timeCurrent.getDate();
+            // 当天开始时间（零点）
+            var timeStart = new Date(`${year}-${month}-${day} 00:00:00`)
+            // 经过时间（毫秒）
+            var timePassed = timeCurrent.getTime() - timeStart.getTime();
+            // 时 分 秒
+            var hours = timePassed / 1000 / 60 / 60;
+            var minutes = (hours - Math.floor(hours)) * 60;
+            var seconds = Math.floor((minutes - Math.floor(minutes)) * 60);
+
+            // 12小时制（12 -> 0）
+            hours = hours >= 12 ? hours - 12 : hours;
+
+            // 更新角度
+            function updateAngle(target, angle) {
+                target.style.setProperty('--angle-add', angle + 'deg');
+            }
+            // 时 分 秒
+            updateAngle(indicators[0], (hours / 12 * 360));
+            updateAngle(indicators[1], (minutes / 60 * 360));
+            updateAngle(indicators[2], (seconds / 60 * 360));
+
+            // 暂停后再播放，让修改后的角度生效
+            document.documentElement.style.setProperty('--clock-state', 'paused');
+            document.documentElement.style.setProperty('--clock-state', 'running');
+        };
+
+        var indicatorElem = document.querySelectorAll('.clock .indicator > div');
+        clockSync(indicatorElem);
+    </script>
+</body>
+</html>

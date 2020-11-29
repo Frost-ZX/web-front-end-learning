@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极</title>
+    <style>
+        :root {
+            --tai-chi-width: 300px;
+            --tai-chi-height: 150px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+            overflow: hidden;
+        }
+
+        .tai-chi {
+            position: absolute;
+            top: calc(50% - var(--tai-chi-height));
+            left: calc(50% - var(--tai-chi-height));
+            width: var(--tai-chi-width);
+            height: var(--tai-chi-height);
+            border-width: var(--tai-chi-height) 2px 2px 2px;
+            border-style: solid;
+            border-color: #000;
+            border-radius: 50%;
+            background-color: #FFF;
+            animation: rotation 1s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .tai-chi:hover {
+            animation-play-state: running;
+        }
+
+        .tai-chi:before {
+            content: "";
+            position: absolute;
+            top: calc(var(--tai-chi-height) / -2);
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            border: 55px solid #FFF;
+            border-radius: 50%;
+        }
+
+        .tai-chi:after {
+            content: "";
+            position: absolute;
+            top: calc(var(--tai-chi-height) / -2);
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background-color: #FFF;
+            border: 55px solid #000;
+            border-radius: 50%;
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tai-chi"></div>
+</body>
+</html>

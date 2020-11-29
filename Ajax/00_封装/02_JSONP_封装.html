@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP 封装</title>
+</head>
+<body>
+    <div>
+        <button id="btn-jsonp">发起 JSONP 请求</button>
+    </div>
+    <script src="./jsonp.js"></script>
+    <script>
+        // function fn(data) {
+        //     console.log(data);
+        // }
+
+        var btn = document.querySelector('#btn-jsonp');
+
+        btn.onclick = function () {
+            jsonp({
+                url: 'http://127.0.0.1:3000/jsonpTest',
+                data: {
+                    name: '张三',
+                    age: 23,
+                    sex: '男'
+                },
+                success: function (result) {
+                    console.log(result);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
