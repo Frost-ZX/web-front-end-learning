@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../markdown_style.css">
+<link rel="stylesheet" href="./markdown_style.css">
 
 # 笔记
 
