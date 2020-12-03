@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML5</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./markdown_style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="html5">HTML5</h1>
+<ul>
+<li><a href="#html5">HTML5</a></li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E5%85%83%E7%B4%A0">新增元素</a>
+<ul>
+<li><a href="#%E6%96%B0%E5%A2%9E">新增</a>
+<ul>
+<li><a href="#%E7%94%BB%E5%B8%83">画布</a></li>
+<li><a href="#%E5%A4%9A%E5%AA%92%E4%BD%93">多媒体</a></li>
+<li><a href="#%E8%A1%A8%E5%8D%95">表单</a></li>
+<li><a href="#%E8%AF%AD%E4%B9%89%E5%92%8C%E7%BB%93%E6%9E%84">语义和结构</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B7%B2%E7%A7%BB%E9%99%A4">已移除</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95%E5%92%8C%E4%BA%8B%E4%BB%B6">新增方法和事件</a>
+<ul>
+<li><a href="#%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0">表单元素</a>
+<ul>
+<li><a href="#%E4%BA%8B%E4%BB%B6">事件</a>
+<ul>
+<li><a href="#oninput">oninput</a></li>
+<li><a href="#oninvalid">oninvalid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81">网络状态</a>
+<ul>
+<li><a href="#%E4%BA%8B%E4%BB%B6-1">事件</a>
+<ul>
+<li><a href="#window-ononline">window.ononline</a></li>
+<li><a href="#window-onoffline">window.onoffline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%A8%E5%B1%8F">全屏</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a>
+<ul>
+<li><a href="#document-%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">Document 中的方法</a></li>
+<li><a href="#element-%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">Element 中的方法</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6-2">事件</a>
+<ul>
+<li><a href="#document-%E4%B8%8A%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F">Document 上的事件处理程序</a></li>
+<li><a href="#element-%E4%B8%8A%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F">Element 上的事件处理程序</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%BC%E5%AE%B9%E5%A4%84%E7%90%86">兼容处理</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E5%AA%92%E4%BD%93-1">多媒体</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-1">方法</a></li>
+<li><a href="#%E5%B1%9E%E6%80%A7">属性</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6-3">事件</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8B%96%E6%8B%BD-draggable">拖拽（draggable）</a>
+<ul>
+<li><a href="#%E5%B1%9E%E6%80%A7-1">属性</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96-filereader">文件读取（FileReader）</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-2">方法</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6-4">事件</a></li>
+<li><a href="#%E5%B1%9E%E6%80%A7-2">属性</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D">地理定位</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF">获取当前地理信息</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95-3">方法</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE">返回数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%94%BB%E5%B8%83-canvas">画布（Canvas）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E7%94%BB%E5%B8%83">创建画布</a></li>
+<li><a href="#%E5%BC%80%E5%A7%8B">开始</a></li>
+<li><a href="#%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95">属性和方法</a>
+<ul>
+<li><a href="#%E9%A2%9C%E8%89%B2-%E6%A0%B7%E5%BC%8F%E5%92%8C%E9%98%B4%E5%BD%B1">颜色、样式和阴影</a></li>
+<li><a href="#%E7%BA%BF%E6%9D%A1%E6%A0%B7%E5%BC%8F">线条样式</a></li>
+<li><a href="#%E7%9F%A9%E5%BD%A2">矩形</a></li>
+<li><a href="#%E8%B7%AF%E5%BE%84">路径</a></li>
+<li><a href="#%E8%BD%AC%E6%8D%A2">转换</a></li>
+<li><a href="#%E6%96%87%E6%9C%AC">文本</a></li>
+<li><a href="#%E5%9B%BE%E5%83%8F">图像</a></li>
+<li><a href="#%E5%83%8F%E7%B4%A0%E6%93%8D%E4%BD%9C">像素操作</a></li>
+<li><a href="#%E5%90%88%E6%88%90">合成</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="新增元素">新增元素</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/html/html5-new-element.html">https://www.runoob.com/html/html5-new-element.html</a><br>
+IE9 以下不支持</p>
+</blockquote>
+<h2 id="新增">新增</h2>
+<h3 id="画布">画布</h3>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;canvas&gt;</code></td>
+<td>定义图形（例如图表和其他图像）。该标签基于 JavaScript 的绘图 API。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="多媒体">多媒体</h3>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;audio&gt;</code></td>
+<td>定义音频内容</td>
+</tr>
+<tr>
+<td><code>&lt;video&gt;</code></td>
+<td>定义视频</td>
+</tr>
+<tr>
+<td><code>&lt;source&gt;</code></td>
+<td>定义 <code>video</code> 和 <code>audio</code> 元素的多媒体资源</td>
+</tr>
+<tr>
+<td><code>&lt;embed&gt;</code></td>
+<td>定义嵌入的内容（例如插件）</td>
+</tr>
+<tr>
+<td><code>&lt;track&gt;</code></td>
+<td>为 <code>video</code> 和 <code>audio</code> 之类的元素定义外部内容轨道</td>
+</tr>
+</tbody>
+</table>
+<h3 id="表单">表单</h3>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;datalist&gt;</code></td>
+<td>定义选项列表，与 <code>input</code> 元素配合使用该元素，来定义 <code>input</code> 可能的值。</td>
+</tr>
+<tr>
+<td><code>&lt;keygen&gt;</code></td>
+<td>定义用于表单的密钥对生成器字段。</td>
+</tr>
+<tr>
+<td><code>&lt;output&gt;</code></td>
+<td>定义不同类型的输出（例如脚本的输出）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="语义和结构">语义和结构</h3>
+<blockquote>
+<p>HTML5提供了新的元素来创建更好的页面结构</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;article&gt;</code></td>
+<td>定义页面独立的内容区域。</td>
+</tr>
+<tr>
+<td><code>&lt;aside&gt;</code></td>
+<td>定义页面的侧边栏内容。</td>
+</tr>
+<tr>
+<td><code>&lt;bdi&gt;</code></td>
+<td>允许您设置一段文本，使其脱离其父元素的文本方向设置。</td>
+</tr>
+<tr>
+<td><code>&lt;command&gt;</code></td>
+<td>定义命令按钮，比如单选按钮、复选框或按钮</td>
+</tr>
+<tr>
+<td><code>&lt;details&gt;</code></td>
+<td>用于描述文档或文档某个部分的细节</td>
+</tr>
+<tr>
+<td><code>&lt;dialog&gt;</code></td>
+<td>定义对话框，比如提示框</td>
+</tr>
+<tr>
+<td><code>&lt;summary&gt;</code></td>
+<td>标签包含 <code>details</code> 元素的标题</td>
+</tr>
+<tr>
+<td><code>&lt;figure&gt;</code></td>
+<td>定义独立的流内容（图像、图表、照片、代码等等）。</td>
+</tr>
+<tr>
+<td><code>&lt;figcaption&gt;</code></td>
+<td>定义 <code>figure</code> 元素的标题</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;</code></td>
+<td>定义 <code>section</code> 或 <code>document</code> 元素的页脚。</td>
+</tr>
+<tr>
+<td><code>&lt;header&gt;</code></td>
+<td>定义了文档的头部区域</td>
+</tr>
+<tr>
+<td><code>&lt;mark&gt;</code></td>
+<td>定义带有记号的文本。</td>
+</tr>
+<tr>
+<td><code>&lt;meter&gt;</code></td>
+<td>定义度量衡。仅用于已知最大和最小值的度量。</td>
+</tr>
+<tr>
+<td><code>&lt;nav&gt;</code></td>
+<td>定义导航链接的部分。</td>
+</tr>
+<tr>
+<td><code>&lt;progress&gt;</code></td>
+<td>定义任何类型的任务的进度。</td>
+</tr>
+<tr>
+<td><code>&lt;ruby&gt;</code></td>
+<td>定义 ruby 注释（中文注音或字符）。</td>
+</tr>
+<tr>
+<td><code>&lt;rt&gt;</code></td>
+<td>定义字符（中文注音或字符）的解释或发音。</td>
+</tr>
+<tr>
+<td><code>&lt;rp&gt;</code></td>
+<td>在 ruby 注释中使用，定义不支持 ruby 元素的浏览器所显示的内容。</td>
+</tr>
+<tr>
+<td><code>&lt;section&gt;</code></td>
+<td>定义文档中的节（section、区段）。</td>
+</tr>
+<tr>
+<td><code>&lt;time&gt;</code></td>
+<td>定义日期或时间。</td>
+</tr>
+<tr>
+<td><code>&lt;wbr&gt;</code></td>
+<td>定义在文本中的何处适合添加换行符。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="已移除">已移除</h2>
+<blockquote>
+<p>以下的 <code>HTML 4.01</code> 元素在 <code>HTML5</code> 中已经被删除</p>
+</blockquote>
+<ul>
+<li><code>&lt;acronym&gt;</code></li>
+<li><code>&lt;applet&gt;</code></li>
+<li><code>&lt;basefont&gt;</code></li>
+<li><code>&lt;big&gt;</code></li>
+<li><code>&lt;center&gt;</code></li>
+<li><code>&lt;dir&gt;</code></li>
+<li><code>&lt;font&gt;</code></li>
+<li><code>&lt;frame&gt;</code></li>
+<li><code>&lt;frameset&gt;</code></li>
+<li><code>&lt;noframes&gt;</code></li>
+<li><code>&lt;strike&gt;</code></li>
+<li><code>&lt;tt&gt;</code></li>
+</ul>
+<h1 id="新增方法和事件">新增方法和事件</h1>
+<h2 id="表单元素">表单元素</h2>
+<h3 id="事件">事件</h3>
+<h4 id="oninput">oninput</h4>
+<ul>
+<li>输入时触发</li>
+<li>粘贴内容时也能触发</li>
+</ul>
+<h4 id="oninvalid">oninvalid</h4>
+<ul>
+<li>
+<p>表单验证不通过触发</p>
+</li>
+<li>
+<p>可设置自定义提示信息</p>
+<blockquote>
+<p><code>DOM节点.setCustomValidity(提示信息)</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="网络状态">网络状态</h2>
+<blockquote>
+<p>当网络状态发生变化时才会触发</p>
+</blockquote>
+<h3 id="事件-1">事件</h3>
+<h4 id="window-ononline">window.ononline</h4>
+<ul>
+<li>网络连接时触发</li>
+</ul>
+<h4 id="window-onoffline">window.onoffline</h4>
+<ul>
+<li>网络断开时触发</li>
+</ul>
+<h2 id="全屏">全屏</h2>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API">https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API</a></p>
+</blockquote>
+<h3 id="方法">方法</h3>
+<h4 id="document-中的方法">Document 中的方法</h4>
+<ul>
+<li>
+<p><code>Document.exitFullscreen()</code></p>
+<ul>
+<li>用于请求从全屏模式切换到 <code>窗口模式</code>。</li>
+<li>会返回一个 <code>Promise</code>，会在全屏模式完全关闭的时候被置为 <code>resolved</code> 状态。</li>
+</ul>
+</li>
+</ul>
+<h4 id="element-中的方法">Element 中的方法</h4>
+<ul>
+<li>
+<p><code>Element.requestFullscreen()</code></p>
+<ul>
+<li>请求浏览器（user agent）将特定元素（甚至延伸到它的后代元素）置为 <code>全屏模式</code>，隐去屏幕上的浏览器所有 UI 元素，以及其它应用。</li>
+<li>返回一个 <code>Promise</code>，并会在全屏模式被激活的时候变成 <code>resolved</code> 状态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="事件-2">事件</h3>
+<blockquote>
+<p>Fullscreen API 定义了两个事件，可用于检测全屏模式的打开和关闭，以及在全屏和窗口模式之间切换过程中发生的错误。<br>
+<code>Document</code> 和 <code>Element</code> 接口提供了这些事件的事件处理函数。</p>
+<p>注意：这些事件处理函数特性 <code>不可以作为 HTML 内容属性</code> 来使用。<br>
+无法在 HTML 内容中为 <code>fullscreenchange</code> 和 <code>fullscreenerror</code> 指定事件处理程序，必须通过 JavaScript 代码添加它们。</p>
+</blockquote>
+<h4 id="document-上的事件处理程序">Document 上的事件处理程序</h4>
+<ul>
+<li>
+<p><code>Document.onfullscreenchange</code></p>
+<ul>
+<li>当进入全屏或退出全屏时，事件将被发送到 <code>Document</code> 上。</li>
+<li>此处理程序仅在整个文档全屏模式更改时有效。</li>
+</ul>
+</li>
+<li>
+<p><code>Document.onfullscreenerror</code></p>
+<ul>
+<li>当进入全屏或退出全屏出错时，事件将被发送到 <code>Document</code> 上。</li>
+<li>此处理程序仅在整个文档的全屏模式更改出错时有效。</li>
+</ul>
+</li>
+</ul>
+<h4 id="element-上的事件处理程序">Element 上的事件处理程序</h4>
+<ul>
+<li>
+<p><code>Element.onfullscreenchange</code></p>
+<ul>
+<li>当全屏事件发生时，事件将被发送到指定的 <code>Element</code> 上，表明该元素进入或退出全屏模式。</li>
+</ul>
+</li>
+<li>
+<p><code>Element.onfullscreenerror</code></p>
+<ul>
+<li>当指定的 <code>Element</code> 改变全屏模式时候出现错误，事件将被发送到该 <code>Element</code> 上。</li>
+</ul>
+</li>
+</ul>
+<h3 id="兼容处理">兼容处理</h3>
+<blockquote>
+<p>不同浏览器需要添加不同的前缀<br>
+<code>moz</code>、<code>ms</code>、<code>o</code>、<code>webkit</code></p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 进入全屏 </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">enterFullScreen</span>(<span class="hljs-params">elem</span>) </span>{
+    <span class="hljs-keyword">if</span> (elem.requestFullScreen) {
+        <span class="hljs-comment">// 正常</span>
+        elem.requestFullScreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (elem.mozRequestFullScreen) {
+        <span class="hljs-comment">// Mozilla</span>
+        elem.mozRequestFullScreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (elem.msRequestFullscreen) {
+        <span class="hljs-comment">// 微软</span>
+        elem.msRequestFullscreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (elem.oRequestFullScreen) {
+        <span class="hljs-comment">// Opera</span>
+        elem.oRequestFullScreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (elem.webkitRequestFullScreen) {
+        <span class="hljs-comment">// Webkit</span>
+        elem.webkitRequestFullScreen();
+    }
+}
+
+<span class="hljs-comment">// 退出全屏</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">exitFullscreen</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.exitFullscreen) {
+        <span class="hljs-built_in">document</span>.exitFullscreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.mozCancelFullScreen) {
+        <span class="hljs-built_in">document</span>.mozCancelFullScreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.msExitFullscreen) {
+        <span class="hljs-built_in">document</span>.msExitFullscreen();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.webkitCancelFullScreen) {
+        <span class="hljs-built_in">document</span>.webkitCancelFullScreen();
+    }
+}
+
+<span class="hljs-comment">// 判断全屏</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isFullscreen</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.fullscreenElement || <span class="hljs-built_in">document</span>.mozFullScreenElement ||
+           <span class="hljs-built_in">document</span>.msFullscreenElement || <span class="hljs-built_in">document</span>.webkitFullscreenElement || <span class="hljs-literal">false</span>;
+}
+</div></code></pre>
+<h2 id="多媒体-1">多媒体</h2>
+<blockquote>
+<p><a href="https://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp">https://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp</a></p>
+</blockquote>
+<h3 id="方法-1">方法</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addTextTrack()</code></td>
+<td>向音频 / 视频添加新的文本轨道</td>
+</tr>
+<tr>
+<td><code>canPlayType()</code></td>
+<td>检测浏览器是否能播放指定的音频 / 视频类型</td>
+</tr>
+<tr>
+<td><code>load()</code></td>
+<td>重新加载音频 / 视频元素</td>
+</tr>
+<tr>
+<td><code>play()</code></td>
+<td>开始播放音频 / 视频</td>
+</tr>
+<tr>
+<td><code>pause()</code></td>
+<td>暂停当前播放的音频 / 视频</td>
+</tr>
+</tbody>
+</table>
+<h3 id="属性">属性</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audioTracks</code></td>
+<td>返回表示可用音轨的 AudioTrackList 对象</td>
+</tr>
+<tr>
+<td><code>autoplay</code></td>
+<td>设置或返回是否在加载完成后随即播放音频 / 视频</td>
+</tr>
+<tr>
+<td><code>buffered</code></td>
+<td>返回表示音频 / 视频已缓冲部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td><code>controller</code></td>
+<td>返回表示音频 / 视频当前媒体控制器的 MediaController 对象</td>
+</tr>
+<tr>
+<td><code>controls</code></td>
+<td>设置或返回音频 / 视频是否显示控件（比如播放 / 暂停等）</td>
+</tr>
+<tr>
+<td><code>crossOrigin</code></td>
+<td>设置或返回音频 / 视频的 CORS 设置</td>
+</tr>
+<tr>
+<td><code>currentSrc</code></td>
+<td>返回当前音频 / 视频的 URL</td>
+</tr>
+<tr>
+<td><code>currentTime</code></td>
+<td>设置或返回音频 / 视频中的当前播放位置（以秒计）</td>
+</tr>
+<tr>
+<td><code>defaultMuted</code></td>
+<td>设置或返回音频 / 视频默认是否静音</td>
+</tr>
+<tr>
+<td><code>defaultPlaybackRate</code></td>
+<td>设置或返回音频 / 视频的默认播放速度</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>返回当前音频 / 视频的长度（以秒计）</td>
+</tr>
+<tr>
+<td><code>ended</code></td>
+<td>返回音频 / 视频的播放是否已结束</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>返回表示音频 / 视频错误状态的 MediaError 对象</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>设置或返回音频 / 视频是否应在结束时重新播放</td>
+</tr>
+<tr>
+<td><code>mediaGroup</code></td>
+<td>设置或返回音频 / 视频所属的组合（用于连接多个音频 / 视频元素）</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>设置或返回音频 / 视频是否静音</td>
+</tr>
+<tr>
+<td><code>networkState</code></td>
+<td>返回音频 / 视频的当前网络状态</td>
+</tr>
+<tr>
+<td><code>paused</code></td>
+<td>设置或返回音频 / 视频是否暂停</td>
+</tr>
+<tr>
+<td><code>playbackRate</code></td>
+<td>设置或返回音频 / 视频播放的速度</td>
+</tr>
+<tr>
+<td><code>played</code></td>
+<td>返回表示音频 / 视频已播放部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td><code>preload</code></td>
+<td>设置或返回音频 / 视频是否应该在页面加载后进行加载</td>
+</tr>
+<tr>
+<td><code>readyState</code></td>
+<td>返回音频 / 视频当前的就绪状态</td>
+</tr>
+<tr>
+<td><code>seekable</code></td>
+<td>返回表示音频 / 视频可寻址部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td><code>seeking</code></td>
+<td>返回用户是否正在音频 / 视频中进行查找</td>
+</tr>
+<tr>
+<td><code>src</code></td>
+<td>设置或返回音频 / 视频元素的当前来源</td>
+</tr>
+<tr>
+<td><code>startDate</code></td>
+<td>返回表示当前时间偏移的 Date 对象</td>
+</tr>
+<tr>
+<td><code>textTracks</code></td>
+<td>返回表示可用文本轨道的 TextTrackList 对象</td>
+</tr>
+<tr>
+<td><code>videoTracks</code></td>
+<td>返回表示可用视频轨道的 VideoTrackList 对象</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td>设置或返回音频 / 视频的音量</td>
+</tr>
+</tbody>
+</table>
+<h3 id="事件-3">事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>abort</code></td>
+<td>当音频 / 视频的加载已放弃时</td>
+</tr>
+<tr>
+<td><code>canplay</code></td>
+<td>当浏览器可以播放音频 / 视频时</td>
+</tr>
+<tr>
+<td><code>canplaythrough</code></td>
+<td>当浏览器可在不因缓冲而停顿的情况下进行播放时</td>
+</tr>
+<tr>
+<td><code>durationchange</code></td>
+<td>当音频 / 视频的时长已更改时</td>
+</tr>
+<tr>
+<td><code>emptied</code></td>
+<td>当目前的播放列表为空时</td>
+</tr>
+<tr>
+<td><code>ended</code></td>
+<td>当目前的播放列表已结束时</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>当在音频 / 视频加载期间发生错误时</td>
+</tr>
+<tr>
+<td><code>loadeddata</code></td>
+<td>当浏览器已加载音频 / 视频的当前帧时</td>
+</tr>
+<tr>
+<td><code>loadedmetadata</code></td>
+<td>当浏览器已加载音频 / 视频的元数据时</td>
+</tr>
+<tr>
+<td><code>loadstart</code></td>
+<td>当浏览器开始查找音频 / 视频时</td>
+</tr>
+<tr>
+<td><code>pause</code></td>
+<td>当音频 / 视频已暂停时</td>
+</tr>
+<tr>
+<td><code>play</code></td>
+<td>当音频 / 视频已开始或不再暂停时</td>
+</tr>
+<tr>
+<td><code>playing</code></td>
+<td>当音频 / 视频在已因缓冲而暂停或停止后已就绪时</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td>当浏览器正在下载音频 / 视频时</td>
+</tr>
+<tr>
+<td><code>ratechange</code></td>
+<td>当音频 / 视频的播放速度已更改时</td>
+</tr>
+<tr>
+<td><code>seeked</code></td>
+<td>当用户已移动 / 跳跃到音频 / 视频中的新位置时</td>
+</tr>
+<tr>
+<td><code>seeking</code></td>
+<td>当用户开始移动 / 跳跃到音频/视频中的新位置时</td>
+</tr>
+<tr>
+<td><code>stalled</code></td>
+<td>当浏览器尝试获取媒体数据，但数据不可用时</td>
+</tr>
+<tr>
+<td><code>suspend</code></td>
+<td>当浏览器刻意不获取媒体数据时</td>
+</tr>
+<tr>
+<td><code>timeupdate</code></td>
+<td>当目前的播放位置已更改时</td>
+</tr>
+<tr>
+<td><code>volumechange</code></td>
+<td>当音量已更改时</td>
+</tr>
+<tr>
+<td><code>waiting</code></td>
+<td>当视频由于需要缓冲下一帧而停止</td>
+</tr>
+</tbody>
+</table>
+<h2 id="拖拽-draggable">拖拽（draggable）</h2>
+<blockquote>
+<p><a href="https://www.runoob.com/html/html5-draganddrop.html">https://www.runoob.com/html/html5-draganddrop.html</a><br>
+<a href="https://www.runoob.com/tags/att-global-draggable.html">https://www.runoob.com/tags/att-global-draggable.html</a></p>
+</blockquote>
+<h3 id="属性-1">属性</h3>
+<blockquote>
+<p><code>&lt;element draggable=&quot;true|false|auto&quot;&gt;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true</td>
+<td>规定元素是可拖动的</td>
+</tr>
+<tr>
+<td>false</td>
+<td>规定元素是不可拖动的</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>使用浏览器的默认特性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件读取-filereader">文件读取（FileReader）</h2>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader">https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader</a></p>
+</blockquote>
+<h3 id="方法-2">方法</h3>
+<ul>
+<li>
+<p><code>FileReader.abort()</code></p>
+<ul>
+<li>中止读取操作</li>
+<li>在返回时，<code>readyState</code> 属性为 <code>DONE</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.readAsArrayBuffer()</code></p>
+<ul>
+<li>开始读取指定的 <code>Blob</code> 中的内容</li>
+<li>一旦完成, <code>result</code> 属性中保存的将是被读取文件的 <code>ArrayBuffer</code> 数据对象。</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.readAsBinaryString()</code></p>
+<ul>
+<li>开始读取指定的 <code>Blob</code> 中的内容</li>
+<li>一旦完成，<code>result</code> 属性中将包含所读取文件的原始二进制数据。</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.readAsDataURL()</code></p>
+<ul>
+<li>开始读取指定的 <code>Blob</code> 中的内容</li>
+<li>一旦完成，<code>result</code> 属性中将包含一个 <code>data: URL</code> 格式的 <code>Base64</code> 字符串，以表示所读取文件的内容。</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.readAsText()</code></p>
+<ul>
+<li>开始读取指定的 <code>Blob</code> 中的内容</li>
+<li>一旦完成，<code>result</code> 属性中将包含一个字符串，以表示所读取的文件内容。</li>
+</ul>
+</li>
+</ul>
+<h3 id="事件-4">事件</h3>
+<ul>
+<li>
+<p><code>FileReader.onabort</code></p>
+<ul>
+<li>处理 <code>abort</code> 事件</li>
+<li>该事件在读取操作被中断时触发</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.onerror</code></p>
+<ul>
+<li>处理 <code>error</code> 事件</li>
+<li>该事件在读取操作发生错误时触发</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.onload</code></p>
+<ul>
+<li>处理 <code>load</code> 事件</li>
+<li>该事件在读取操作完成时触发</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.onloadstart</code></p>
+<ul>
+<li>处理 <code>loadstart</code> 事件</li>
+<li>该事件在读取操作开始时触发</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.onloadend</code></p>
+<ul>
+<li>处理 <code>loadend</code> 事件</li>
+<li>该事件在读取操作结束时（成功 / 失败）触发</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.onprogress</code></p>
+<ul>
+<li>处理 <code>progress</code> 事件</li>
+<li>该事件在读取 <code>Blob</code> 时触发</li>
+</ul>
+</li>
+</ul>
+<h3 id="属性-2">属性</h3>
+<ul>
+<li>
+<p><code>FileReader.error</code>（只读）</p>
+<ul>
+<li>一个 <code>DOMException</code>，表示在读取文件时发生的错误。</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.readyState</code>（只读）</p>
+<ul>
+<li>
+<p>表示 <code>FileReader</code> 状态的数字，取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>常量名</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EMPTY</code></td>
+<td><code>0</code></td>
+<td>还没有加载任何数据</td>
+</tr>
+<tr>
+<td><code>LOADING</code></td>
+<td><code>1</code></td>
+<td>数据正在被加载</td>
+</tr>
+<tr>
+<td><code>DONE</code></td>
+<td><code>2</code></td>
+<td>已完成全部的读取请求</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p><code>FileReader.result</code>（只读）</p>
+<ul>
+<li>文件的内容</li>
+<li>该属性仅在读取操作完成后才有效</li>
+<li>数据的格式取决于使用哪个方法来启动读取操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="地理定位">地理定位</h2>
+<blockquote>
+<p><a href="https://www.runoob.com/html/html5-geolocation.html">https://www.runoob.com/html/html5-geolocation.html</a></p>
+</blockquote>
+<h3 id="获取当前地理信息">获取当前地理信息</h3>
+<h4 id="方法-3">方法</h4>
+<ul>
+<li><code>navigator.geolocation.getCurrentPosition(successCallback, errorCallback) </code></li>
+</ul>
+<h4 id="返回数据">返回数据</h4>
+<blockquote>
+<p>若成功，getCurrentPosition() 方法返回一个对象。<br>
+始终会返回 latitude、longitude 以及 accuracy 属性。<br>
+如果可用，则会返回其他下面的属性。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coords.latitude</td>
+<td>十进制数的纬度</td>
+</tr>
+<tr>
+<td>coords.longitude</td>
+<td>十进制数的经度</td>
+</tr>
+<tr>
+<td>coords.accuracy</td>
+<td>位置精度</td>
+</tr>
+<tr>
+<td>coords.altitude</td>
+<td>海拔，海平面以上以米计</td>
+</tr>
+<tr>
+<td>coords.altitudeAccuracy</td>
+<td>位置的海拔精度</td>
+</tr>
+<tr>
+<td>coords.heading</td>
+<td>方向，从正北开始以度计</td>
+</tr>
+<tr>
+<td>coords.speed</td>
+<td>速度，单位：米/秒</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>响应的日期 / 时间</td>
+</tr>
+</tbody>
+</table>
+<h1 id="画布-canvas">画布（Canvas）</h1>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial">https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial</a><br>
+<a href="https://www.runoob.com/html/html5-canvas.html">https://www.runoob.com/html/html5-canvas.html</a><br>
+<a href="https://www.runoob.com/tags/ref-canvas.html">https://www.runoob.com/tags/ref-canvas.html</a><br>
+<a href="https://www.runoob.com/w3cnote/html5-canvas-intro.html">https://www.runoob.com/w3cnote/html5-canvas-intro.html</a></p>
+</blockquote>
+<h2 id="简介">简介</h2>
+<ul>
+<li>HTML5 <code>&lt;canvas&gt;</code> 元素用于图形的绘制，通过脚本 (通常是 JavaScript）来完成。</li>
+<li><code>&lt;canvas&gt;</code> 标签只是图形容器，必须使用脚本来绘制图形。</li>
+<li>可以通过多种方法在画布中绘制路径、矩形、圆、字符、添加图像……</li>
+<li>画布的默认宽度为 300px，高度为 150px。</li>
+</ul>
+<h2 id="创建画布">创建画布</h2>
+<ul>
+<li><code>&lt;canvas id=&quot;ID&quot; width=&quot;宽度&quot; height=&quot;高度&quot;&gt;&lt;/canvas&gt;</code></li>
+</ul>
+<h2 id="开始">开始</h2>
+<ul>
+<li>
+<p>找到 <code>&lt;canvas&gt;</code> 元素</p>
+<ul>
+<li><code>var canvasElem = document.getElementById('ID');</code></li>
+</ul>
+</li>
+<li>
+<p>创建 <code>context</code> 对象</p>
+<ul>
+<li><code>var ctx = canvasElem.getContext('2d');</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="属性和方法">属性和方法</h2>
+<h3 id="颜色-样式和阴影">颜色、样式和阴影</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fillStyle</code></td>
+<td>设置或返回用于填充绘画的颜色、渐变或模式。</td>
+</tr>
+<tr>
+<td><code>strokeStyle</code></td>
+<td>设置或返回用于笔触的颜色、渐变或模式。</td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td>设置或返回用于阴影的颜色。</td>
+</tr>
+<tr>
+<td><code>shadowBlur</code></td>
+<td>设置或返回用于阴影的模糊级别。</td>
+</tr>
+<tr>
+<td><code>shadowOffsetX</code></td>
+<td>设置或返回阴影与形状的水平距离。</td>
+</tr>
+<tr>
+<td><code>shadowOffsetY</code></td>
+<td>设置或返回阴影与形状的垂直距离。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createLinearGradient()</code></td>
+<td>创建线性渐变（用在画布内容上）。</td>
+</tr>
+<tr>
+<td><code>createPattern()</code></td>
+<td>在指定的方向上重复指定的元素。</td>
+</tr>
+<tr>
+<td><code>createRadialGradient()</code></td>
+<td>创建放射状/环形的渐变（用在画布内容上）。</td>
+</tr>
+<tr>
+<td><code>addColorStop()</code></td>
+<td>规定渐变对象中的颜色和停止位置。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="线条样式">线条样式</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lineCap</code></td>
+<td>设置或返回线条的结束端点样式。</td>
+</tr>
+<tr>
+<td><code>lineJoin</code></td>
+<td>设置或返回两条线相交时，所创建的拐角类型。</td>
+</tr>
+<tr>
+<td><code>lineWidth</code></td>
+<td>设置或返回当前的线条宽度。</td>
+</tr>
+<tr>
+<td><code>miterLimit</code></td>
+<td>设置或返回最大斜接长度。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="矩形">矩形</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rect()</code></td>
+<td>创建矩形。</td>
+</tr>
+<tr>
+<td><code>fillRect()</code></td>
+<td>绘制&quot;被填充&quot;的矩形。</td>
+</tr>
+<tr>
+<td><code>strokeRect()</code></td>
+<td>绘制矩形（无填充）。</td>
+</tr>
+<tr>
+<td><code>clearRect()</code></td>
+<td>在给定的矩形内清除指定的像素。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="路径">路径</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fill()</code></td>
+<td>填充当前绘图（路径）。</td>
+</tr>
+<tr>
+<td><code>stroke()</code></td>
+<td>绘制已定义的路径。</td>
+</tr>
+<tr>
+<td><code>beginPath()</code></td>
+<td>起始一条路径，或重置当前路径。</td>
+</tr>
+<tr>
+<td><code>moveTo()</code></td>
+<td>把路径移动到画布中的指定点，不创建线条。</td>
+</tr>
+<tr>
+<td><code>closePath()</code></td>
+<td>创建从当前点回到起始点的路径。</td>
+</tr>
+<tr>
+<td><code>lineTo()</code></td>
+<td>添加一个新点，然后在画布中创建从该点到最后指定点的线条。</td>
+</tr>
+<tr>
+<td><code>clip()</code></td>
+<td>从原始画布剪切任意形状和尺寸的区域。</td>
+</tr>
+<tr>
+<td><code>quadraticCurveTo()</code></td>
+<td>创建二次贝塞尔曲线。</td>
+</tr>
+<tr>
+<td><code>bezierCurveTo()</code></td>
+<td>创建三次贝塞尔曲线。</td>
+</tr>
+<tr>
+<td><code>arc()</code></td>
+<td>创建弧/曲线（用于创建圆形或部分圆）。</td>
+</tr>
+<tr>
+<td><code>arcTo()</code></td>
+<td>创建两切线之间的弧/曲线。</td>
+</tr>
+<tr>
+<td><code>isPointInPath()</code></td>
+<td>如果指定的点位于当前路径中，则返回 true，否则返回 false。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="转换">转换</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scale()</code></td>
+<td>缩放当前绘图至更大或更小。</td>
+</tr>
+<tr>
+<td><code>rotate()</code></td>
+<td>旋转当前绘图。</td>
+</tr>
+<tr>
+<td><code>translate()</code></td>
+<td>重新映射画布上的 (0,0) 位置。</td>
+</tr>
+<tr>
+<td><code>transform()</code></td>
+<td>替换绘图的当前转换矩阵。</td>
+</tr>
+<tr>
+<td><code>setTransform()</code></td>
+<td>将当前转换重置为单位矩阵。然后运行 transform()。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文本">文本</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font</code></td>
+<td>设置或返回文本内容的当前字体属性。</td>
+</tr>
+<tr>
+<td><code>textAlign</code></td>
+<td>设置或返回文本内容的当前对齐方式。</td>
+</tr>
+<tr>
+<td><code>textBaseline</code></td>
+<td>设置或返回在绘制文本时使用的当前文本基线。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fillText()</code></td>
+<td>在画布上绘制&quot;被填充的&quot;文本。</td>
+</tr>
+<tr>
+<td><code>strokeText()</code></td>
+<td>在画布上绘制文本（无填充）。</td>
+</tr>
+<tr>
+<td><code>measureText()</code></td>
+<td>返回包含指定文本宽度的对象。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="图像">图像</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>drawImage()</code></td>
+<td>向画布上绘制图像、画布或视频。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="像素操作">像素操作</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td>返回 ImageData 对象的宽度。</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>返回 ImageData 对象的高度。</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>返回一个对象，其包含指定的 ImageData 对象的图像数据。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createImageData()</code></td>
+<td>创建新的、空白的 ImageData 对象。</td>
+</tr>
+<tr>
+<td><code>getImageData()</code></td>
+<td>返回 ImageData 对象，该对象为画布上指定的矩形复制像素数据。</td>
+</tr>
+<tr>
+<td><code>putImageData()</code></td>
+<td>把图像数据（从指定的 ImageData 对象）放回画布上。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="合成">合成</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>globalAlpha</code></td>
+<td>设置或返回绘图的当前 alpha 或透明值。</td>
+</tr>
+<tr>
+<td><code>globalCompositeOperation</code></td>
+<td>设置或返回新图像如何绘制到已有的图像上。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他">其他</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>save()</code></td>
+<td>保存当前环境的状态。</td>
+</tr>
+<tr>
+<td><code>restore()</code></td>
+<td>返回之前保存过的路径状态和属性。</td>
+</tr>
+<tr>
+<td><code>createEvent()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>getContext()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>toDataURL()</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+    </body>
+    </html>
