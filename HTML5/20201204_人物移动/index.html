@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人物移动</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px 0;
+            text-align: center;
+            background-color: #222;
+            user-select: none;
+        }
+
+        canvas {
+            outline: 2px solid #00CCFF;
+            background-color: #FFF;
+        }
+
+        .btn-auto {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background-color: #2196F3;
+            color: #FFF;
+            transition: background 0.25s;
+            cursor: pointer;
+        }
+
+        .btn-auto:hover {
+            background-color: #00BCD4;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas width="800" height="500">该浏览器不支持 Canvas</canvas>
+    </div>
+    <div>
+        <button type="button" class="btn-auto">自动移动</button>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var canvasElem = document.querySelector('canvas');
+            var ctx = canvasElem.getContext('2d');
+
+            // 画布信息
+            var canvasInfo = {
+                width: ctx.canvas.width,
+                height: ctx.canvas.height
+            };
+
+            var img = new Image();
+            var imgInfo = null;
+            var imgPos = null;
+
+            // 标记：是否允许移动
+            var flagMove = true;
+            // 标记：是否自动移动
+            var flagAuto = false;
+
+            function move() {
+                if (!flagMove) {
+                    return false;
+                }
+
+                flagMove = false;
+
+                // 判断方向，改变读取的图片行并移动
+                if (imgPos.direction == 'up') {
+                    imgInfo.indexY = 3;
+                    imgPos.y -= imgPos.step;
+                } else if (imgPos.direction == 'left') {
+                    imgInfo.indexY = 1;
+                    imgPos.x -= imgPos.step;
+                } else if (imgPos.direction == 'down') {
+                    imgInfo.indexY = 0;
+                    imgPos.y += imgPos.step;
+                } else if (imgPos.direction == 'right') {
+                    imgInfo.indexY = 2;
+                    imgPos.x += imgPos.step;
+                }
+
+                // 边界
+                var limit = {
+                    minX: imgInfo.eachWidth * -1,
+                    maxX: canvasInfo.width,
+                    minY: imgInfo.eachHeight * -1,
+                    maxY: canvasInfo.height
+                }
+
+                imgPos.x = imgPos.x > limit.maxX ? limit.minX : imgPos.x < limit.minX ? limit.maxX : imgPos.x;
+                imgPos.y = imgPos.y > limit.maxY ? limit.minY : imgPos.y < limit.minY ? limit.maxY : imgPos.y;
+
+                ctx.clearRect(0, 0, canvasInfo.width, canvasInfo.height);
+                ctx.drawImage(
+                    // 图片 DOM 对象
+                    img,
+                    // 开始裁剪的坐标
+                    imgInfo.eachWidth * imgInfo.indexX, imgInfo.eachHeight * imgInfo.indexY,
+                    // 裁剪的宽高
+                    imgInfo.eachWidth, imgInfo.eachHeight,
+                    // 图片在画布上的坐标
+                    imgPos.x, imgPos.y,
+                    // 图片的宽高
+                    imgInfo.eachWidth, imgInfo.eachHeight
+                );
+
+                imgInfo.indexX += 1;
+                if (imgInfo.indexX > 3) {
+                    imgInfo.indexX = 0;
+                }
+            }
+
+            img.addEventListener('load', function () {
+                // 图片信息
+                imgInfo = {
+                    width: this.naturalWidth,
+                    height: this.naturalHeight,
+                    eachWidth: this.naturalWidth / 4,
+                    eachHeight: this.naturalHeight / 4,
+                    indexX: 0, // 每行中的图片
+                    indexY: 0  // 0：前，1：左，2：右，3：后
+                };
+                imgPos = {
+                    x: canvasInfo.width / 2 - imgInfo.eachWidth / 2,
+                    y: canvasInfo.height / 2 - imgInfo.eachHeight / 2,
+                    step: 8,
+                    direction: 'down'
+                }
+
+                // 显示
+                move();
+            });
+
+            // 设置图片
+            img.src = 'img/02.png';
+
+            // 按下按键
+            document.addEventListener('keydown', function (e) {
+                // Key Code
+                // W: 87, A: 65, S: 83, D: 68
+
+                var keyCode = e.keyCode;
+
+                // 根据按键改变方向
+                if (keyCode == 87) {
+                    // W
+                    imgPos.direction = 'up';
+                    move();
+                } else if (keyCode == 65) {
+                    // A
+                    imgPos.direction = 'left';
+                    move();
+                } else if (keyCode == 83) {
+                    // S
+                    imgPos.direction = 'down';
+                    move();
+                } else if (keyCode == 68) {
+                    // D
+                    imgPos.direction = 'right';
+                    move();
+                }
+            });
+
+            // 松开按键
+            document.addEventListener('keyup', function () {
+                flagMove = false;
+            });
+
+            // 启用移动
+            var setMove = setInterval(function () {
+                flagMove = true;
+
+                if (flagAuto) {
+                    move();
+                }
+            }, 200);
+
+            // 自动移动
+            var autoMove = setInterval(function () {
+                if (flagAuto) {
+                    var directions = ['up', 'down', 'left', 'right'];
+                    imgPos.direction = directions[Math.floor(Math.random() * 4)];
+                }
+            }, 5000);
+
+            var btnAuto = document.querySelector('.btn-auto');
+
+            btnAuto.addEventListener('click', function () {
+                flagAuto = !flagAuto;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>折线图</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px 0;
+            text-align: center;
+            user-select: none;
+        }
+
+        .line-chart {
+            outline: 2px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas class="line-chart">该浏览器不支持 Canvas</canvas>
+    </div>
+    <br>
+    <div>
+        <button type="button" class="manual-draw">测试：拖动画线</button>
+    </div>
+    <script>
+        function drawGrid(canvasCtx, gridSize, gridColor) {
+            // canvasCtx：Canvas 上下文
+            // gridSize：网格大小（数值，不带单位）
+            // gridColor：网格颜色（字符串）
+
+            // 宽高
+            var canvasWidth = canvasCtx.canvas.width;
+            var canvasHeight = canvasCtx.canvas.height;
+            // 线的数量
+            var lineXCount = canvasWidth / gridSize - 1;
+            var lineYCount = canvasHeight / gridSize - 1;
+
+            // 重新开始
+            canvasCtx.beginPath();
+
+            // X
+            for (var x = 1; x <= lineXCount; x++) {
+                canvasCtx.moveTo(x * gridSize, 0);
+                canvasCtx.lineTo(x * gridSize, canvasHeight);
+            }
+
+            // Y
+            for (var y = 1; y <= lineYCount; y++) {
+                canvasCtx.moveTo(0, y * gridSize);
+                canvasCtx.lineTo(canvasWidth, y * gridSize);
+            }
+
+            canvasCtx.lineWidth = 1;
+            canvasCtx.strokeStyle = gridColor;
+            canvasCtx.stroke();
+        }
+
+        // 绘制点
+        function drawPoint(canvasCtx, x, y, size, color) {
+            var sizeHalf = size / 2;
+
+            // 重新开始
+            canvasCtx.beginPath();
+
+            // 点（520, 320）
+            canvasCtx.moveTo(x - sizeHalf, y - sizeHalf);
+            canvasCtx.lineTo(x + sizeHalf, y - sizeHalf);
+            canvasCtx.lineTo(x + sizeHalf, y + sizeHalf);
+            canvasCtx.lineTo(x - sizeHalf, y + sizeHalf);
+            canvasCtx.closePath();
+
+            // 填充
+            canvasCtx.fillStyle = color;
+            canvasCtx.fill();
+        }
+
+        window.addEventListener('load', function () {
+            /** @type {HTMLCanvasElement} */
+            var chart = document.querySelector('.line-chart');
+
+            chart.width = 600;
+            chart.height = 400;
+
+            var ctx = chart.getContext('2d');
+
+            drawGrid(ctx, 10, '#DDD');
+
+            ctx.beginPath();
+            // 线 - X轴
+            ctx.moveTo(20, 380);
+            ctx.lineTo(580, 380);
+            // 线 - Y轴
+            ctx.moveTo(20, 380);
+            ctx.lineTo(20, 20);
+            // 描边
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#000';
+            ctx.stroke();
+
+            ctx.beginPath();
+            // 箭头 - X轴
+            ctx.moveTo(20, 20);
+            ctx.lineTo(25, 30);
+            ctx.lineTo(15, 30);
+            ctx.closePath();
+            // 箭头 - Y轴
+            ctx.moveTo(580, 380);
+            ctx.lineTo(570, 385);
+            ctx.lineTo(570, 375);
+            ctx.closePath();
+            // 填充
+            ctx.fillStyle = '#000';
+            ctx.fill();
+
+            ctx.beginPath();
+            // 折线
+            ctx.moveTo(20, 380);
+            ctx.lineTo(120, 240);
+            ctx.lineTo(220, 220);
+            ctx.lineTo(320, 150);
+            ctx.lineTo(420, 60);
+            ctx.lineTo(520, 320);
+            // 描边
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#000';
+            ctx.stroke();
+
+            ctx.beginPath();
+            // 点（120, 240）
+            drawPoint(ctx, 120, 240, 8, '#000');
+            // 点（220, 220）
+            drawPoint(ctx, 220, 220, 8, '#000');
+            // 点（320, 150）
+            drawPoint(ctx, 320, 150, 8, '#000');
+            // 点（420, 60）
+            drawPoint(ctx, 420, 60, 8, '#000');
+            // 点（520, 320）
+            drawPoint(ctx, 520, 320, 8, '#000');
+
+            // 测试：拖动画线
+
+            var btnDraw = document.querySelector('.manual-draw');
+            var flagDraw = false;
+
+            btnDraw.addEventListener('click', function () {
+                if (flagDraw) {
+                    return false;
+                }
+
+                var ctxCopy = null;
+
+                chart.onmousedown = function (e) {
+                    var startX = e.offsetX;
+                    var startY = e.offsetY;
+
+                    // 宽高
+                    var canvasWidth = ctx.canvas.width;
+                    var canvasHeight = ctx.canvas.height;
+
+                    // 获取数据
+                    var imgData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
+
+                    this.onmousemove = function (e) {
+                        // 清空画布
+                        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                        // 放回数据
+                        ctx.putImageData(imgData, 0, 0);
+                        // 画线
+                        ctx.beginPath();
+                        ctx.moveTo(startX, startY);
+                        ctx.lineTo(e.offsetX, e.offsetY);
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = '#00CCFF';
+                        ctx.stroke();
+                    };
+                };
+
+                document.onmouseup = function (e) {
+                    chart.onmousemove = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

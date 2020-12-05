@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝搜索建议词</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search {
+            margin: 20px;
+        }
+
+        .search input[type="text"] {
+            padding: 0 10px;
+            width: 300px;
+            height: 35px;
+            border: 1px solid #FF5722;
+            border-radius: 0;
+            outline: none;
+            background-color: #FFF;
+            font-size: 16px;
+            color: #FF5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="search">
+        <input type="text" list="suggest-words" />
+        <datalist id="suggest-words"></datalist>
+    </div>
+    <script src="./jsonp.js"></script>
+    <script>
+        var searchInput = document.querySelector('.search input[type="text"]');
+        var suggestList = document.querySelector('#suggest-words');
+
+        var getSuggest = null;
+
+        searchInput.addEventListener('input', function () {
+            var self = this;
+
+            suggestList.innerHTML = '';
+
+            clearTimeout(getSuggest);
+
+            getSuggest = setTimeout(function () {
+                if (self.value == '') {
+                    return false;
+                }
+
+                jsonp({
+                    url: 'http://suggest.taobao.com/sug',
+                    data: {
+                        code: 'utf-8',
+                        q: self.value
+                    },
+                    success: function (result) {
+                        var datas = result.result;
+
+                        datas.forEach(function (value) {
+                            var listItem = document.createElement('option');
+                            
+                            listItem.value = value[0];
+
+                            suggestList.appendChild(listItem);
+                        });
+                    }
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

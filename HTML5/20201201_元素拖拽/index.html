@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .frame {
+            display: block;
+            margin-top: 50px;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0;
+            user-select: none;
+            /* background-color: #555; */
+        }
+
+        .frame>div {
+            display: inline-block;
+            vertical-align: top;
+            margin: 5px;
+            padding: 8px 0;
+            box-sizing: border-box;
+            width: 200px;
+            height: 200px;
+            outline: 2px solid #000;
+            background-color: #FFF;
+            text-align: left;
+            transition: outline 0.2s;
+        }
+
+        .frame>div:nth-child(1) {
+            outline-color: #F44336;
+        }
+
+        .frame>div:nth-child(2) {
+            outline-color: #2196F3;
+        }
+
+        .frame>div:nth-child(3) {
+            outline-color: #4CAF50;
+        }
+
+        .frame>div.drag {
+            outline-width: 4px;
+        }
+
+        p.drag-elem {
+            margin: 5px 0;
+            padding: 4px 15px;
+            background-color: #FF9800;
+            color: #FFF;
+            font-size: 16px;
+            transition: opacity 0.2s;
+            cursor: grab;
+        }
+
+        p.drag {
+            opacity: 0.5;
+        }
+
+        body {
+            transition: background 0.2s;
+        }
+
+        body.drag {
+            background-color: #F5F5F5;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面 -->
+    <div class="frame">
+        <div class="box">
+            <p draggable="true" class="drag-elem">1. 试试把我拽过去</p>
+            <p draggable="true" class="drag-elem">2. 试试把我拽过去</p>
+            <p draggable="true" class="drag-elem">3. 试试把我拽过去</p>
+            <p draggable="true" class="drag-elem">4. 试试把我拽过去</p>
+            <p draggable="true" class="drag-elem">5. 试试把我拽过去</p>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <!-- Script -->
+    <script>
+        window.addEventListener('load', function () {
+            var frameElem = document.querySelector('.frame');
+            var dragElem = null; // 拖动的源元素
+            var boxElem = null;  // 拖动的源元素所在的盒子
+
+            // 开始拖拽源元素
+            document.addEventListener('dragstart', function (e) {
+                // 只有一层可拖动的元素，不需要判断 target 是否为所需要的元素
+                var target = e.target || window.event.srcElement;
+
+                // 记录
+                dragElem = target;
+                boxElem = target.parentElement;
+
+                // 改变样式
+                dragElem.classList.add('drag');
+                boxElem.classList.add('drag');
+            });
+
+            // 拖拽结束
+            document.addEventListener('dragend', function (e) {
+                // 改变样式
+                dragElem.classList.remove('drag');
+                boxElem.classList.remove('drag');
+            });
+
+            // 阻止默认行为
+            document.addEventListener('dragover', function (e) {
+                e.preventDefault();
+            });
+
+            // 释放
+            document.addEventListener('drop', function (e) {
+                // target：目标容器
+                var target = e.target || window.event.srcElement;
+
+                // 限制目标容器
+                if (target.tagName == dragElem.tagName) {
+                    // 不能为拖拽元素
+                    target = target.parentElement;
+                } else if (target.tagName == 'HTML') {
+                    // 不能为 html
+                    target = document.body;
+                }
+
+                // 添加元素
+                target.appendChild(dragElem);
+            });
+        });
+    </script>
+</body>
+</html>

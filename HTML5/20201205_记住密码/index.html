@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+            animation: bgColorGrey 4s forwards 0.5s;
+        }
+
+        .login * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        .login {
+            display: block;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            padding: 20px 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #FFF;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+            transform: translateX(-50%);
+            user-select: none;
+        }
+
+        .login h2 {
+            font-weight: normal;
+        }
+
+        .login div {
+            margin: 10px;
+        }
+
+        .login input {
+            border-radius: 0;
+            font-size: 16px;
+        }
+
+        .login input[type="text"],
+        .login input[type="password"] {
+            padding: 8px 10px;
+            border: 1px solid #DDD;
+        }
+
+        .login input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        .login input[type="submit"] {
+            padding: 8px 40px;
+            border: none;
+            background-color: #00BCD4;
+            color: #FFF;
+            transition: opacity 0.25s;
+            cursor: pointer;
+        }
+
+        .login input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+
+        @keyframes bgColorGrey {
+            to {
+                background-color: #555;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面 -->
+    <div class="login">
+        <h2>用户登录</h2>
+        <div>
+            <label>账号：</label>
+            <input type="text" name="username" class="input-username" autocomplete="off" />
+        </div>
+        <div>
+            <label>密码：</label>
+            <input type="password" name="password" class="input-password" autocomplete="off" />
+        </div>
+        <div>
+            <label><input type="checkbox" class="check-rp" /> 是否记住密码？</label>
+        </div>
+        <div>
+            <input type="submit" value="登录" class="btn-login" />
+        </div>
+    </div>
+    <!-- Script -->
+    <script>
+        window.addEventListener('load', function () {
+            // 输入框 - 账号密码
+            var iUsername = document.querySelector('.input-username');
+            var iPassword = document.querySelector('.input-password');
+            // 复选框 - 记住密码
+            var checkRP = document.querySelector('.check-rp');
+            // 按钮 - 登录
+            var btnLogin = document.querySelector('.btn-login');
+
+            // 账号信息
+            var userDatas = JSON.parse(localStorage.getItem('userDatas')) || {};
+
+            // 是否已保存账号信息
+            if (userDatas.username) {
+                iUsername.value = userDatas.username;
+                iPassword.value = userDatas.password;
+                checkRP.checked = true;
+            } else {
+                iUsername.value = '';
+                iPassword.value = '';
+                checkRP.checked = false;
+            }
+
+            // 按钮 - 登录
+            btnLogin.addEventListener('click', function () {
+                // 表单验证
+                if (iUsername.value == '' || iPassword.value == '') {
+                    alert('请填写信息');
+                    return false;
+                }
+
+                // 是否记住密码
+                if (checkRP.checked) {
+                    // 记住密码
+                    userDatas.username = iUsername.value;
+                    userDatas.password = iPassword.value;
+                    localStorage.setItem('userDatas', JSON.stringify(userDatas));
+                } else {
+                    // 不记住密码
+                    localStorage.removeItem('userDatas');
+                }
+
+                location.href = 'about://blank';
+            });
+        });
+    </script>
+</body>
+</html>

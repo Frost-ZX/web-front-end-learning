@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生档案</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        input {
+            outline: none;
+        }
+
+        .student-info {
+            display: inline-block;
+            margin-top: 20px;
+            width: 600px;
+            text-align: left;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .student-info p {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .student-info label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .student-info input[type="text"],
+        .student-info input[type="email"],
+        .student-info input[type="number"],
+        .student-info input[type="date"],
+        .student-info input[type="submit"] {
+            padding: 0 10px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            border: 1px solid #DDD;
+            border-radius: 0;
+            font-size: 14px;
+        }
+
+        .student-info .info-basic {
+            width: 100%;
+            height: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="student-info">
+        <fieldset>
+            <legend>学生档案</legend>
+            <form action="submit.php" method="get">
+                <p>
+                    <label>姓名：</label>
+                    <input type="text" name="info-name" placeholder="请输入姓名" required />
+                </p>
+                <p>
+                    <label>手机号码：</label>
+                    <input type="text" name="info-tel" pattern="/^1[3-9]\d{9}$/" required />
+                </p>
+                <p>
+                    <label>邮箱地址：</label>
+                    <input type="email" name="info-email" required />
+                </p>
+                <p>
+                    <label>所属学院：</label>
+                    <input type="text" name="info-type" list="info-type" placeholder="请选择" required />
+                    <datalist id="info-type">
+                        <option value="HTML5"></option>
+                        <option value="Java"></option>
+                        <option value="JavaScript"></option>
+                        <option value="UI"></option>
+                        <option value="嵌入式"></option>
+                        <option value="PHP"></option>
+                        <option value="Python"></option>
+                    </datalist>
+                </p>
+                <p>
+                    <label>入学成绩：</label>
+                    <input name="info-score" type="number" min="0" max="100" value="0" required />
+                </p>
+                <p>
+                    <label>基础水平：</label>
+                    <meter class="info-basic" low="0.6" high="0.8" value="0.0"></meter>
+                </p>
+                <p>
+                    <label>入学日期：</label>
+                    <input name="info-startdate" type="date" required />
+                </p>
+                <p>
+                    <label>毕业日期：</label>
+                    <input name="info-enddate" type="date" required />
+                </p>
+                <p>
+                    <input type="submit" value="提交" />
+                </p>
+            </form>
+        </fieldset>
+    </div>
+    <script>
+        var infoScoreElem = document.querySelector('.student-info input[name="info-score"]');
+        var infoBasicElem = document.querySelector('.student-info .info-basic');
+
+        infoScoreElem.addEventListener('input', function () {
+            infoBasicElem.value = this.value / 100;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调色板</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+        }
+
+        .config {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 15px 20px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+            background-color: #FFF;
+            opacity: 0.25;
+            transition: opacity 0.25s;
+            user-select: none;
+        }
+        .config:hover {
+            opacity: 1.0;
+        }
+
+        .config p {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        .config p input[type="range"] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="config">
+        <p>红：<input type="range" min="0" max="255" value="255" /><span>255</span></p>
+        <p>绿：<input type="range" min="0" max="255" value="255" /><span>255</span></p>
+        <p>蓝：<input type="range" min="0" max="255" value="255" /><span>255</span></p>
+    </div>
+    <script>
+        var rangeElem = document.querySelectorAll('.config p input[type="range"]');
+        var infoElem = document.querySelectorAll('.config p span');
+
+        rangeElem.forEach(function (elem, index) {
+            elem.addEventListener('input', function () {
+                var color = 'rgb(' + infoElem[0].textContent + ', ' + infoElem[1].textContent + ', ' + infoElem[2].textContent + ')';
+
+                infoElem[index].textContent = this.value;
+                document.body.style.backgroundColor = color;
+            });
+        });
+    </script>
+</body>
+</html>

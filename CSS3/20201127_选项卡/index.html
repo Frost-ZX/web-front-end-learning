@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background-color: #F5F5F5;
+        }
+
+        body {
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            background-color: #FFF;
+            transform: translateX(-50%);
+            overflow: hidden;
+        }
+
+        .wrapper,
+        .wrapper>div {
+            width: 100%;
+            max-width: 425px;
+        }
+
+        .wrapper ul {
+            list-style-type: none;
+        }
+
+        .wrapper .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            height: 45px;
+            border-bottom: 1px solid #DDD;
+            line-height: 45px;
+            font-size: 18px;
+        }
+
+        .wrapper .main {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            height: calc(100% - 45px * 2);
+        }
+
+        .wrapper .main {
+            white-space: nowrap;
+            color: #222;
+        }
+
+        .wrapper .main>div {
+            display: inline-block;
+            vertical-align: top;
+            height: 100%;
+        }
+
+        .wrapper .main .selection {
+            width: 90px;
+            background-color: #F9F9F9;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .wrapper .main .selection ul {
+            position: relative;
+            top: 0;
+        }
+
+        .wrapper .main .selection ul li {
+            padding: 15px 0;
+        }
+
+        .wrapper .main .selection ul li.active {
+            background-color: #FFF;
+            color: #E93B3D;
+        }
+
+        .wrapper .main .content {
+            padding: 10px;
+            box-sizing: border-box;
+            width: calc(100% - 90px);
+            text-align: left;
+        }
+
+        .wrapper .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 45px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 0.2);
+            line-height: 45px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面 -->
+    <div class="wrapper">
+        <!-- 顶部 -->
+        <div class="header">页面顶部</div>
+        <!-- 主内容 -->
+        <div class="main">
+            <div class="selection">
+                <ul>
+                    <li class="active">热门推荐</li>
+                    <li>手机数码</li>
+                    <li>电脑办公</li>
+                    <li>家用电器</li>
+                    <li>计生情趣</li>
+                    <li>美妆护肤</li>
+                    <li>个护清洁</li>
+                    <li>汽车生活</li>
+                    <li>京东超市</li>
+                    <li>男装</li>
+                    <li>男鞋</li>
+                    <li>女装</li>
+                    <li>女鞋</li>
+                    <li>母婴童装</li>
+                    <li>图书音像</li>
+                    <li>运动户外</li>
+                    <li>内衣配饰</li>
+                    <li>食品生鲜</li>
+                    <li>酒水饮料</li>
+                    <li>家具家装</li>
+                    <li>家居厨具</li>
+                    <li>箱包手袋</li>
+                    <li>钟表珠宝</li>
+                    <li>玩具乐器</li>
+                    <li>医药保健</li>
+                    <li>宠物生活</li>
+                    <li>礼品鲜花</li>
+                    <li>农资绿植</li>
+                    <li>生活旅行</li>
+                    <li>奢侈品</li>
+                    <li>京东国际</li>
+                    <li>艺术邮币</li>
+                    <li>二手商品</li>
+                    <li>特产馆</li>
+                    <li>京东金融</li>
+                    <li>国际名牌</li>
+                    <li>拍卖</li>
+                    <li>房产</li>
+                    <li>工业品</li>
+                </ul>
+            </div>
+            <div class="content">热门推荐的内容</div>
+        </div>
+        <!-- 底部 -->
+        <div class="footer">页面底部</div>
+    </div>
+    <!-- Script -->
+    <script>
+        window.addEventListener('load', function () {
+            var selections = document.querySelector('.wrapper .main .selection');
+
+            // 点击切换
+            selections.addEventListener('click', function (e) {
+                var target = e.target || window.event.srcElement;
+
+                if (target.tagName == 'LI') {
+                    var activeItem = this.querySelector('ul li.active');
+                    var content = this.nextElementSibling;
+
+                    // 激活标签
+                    activeItem.className = '';
+                    target.className = 'active';
+
+                    // 更新内容
+                    content.textContent = target.textContent + '的内容';
+                }
+            });
+
+            var list = selections.querySelector('ul');
+            var listHeight;
+            var selectionHeight;
+            var startTop;
+            var touchStart;
+            var touchMove;
+
+            // 滑动
+            selections.addEventListener('touchstart', function (e) {
+                listHeight = list.clientHeight * -1;
+                selectionHeight = this.clientHeight;
+                startTop = list.offsetTop;
+                touchStart = e.changedTouches[0];
+            });
+            selections.addEventListener('touchmove', function (e) {
+                touchMove = e.changedTouches[0];
+
+                var startY = touchStart.pageY;
+                var moveY = touchMove.pageY;
+                var currentY = startTop + moveY - startY;
+
+                // 边界
+                currentY = currentY > 0 ? 0 : currentY < (listHeight + selectionHeight) ? (listHeight + selectionHeight) : currentY;
+
+                list.style.top = currentY + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
