@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="./style.css">
+<script src="./script.js"></script>
+
 ## JavaScript
 
 ### jsconfig.json
@@ -18,4 +21,3 @@
 /** @type {HTMLCanvasElement} */
 var 变量名 = document.querySelector(Canvas 标签);
 ```
-

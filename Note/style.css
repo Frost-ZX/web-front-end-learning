@@ -75,14 +75,6 @@ hr {
 .btn-float > div:hover {
     opacity: 1.0;
 }
-/* 悬浮按钮 - 返回顶部 */
-.btn-totop {
-    
-}
-/* 悬浮按钮 - 返回上一页 */
-.btn-back {
-    
-}
 
 /* 目录 */
 .contents+h1,

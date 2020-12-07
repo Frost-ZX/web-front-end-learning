@@ -1,5 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./markdown_style.css">
+<link rel="stylesheet" href="./style.css">
 <script src="./script.js"></script>
 <div class="contents"></div>
 
