@@ -630,16 +630,16 @@ timestamp               | 响应的日期 / 时间
 
 ## 存储对象属性
 
-属性   | 描述
-----   | ----
-length | 返回存储对象中包含多少条数据
+属性     | 描述
+----     | ----
+`length` | 返回存储对象中包含多少条数据
 
 ## 存储对象方法
 
-方法                    | 描述
-----                    | ----
-key(n)                  | 返回存储对象中第 n 个键的名称
-getItem(keyname)        | 返回指定键的值
-setItem(keyname, value) | 添加键和值（如果对应的值存在，则更新该键对应的值）
-removeItem(keyname)     | 移除键（数据）
-clear()                 | 清除存储对象中所有的键（数据）
+方法                      | 描述
+----                      | ----
+`key(n)`                  | 返回存储对象中第 n 个键的名称
+`getItem(keyname)`        | 返回指定键的值
+`setItem(keyname, value)` | 添加键和值（如果对应的值存在，则更新该键对应的值）
+`removeItem(keyname)`     | 移除键（数据）
+`clear()`                 | 清除存储对象中所有的键（数据）

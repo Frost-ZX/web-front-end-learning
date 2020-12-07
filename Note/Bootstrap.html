@@ -69,7 +69,12 @@
 <li><a href="#container-fluid">.container-fluid</a></li>
 </ul>
 </li>
-<li><a href="#%E6%A0%85%E6%A0%BC">栅格</a></li>
+<li><a href="#%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F">网格系统</a>
+<ul>
+<li><a href="#%E7%BD%91%E6%A0%BC%E7%B1%BB">网格类</a></li>
+<li><a href="#%E5%81%8F%E7%A7%BB%E5%88%97">偏移列</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -199,7 +204,28 @@
 <li>占据全部视口（viewport）的容器</li>
 <li>适合于单独做移动端开发</li>
 </ul>
-<h2 id="栅格">栅格</h2>
+<h2 id="网格系统">网格系统</h2>
+<h3 id="网格类">网格类</h3>
+<ul>
+<li>
+<p>Bootstrap 4 网格系统有以下 5 个类：</p>
+<ul>
+<li><code>.col-*</code> 针对所有设备</li>
+<li><code>.col-sm-*</code> 平板 - 屏幕宽度等于或大于 576px</li>
+<li><code>.col-md-*</code> 桌面显示器 - 屏幕宽度等于或大于 768px</li>
+<li><code>.col-lg-*</code> 大桌面显示器 - 屏幕宽度等于或大于 992px</li>
+<li><code>.col-xl-*</code> 超大桌面显示器 - 屏幕宽度等于或大于 1200px</li>
+</ul>
+</li>
+</ul>
+<h3 id="偏移列">偏移列</h3>
+<ul>
+<li>通过 <code>offset-*-*</code> 类设置偏移列</li>
+<li>第 1 个 <code>*</code> 表示屏幕设备类型，可以是 <code>sm</code>、<code>md</code>、<code>lg</code>、<code>xl</code></li>
+<li>第 2 个 <code>*</code> 可以是 1 到 11 的数字</li>
+<li>为了在大屏幕显示器上使用偏移，可以使用 <code>.offset-md-*</code> 类<br>
+（这些类会把一个列的左外边距（margin-left）增加 <code>*</code> 列）</li>
+</ul>
 
     </body>
     </html>

@@ -67,7 +67,11 @@
 </li>
 <li><a href="#jquery-%E4%B8%AD%E7%9A%84-ajax-%E6%96%B9%E6%B3%95">jQuery 中的 AJAX 方法</a>
 <ul>
-<li><a href="#ajax-1">$.ajax()</a></li>
+<li><a href="#ajax-1">$.ajax()</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+</ul>
+</li>
 <li><a href="#get">$.get()</a></li>
 <li><a href="#post">$.post()</a></li>
 </ul>
@@ -253,7 +257,120 @@ app.post(<span class="hljs-string">&quot;/file2&quot;</span>, <span class="hljs-
 </li>
 </ul>
 <h1 id="jquery-中的-ajax-方法">jQuery 中的 AJAX 方法</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/jquery/jquery-ref-ajax.html">https://www.runoob.com/jquery/jquery-ref-ajax.html</a></p>
+</blockquote>
 <h2 id="ajax-1">$.ajax()</h2>
+<h3 id="语法">语法</h3>
+<blockquote>
+<p><code>$.ajax({name: value, name: value, ... })</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>值 / 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async</code></td>
+<td>布尔值，表示请求是否异步处理。默认是 <code>true</code>。</td>
+</tr>
+<tr>
+<td><code>beforeSend(xhr)</code></td>
+<td>发送请求前运行的函数。</td>
+</tr>
+<tr>
+<td><code>cache</code></td>
+<td>布尔值，表示浏览器是否缓存被请求页面。默认是 <code>true</code>。</td>
+</tr>
+<tr>
+<td><code>complete(xhr,status)</code></td>
+<td>请求完成时运行的函数（在请求成功或失败之后均调用，即在 <code>success</code> 和 <code>error</code> 函数之后）。</td>
+</tr>
+<tr>
+<td><code>contentType</code></td>
+<td>发送数据到服务器时所使用的内容类型。默认是：<code>&quot;application/x-www-form-urlencoded&quot;</code>。</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>为所有 AJAX 相关的回调函数规定 <code>this</code> 值。</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>规定要发送到服务器的数据。</td>
+</tr>
+<tr>
+<td><code>dataFilter(data,type)</code></td>
+<td>用于处理 <code>XMLHttpRequest</code> 原始响应数据的函数。</td>
+</tr>
+<tr>
+<td><code>dataType</code></td>
+<td>预期的服务器响应的数据类型。</td>
+</tr>
+<tr>
+<td><code>error(xhr,status,error)</code></td>
+<td>如果请求失败要运行的函数。</td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td>布尔值，规定是否为请求触发全局 AJAX 事件处理程序。默认是 <code>true</code>。</td>
+</tr>
+<tr>
+<td><code>ifModified</code></td>
+<td>布尔值，规定是否仅在最后一次请求以来响应发生改变时才请求成功。默认是 <code>false</code>。</td>
+</tr>
+<tr>
+<td><code>jsonp</code></td>
+<td>在一个 JSONP 中重写回调函数的字符串。</td>
+</tr>
+<tr>
+<td><code>jsonpCallback</code></td>
+<td>在一个 JSONP 中规定回调函数的名称。</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>规定在 HTTP 访问认证请求中使用的密码。</td>
+</tr>
+<tr>
+<td><code>processData</code></td>
+<td>布尔值，规定通过请求发送的数据是否转换为查询字符串。默认是 <code>true</code>。</td>
+</tr>
+<tr>
+<td><code>scriptCharset</code></td>
+<td>规定请求的字符集。</td>
+</tr>
+<tr>
+<td><code>success(result,status,xhr)</code></td>
+<td>当请求成功时运行的函数。</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>设置本地的请求超时时间（以毫秒计）。</td>
+</tr>
+<tr>
+<td><code>traditional</code></td>
+<td>布尔值，规定是否使用参数序列化的传统样式。</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>规定请求的类型（GET 或 POST）。</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>规定发送请求的 URL。默认是当前页面。</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>规定在 HTTP 访问认证请求中使用的用户名。</td>
+</tr>
+<tr>
+<td><code>xhr</code></td>
+<td>用于创建 <code>XMLHttpRequest</code> 对象的函数。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="get">$.get()</h2>
 <h2 id="post">$.post()</h2>
 
