@@ -1,17 +1,18 @@
 # Web 前端学习记录
 
-## 学习路线
+## 主要学习路线
 
-1. HTML
-2. CSS
-3. JavaScript
-4. JavaScript 面向对象
-5. jQuery
-6. Bootstrap
-7. Ajax
-8. CSS3
-9. HTML5
+01. HTML
+02. CSS
+03. JavaScript
+04. JavaScript 面向对象
+05. jQuery
+06. Bootstrap
+07. Ajax
+08. CSS3
+09. HTML5
 10. Git
+11. Webpack
 
 ## 文件说明
 
