@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>webpack</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../note/style.css">
+<script src="../note/script.js"></script>
+<div class="contents"></div>
+<h1 id="webpack">webpack</h1>
+<ul>
+<li><a href="#webpack">webpack</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">相关网站</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#webpack-%E6%9C%AC%E4%BD%93">webpack 本体</a></li>
+<li><a href="#webpack-%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7">webpack 命令工具</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6">文件</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E6%BA%90%E6%96%87%E4%BB%B6">项目源文件</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9">输出文件夹</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%A7%E8%A1%8C">执行</a>
+<ul>
+<li><a href="#%E6%99%AE%E9%80%9A%E6%96%B9%E5%BC%8F">普通方式</a>
+<ul>
+<li><a href="#%E5%AF%B9%E4%BA%8E%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85%E7%9A%84-webpack">对于全局安装的 webpack</a></li>
+<li><a href="#%E5%AF%B9%E4%BA%8E%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85%E7%9A%84-webpack">对于本地安装的 webpack</a></li>
+</ul>
+</li>
+<li><a href="#%E9%80%9A%E8%BF%87-npm-%E6%89%A7%E8%A1%8C">通过 npm 执行</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E6%A8%A1%E5%BC%8F">环境模式</a>
+<ul>
+<li><a href="#development-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">development（开发环境）</a></li>
+<li><a href="#production-%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83">production（生产环境）</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE">设置</a></li>
+</ul>
+</li>
+<li><a href="#loader">loader</a>
+<ul>
+<li><a href="#css-loader">css-loader</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-1">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+</ul>
+</li>
+<li><a href="#less-loader">less-loader</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-2">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-1">配置</a></li>
+</ul>
+</li>
+<li><a href="#sass-loader">sass-loader</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-3">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-2">配置</a></li>
+</ul>
+</li>
+<li><a href="#file-loader">file-loader</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-4">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-3">配置</a></li>
+</ul>
+</li>
+<li><a href="#url-loader">url-loader</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-5">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-4">配置</a></li>
+</ul>
+</li>
+<li><a href="#babel-loader">babel-loader</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-6">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-5">配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8F%92%E4%BB%B6">插件</a>
+<ul>
+<li><a href="#html-webpack-plugin">html-webpack-plugin</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-7">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-6">配置</a></li>
+</ul>
+</li>
+<li><a href="#mini-css-extract-plugin">mini-css-extract-plugin</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-8">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-7">配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dev-server">dev-server</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-9">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-8">配置</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="简介">简介</h1>
+<ul>
+<li>webpack 是一个前端资源加载 / 打包工具。</li>
+<li>它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</li>
+<li>可进行代码压缩、优化、混淆等操作。</li>
+</ul>
+<h1 id="相关网站">相关网站</h1>
+<ul>
+<li><a href="https://webpack.js.org/">https://webpack.js.org/</a></li>
+<li><a href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></li>
+</ul>
+<h1 id="安装">安装</h1>
+<blockquote>
+<p><code>--save-dev</code> 安装到开发环境（推荐），<code>-g</code> 安装到全局。<br>
+<code>--save-dev</code> 可缩写为 <code>-D</code>，<code>install</code> 可缩写为 <code>i</code>。<br>
+若安装速度慢，可使用 <code>cnpm</code>，或添加参数 <code>--registry=https://registry.npm.taobao.org</code>。</p>
+</blockquote>
+<h3 id="webpack-本体">webpack 本体</h3>
+<pre><code><code><div>npm install webpack --save-dev
+</div></code></code></pre>
+<h3 id="webpack-命令工具">webpack 命令工具</h3>
+<pre><code><code><div>npm install webpack-cli --save-dev
+</div></code></code></pre>
+<h1 id="文件">文件</h1>
+<h2 id="配置文件">配置文件</h2>
+<ul>
+<li>
+<p>默认：<code>webpack.config.js</code></p>
+</li>
+<li>
+<p>空的配置文件</p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = { }
+</div></code></pre>
+</li>
+<li>
+<p>示例配置文件（<code>config/webpack.config.js</code>）</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 加载 path 模块</span>
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-comment">// 打包入口 - 单入口</span>
+    <span class="hljs-comment">// entry: &#x27;./src/index.js&#x27;,</span>
+
+    <span class="hljs-comment">// 打包入口 - 多入口</span>
+    <span class="hljs-attr">entry</span>: {
+        <span class="hljs-attr">index</span>: <span class="hljs-string">&#x27;./src/index.js&#x27;</span>,
+        <span class="hljs-attr">procuct</span>: <span class="hljs-string">&#x27;./src/product.js&#x27;</span>
+    },
+
+    <span class="hljs-comment">// 打包出口</span>
+    <span class="hljs-attr">output</span>: {
+        <span class="hljs-comment">// 打包文件输出路径（绝对路径，可通过 path.resolve() 获取）</span>
+        <span class="hljs-comment">// __dirname 为本配置文件所在路径</span>
+        <span class="hljs-attr">path</span>: path.resolve(__dirname, <span class="hljs-string">&#x27;../dist/&#x27;</span>),
+
+        <span class="hljs-comment">// 打包后的文件名</span>
+        <span class="hljs-comment">// 可使用 [name]、[hash] 占位符，[name] 默认为 main.js，多入口时为入口键名</span>
+        <span class="hljs-comment">// 多入口时需要使用占位符</span>
+        <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;bundle.js&#x27;</span>
+    }
+}
+</div></code></pre>
+</li>
+</ul>
+<h2 id="项目源文件">项目源文件</h2>
+<ul>
+<li>默认：<code>src</code> 文件夹</li>
+</ul>
+<h2 id="输出文件夹">输出文件夹</h2>
+<ul>
+<li>默认：<code>dist</code> 文件夹</li>
+</ul>
+<h1 id="执行">执行</h1>
+<h2 id="普通方式">普通方式</h2>
+<h3 id="对于全局安装的-webpack">对于全局安装的 webpack</h3>
+<pre><code><code><div>webpack
+</div></code></code></pre>
+<h3 id="对于本地安装的-webpack">对于本地安装的 webpack</h3>
+<pre><code><code><div># Bash
+node_modules/.bin/webpack
+
+# CMD
+node_modules\.bin\webpack
+</div></code></code></pre>
+<h2 id="通过-npm-执行">通过 npm 执行</h2>
+<ul>
+<li>
+<p>修改 <code>package.json</code></p>
+<pre><code class="language-json"><div><span class="hljs-string">&quot;scripts&quot;</span>: {
+  ...
+}
+</div></code></pre>
+<p>添加一行</p>
+<pre><code class="language-json"><div><span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;webpack --config=webpack.config.js&quot;</span>
+</div></code></pre>
+<blockquote>
+<p><code>build</code>：<code>npm run</code> 的子命令，可修改<br>
+<code>webpack.config.js</code>：相对于项目根目录的配置文件路径，根据实际修改</p>
+</blockquote>
+</li>
+<li>
+<p>执行命令：<code>npm run build</code></p>
+</li>
+</ul>
+<h1 id="环境模式">环境模式</h1>
+<blockquote>
+<p><a href="https://www.webpackjs.com/concepts/mode/">https://www.webpackjs.com/concepts/mode/</a></p>
+</blockquote>
+<h2 id="development-开发环境">development（开发环境）</h2>
+<ul>
+<li>会将 <code>process.env.NODE_ENV</code> 的值设为 <code>development</code></li>
+<li>启用 <code>NamedChunksPlugin</code> 和 <code>NamedModulesPlugin</code></li>
+</ul>
+<h2 id="production-生产环境">production（生产环境）</h2>
+<ul>
+<li>默认模式，优化代码</li>
+<li>会将 <code>process.env.NODE_ENV</code> 的值设为 <code>production</code></li>
+<li>启用 <code>FlagDependencyUsagePlugin</code>、<code>FlagIncludedChunksPlugin</code>、<code>ModuleConcatenationPlugin</code>、<code>NoEmitOnErrorsPlugin</code>、<code>OccurrenceOrderPlugin</code>、<code>SideEffectsFlagPlugin</code>、<code>UglifyJsPlugin</code></li>
+</ul>
+<h2 id="设置">设置</h2>
+<blockquote>
+<p>在配置文件中设置<br>
+一般在 <code>module.exports</code> 的第一行</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;环境模式&#x27;</span>
+}
+</div></code></pre>
+<h1 id="loader">loader</h1>
+<blockquote>
+<p>扩展功能，用于对模块的源代码进行转换。<br>
+webpack 本身只能打包 JavaScript 文件，对于其他资源（例如 CSS、图片）是不能加载的，<br>
+这就需要对应的 loader 将资源转换，以便加载。</p>
+</blockquote>
+<h2 id="css-loader">css-loader</h2>
+<blockquote>
+<p>解析 CSS 文件<br>
+需要安装 <code>style-loader</code>（<code>npm install style-loader --save-dev</code>）</p>
+</blockquote>
+<h3 id="安装-1">安装</h3>
+<pre><code><code><div>npm install css-loader --save-dev
+</div></code></code></pre>
+<h3 id="配置">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-comment">// 规则</span>
+        <span class="hljs-attr">rules</span>: [
+            {
+                <span class="hljs-comment">// 文件匹配规则（正则）</span>
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.css$/</span>,
+                <span class="hljs-comment">// 匹配到的文件要使用的 loader</span>
+                use: [
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;style-loader&#x27;</span> },
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;css-loader&#x27;</span> }
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+</li>
+<li>
+<p>入口文件（例如：<code>index.js</code>）</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;CSS 文件名&#x27;</span>;
+</div></code></pre>
+</li>
+</ul>
+<h2 id="less-loader">less-loader</h2>
+<blockquote>
+<p>解析 <code>.less</code> 文件<br>
+需要安装 <code>style-loader</code>、<code>css-loader</code>、<code>less</code></p>
+</blockquote>
+<h3 id="安装-2">安装</h3>
+<pre><code><code><div>npm install less-loader --save-dev
+</div></code></code></pre>
+<h3 id="配置-1">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-attr">rules</span>: [
+            {
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.less$/</span>,
+                use: [
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;style-loader&#x27;</span> },
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;css-loader&#x27;</span> },
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;less-loader&#x27;</span> }
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+</li>
+<li>
+<p>入口文件（例如：<code>index.js</code>）</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;Less 文件名&#x27;</span>;
+</div></code></pre>
+</li>
+</ul>
+<h2 id="sass-loader">sass-loader</h2>
+<blockquote>
+<p>解析 <code>.sass</code>、<code>.scss</code> 文件，使用方式与 <code>less-loader</code> 相似<br>
+需要安装 <code>style-loader</code>、<code>css-loader</code>、<code>node-sass</code></p>
+</blockquote>
+<h3 id="安装-3">安装</h3>
+<pre><code><code><div>npm install sass-loader --save-dev
+</div></code></code></pre>
+<h3 id="配置-2">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-attr">rules</span>: [
+            {
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(sass|scss)$/</span>,
+                use: [
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;style-loader&#x27;</span> },
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;css-loader&#x27;</span> },
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;sass-loader&#x27;</span> }
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+</li>
+<li>
+<p>入口文件（例如：<code>index.js</code>）</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;Sass 文件名&#x27;</span>;
+</div></code></pre>
+</li>
+</ul>
+<h2 id="file-loader">file-loader</h2>
+<blockquote>
+<p>打包文件</p>
+</blockquote>
+<h3 id="安装-4">安装</h3>
+<pre><code><code><div>npm install file-loader --save-dev
+</div></code></code></pre>
+<h3 id="配置-3">配置</h3>
+<blockquote>
+<p>以打包图片为例</p>
+</blockquote>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-attr">rules</span>: [
+            {
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(gif|jpg|jpeg|png|webp)$/</span>,
+                use: [
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;file-loader&#x27;</span> }
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+</li>
+<li>
+<p>入口文件（例如：<code>index.js</code>）</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">import</span> 自定义名称 <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;图片文件路径&#x27;</span>;
+
+<span class="hljs-comment">// 创建元素并添加</span>
+<span class="hljs-keyword">var</span> imgElem = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;img&#x27;</span>);
+
+imgElem.src = 自定义名称;
+<span class="hljs-built_in">document</span>.body.appendChild(imgElem);
+</div></code></pre>
+</li>
+</ul>
+<h2 id="url-loader">url-loader</h2>
+<blockquote>
+<p><code>file-loader</code> 的升级版<br>
+需要安装 <code>file-loader</code></p>
+</blockquote>
+<h3 id="安装-5">安装</h3>
+<pre><code><code><div>npm install url-loader --save-dev
+</div></code></code></pre>
+<h3 id="配置-4">配置</h3>
+<blockquote>
+<p>以打包图片为例</p>
+</blockquote>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-attr">rules</span>: [
+            {
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(gif|jpg|jpeg|png|webp)$/</span>,
+                use: [
+                    {
+                        <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;url-loader&#x27;</span>,
+                        <span class="hljs-attr">options</span>: {
+                            <span class="hljs-comment">// 图片大小限制，单位 byte</span>
+                            <span class="hljs-comment">// 图片小于设定值时会被转换为 base64，</span>
+                            <span class="hljs-comment">// 否则使用 file-loader 方式处理</span>
+                            <span class="hljs-attr">limit</span>: <span class="hljs-number">102400</span>
+                        }
+                    },
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+</li>
+<li>
+<p>入口文件（例如：<code>index.js</code>）</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">import</span> 自定义名称 <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;图片文件路径&#x27;</span>;
+
+<span class="hljs-comment">// 创建元素并添加</span>
+<span class="hljs-keyword">var</span> imgElem = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;img&#x27;</span>);
+
+imgElem.src = 自定义名称;
+<span class="hljs-built_in">document</span>.body.appendChild(imgElem);
+</div></code></pre>
+</li>
+</ul>
+<h2 id="babel-loader">babel-loader</h2>
+<blockquote>
+<p>可进行语法转换（例如 ES6 转 ES5）<br>
+需要安装 <code>babel-core</code>、<code>babel-preset-env</code><br>
+<code>使用时要注意版本</code><br>
+<code>babel-loader@8 requires Babel 7.x (the package '@babel/core').</code><br>
+<code>If you'd like to use Babel 6.x ('babel-core'), you should install 'babel-loader@7'.</code></p>
+</blockquote>
+<h3 id="安装-6">安装</h3>
+<pre><code><code><div>npm install babel-loader --save-dev
+</div></code></code></pre>
+<h3 id="配置-5">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-attr">rules</span>: [
+            {
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,
+                <span class="hljs-comment">// 排除文件夹</span>
+                exclude: <span class="hljs-regexp">/(node_modules|bower_components)/</span>,
+                use: [
+                    {
+                        <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;babel-loader&#x27;</span>,
+                        <span class="hljs-attr">options</span>: {
+                            <span class="hljs-comment">// 预设</span>
+                            <span class="hljs-comment">// env：ES6 转换为 ES5</span>
+                            <span class="hljs-attr">presets</span>: [<span class="hljs-string">&#x27;env&#x27;</span>]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+</li>
+</ul>
+<h1 id="插件">插件</h1>
+<blockquote>
+<p>插件是 webpack 的支柱功能<br>
+插件目的在于解决 loader 无法实现的其他事</p>
+</blockquote>
+<h2 id="html-webpack-plugin">html-webpack-plugin</h2>
+<blockquote>
+<p><code>html-webpack-plugin</code> 是处理 HTML 模板的插件</p>
+</blockquote>
+<h3 id="安装-7">安装</h3>
+<pre><code><code><div>npm install html-webpack-plugin --save-dev
+</div></code></code></pre>
+<h3 id="配置-6">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 引入 html-webpack-plugin 插件</span>
+<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">plugins</span>: [
+        <span class="hljs-comment">// 通过构造函数传递参数</span>
+        <span class="hljs-keyword">new</span> HtmlWebpackPlugin({
+            <span class="hljs-comment">// 网页标题</span>
+            <span class="hljs-comment">// 需要修改 HTML 文件</span>
+            <span class="hljs-comment">// &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;</span>
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;html-webpack-plugin 插件&#x27;</span>,
+
+            <span class="hljs-comment">// 模板文件路径（相对于项目根目录）</span>
+            <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;./src/template.html&#x27;</span>,
+
+            <span class="hljs-comment">// 插入打包的 JavaScript 文件</span>
+            <span class="hljs-comment">// true：script 标签位于 HTML 文件的 body 标签底部，默认值</span>
+            <span class="hljs-comment">// body：script 标签位于 HTML 文件的 body 标签底部</span>
+            <span class="hljs-comment">// head：script 标签位于 HTML 文件的 head 标签中</span>
+            <span class="hljs-comment">// false：不插入打包的 JavaScript 文件</span>
+            <span class="hljs-attr">inject</span>: <span class="hljs-literal">true</span>,
+
+            <span class="hljs-comment">// 压缩规则</span>
+            <span class="hljs-attr">minify</span>: {
+                <span class="hljs-comment">// 是否移除空格</span>
+                <span class="hljs-attr">collapseWhitespace</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-comment">// 是否移除属性值的引号</span>
+                <span class="hljs-attr">removeAttributeQuotes</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-comment">// 是否移除注释</span>
+                <span class="hljs-attr">removeComments</span>: <span class="hljs-literal">true</span>
+            },
+
+            <span class="hljs-comment">// 输出的 HTML 文件名，可使用 [name]、[hash]</span>
+            <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;index.html&#x27;</span>
+        })
+    ]
+}
+</div></code></pre>
+</li>
+</ul>
+<h2 id="mini-css-extract-plugin">mini-css-extract-plugin</h2>
+<blockquote>
+<p><code>mini-css-extract-plugin</code> 是分离 CSS 的插件<br>
+需要安装 <code>style-loader</code>、<code>css-loader</code></p>
+</blockquote>
+<h3 id="安装-8">安装</h3>
+<pre><code><code><div>npm install mini-css-extract-plugin --save-dev
+</div></code></code></pre>
+<h3 id="配置-7">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 引入 mini-css-extract-plugin 插件</span>
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mini-css-extract-plugin&#x27;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">module</span>: {
+        <span class="hljs-attr">rules</span>: [
+            <span class="hljs-comment">// 修改 CSS / Less / Sass 的 loader 处理配置</span>
+            <span class="hljs-comment">// &#x27;style-loader&#x27; -&gt; MiniCssExtractPlugin.loader</span>
+            {
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.css$/</span>,
+                use: [
+                    { <span class="hljs-attr">loader</span>: MiniCssExtractPlugin.loader },
+                    { <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;css-loader&#x27;</span> }
+                ]
+            }
+        ]
+    },
+
+    <span class="hljs-attr">plugins</span>: [
+        <span class="hljs-keyword">new</span> MiniCssExtractPlugin({
+            <span class="hljs-comment">// 输出的 CSS 文件名，可使用 [name]、[hash]</span>
+            <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;bundle.css&#x27;</span>
+        })
+    ]
+}
+</div></code></pre>
+</li>
+</ul>
+<h1 id="dev-server">dev-server</h1>
+<h3 id="安装-9">安装</h3>
+<pre><code><code><div>npm install webpack-dev-server --save-dev
+</div></code></code></pre>
+<h3 id="配置-8">配置</h3>
+<ul>
+<li>
+<p><code>package.json: </code></p>
+<pre><code class="language-json"><div><span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;dev&quot;</span>: <span class="hljs-string">&quot;webpack serve --config=webpack.config.js&quot;</span>
+}
+</div></code></pre>
+<blockquote>
+<p><code>webpack.config.js</code>：相对于项目根目录的配置文件路径，根据实际修改</p>
+</blockquote>
+</li>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">devServer</span>: {
+        <span class="hljs-comment">// 打包文件的输出路径</span>
+        <span class="hljs-comment">// __dirname 为本配置文件所在路径</span>
+        <span class="hljs-attr">contentBase</span>: path.resolve(__dirname, <span class="hljs-string">&#x27;../dist/&#x27;</span>),
+        <span class="hljs-comment">// 压缩</span>
+        <span class="hljs-attr">compress</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-comment">// 端口</span>
+        <span class="hljs-attr">port</span>: <span class="hljs-number">9000</span>,
+        <span class="hljs-comment">// 是否自动打开浏览器</span>
+        <span class="hljs-attr">open</span>: <span class="hljs-literal">false</span>
+    }
+}
+</div></code></pre>
+</li>
+</ul>
+
+    </body>
+    </html>
