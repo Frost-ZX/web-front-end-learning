@@ -10,14 +10,14 @@ html, body {
 }
 
 a {
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 a:focus {
     outline: none;
 }
 a:hover {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 body {
