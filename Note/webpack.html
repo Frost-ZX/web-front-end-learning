@@ -41,7 +41,11 @@
 </li>
 <li><a href="#%E6%96%87%E4%BB%B6">文件</a>
 <ul>
-<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a>
+<ul>
+<li><a href="#%E6%9B%BF%E6%8D%A2%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">替换模板字符串</a></li>
+</ul>
+</li>
 <li><a href="#%E9%A1%B9%E7%9B%AE%E6%BA%90%E6%96%87%E4%BB%B6">项目源文件</a></li>
 <li><a href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9">输出文件夹</a></li>
 </ul>
@@ -118,12 +122,23 @@
 <li><a href="#%E9%85%8D%E7%BD%AE-7">配置</a></li>
 </ul>
 </li>
+<li><a href="#clean-webpack-plugin">clean-webpack-plugin</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-9">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-8">配置</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#dev-server">dev-server</a>
 <ul>
-<li><a href="#%E5%AE%89%E8%A3%85-9">安装</a></li>
-<li><a href="#%E9%85%8D%E7%BD%AE-8">配置</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-10">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-9">配置</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E9%A1%B5%E9%9D%A2">多页面</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE-10">配置</a></li>
 </ul>
 </li>
 </ul>
@@ -183,14 +198,48 @@
         <span class="hljs-attr">path</span>: path.resolve(__dirname, <span class="hljs-string">&#x27;../dist/&#x27;</span>),
 
         <span class="hljs-comment">// 打包后的文件名</span>
-        <span class="hljs-comment">// 可使用 [name]、[hash] 占位符，[name] 默认为 main.js，多入口时为入口键名</span>
-        <span class="hljs-comment">// 多入口时需要使用占位符</span>
+        <span class="hljs-comment">// 可使用 [...] 替换模板字符串（[name] 默认为 main.js，多入口时为入口键名）</span>
+        <span class="hljs-comment">// 多入口时需要使用替换模板字符串，确保文件名唯一</span>
         <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;bundle.js&#x27;</span>
     }
 }
 </div></code></pre>
 </li>
 </ul>
+<h3 id="替换模板字符串">替换模板字符串</h3>
+<blockquote>
+<p><a href="https://www.webpackjs.com/configuration/output/">https://www.webpackjs.com/configuration/output/</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[id]</code></td>
+<td>模块标识符（module identifier）</td>
+</tr>
+<tr>
+<td><code>[name]</code></td>
+<td>模块名称</td>
+</tr>
+<tr>
+<td><code>[hash]</code></td>
+<td>模块标识符（module identifier）的 hash</td>
+</tr>
+<tr>
+<td><code>[chunkhash]</code></td>
+<td>chunk 内容的 hash</td>
+</tr>
+<tr>
+<td><code>[query]</code></td>
+<td>模块的 query（例如文件名 ? 后面的字符串）</td>
+</tr>
+</tbody>
+</table>
 <h2 id="项目源文件">项目源文件</h2>
 <ul>
 <li>默认：<code>src</code> 文件夹</li>
@@ -521,7 +570,7 @@ imgElem.src = 自定义名称;
             <span class="hljs-comment">// &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;</span>
             <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;html-webpack-plugin 插件&#x27;</span>,
 
-            <span class="hljs-comment">// 模板文件路径（相对于项目根目录）</span>
+            <span class="hljs-comment">// 模板 HTML 文件路径（相对于项目根目录）</span>
             <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;./src/template.html&#x27;</span>,
 
             <span class="hljs-comment">// 插入打包的 JavaScript 文件</span>
@@ -541,7 +590,7 @@ imgElem.src = 自定义名称;
                 <span class="hljs-attr">removeComments</span>: <span class="hljs-literal">true</span>
             },
 
-            <span class="hljs-comment">// 输出的 HTML 文件名，可使用 [name]、[hash]</span>
+            <span class="hljs-comment">// 输出的 HTML 文件名，可使用 [...] 替换模板字符串</span>
             <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;index.html&#x27;</span>
         })
     ]
@@ -589,11 +638,36 @@ imgElem.src = 自定义名称;
 </div></code></pre>
 </li>
 </ul>
-<h1 id="dev-server">dev-server</h1>
+<h2 id="clean-webpack-plugin">clean-webpack-plugin</h2>
+<blockquote>
+<p><a href="https://www.npmjs.com/package/clean-webpack-plugin">https://www.npmjs.com/package/clean-webpack-plugin</a><br>
+在使用 webpack 打包时，如果打包后的文件名一样，在每次打包后，新生成的文件就会将之前打包的文件覆盖掉。<br>
+但是如果给输出的文件名设置根据内容生成的 hash 值后，由于每次打包后生成的文件名的 hash 值会不一样，<br>
+就不会因文件名相同而覆盖原来的文件，在文件目录中出现了一些多余的文件，如果每次都手动清除这些多余文件就很麻烦。<br>
+webpack 的 <code>clean-webpack-plugin</code> 插件可以很好地帮助我们完成每次打包前的文件清除工作。</p>
+</blockquote>
 <h3 id="安装-9">安装</h3>
-<pre><code><code><div>npm install webpack-dev-server --save-dev
+<pre><code><code><div>npm install clean-webpack-plugin --save-dev
 </div></code></code></pre>
 <h3 id="配置-8">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> { CleanWebpackPlugin } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;clean-webpack-plugin&#x27;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">plugins</span>: [
+        <span class="hljs-keyword">new</span> CleanWebpackPlugin()
+    ]
+}
+</div></code></pre>
+</li>
+</ul>
+<h1 id="dev-server">dev-server</h1>
+<h3 id="安装-10">安装</h3>
+<pre><code><code><div>npm install webpack-dev-server --save-dev
+</div></code></code></pre>
+<h3 id="配置-9">配置</h3>
 <ul>
 <li>
 <p><code>package.json: </code></p>
@@ -609,16 +683,62 @@ imgElem.src = 自定义名称;
 <p><code>webpack.config.js</code></p>
 <pre><code class="language-javascript"><div><span class="hljs-built_in">module</span>.exports = {
     <span class="hljs-attr">devServer</span>: {
-        <span class="hljs-comment">// 打包文件的输出路径</span>
+        <span class="hljs-comment">// 打包文件的输出路径（指定 dev-server 显示的根目录）</span>
         <span class="hljs-comment">// __dirname 为本配置文件所在路径</span>
         <span class="hljs-attr">contentBase</span>: path.resolve(__dirname, <span class="hljs-string">&#x27;../dist/&#x27;</span>),
         <span class="hljs-comment">// 压缩</span>
-        <span class="hljs-attr">compress</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>,
         <span class="hljs-comment">// 端口</span>
-        <span class="hljs-attr">port</span>: <span class="hljs-number">9000</span>,
+        <span class="hljs-attr">port</span>: <span class="hljs-number">8080</span>,
         <span class="hljs-comment">// 是否自动打开浏览器</span>
         <span class="hljs-attr">open</span>: <span class="hljs-literal">false</span>
     }
+}
+</div></code></pre>
+</li>
+</ul>
+<h1 id="多页面">多页面</h1>
+<h3 id="配置-10">配置</h3>
+<ul>
+<li>
+<p><code>webpack.config.js</code></p>
+<blockquote>
+<p>此处只列出需要修改的部分</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 引入 html-webpack-plugin 插件</span>
+<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-comment">// 使用多入口，根据需要设置键名、文件名</span>
+    <span class="hljs-attr">entry</span>: {
+        <span class="hljs-attr">index</span>: <span class="hljs-string">&#x27;./src/index.js&#x27;</span>,
+        <span class="hljs-attr">custom</span>: <span class="hljs-string">&#x27;./src/custom.js&#x27;</span>
+    },
+
+    <span class="hljs-comment">// 出口文件名必须唯一</span>
+    <span class="hljs-attr">output</span>: {
+        <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;[name].js&#x27;</span>
+    },
+
+    <span class="hljs-attr">plugins</span>: [
+        <span class="hljs-comment">// 修改 html-webpack-plugin 插件配置，根据页面数量可有多个</span>
+        <span class="hljs-comment">// template：模板 HTML 文件路径（相对于项目根目录）</span>
+        <span class="hljs-comment">// inject：插入打包的 JavaScript 文件</span>
+        <span class="hljs-comment">// filename：输出的 HTML 文件名，可自定义</span>
+        <span class="hljs-comment">// chunks：设置为对应 entry 的键名，可使用多个 [&#x27;键名1&#x27;, &#x27;键名2&#x27;, ...]</span>
+        <span class="hljs-keyword">new</span> HtmlWebpackPlugin({
+            <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;./src/index.html&#x27;</span>,
+            <span class="hljs-attr">inject</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;index.html&#x27;</span>,
+            <span class="hljs-attr">chunks</span>: [<span class="hljs-string">&#x27;index&#x27;</span>]
+        }),
+        <span class="hljs-keyword">new</span> HtmlWebpackPlugin({
+            <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;./src/custom.html&#x27;</span>,
+            <span class="hljs-attr">inject</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;custom.html&#x27;</span>,
+            <span class="hljs-attr">chunks</span>: [<span class="hljs-string">&#x27;custom&#x27;</span>]
+        })
+    ]
 }
 </div></code></pre>
 </li>

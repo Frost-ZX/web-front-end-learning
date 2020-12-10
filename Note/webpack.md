@@ -13,6 +13,7 @@
     - [webpack 命令工具](#webpack-命令工具)
 - [文件](#文件)
   - [配置文件](#配置文件)
+    - [替换模板字符串](#替换模板字符串)
   - [项目源文件](#项目源文件)
   - [输出文件夹](#输出文件夹)
 - [执行](#执行)
@@ -50,9 +51,14 @@
   - [mini-css-extract-plugin](#mini-css-extract-plugin)
     - [安装](#安装-8)
     - [配置](#配置-7)
-- [dev-server](#dev-server)
+  - [clean-webpack-plugin](#clean-webpack-plugin)
     - [安装](#安装-9)
     - [配置](#配置-8)
+- [dev-server](#dev-server)
+    - [安装](#安装-10)
+    - [配置](#配置-9)
+- [多页面](#多页面)
+    - [配置](#配置-10)
 
 # 简介
 
@@ -118,12 +124,24 @@ npm install webpack-cli --save-dev
           path: path.resolve(__dirname, '../dist/'),
 
           // 打包后的文件名
-          // 可使用 [name]、[hash] 占位符，[name] 默认为 main.js，多入口时为入口键名
-          // 多入口时需要使用占位符
+          // 可使用 [...] 替换模板字符串（[name] 默认为 main.js，多入口时为入口键名）
+          // 多入口时需要使用替换模板字符串，确保文件名唯一
           filename: 'bundle.js'
       }
   }
   ```
+
+### 替换模板字符串
+
+> https://www.webpackjs.com/configuration/output/
+
+模板          | 描述
+----          | ----
+`[id]`        | 模块标识符（module identifier）
+`[name]`      | 模块名称
+`[hash]`      | 模块标识符（module identifier）的 hash
+`[chunkhash]` | chunk 内容的 hash
+`[query]`     | 模块的 query（例如文件名 ? 后面的字符串）
 
 ## 项目源文件
 
@@ -491,7 +509,7 @@ npm install html-webpack-plugin --save-dev
               // <title><%= htmlWebpackPlugin.options.title %></title>
               title: 'html-webpack-plugin 插件',
 
-              // 模板文件路径（相对于项目根目录）
+              // 模板 HTML 文件路径（相对于项目根目录）
               template: './src/template.html',
 
               // 插入打包的 JavaScript 文件
@@ -511,7 +529,7 @@ npm install html-webpack-plugin --save-dev
                   removeComments: true
               },
   
-              // 输出的 HTML 文件名，可使用 [name]、[hash]
+              // 输出的 HTML 文件名，可使用 [...] 替换模板字符串
               filename: 'index.html'
           })
       ]
@@ -561,6 +579,34 @@ npm install mini-css-extract-plugin --save-dev
   }
   ```
 
+## clean-webpack-plugin
+
+> https://www.npmjs.com/package/clean-webpack-plugin
+> 在使用 webpack 打包时，如果打包后的文件名一样，在每次打包后，新生成的文件就会将之前打包的文件覆盖掉。
+> 但是如果给输出的文件名设置根据内容生成的 hash 值后，由于每次打包后生成的文件名的 hash 值会不一样，
+> 就不会因文件名相同而覆盖原来的文件，在文件目录中出现了一些多余的文件，如果每次都手动清除这些多余文件就很麻烦。
+> webpack 的 `clean-webpack-plugin` 插件可以很好地帮助我们完成每次打包前的文件清除工作。
+
+### 安装
+
+```
+npm install clean-webpack-plugin --save-dev
+```
+
+### 配置
+
+- `webpack.config.js`
+
+  ```javascript
+  const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+  module.exports = {
+      plugins: [
+          new CleanWebpackPlugin()
+      ]
+  }
+  ```
+
 # dev-server
 
 ### 安装
@@ -586,15 +632,61 @@ npm install webpack-dev-server --save-dev
   ```javascript
   module.exports = {
       devServer: {
-          // 打包文件的输出路径
+          // 打包文件的输出路径（指定 dev-server 显示的根目录）
           // __dirname 为本配置文件所在路径
           contentBase: path.resolve(__dirname, '../dist/'),
           // 压缩
-          compress: true,
+          compress: false,
           // 端口
-          port: 9000,
+          port: 8080,
           // 是否自动打开浏览器
           open: false
       }
+  }
+  ```
+
+# 多页面
+
+### 配置
+
+- `webpack.config.js`
+
+  > 此处只列出需要修改的部分
+
+  ```javascript
+  // 引入 html-webpack-plugin 插件
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+  module.exports = {
+      // 使用多入口，根据需要设置键名、文件名
+      entry: {
+          index: './src/index.js',
+          custom: './src/custom.js'
+      },
+
+      // 出口文件名必须唯一
+      output: {
+          filename: '[name].js'
+      },
+
+      plugins: [
+          // 修改 html-webpack-plugin 插件配置，根据页面数量可有多个
+          // template：模板 HTML 文件路径（相对于项目根目录）
+          // inject：插入打包的 JavaScript 文件
+          // filename：输出的 HTML 文件名，可自定义
+          // chunks：设置为对应 entry 的键名，可使用多个 ['键名1', '键名2', ...]
+          new HtmlWebpackPlugin({
+              template: './src/index.html',
+              inject: true,
+              filename: 'index.html',
+              chunks: ['index']
+          }),
+          new HtmlWebpackPlugin({
+              template: './src/custom.html',
+              inject: true,
+              filename: 'custom.html',
+              chunks: ['custom']
+          })
+      ]
   }
   ```
