@@ -23,8 +23,38 @@
     - [运算](#运算)
   - [嵌套](#嵌套)
   - [继承](#继承)
-  - [混合（mix）](#混合-mix)
+  - [混合器（mixin）](#混合器-mixin)
+    - [方式一](#方式一)
+    - [方式二](#方式二)
+    - [方式三](#方式三)
   - [递归](#递归)
+  - [判断条件（when）](#判断条件-when)
+    - [用法](#用法)
+    - [注意](#注意-1)
+  - [导入（import）](#导入-import)
+- [内置函数](#内置函数)
+  - [Logical Functions](#logical-functions)
+    - [...](#)
+  - [String Functions](#string-functions)
+    - [URLEncode](#urlencode)
+    - [...](#-1)
+  - [List Functions](#list-functions)
+    - [...](#-2)
+  - [Math Functions](#math-functions)
+    - [平均值](#平均值)
+    - [...](#-3)
+  - [Type Functions](#type-functions)
+    - [...](#-4)
+  - [Misc Functions](#misc-functions)
+    - [...](#-5)
+  - [Color Definition Functions](#color-definition-functions)
+    - [...](#-6)
+  - [Color Channel Functions](#color-channel-functions)
+    - [...](#-7)
+  - [Color Operation Functions](#color-operation-functions)
+    - [...](#-8)
+  - [Color Blending Functions](#color-blending-functions)
+    - [...](#-9)
 
 # 简介
 
@@ -89,6 +119,8 @@
 
 #### 插值
 
+> 用法：`@{变量名}`
+
 - 选择器
 
   ```less
@@ -110,19 +142,6 @@
   }
   ```
 
-- 路径
-
-  ```less
-  @变量名: "文件路径";
-
-  选择器 {
-      // 直接使用
-      CSS属性名: url("@{变量名}");
-      // 可加入其他内容
-      CSS属性名: url("@{变量名}example.png");
-  }
-  ```
-
 - 属性名
 
   ```less
@@ -135,6 +154,21 @@
       border-radius-@{变量名}: CSS属性值;
   }
   ```
+
+- 属性值（插值方式）
+
+  ```less
+  // 以文件路径为例
+  @变量名: "文件路径";
+
+  选择器 {
+      // 直接使用
+      CSS属性名: url("@{变量名}");
+      // 可加入其他内容
+      CSS属性名: url("@{变量名}example.png");
+  }
+  ```
+
 - 变量
 
   ```less
@@ -192,7 +226,7 @@
 
 ## 继承
 
-> 把继承的样式生成并集选择器
+> 把继承的样式生成 `并集选择器`
 > 只继承 `一层`
 
 ```less
@@ -205,10 +239,11 @@
 }
 ```
 
-## 混合（mixin）
+## 混合器（mixin）
 
-- 做一个混合代码，在另外一个选择器引入。
-- 生成时，代码会合并（复制一份到混合位置）。
+> 生成时，代码会合并（`复制` 一份到混合位置）。
+
+### 方式一
 
 ```less
 选择器1 {
@@ -221,8 +256,10 @@
 }
 ```
 
-> 使用此方式（混合代码的选择器后添加 `()`），
-> 代码合并后，不保留混合代码自身。
+### 方式二
+
+> 使用此方式（混合器的选择器后添加 `()`），
+> 代码合并后，`不保留` 混合器自身。
 
 ```less
 选择器1() {
@@ -234,6 +271,8 @@
     ...
 }
 ```
+
+### 方式三
 
 > 可传递参数
 
@@ -251,9 +290,17 @@
 }
 ```
 
+> 设置参数默认值
+
+```less
+.bg(@color: #FFFFFF) {
+    background-color: @color;
+}
+```
+
 ## 递归
 
-> 例
+> 例（借助了 `混合器`）
 
 ```less
 // Less
@@ -263,9 +310,11 @@
         width: 50px * @index;
     }
 
+    // 递归调用
     .mix(@index + 1);
 }
 
+// 初始样式
 .box {
     ul {
         li {
@@ -275,6 +324,7 @@
     }
 }
 
+// 调用
 .mix(1);
 ```
 
@@ -297,3 +347,123 @@
     width: 400px;
 }
 ```
+
+## 判断条件（when）
+
+### 用法
+
+```less
+选择器 when (条件) {
+    ...
+}
+
+// 例
+.box when (@var > 10){
+	
+}
+```
+
+### 注意
+
+- 使用 `and` 表示 `与`
+
+  ```less
+  选择器 when (条件1) and (条件2) and (条件3), ... {
+      ...
+  }
+  ```
+
+- 使用 `,` 分隔表示 `或`
+
+  ```less
+  选择器 when (条件1), (条件2), (条件3), ... {
+      ...
+  }
+  ```
+
+- 使用 `not` 表示 `非`
+
+  ```less
+  选择器 when not (条件) {
+      ...
+  }
+  ```
+
+  ```less
+  选择器 when not (条件1) and not (条件2) {
+      ...
+  }
+  ```
+
+## 导入（import）
+
+> 文件扩展不同，作用不同。
+
+```less
+// 不编译，直接输出为 @import "文件名.css";
+@import "文件名.css";
+
+// 作为 Less 对象导入
+// 对于普通的选择器，自动编译合并到输出的文件中。
+// 对于混合器，只在被调用后才编译合并到输出的文件中。
+@import "文件名.less";
+
+// 如果没有扩展名，则为 .less
+@import "文件名";
+```
+
+# 内置函数
+
+> https://less.bootcss.com/functions/
+
+## Logical Functions
+
+### ...
+
+## String Functions
+
+### URLEncode
+
+```less
+escape("a=1"); // a%3D1
+```
+
+### ...
+
+## List Functions
+
+### ...
+
+## Math Functions
+
+### 平均值
+
+```less
+average(值1, 值2);
+```
+
+### ...
+
+## Type Functions
+
+### ...
+
+## Misc Functions
+
+### ...
+
+## Color Definition Functions
+
+### ...
+
+## Color Channel Functions
+
+### ...
+
+## Color Operation Functions
+
+### ...
+
+## Color Blending Functions
+
+### ...

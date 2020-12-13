@@ -60,8 +60,77 @@
 </li>
 <li><a href="#%E5%B5%8C%E5%A5%97">嵌套</a></li>
 <li><a href="#%E7%BB%A7%E6%89%BF">继承</a></li>
-<li><a href="#%E6%B7%B7%E5%90%88-mix">混合（mix）</a></li>
+<li><a href="#%E6%B7%B7%E5%90%88%E5%99%A8-mixin">混合器（mixin）</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80">方式一</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C">方式二</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%89">方式三</a></li>
+</ul>
+</li>
 <li><a href="#%E9%80%92%E5%BD%92">递归</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6-when">判断条件（when）</a>
+<ul>
+<li><a href="#%E7%94%A8%E6%B3%95">用法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-1">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%BC%E5%85%A5-import">导入（import）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0">内置函数</a>
+<ul>
+<li><a href="#logical-functions">Logical Functions</a>
+<ul>
+<li><a href="#">...</a></li>
+</ul>
+</li>
+<li><a href="#string-functions">String Functions</a>
+<ul>
+<li><a href="#urlencode">URLEncode</a></li>
+<li><a href="#-1">...</a></li>
+</ul>
+</li>
+<li><a href="#list-functions">List Functions</a>
+<ul>
+<li><a href="#-2">...</a></li>
+</ul>
+</li>
+<li><a href="#math-functions">Math Functions</a>
+<ul>
+<li><a href="#%E5%B9%B3%E5%9D%87%E5%80%BC">平均值</a></li>
+<li><a href="#-3">...</a></li>
+</ul>
+</li>
+<li><a href="#type-functions">Type Functions</a>
+<ul>
+<li><a href="#-4">...</a></li>
+</ul>
+</li>
+<li><a href="#misc-functions">Misc Functions</a>
+<ul>
+<li><a href="#-5">...</a></li>
+</ul>
+</li>
+<li><a href="#color-definition-functions">Color Definition Functions</a>
+<ul>
+<li><a href="#-6">...</a></li>
+</ul>
+</li>
+<li><a href="#color-channel-functions">Color Channel Functions</a>
+<ul>
+<li><a href="#-7">...</a></li>
+</ul>
+</li>
+<li><a href="#color-operation-functions">Color Operation Functions</a>
+<ul>
+<li><a href="#-8">...</a></li>
+</ul>
+</li>
+<li><a href="#color-blending-functions">Color Blending Functions</a>
+<ul>
+<li><a href="#-9">...</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -121,6 +190,9 @@
 }
 </div></code></pre>
 <h4 id="插值">插值</h4>
+<blockquote>
+<p>用法：<code>@{变量名}</code></p>
+</blockquote>
 <ul>
 <li>
 <p>选择器</p>
@@ -143,18 +215,6 @@
 </div></code></pre>
 </li>
 <li>
-<p>路径</p>
-<pre><code class="language-less"><div>@变量名: &quot;文件路径&quot;;
-
-选择器 {
-    <span class="hljs-comment">// 直接使用</span>
-    <span class="hljs-selector-tag">CSS</span>属性名: <span class="hljs-selector-tag">url</span>(<span class="hljs-string">&quot;@{变量名}&quot;</span>);
-    <span class="hljs-comment">// 可加入其他内容</span>
-    <span class="hljs-selector-tag">CSS</span>属性名: <span class="hljs-selector-tag">url</span>(<span class="hljs-string">&quot;@{变量名}example.png&quot;</span>);
-}
-</div></code></pre>
-</li>
-<li>
 <p>属性名</p>
 <pre><code class="language-less"><div>@变量名: 属性名; <span class="hljs-comment">// 属性名可以只是一部分</span>
 
@@ -163,6 +223,19 @@
     @{变量名}: <span class="hljs-selector-tag">CSS</span>属性值;
     <span class="hljs-comment">// 可加入其他内容</span>
     <span class="hljs-selector-tag">border-radius-</span>@{变量名}: <span class="hljs-selector-tag">CSS</span>属性值;
+}
+</div></code></pre>
+</li>
+<li>
+<p>属性值（插值方式）</p>
+<pre><code class="language-less"><div><span class="hljs-comment">// 以文件路径为例</span>
+@变量名: &quot;文件路径&quot;;
+
+选择器 {
+    <span class="hljs-comment">// 直接使用</span>
+    <span class="hljs-selector-tag">CSS</span>属性名: <span class="hljs-selector-tag">url</span>(<span class="hljs-string">&quot;@{变量名}&quot;</span>);
+    <span class="hljs-comment">// 可加入其他内容</span>
+    <span class="hljs-selector-tag">CSS</span>属性名: <span class="hljs-selector-tag">url</span>(<span class="hljs-string">&quot;@{变量名}example.png&quot;</span>);
 }
 </div></code></pre>
 </li>
@@ -220,7 +293,7 @@
 </ul>
 <h2 id="继承">继承</h2>
 <blockquote>
-<p>把继承的样式生成并集选择器<br>
+<p>把继承的样式生成 <code>并集选择器</code><br>
 只继承 <code>一层</code></p>
 </blockquote>
 <pre><code class="language-less"><div>选择器<span class="hljs-selector-tag">1</span> {
@@ -231,11 +304,11 @@
     ...
 }
 </div></code></pre>
-<h2 id="混合-mix">混合（mix）</h2>
-<ul>
-<li>做一个混合代码，在另外一个选择器引入。</li>
-<li>生成时，代码会合并（复制一份到混合位置）。</li>
-</ul>
+<h2 id="混合器-mixin">混合器（mixin）</h2>
+<blockquote>
+<p>生成时，代码会合并（<code>复制</code> 一份到混合位置）。</p>
+</blockquote>
+<h3 id="方式一">方式一</h3>
 <pre><code class="language-less"><div>选择器<span class="hljs-selector-tag">1</span> {
     ...
 }
@@ -245,9 +318,10 @@
     ...
 }
 </div></code></pre>
+<h3 id="方式二">方式二</h3>
 <blockquote>
-<p>使用此方式（混合代码的选择器后添加 <code>()</code>），<br>
-代码合并后，不保留混合代码自身。</p>
+<p>使用此方式（混合器的选择器后添加 <code>()</code>），<br>
+代码合并后，<code>不保留</code> 混合器自身。</p>
 </blockquote>
 <pre><code class="language-less"><div>选择器<span class="hljs-selector-tag">1</span>() {
     ...
@@ -258,6 +332,7 @@
     ...
 }
 </div></code></pre>
+<h3 id="方式三">方式三</h3>
 <blockquote>
 <p>可传递参数</p>
 </blockquote>
@@ -273,9 +348,16 @@
     <span class="hljs-selector-class">.bg</span>(<span class="hljs-number">#FF5722</span>);
 }
 </div></code></pre>
+<blockquote>
+<p>设置参数默认值</p>
+</blockquote>
+<pre><code class="language-less"><div><span class="hljs-selector-class">.bg</span>(<span class="hljs-variable">@color</span>: <span class="hljs-number">#FFFFFF</span>) {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">@color</span>;
+}
+</div></code></pre>
 <h2 id="递归">递归</h2>
 <blockquote>
-<p>例</p>
+<p>例（借助了 <code>混合器</code>）</p>
 </blockquote>
 <pre><code class="language-less"><div><span class="hljs-comment">// Less</span>
 
@@ -284,9 +366,11 @@
         <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span> * <span class="hljs-variable">@index</span>;
     }
 
+    <span class="hljs-comment">// 递归调用</span>
     <span class="hljs-selector-class">.mix</span>(<span class="hljs-variable">@index</span> + <span class="hljs-number">1</span>);
 }
 
+<span class="hljs-comment">// 初始样式</span>
 <span class="hljs-selector-class">.box</span> {
     <span class="hljs-selector-tag">ul</span> {
         <span class="hljs-selector-tag">li</span> {
@@ -296,6 +380,7 @@
     }
 }
 
+<span class="hljs-comment">// 调用</span>
 <span class="hljs-selector-class">.mix</span>(<span class="hljs-number">1</span>);
 </div></code></pre>
 <pre><code class="language-css"><div><span class="hljs-comment">/* CSS */</span>
@@ -316,6 +401,90 @@
     <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;
 }
 </div></code></pre>
+<h2 id="判断条件-when">判断条件（when）</h2>
+<h3 id="用法">用法</h3>
+<pre><code class="language-less"><div>选择器 <span class="hljs-keyword">when</span> (条件) {
+    ...
+}
+
+<span class="hljs-comment">// 例</span>
+<span class="hljs-selector-class">.box</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@var</span> &gt; <span class="hljs-number">10</span>){
+	
+}
+</div></code></pre>
+<h3 id="注意-1">注意</h3>
+<ul>
+<li>
+<p>使用 <code>and</code> 表示 <code>与</code></p>
+<pre><code class="language-less"><div>选择器 <span class="hljs-keyword">when</span> (条件<span class="hljs-number">1</span>) <span class="hljs-keyword">and</span> (条件<span class="hljs-number">2</span>) <span class="hljs-keyword">and</span> (条件<span class="hljs-number">3</span>), ... {
+    ...
+}
+</div></code></pre>
+</li>
+<li>
+<p>使用 <code>,</code> 分隔表示 <code>或</code></p>
+<pre><code class="language-less"><div>选择器 <span class="hljs-keyword">when</span> (条件<span class="hljs-number">1</span>), (条件<span class="hljs-number">2</span>), (条件<span class="hljs-number">3</span>), ... {
+    ...
+}
+</div></code></pre>
+</li>
+<li>
+<p>使用 <code>not</code> 表示 <code>非</code></p>
+<pre><code class="language-less"><div>选择器 <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (条件) {
+    ...
+}
+</div></code></pre>
+<pre><code class="language-less"><div>选择器 <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (条件<span class="hljs-number">1</span>) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> (条件<span class="hljs-number">2</span>) {
+    ...
+}
+</div></code></pre>
+</li>
+</ul>
+<h2 id="导入-import">导入（import）</h2>
+<blockquote>
+<p>文件扩展不同，作用不同。</p>
+</blockquote>
+<pre><code class="language-less"><div><span class="hljs-comment">// 不编译，直接输出为 @import &quot;文件名.css&quot;;</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;文件名.css&quot;</span>;
+
+<span class="hljs-comment">// 作为 Less 对象导入</span>
+<span class="hljs-comment">// 对于普通的选择器，自动编译合并到输出的文件中。</span>
+<span class="hljs-comment">// 对于混合器，只在被调用后才编译合并到输出的文件中。</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;文件名.less&quot;</span>;
+
+<span class="hljs-comment">// 如果没有扩展名，则为 .less</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;文件名&quot;</span>;
+</div></code></pre>
+<h1 id="内置函数">内置函数</h1>
+<blockquote>
+<p><a href="https://less.bootcss.com/functions/">https://less.bootcss.com/functions/</a></p>
+</blockquote>
+<h2 id="logical-functions">Logical Functions</h2>
+<h3 id="">...</h3>
+<h2 id="string-functions">String Functions</h2>
+<h3 id="urlencode">URLEncode</h3>
+<pre><code class="language-less"><div><span class="hljs-selector-tag">escape</span>(<span class="hljs-string">&quot;a=1&quot;</span>); <span class="hljs-comment">// a%3D1</span>
+</div></code></pre>
+<h3 id="-1">...</h3>
+<h2 id="list-functions">List Functions</h2>
+<h3 id="-2">...</h3>
+<h2 id="math-functions">Math Functions</h2>
+<h3 id="平均值">平均值</h3>
+<pre><code class="language-less"><div><span class="hljs-selector-tag">average</span>(值<span class="hljs-number">1</span>, 值<span class="hljs-number">2</span>);
+</div></code></pre>
+<h3 id="-3">...</h3>
+<h2 id="type-functions">Type Functions</h2>
+<h3 id="-4">...</h3>
+<h2 id="misc-functions">Misc Functions</h2>
+<h3 id="-5">...</h3>
+<h2 id="color-definition-functions">Color Definition Functions</h2>
+<h3 id="-6">...</h3>
+<h2 id="color-channel-functions">Color Channel Functions</h2>
+<h3 id="-7">...</h3>
+<h2 id="color-operation-functions">Color Operation Functions</h2>
+<h3 id="-8">...</h3>
+<h2 id="color-blending-functions">Color Blending Functions</h2>
+<h3 id="-9">...</h3>
 
     </body>
     </html>
