@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sass</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../note/style.css">
+<script src="../note/script.js"></script>
+<div class="contents"></div>
+<h1 id="sass">Sass</h1>
+<ul>
+<li><a href="#sass">Sass</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">相关网站</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F">使用方式</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8-visual-studio-code-%E6%8F%92%E4%BB%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA-css">使用 Visual Studio Code 插件转换为 CSS</a></li>
+<li><a href="#webpack-sass-loader">webpack sass-loader</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a>
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a>
+<ul>
+<li><a href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F">声明变量</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F">使用变量</a>
+<ul>
+<li><a href="#%E5%B1%9E%E6%80%A7%E5%80%BC">属性值</a></li>
+<li><a href="#%E6%8F%92%E5%80%BC">插值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%B5%8C%E5%A5%97">嵌套</a></li>
+<li><a href="#%E6%B7%B7%E5%90%88%E5%99%A8">混合器</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-1">语法</a></li>
+<li><a href="#%E4%BE%8B">例</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6">判断条件</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-2">语法</a></li>
+<li><a href="#%E4%BE%8B-1">例</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BE%AA%E7%8E%AF">循环</a>
+<ul>
+<li><a href="#for">for</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-3">语法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+<li><a href="#%E4%BE%8B-2">例</a></li>
+</ul>
+</li>
+<li><a href="#each">each</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-4">语法</a></li>
+<li><a href="#%E4%BE%8B-3">例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%BB%A7%E6%89%BF-extend">继承（extend）</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95-5">语法</a></li>
+<li><a href="#%E4%BE%8B-4">例</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%BC%E5%85%A5-import">导入（import）</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="简介">简介</h1>
+<ul>
+<li>Sass 是一种 CSS 的预编译语言。</li>
+<li>它提供了变量（variables）、嵌套（nested rules）、混合（mixins）、函数（functions）等功能，并且完全兼容 CSS 语法。</li>
+<li>Sass 能够使复杂的样式表变得更有条理， 并且易于在项目内部或跨项目共享设计。</li>
+<li>旧版本：<code>.sass</code>（严格模式）</li>
+<li>新版本：<code>.scss</code>（宽松模式）</li>
+<li>本笔记基于 <code>新版本</code> Sass</li>
+</ul>
+<h1 id="相关网站">相关网站</h1>
+<ul>
+<li><a href="https://sass-lang.com/">https://sass-lang.com/</a></li>
+<li><a href="https://sass.bootcss.com/">https://sass.bootcss.com/</a></li>
+</ul>
+<h1 id="使用方式">使用方式</h1>
+<h2 id="使用-visual-studio-code-插件转换为-css">使用 Visual Studio Code 插件转换为 CSS</h2>
+<ul>
+<li>Sass/Less/Stylus/Typescript/Javascript/Jade/Pug Compile Hero Pro（wscats.eno）</li>
+</ul>
+<h2 id="webpack-sass-loader">webpack sass-loader</h2>
+<ul>
+<li>参考：<a href="./webpack.html#sass-loader">webpack - sass-loader</a></li>
+</ul>
+<h1 id="语法">语法</h1>
+<h2 id="变量">变量</h2>
+<h3 id="声明变量">声明变量</h3>
+<pre><code class="language-scss"><div>$变量名: 变量值;
+</div></code></pre>
+<h3 id="使用变量">使用变量</h3>
+<h4 id="属性值">属性值</h4>
+<pre><code class="language-scss"><div>$变量名: 属性值;
+
+选择器 {
+    CSS属性名: $变量名;
+}
+</div></code></pre>
+<h4 id="插值">插值</h4>
+<blockquote>
+<p>用法： <code>#{$变量名}</code></p>
+</blockquote>
+<ul>
+<li>选择器</li>
+<li>属性名</li>
+<li>属性值（插值方式）</li>
+</ul>
+<h2 id="嵌套">嵌套</h2>
+<ul>
+<li>一个选择器嵌套另外一个选择器</li>
+<li>可在选择器中使用 <code>&amp;</code> 表示 <code>&amp;</code> 所在级的上一级</li>
+<li>使用 <code>&amp; &amp;</code> 选择器，自动生成父元素的并集选择器所有可能的组合</li>
+</ul>
+<h2 id="混合器">混合器</h2>
+<blockquote>
+<p>适用于需要多次使用的 CSS 样式。<br>
+使用时，不保留混合器自身。</p>
+</blockquote>
+<h3 id="定义">定义</h3>
+<blockquote>
+<p>参数可选</p>
+</blockquote>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@mixin</span> 混合器名称(参数) { }
+</div></code></pre>
+<h3 id="使用">使用</h3>
+<pre><code class="language-scss"><div>选择器 {
+    <span class="hljs-keyword">@include</span> 混合器名称(参数);
+}
+</div></code></pre>
+<h2 id="函数">函数</h2>
+<blockquote>
+<p><a href="https://sass.bootcss.com/documentation/at-rules/function">https://sass.bootcss.com/documentation/at-rules/function</a><br>
+函数内部不能定义 CSS 属性和选择器。<br>
+一般用于计算，返回 CSS 属性值。</p>
+</blockquote>
+<h3 id="语法-1">语法</h3>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@function</span> 函数名(参数) {
+    ...
+    <span class="hljs-keyword">@return</span> 返回值;
+}
+
+选择器 {
+    CSS属性名: 函数名(参数);
+}
+</div></code></pre>
+<h3 id="例">例</h3>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@function</span> changeSize(<span class="hljs-variable">$fontSize</span>) {
+    <span class="hljs-variable">$fontSize</span>: <span class="hljs-variable">$fontSize</span> + <span class="hljs-number">10px</span>;
+    <span class="hljs-keyword">@return</span> <span class="hljs-variable">$fontSize</span>;
+}
+
+<span class="hljs-selector-tag">span</span> {
+    <span class="hljs-attribute">font-size</span>: changeSize(<span class="hljs-number">20px</span>);
+}
+</div></code></pre>
+<h2 id="判断条件">判断条件</h2>
+<blockquote>
+<p>可在嵌套、混合、函数等地方中使用。</p>
+</blockquote>
+<h3 id="语法-2">语法</h3>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@if</span> (条件) {
+    ...
+} <span class="hljs-keyword">@else</span> if (条件) {
+    ...
+} <span class="hljs-keyword">@else</span> {
+    ...
+}
+</div></code></pre>
+<h3 id="例-1">例</h3>
+<pre><code class="language-scss"><div><span class="hljs-variable">$num</span>: <span class="hljs-number">150</span>;
+
+<span class="hljs-keyword">@if</span> (<span class="hljs-variable">$num</span> &gt; <span class="hljs-number">200</span>) {
+    <span class="hljs-selector-class">.a</span> {
+        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">50px</span>
+    }
+} @else if (<span class="hljs-variable">$num</span> &gt; <span class="hljs-number">150</span>) {
+    .a {
+        font-size: <span class="hljs-number">40px</span>
+    }
+} @else if (<span class="hljs-variable">$num</span> &gt; <span class="hljs-number">100</span>) {
+    .b {
+        font-size: <span class="hljs-number">30px</span>
+    }
+} @else {
+    .b {
+        font-size: <span class="hljs-number">20px</span>
+    }
+}
+</div></code></pre>
+<h2 id="循环">循环</h2>
+<h3 id="for">for</h3>
+<h4 id="语法-3">语法</h4>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@for</span> 变量 from 开始 to 结束 {
+    ...
+}
+</div></code></pre>
+<h4 id="注意">注意</h4>
+<ul>
+<li><code>结束</code> 值需要 <code>+1</code>（不到 <code>结束</code>）</li>
+</ul>
+<h4 id="例-2">例</h4>
+<pre><code class="language-scss"><div><span class="hljs-comment">// Sass</span>
+<span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$num</span> from <span class="hljs-number">1</span> to <span class="hljs-number">5</span> {
+        <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child</span>(#{<span class="hljs-variable">$num</span>}) {
+            <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+        }
+    }
+}
+</div></code></pre>
+<pre><code class="language-css"><div><span class="hljs-comment">/* CSS */</span>
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(1)</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+}
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(2)</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+}
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+}
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(4)</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+}
+</div></code></pre>
+<h3 id="each">each</h3>
+<h4 id="语法-4">语法</h4>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@each</span> 变量 in 值<span class="hljs-number">1</span>, 值<span class="hljs-number">2</span>, 值<span class="hljs-number">3</span>, ... {
+    ...
+}
+</div></code></pre>
+<h4 id="例-3">例</h4>
+<pre><code class="language-scss"><div><span class="hljs-comment">// Sass</span>
+<span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-keyword">@each</span> <span class="hljs-variable">$var</span> in red, green, blue {
+        <span class="hljs-selector-tag">li</span>.#{<span class="hljs-variable">$var</span>} {
+            <span class="hljs-attribute">color</span>: <span class="hljs-variable">$var</span>;
+        }
+    }
+}
+</div></code></pre>
+<pre><code class="language-css"><div><span class="hljs-comment">/* CSS */</span>
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.red</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.green</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.blue</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+</div></code></pre>
+<h2 id="继承-extend">继承（extend）</h2>
+<blockquote>
+<p>把继承的样式生成 <code>并集选择器</code></p>
+</blockquote>
+<h3 id="语法-5">语法</h3>
+<pre><code class="language-scss"><div><span class="hljs-keyword">@extend</span> 要继承的选择器;
+</div></code></pre>
+<h3 id="例-4">例</h3>
+<pre><code class="language-scss"><div><span class="hljs-comment">// Less</span>
+
+<span class="hljs-selector-class">.example</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+}
+
+<span class="hljs-selector-class">.box</span> {
+    <span class="hljs-keyword">@extend</span> .example;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#F5F5F5</span>;
+}
+</div></code></pre>
+<pre><code class="language-css"><div><span class="hljs-comment">/* CSS */</span>
+
+<span class="hljs-selector-class">.example</span>, <span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2196F3</span>;
+}
+
+<span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#F5F5F5</span>;
+}
+</div></code></pre>
+<h2 id="导入-import">导入（import）</h2>
+<blockquote>
+<p>与 <code>Less</code> 相似<br>
+文件扩展不同，作用不同。</p>
+</blockquote>
+<pre><code class="language-scss"><div><span class="hljs-comment">// 不编译，直接输出为 @import url(&quot;文件名.css&quot;);</span>
+<span class="hljs-keyword">@import</span> url(<span class="hljs-string">&quot;文件名.css&quot;</span>);
+
+<span class="hljs-comment">// 作为 Sass 对象导入</span>
+<span class="hljs-comment">// 对于普通的选择器，自动编译合并到输出的文件中。</span>
+<span class="hljs-comment">// 对于混合器，只在被调用后才编译合并到输出的文件中。</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;文件名.scss&quot;</span>;
+
+<span class="hljs-comment">// 如果没有扩展名，则为 .scss</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;文件名&quot;</span>;
+</div></code></pre>
+
+    </body>
+    </html>
