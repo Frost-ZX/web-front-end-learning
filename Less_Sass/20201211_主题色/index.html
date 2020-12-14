@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主题色</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 顶部 -->
+        <header>
+            <div class="logo">
+                <span>LOGO</span>
+            </div>
+            <!-- 控制主题色 -->
+            <div class="color">
+                <div class="btn red">红色</div>
+                <div class="btn blue">蓝色</div>
+                <div class="btn yellow">黄色</div>
+            </div>
+        </header>
+        <!-- 内容 -->
+        <div class="content">
+            <div class="banner">
+                <div class="frame">
+                    <div class="image" style="background-image: url('./img/banner_01.jpg');"></div>
+                    <div class="image" style="background-image: url('./img/banner_02.jpg');"></div>
+                    <div class="image" style="background-image: url('./img/banner_03.jpg');"></div>
+                </div>
+            </div>
+            <div class="btns">
+                <div><a href="#">1</a></div>
+                <div><a href="#">2</a></div>
+                <div><a href="#">3</a></div>
+                <div><a href="#">4</a></div>
+                <div><a href="#">5</a></div>
+                <div><a href="#">6</a></div>
+                <div><a href="#">7</a></div>
+                <div><a href="#">8</a></div>
+                <div><a href="#">9</a></div>
+                <div><a href="#">10</a></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var wrapperElem = document.querySelector('.wrapper');
+            var colorCtrl = wrapperElem.querySelector('.wrapper header .color');
+
+            colorCtrl.addEventListener('click', function (e) {
+                var target = e.target || window.event.srcElement;
+                var classList = target.classList;
+
+                // 限制目标元素
+
+                if (!classList.contains('btn')) {
+                    return false;
+                }
+
+                // 修改主题色
+
+                wrapperElem.style.setProperty('--main-color', 'var(--color-' + classList[1] + ')');
+
+                // 获取点击元素的下标，并切换图片
+
+                var elems = this.children;
+                var elemArr = [];
+                var bannerFrame = wrapperElem.querySelector('.banner .frame');
+
+                for (var i = 0; i < elems.length; i++) {
+                    elemArr.push(elems[i]);
+                }
+
+                bannerFrame.style.left = -100 * elemArr.indexOf(target) + '%';
+            });
+        });
+    </script>
+</body>
+</html>
