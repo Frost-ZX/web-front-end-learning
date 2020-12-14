@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ES6&#xFF08;ECMAScript 6&period;0&#xFF09;</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./style.css">
+<script src="./script.js"></script>
+<div class="contents"></div>
+<h1 id="es6-ecmascript-6-0">ES6（ECMAScript 6.0）</h1>
+<ul>
+<li><a href="#es6-ecmascript-6-0">ES6（ECMAScript 6.0）</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">相关网站</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a>
+<ul>
+<li><a href="#%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F">块级作用域</a></li>
+<li><a href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F">声明变量</a>
+<ul>
+<li><a href="#let">let</a></li>
+<li><a href="#const">const</a>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#this">this</a>
+<ul>
+<li><a href="#globalthis">globalThis</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">模板字符串</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-1">简介</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a>
+<ul>
+<li><a href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC">参数默认值</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%80%BC">设置默认值</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-1">注意</a></li>
+</ul>
+</li>
+<li><a href="#rest-%E5%8F%82%E6%95%B0">rest 参数</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-2">简介</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90-1">例子</a></li>
+</ul>
+</li>
+<li><a href="#name-%E5%B1%9E%E6%80%A7">name 属性</a></li>
+<li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F">严格模式</a></li>
+<li><a href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="简介">简介</h1>
+<ul>
+<li>ECMAScript 6.0 是 JavaScript 语言的下一代标准，在 2015 年 6 月正式发布。</li>
+<li>它的目标是使 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</li>
+</ul>
+<h1 id="相关网站">相关网站</h1>
+<ul>
+<li><a href="https://es6.ruanyifeng.com/">https://es6.ruanyifeng.com/</a></li>
+<li><a href="https://www.runoob.com/w3cnote/es6-concise-tutorial.html">https://www.runoob.com/w3cnote/es6-concise-tutorial.html</a></li>
+</ul>
+<h1 id="变量">变量</h1>
+<h2 id="块级作用域">块级作用域</h2>
+<h2 id="声明变量">声明变量</h2>
+<h3 id="let">let</h3>
+<ul>
+<li>它的用法类似于 <code>var</code>，但是所声明的变量只在 <code>let</code> 所在的代码块内有效（块级作用域）。</li>
+<li><code>let</code> 声明的常量不存在变量提升。</li>
+<li><code>let</code> 不允许在 <code>相同作用域</code> 内 <code>重复声明</code> 同一个变量。</li>
+</ul>
+<h3 id="const">const</h3>
+<ul>
+<li><code>const</code> 声明一个只读的常量，所声明的常量只在 <code>const</code> 所在的代码块内有效（块级作用域）。</li>
+<li>一旦声明，常量的值就不能被改变（必须在声明常量的同时对其进行赋值）。</li>
+<li><code>const</code> 声明的常量与 <code>let</code> 一样不存在变量提升。</li>
+<li><code>const</code> 声明的常量与 <code>let</code> 一样不可重复声明。</li>
+</ul>
+<h4 id="注意">注意</h4>
+<ul>
+<li><code>const</code> 实际上保证的，并不是变量的值不得改动，而是变量指向的那个 <code>内存地址</code> 所保存的数据不得改动。</li>
+<li>对于 <code>简单类型</code> 的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。</li>
+<li>但对于 <code>复合类型</code> 的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，<br>
+<code>const</code> 只能 <code>保证</code> 这个 <code>指针是固定的</code>（即总是指向另一个固定的地址），但 <code>不能保证</code> 它指向的 <code>数据结构不可变</code> 。</li>
+</ul>
+<h1 id="this">this</h1>
+<blockquote>
+<p>代表当前对象</p>
+</blockquote>
+<h2 id="globalthis">globalThis</h2>
+<h1 id="模板字符串">模板字符串</h1>
+<h2 id="简介-1">简介</h2>
+<ul>
+<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识。</li>
+<li>它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。</li>
+<li>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。</li>
+<li>模板字符串中嵌入变量，需要将变量名写在 <code>${}</code> 之中。</li>
+<li><code>${}</code> 内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。</li>
+<li>如果 <code>${}</code> 中的值不是字符串，将按照一般的规则转为字符串。<br>
+（例如，大括号中是一个对象，将默认调用对象的 <code>toString()</code> 方法）</li>
+<li>模板字符串可嵌套。</li>
+</ul>
+<h2 id="例子">例子</h2>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str1 = <span class="hljs-string">&#x27;a&#x27;</span>;
+<span class="hljs-keyword">var</span> str2 = <span class="hljs-string">&#x27;b&#x27;</span>;
+<span class="hljs-keyword">var</span> str3 = <span class="hljs-string">`<span class="hljs-subst">${str1}</span><span class="hljs-subst">${str2}</span>`</span>;
+<span class="hljs-built_in">console</span>.log(str3); <span class="hljs-comment">// &#x27;ab&#x27;</span>
+</div></code></pre>
+<h1 id="函数">函数</h1>
+<h2 id="参数默认值">参数默认值</h2>
+<h3 id="设置默认值">设置默认值</h3>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> 函数名(<span class="hljs-params">形参<span class="hljs-number">1</span> = 值<span class="hljs-number">1</span>, 形参<span class="hljs-number">2</span> = 值<span class="hljs-number">2</span>, ...</span>) </span>{
+    ...
+}
+</div></code></pre>
+<h3 id="注意-1">注意</h3>
+<ul>
+<li>如果参数没有默认值，也没有传递参数值，值为 <code>undefined</code>。</li>
+<li>默认值赋值，如果传入的参数是 <code>null</code> 会赋值为 <code>null</code>；<br>
+如果传入的参数是 <code>undefined</code>，会使用默认值。</li>
+<li>最好把 <code>没有默认值</code> 的形参写在 <code>前面</code>，<code>有默认值</code> 的形参写在 <code>后面</code>。</li>
+<li>属性 <code>函数名.length</code> 获取函数形参的数量，若某个形参有默认值，<code>length</code> 将 <code>不包括</code> 它以及它之后的形参。</li>
+<li>使用参数默认值时，函数 <code>不能</code> 有 <code>同名</code> 参数。</li>
+<li>参数默认值不是传值的，而是每次都重新计算默认值表达式的值（<code>惰性求值</code>）。</li>
+</ul>
+<h2 id="rest-参数">rest 参数</h2>
+<h3 id="简介-2">简介</h3>
+<ul>
+<li>ES6 引入 <code>rest</code> 参数（形式为 <code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用 <code>arguments</code> 了。</li>
+<li>rest 参数搭配的变量是一个 <code>数组</code>，该变量将多余的参数放入数组中。</li>
+</ul>
+<h3 id="例子-1">例子</h3>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">...values</span>) </span>{
+    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> val <span class="hljs-keyword">of</span> values) {
+        sum += val;
+    }
+
+    <span class="hljs-keyword">return</span> sum;
+}
+
+add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// 10</span>
+</div></code></pre>
+<h2 id="name-属性">name 属性</h2>
+<ul>
+<li>
+<p>可通过函数的 <code>name</code> 属性获取该函数的 <code>函数名</code>。</p>
+</li>
+<li>
+<p>ES6 对这个属性的行为做出了一些修改。<br>
+如果将一个 <code>匿名函数</code> 赋值给一个变量，<code>ES5</code> 的 name 属性返回 <code>空字符串</code>，而 <code>ES6</code> 的 <code>name</code> 属性返回 <code>实际的函数名</code>。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ };
+
+<span class="hljs-comment">// ES5</span>
+<span class="hljs-built_in">console</span>.log(fn.name); <span class="hljs-comment">// &quot;&quot;</span>
+
+<span class="hljs-comment">// ES6</span>
+<span class="hljs-built_in">console</span>.log(fn.name); <span class="hljs-comment">// &quot;fn&quot;</span>
+</div></code></pre>
+</li>
+</ul>
+<h2 id="严格模式">严格模式</h2>
+<ul>
+<li>
+<p>从 <code>ES5</code> 开始，函数内部可以设定为 <code>严格模式</code>。</p>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> 函数名(<span class="hljs-params"></span>) </span>{
+<span class="hljs-meta">  &#x27;use strict&#x27;</span>; <span class="hljs-comment">// 设定严格模式</span>
+  ...
+}
+</div></code></pre>
+</li>
+<li>
+<p><code>ES2016</code> 做了一点修改，规定只要函数参数使用了 <code>默认值</code>、<code>解构赋值</code> 或者 <code>扩展运算符</code>，<br>
+那么函数内部就 <code>不能</code> 显式设定为 <code>严格模式</code>，否则会报错。</p>
+</li>
+</ul>
+<h2 id="箭头函数">箭头函数</h2>
+<h3 id="基本用法">基本用法</h3>
+<ul>
+<li>
+<p>ES6 允许使用“箭头” <code>=&gt;</code> 定义函数。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v;
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
+    <span class="hljs-keyword">return</span> v;
+};
+</div></code></pre>
+</li>
+<li>
+<p>如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> f = <span class="hljs-function">() =&gt;</span> <span class="hljs-number">5</span>;
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">5</span>
+};
+</div></code></pre>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> sum = <span class="hljs-function">(<span class="hljs-params">num1, num2</span>) =&gt;</span> num1 + num2;
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num1, num2</span>) </span>{
+    <span class="hljs-keyword">return</span> num1 + num2;
+};
+</div></code></pre>
+</li>
+</ul>
+
+    </body>
+    </html>
