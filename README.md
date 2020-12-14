@@ -14,6 +14,8 @@
 10. Git
 11. webpack
 12. Less
+13. Sass
+14. ES6
 
 ## 文件说明
 
