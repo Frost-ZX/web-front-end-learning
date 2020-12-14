@@ -49,13 +49,7 @@
    xhr.open('get', 'http://www.example.com')
    ```
 
-3. 发送请求
-
-   ```javascript
-   xhr.send()
-   ```
-
-4. 获取服务器端传给客户端的响应数据
+3. 设置监听事件，获取服务器端传给客户端的响应数据
 
    ```javascript
    // 方式一（只支持 IE9+）
@@ -68,6 +62,12 @@
            console.log(xhr.responseText);
        }
    }
+   ```
+
+4. 发送请求
+
+   ```javascript
+   xhr.send()
    ```
 
 # 安装 Node.js

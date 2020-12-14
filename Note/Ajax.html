@@ -94,12 +94,7 @@
 </div></code></pre>
 </li>
 <li>
-<p>发送请求</p>
-<pre><code class="language-javascript"><div>xhr.send()
-</div></code></pre>
-</li>
-<li>
-<p>获取服务器端传给客户端的响应数据</p>
+<p>设置监听事件，获取服务器端传给客户端的响应数据</p>
 <pre><code class="language-javascript"><div><span class="hljs-comment">// 方式一（只支持 IE9+）</span>
 xhr.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(xhr.responseText);
@@ -110,6 +105,11 @@ xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">
         <span class="hljs-built_in">console</span>.log(xhr.responseText);
     }
 }
+</div></code></pre>
+</li>
+<li>
+<p>发送请求</p>
+<pre><code class="language-javascript"><div>xhr.send()
 </div></code></pre>
 </li>
 </ol>

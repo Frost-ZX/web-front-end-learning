@@ -43,6 +43,38 @@
 <li><a href="#new-%E5%85%B3%E9%94%AE%E5%AD%97">new 关键字</a></li>
 </ul>
 </li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">对象自定义属性</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">添加自定义属性</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7">添加多个自定义属性</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E5%8F%AF%E9%81%8D%E5%8E%86%E7%9A%84%E5%B1%9E%E6%80%A7-%E9%94%AE%E5%90%8D">获取对象可遍历的属性（键名）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E5%8F%AF%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%8D%E5%8F%AF%E9%81%8D%E5%8E%86%E7%9A%84%E5%B1%9E%E6%80%A7-%E9%94%AE%E5%90%8D">获取对象可遍历和不可遍历的属性（键名）</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E6%8C%87%E5%AE%9A%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE">获取对象指定属性的属性配置</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE">获取对象所有属性的属性配置</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%8A%B6%E6%80%81">对象的三大状态</a>
+<ul>
+<li><a href="#%E9%98%B2%E6%89%A9%E5%B1%95">防扩展</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE">设置</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD">判断</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%86%E5%B0%81">密封</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE-1">设置</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD-1">判断</a></li>
+</ul>
+</li>
+<li><a href="#%E5%86%BB%E7%BB%93">冻结</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE-2">设置</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD-2">判断</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%92%8C%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98">静态成员和实例成员</a>
 <ul>
 <li><a href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98">静态成员</a>
@@ -113,6 +145,125 @@
 <li>执行构造函数中的代码，给这个空对象初始化属性和方法</li>
 <li>返回这个对象（因此使用 <code>new</code> 关键字后，不需要在构造函数中 <code>return</code> 这个对象）</li>
 </ol>
+</li>
+</ul>
+<h1 id="对象自定义属性">对象自定义属性</h1>
+<h3 id="添加自定义属性">添加自定义属性</h3>
+<ul>
+<li>
+<p><code>Object.defineProperty(原对象, 属性名称, 属性配置)</code></p>
+<blockquote>
+<p>定义后的属性默认不能被修改、删除、遍历<br>
+属性配置添加 <code>writable: true</code> 后可修改<br>
+属性配置添加 <code>configurable: true</code> 后可删除<br>
+属性配置添加 <code>enumerable: true</code> 后可遍历</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">Object</span>.defineProperty(原对象, 属性名称, {
+    <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
+    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
+    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
+});
+</div></code></pre>
+</li>
+</ul>
+<h3 id="添加多个自定义属性">添加多个自定义属性</h3>
+<ul>
+<li>
+<p><code>Object.defineProperties(原对象, 属性集合)</code></p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">Object</span>.defineProperties(原对象, {
+    属性名称: {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
+        <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
+        <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
+        <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
+    },
+    属性名称: {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
+        <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
+        <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
+        <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
+    }
+});
+</div></code></pre>
+</li>
+</ul>
+<h3 id="获取对象可遍历的属性-键名">获取对象可遍历的属性（键名）</h3>
+<ul>
+<li>
+<p><code>Object.keys(对象)</code></p>
+<blockquote>
+<p>返回一个数组</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="获取对象可遍历和不可遍历的属性-键名">获取对象可遍历和不可遍历的属性（键名）</h3>
+<ul>
+<li>
+<p><code>Object.getOwnPropertyNames(对象)</code></p>
+<blockquote>
+<p>返回一个数组</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="获取对象指定属性的属性配置">获取对象指定属性的属性配置</h3>
+<ul>
+<li><code>Object.getOwnPropertyDescriptor(对象, 属性)</code></li>
+</ul>
+<h3 id="获取对象所有属性的属性配置">获取对象所有属性的属性配置</h3>
+<ul>
+<li><code>Object.getOwnPropertyDescriptors(对象)</code></li>
+</ul>
+<h1 id="对象的三大状态">对象的三大状态</h1>
+<h2 id="防扩展">防扩展</h2>
+<blockquote>
+<p>不能添加属性，可删除属性，可修改属性</p>
+</blockquote>
+<h3 id="设置">设置</h3>
+<ul>
+<li><code>Object.preventExtensions(对象)</code></li>
+</ul>
+<h3 id="判断">判断</h3>
+<ul>
+<li>
+<p><code>Object.isExtensible(对象)</code></p>
+<blockquote>
+<p>返回布尔值</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="密封">密封</h2>
+<blockquote>
+<p>不能添加、删除属性，可修改属性</p>
+</blockquote>
+<h3 id="设置-1">设置</h3>
+<ul>
+<li><code>Object.seal(对象)</code></li>
+</ul>
+<h3 id="判断-1">判断</h3>
+<ul>
+<li>
+<p><code>Object.isSealed(对象)</code></p>
+<blockquote>
+<p>返回布尔值</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="冻结">冻结</h2>
+<blockquote>
+<p>不能添加、删除、修改属性</p>
+</blockquote>
+<h3 id="设置-2">设置</h3>
+<ul>
+<li><code>Object.freeze(对象)</code></li>
+</ul>
+<h3 id="判断-2">判断</h3>
+<ul>
+<li>
+<p><code>Object.isFrozen(对象)</code></p>
+<blockquote>
+<p>返回布尔值</p>
+</blockquote>
 </li>
 </ul>
 <h1 id="静态成员和实例成员">静态成员和实例成员</h1>

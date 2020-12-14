@@ -31,6 +31,22 @@
 <h2 id="面试题">面试题</h2>
 <ul>
 <li><a href="#%E9%9D%A2%E8%AF%95%E9%A2%98">面试题</a></li>
+<li><a href="#2020-12-11">2020-12-11</a>
+<ul>
+<li><a href="#less-sass-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%A4%A7%E5%AE%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"># Less、Sass 是什么？大家为什么要使用它们？</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E4%BA%8B%E4%BB%B6-ie-%E4%B8%8E-firefox-%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"># 关于事件，IE 与 FireFox 的事件机制有什么区别？</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-10">2020-12-10</a>
+<ul>
+<li><a href="#%E5%B0%86%E6%95%B0%E5%AD%97-12345678-%E8%BD%AC%E5%8C%96%E6%88%90-rmb-%E5%BD%A2%E5%BC%8F-12-345-678"># 将数字 <code>12345678</code> 转化成 RMB 形式（<code>12,345,678</code>）</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-08">2020-12-08</a>
+<ul>
+<li><a href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E7%9A%84%E5%8C%BA%E5%88%AB"># 同步和异步的区别</a></li>
+</ul>
+</li>
 <li><a href="#2020-12-04">2020-12-04</a>
 <ul>
 <li><a href="#%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0"># 去除数组中重复的元素</a></li>
@@ -218,6 +234,85 @@
 <li><a href="#%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%9C%89%E5%93%AA%E4%B8%89%E5%B1%82%E6%9E%84%E6%88%90-%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88-%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"># 前端页面有哪三层构成，分别是什么？作用是什么？</a></li>
 </ul>
 </li>
+</ul>
+<hr>
+<h2 id="2020-12-11">2020-12-11</h2>
+<hr>
+<h4 id="less-sass-是什么-大家为什么要使用它们"># Less、Sass 是什么？大家为什么要使用它们？</h4>
+<ul>
+<li>
+<p>它们是 CSS 的预处理器，是 CSS 上的一种抽象层，是一种特殊的语法 / 语言，可编译为 CSS。</p>
+</li>
+<li>
+<p>它们给 CSS 赋予了动态语言的特性（变量、继承、运算、函数、...）。</p>
+</li>
+<li>
+<p>Less 既可以在客户端上运行（借助 JavaScript，支持 IE 6+、Webkit、Firefox），<br>
+也可以在服务端运行（借助 Node.js）。</p>
+</li>
+<li>
+<p>优点</p>
+<ul>
+<li>
+<p>结构清晰，便于扩展</p>
+</li>
+<li>
+<p>方便地屏蔽浏览器私有语法差异</p>
+</li>
+<li>
+<p>轻松实现多重继承</p>
+</li>
+<li>
+<p>完全兼容 CSS 代码，可以方便地应用到老项目中</p>
+<blockquote>
+<p>Less 只是在 CSS 的语法上做了扩展，所以老的 CSS 代码也可以与 Less 代码一同编译。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="关于事件-ie-与-firefox-的事件机制有什么区别"># 关于事件，IE 与 FireFox 的事件机制有什么区别？</h4>
+<ul>
+<li>IE
+<ul>
+<li>在 IE 中，事件对象是作为一个 <code>全局变量</code> 来保存和维护的。</li>
+<li>所有的浏览器事件，不管是用户触发的，还是其他事件，都会更新 <code>window.event</code> 对象。</li>
+<li>所以在代码中，只要通过 <code>window.event</code> 就可以获取事件对象，<br>
+通过 <code>window.event.srcElement</code> 可以取得触发事件的元素，进行进一步的处理。</li>
+</ul>
+</li>
+<li>FireFox
+<ul>
+<li>在 FireFox 中，事件对象不是全局对象。</li>
+<li>一般情况下，是现场发生，现场使用。</li>
+<li>FireFox 自动把事件对象作为 <code>参数</code> 传给事件处理程序。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2020-12-10">2020-12-10</h2>
+<hr>
+<h4 id="将数字-12345678-转化成-rmb-形式-12-345-678"># 将数字 <code>12345678</code> 转化成 RMB 形式（<code>12,345,678</code>）</h4>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;12345678&#x27;</span>;
+<span class="hljs-keyword">var</span> strArr = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse();
+
+str = <span class="hljs-string">&#x27;&#x27;</span>;
+strArr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value, index</span>) </span>{
+    str += value;
+
+    <span class="hljs-keyword">if</span> ((index + <span class="hljs-number">1</span>) % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) {
+        str += <span class="hljs-string">&#x27;,&#x27;</span>;
+    }
+});
+str = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse(<span class="hljs-string">&#x27;&#x27;</span>).join(<span class="hljs-string">&#x27;&#x27;</span>);
+</div></code></pre>
+<h2 id="2020-12-08">2020-12-08</h2>
+<hr>
+<h4 id="同步和异步的区别"># 同步和异步的区别</h4>
+<ul>
+<li>同步：阻塞的</li>
+<li>异步：非阻塞的</li>
+<li>在同步任务完成后再进行异步任务</li>
 </ul>
 <h2 id="2020-12-04">2020-12-04</h2>
 <hr>
@@ -719,15 +814,15 @@ xhr.open(请求方式, 请求地址);
 <span class="hljs-comment">// 设置请求头</span>
 xhr.setRequestHeader(属性名, 属性值);
 
-<span class="hljs-comment">// 发送请求（请求方式为 POST 时需要参数）</span>
-xhr.send();
-
-<span class="hljs-comment">// 获取服务器端传给客户端的响应数据</span>
+<span class="hljs-comment">// 设置监听事件，获取服务器端传给客户端的响应数据</span>
 xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">if</span> (xhr.readyState == <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>) {
         <span class="hljs-built_in">console</span>.log(xhr.responseText);
     }
 }
+
+<span class="hljs-comment">// 发送请求（请求方式为 POST 时需要参数）</span>
+xhr.send();
 </div></code></pre>
 </li>
 </ul>
@@ -1096,20 +1191,16 @@ arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Arr
 <h2 id="2020-11-01">2020-11-01</h2>
 <hr>
 <h4 id="阻止事件冒泡和默认事件的方法"># 阻止事件冒泡和默认事件的方法</h4>
-<ul>
-<li>
-<p>阻止事件冒泡<br>
-<code>window.event ? window.event.cancelBubble = true : e.stopPropagation();</code></p>
-</li>
-<li>
-<p>阻止默认事件<br>
-<code>window.event ? window.event.returnValue = false : e.preventDefault();</code></p>
-</li>
-<li>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 阻止事件冒泡</span>
+ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = <span class="hljs-literal">true</span>;
+
+<span class="hljs-comment">// 阻止默认事件</span>
+ev.preventDefault ? ev.preventDefault() : ev.returnValue = <span class="hljs-literal">false</span>;
+</div></code></pre>
+<blockquote>
 <p>原生 JavaScript：<code>return false</code> 只阻止默认行为，不阻止事件冒泡。<br>
 jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡。</p>
-</li>
-</ul>
+</blockquote>
 <hr>
 <h4 id="添加节点-删除节点-替换节点-插入到某个节点的方法"># 添加节点、删除节点、替换节点、插入到某个节点的方法</h4>
 <ul>
