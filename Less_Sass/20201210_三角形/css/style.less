@@ -1,0 +1,49 @@
+// 三角形
+.triangle(@direction, @size, @color) {
+    border: @size solid transparent;
+    border-@{direction}-color: @color;
+}
+
+// 调用
+.shapes {
+    user-select: none;
+
+    div {
+        display: inline-block;
+        vertical-align: top;
+        width: 0;
+        height: 0;
+    }
+
+    // 左
+    div:nth-child(1) {
+        .triangle(left, 50px, #FF0000);
+    }
+    div:nth-child(2) {
+        .triangle(left, 25px, #0000FF);
+    }
+
+    // 下
+    div:nth-child(3) {
+        .triangle(bottom, 50px, #FF0000);
+    }
+    div:nth-child(4) {
+        .triangle(bottom, 25px, #0000FF);
+    }
+
+    // 右
+    div:nth-child(5) {
+        .triangle(right, 50px, #FF0000);
+    }
+    div:nth-child(6) {
+        .triangle(right, 25px, #0000FF);
+    }
+
+    // 上
+    div:nth-child(7) {
+        .triangle(top, 50px, #FF0000);
+    }
+    div:nth-child(8) {
+        .triangle(top, 25px, #0000FF);
+    }
+}

@@ -1,0 +1,41 @@
+.shapes {
+  user-select: none;
+}
+.shapes div {
+  display: inline-block;
+  vertical-align: top;
+  width: 0;
+  height: 0;
+}
+.shapes div:nth-child(1) {
+  border: 50px solid transparent;
+  border-left-color: #FF0000;
+}
+.shapes div:nth-child(2) {
+  border: 25px solid transparent;
+  border-left-color: #0000FF;
+}
+.shapes div:nth-child(3) {
+  border: 50px solid transparent;
+  border-bottom-color: #FF0000;
+}
+.shapes div:nth-child(4) {
+  border: 25px solid transparent;
+  border-bottom-color: #0000FF;
+}
+.shapes div:nth-child(5) {
+  border: 50px solid transparent;
+  border-right-color: #FF0000;
+}
+.shapes div:nth-child(6) {
+  border: 25px solid transparent;
+  border-right-color: #0000FF;
+}
+.shapes div:nth-child(7) {
+  border: 50px solid transparent;
+  border-top-color: #FF0000;
+}
+.shapes div:nth-child(8) {
+  border: 25px solid transparent;
+  border-top-color: #0000FF;
+}
