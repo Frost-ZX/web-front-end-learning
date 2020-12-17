@@ -35,7 +35,6 @@
 <li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">相关网站</a></li>
 <li><a href="#%E5%8F%98%E9%87%8F">变量</a>
 <ul>
-<li><a href="#%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F">块级作用域</a></li>
 <li><a href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F">声明变量</a>
 <ul>
 <li><a href="#let">let</a></li>
@@ -46,17 +45,31 @@
 </li>
 </ul>
 </li>
+<li><a href="#%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F">块级作用域：<code>{ ... }</code></a></li>
+<li><a href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC">解构赋值</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84">数组</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E5%80%BC">默认值</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1">对象</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1">基本用法</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E5%80%BC-1">默认值</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a></li>
+<li><a href="#%E6%95%B0%E5%80%BC%E5%92%8C%E5%B8%83%E5%B0%94%E5%80%BC">数值和布尔值</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">函数参数</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#this">this</a>
 <ul>
 <li><a href="#globalthis">globalThis</a></li>
-</ul>
-</li>
-<li><a href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">模板字符串</a>
-<ul>
-<li><a href="#%E7%AE%80%E4%BB%8B-1">简介</a></li>
-<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
 </ul>
 </li>
 <li><a href="#%E5%87%BD%E6%95%B0">函数</a>
@@ -69,15 +82,144 @@
 </li>
 <li><a href="#rest-%E5%8F%82%E6%95%B0">rest 参数</a>
 <ul>
-<li><a href="#%E7%AE%80%E4%BB%8B-2">简介</a></li>
-<li><a href="#%E4%BE%8B%E5%AD%90-1">例子</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B-1">简介</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
 </ul>
 </li>
 <li><a href="#name-%E5%B1%9E%E6%80%A7">name 属性</a></li>
 <li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F">严格模式</a></li>
 <li><a href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a>
 <ul>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-2">基本用法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-2">注意</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-1">字符串</a>
+<ul>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">模板字符串</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-2">简介</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90-1">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95">新增方法</a>
+<ul>
+<li><a href="#includes">includes()</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-3">简介</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E5%80%BC">参数值</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC">返回值</a></li>
+</ul>
+</li>
+<li><a href="#startswith">startsWith()</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-4">简介</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95-1">语法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E5%80%BC-1">参数值</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC-1">返回值</a></li>
+</ul>
+</li>
+<li><a href="#endswith">endsWith()</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-5">简介</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95-2">语法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E5%80%BC-2">参数值</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC-2">返回值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E7%BB%84-1">数组</a>
+<ul>
+<li><a href="#%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95-1">新增方法</a>
+<ul>
+<li><a href="#find">find()</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95">定义和用法</a></li>
+</ul>
+</li>
+<li><a href="#findindex">findIndex()</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95-1">定义和用法</a></li>
+</ul>
+</li>
+<li><a href="#includes-1">includes()</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95-2">定义和用法</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95-3">语法</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0">参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#symbol">Symbol</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-6">简介</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+<li><a href="#%E4%BD%9C%E4%B8%BA%E5%B1%9E%E6%80%A7%E5%90%8D">作为属性名</a></li>
+<li><a href="#symbol-prototype-description">Symbol.prototype.description</a></li>
+<li><a href="#symbol-for-symbol-keyfor">Symbol.for()、Symbol.keyFor()</a>
+<ul>
+<li><a href="#symbol-for">Symbol.for()</a></li>
+<li><a href="#symbol-keyfor">Symbol.keyFor()</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C">全局注册</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1-1">对象</a>
+<ul>
+<li><a href="#%E5%B1%9E%E6%80%A7%E7%9A%84%E7%AE%80%E6%B4%81%E8%A1%A8%E7%A4%BA%E6%B3%95">属性的简洁表示法</a></li>
+<li><a href="#%E5%B1%9E%E6%80%A7%E5%90%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F">属性名表达式</a></li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95-2">新增方法</a>
+<ul>
+<li><a href="#object-assign"><code>Object.assign()</code></a></li>
+<li><a href="#object-is"><code>Object.is()</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#class">Class</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">基本语法</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">静态方法</a></li>
+<li><a href="#%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E5%92%8C%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7">私有方法和私有属性</a>
+<ul>
+<li><a href="#%E7%8E%B0%E6%9C%89%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">现有的解决方案</a></li>
+<li><a href="#%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84%E6%8F%90%E6%A1%88">私有属性的提案</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#promise-%E5%AF%B9%E8%B1%A1">Promise 对象</a>
+<ul>
+<li><a href="#promise-%E7%9A%84%E5%90%AB%E4%B9%89">Promise 的含义</a></li>
+<li><a href="#promise-%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E7%82%B9">Promise 对象的特点</a></li>
+<li><a href="#promise-%E4%BC%98%E7%BC%BA%E7%82%B9">Promise 优缺点</a>
+<ul>
+<li><a href="#%E4%BC%98%E7%82%B9">优点</a></li>
+<li><a href="#%E7%BC%BA%E7%82%B9">缺点</a></li>
+</ul>
+</li>
+<li><a href="#promise-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">Promise 基本用法</a></li>
+<li><a href="#promise-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95">Promise 对象的方法</a>
+<ul>
+<li><a href="#promise-prototype-then">Promise.prototype.then()</a></li>
+<li><a href="#promise-prototype-catch">Promise.prototype.catch()</a></li>
+<li><a href="#promise-prototype-finally">Promise.prototype.finally()</a></li>
+<li><a href="#promise-all">Promise.all()</a></li>
+<li><a href="#promise-any">Promise.any()</a></li>
+<li><a href="#promise-race">Promise.race()</a></li>
+<li><a href="#promise-allsettled">Promise.allSettled()</a></li>
+<li><a href="#promise-resolve">Promise.resolve()</a></li>
+<li><a href="#promise-reject">Promise.reject()</a></li>
 </ul>
 </li>
 </ul>
@@ -94,7 +236,6 @@
 <li><a href="https://www.runoob.com/w3cnote/es6-concise-tutorial.html">https://www.runoob.com/w3cnote/es6-concise-tutorial.html</a></li>
 </ul>
 <h1 id="变量">变量</h1>
-<h2 id="块级作用域">块级作用域</h2>
 <h2 id="声明变量">声明变量</h2>
 <h3 id="let">let</h3>
 <ul>
@@ -116,29 +257,139 @@
 <li>但对于 <code>复合类型</code> 的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，<br>
 <code>const</code> 只能 <code>保证</code> 这个 <code>指针是固定的</code>（即总是指向另一个固定的地址），但 <code>不能保证</code> 它指向的 <code>数据结构不可变</code> 。</li>
 </ul>
-<h1 id="this">this</h1>
-<blockquote>
-<p>代表当前对象</p>
-</blockquote>
-<h2 id="globalthis">globalThis</h2>
-<h1 id="模板字符串">模板字符串</h1>
-<h2 id="简介-1">简介</h2>
+<h2 id="块级作用域">块级作用域：<code>{ ... }</code></h2>
 <ul>
-<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识。</li>
-<li>它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。</li>
-<li>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。</li>
-<li>模板字符串中嵌入变量，需要将变量名写在 <code>${}</code> 之中。</li>
-<li><code>${}</code> 内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。</li>
-<li>如果 <code>${}</code> 中的值不是字符串，将按照一般的规则转为字符串。<br>
-（例如，大括号中是一个对象，将默认调用对象的 <code>toString()</code> 方法）</li>
-<li>模板字符串可嵌套。</li>
+<li>
+<p><code>ES5</code> 只有 <code>全局作用域</code> 和 <code>函数作用域</code>，没有块级作用域，这带来很多不合理的场景。</p>
+</li>
+<li>
+<p><code>ES6</code> 的 <code>let</code> 实际上为 JavaScript 新增了 <code>块级作用域</code>。</p>
+</li>
+<li>
+<p><code>ES6</code> 允许块级作用域的任意嵌套，<code>内层作用域</code> 可以定义 <code>外层作用域</code> 的同名变量。</p>
+</li>
+<li>
+<p>块级作用域的出现，使得获得广泛应用的 <code>匿名立即执行函数表达式</code>（匿名 IIFE）不再必要了。</p>
+</li>
+<li>
+<p><code>ES5</code> 规定，函数只能在 <code>顶层作用域</code> 和 <code>函数作用域</code> 之中声明，不能在块级作用域声明。<br>
+<code>ES6</code> 引入了块级作用域，明确允许在 <code>块级作用域</code> 之中声明函数。<br>
+<code>ES6</code> 规定，块级作用域之中，函数声明语句的行为类似于 <code>let</code>，在块级作用域之外不可引用。</p>
+<blockquote>
+<p>考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。<br>
+如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
+</blockquote>
+</li>
 </ul>
-<h2 id="例子">例子</h2>
-<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str1 = <span class="hljs-string">&#x27;a&#x27;</span>;
-<span class="hljs-keyword">var</span> str2 = <span class="hljs-string">&#x27;b&#x27;</span>;
-<span class="hljs-keyword">var</span> str3 = <span class="hljs-string">`<span class="hljs-subst">${str1}</span><span class="hljs-subst">${str2}</span>`</span>;
-<span class="hljs-built_in">console</span>.log(str3); <span class="hljs-comment">// &#x27;ab&#x27;</span>
+<h2 id="解构赋值">解构赋值</h2>
+<blockquote>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+</blockquote>
+<h3 id="数组">数组</h3>
+<h4 id="基本用法">基本用法</h4>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// a = 1</span>
+<span class="hljs-comment">// b = 2</span>
+<span class="hljs-comment">// c = 3</span>
+<span class="hljs-keyword">let</span> [a, b, c] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
 </div></code></pre>
+<ul>
+<li>可以从数组中提取值，按照对应位置，对变量赋值。</li>
+<li>本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。</li>
+<li>如果解构不成功，变量的值为 <code>undefined</code>。</li>
+<li>如果等号左边的模式只匹配等号右边的数组的一部分，解构依然可以成功。</li>
+<li>如果等号的右边不是数组（或者严格地说，<code>不是可遍历的结构</code>），那么将会 <code>报错</code>。</li>
+<li>如果默认值是一个表达式，那么这个表达式是 <code>惰性求值</code> 的（只有在用到的时候，才会求值）。</li>
+<li>默认值可以引用解构赋值的其他变量，但该变量必须已经声明。</li>
+</ul>
+<h4 id="默认值">默认值</h4>
+<ul>
+<li>
+<p>解构赋值允许指定默认值</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> [变量 = 默认值, 变量 = 默认值, ...] = [值, 值, ...];
+
+<span class="hljs-keyword">let</span> [foo = <span class="hljs-literal">true</span>] = [];               <span class="hljs-comment">// foo = true</span>
+<span class="hljs-keyword">let</span> [x, y = <span class="hljs-string">&#x27;b&#x27;</span>] = [<span class="hljs-string">&#x27;a&#x27;</span>];            <span class="hljs-comment">// x = &quot;a&quot;, y = &quot;b&quot;</span>
+<span class="hljs-keyword">let</span> [x, y = <span class="hljs-string">&#x27;b&#x27;</span>] = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-literal">undefined</span>]; <span class="hljs-comment">// x = &quot;a&quot;, y = &quot;b&quot;</span>
+</div></code></pre>
+<blockquote>
+<p>ES6 内部使用严格相等运算符（<code>===</code>）判断一个位置是否有值。<br>
+只有当一个数组成员严格等于 <code>undefined</code> 时，默认值才会 <code>生效</code>。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="对象">对象</h3>
+<h4 id="基本用法-1">基本用法</h4>
+<ul>
+<li>
+<p>解构不仅可以用于数组，还可以用于对象。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> { a, b } = { <span class="hljs-attr">a</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&#x27;bbb&#x27;</span> }; <span class="hljs-comment">// a = &quot;aaa&quot;, b = &quot;bbb&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p>对象的解构与数组有一个重要的不同：</p>
+<ul>
+<li>
+<p><code>数组</code> 的元素是 <code>按次序排列</code> 的，变量的取值由它的位置决定。</p>
+</li>
+<li>
+<p><code>对象</code> 的属性 <code>没有次序</code>，变量必须与属性同名，才能取到正确的值。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> { b, a } = { <span class="hljs-attr">a</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&#x27;bbb&#x27;</span> }; <span class="hljs-comment">// a = &quot;aaa&quot;, b = &quot;bbb&quot;</span>
+<span class="hljs-keyword">let</span> { c } = { <span class="hljs-attr">a</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&#x27;bbb&#x27;</span> };    <span class="hljs-comment">// c = undefined</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>如果解构失败，变量的值为 <code>undefined</code>。</p>
+</li>
+<li>
+<p>实际上，对象的解构赋值是以下形式的简写</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> { <span class="hljs-attr">a</span>: a, <span class="hljs-attr">b</span>: b, ... } = { <span class="hljs-attr">a</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&#x27;bbb&#x27;</span>, ... };
+</div></code></pre>
+<blockquote>
+<p>对象的解构赋值的内部机制是先找到同名属性，然后再赋给对应的变量。<br>
+真正被赋值的是后者，而不是前者。</p>
+</blockquote>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> { <span class="hljs-attr">x</span>: y } = { <span class="hljs-attr">x</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>, <span class="hljs-attr">y</span>: <span class="hljs-string">&#x27;bbb&#x27;</span> }; <span class="hljs-comment">// y = &quot;aaa&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p>与数组一样，解构也可以用于嵌套结构的对象。</p>
+</li>
+</ul>
+<h4 id="默认值-1">默认值</h4>
+<ul>
+<li>对象的解构也可以指定默认值。</li>
+</ul>
+<h3 id="字符串">字符串</h3>
+<ul>
+<li>
+<p>字符串也可以解构赋值。</p>
+</li>
+<li>
+<p>因为此时字符串被转换成了一个类似数组的对象。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> [a, b, c, d, e] = <span class="hljs-string">&#x27;hello&#x27;</span>;
+<span class="hljs-comment">// a = &quot;h&quot;</span>
+<span class="hljs-comment">// b = &quot;e&quot;</span>
+<span class="hljs-comment">// c = &quot;l&quot;</span>
+<span class="hljs-comment">// d = &quot;l&quot;</span>
+<span class="hljs-comment">// e = &quot;o&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p>类似数组的对象都有一个 <code>length</code> 属性，因此还可以对这个属性解构赋值。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> {<span class="hljs-attr">length</span> : len} = <span class="hljs-string">&#x27;hello&#x27;</span>; <span class="hljs-comment">// len = 5</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="数值和布尔值">数值和布尔值</h3>
+<h3 id="函数参数">函数参数</h3>
+<h1 id="this">this</h1>
+<h2 id="globalthis">globalThis</h2>
+<ul>
+<li>ES2020 在语言标准的层面引入 <code>globalThis</code> 作为顶层对象。</li>
+<li>在任何环境下，<code>globalThis</code> 都是存在的，都可以从它拿到顶层对象，指向全局环境下的 <code>this</code>。</li>
+</ul>
 <h1 id="函数">函数</h1>
 <h2 id="参数默认值">参数默认值</h2>
 <h3 id="设置默认值">设置默认值</h3>
@@ -157,12 +408,12 @@
 <li>参数默认值不是传值的，而是每次都重新计算默认值表达式的值（<code>惰性求值</code>）。</li>
 </ul>
 <h2 id="rest-参数">rest 参数</h2>
-<h3 id="简介-2">简介</h3>
+<h3 id="简介-1">简介</h3>
 <ul>
-<li>ES6 引入 <code>rest</code> 参数（形式为 <code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用 <code>arguments</code> 了。</li>
+<li>ES6 引入 <code>rest 参数</code>（形式为 <code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用 <code>arguments</code> 了。</li>
 <li>rest 参数搭配的变量是一个 <code>数组</code>，该变量将多余的参数放入数组中。</li>
 </ul>
-<h3 id="例子-1">例子</h3>
+<h3 id="例子">例子</h3>
 <pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">...values</span>) </span>{
     <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
 
@@ -209,7 +460,7 @@ add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <spa
 </li>
 </ul>
 <h2 id="箭头函数">箭头函数</h2>
-<h3 id="基本用法">基本用法</h3>
+<h3 id="基本用法-2">基本用法</h3>
 <ul>
 <li>
 <p>ES6 允许使用“箭头” <code>=&gt;</code> 定义函数。</p>
@@ -225,7 +476,7 @@ add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <spa
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> f = <span class="hljs-function">() =&gt;</span> <span class="hljs-number">5</span>;
 <span class="hljs-comment">// 等同于</span>
 <span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-number">5</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">5</span>;
 };
 </div></code></pre>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> sum = <span class="hljs-function">(<span class="hljs-params">num1, num2</span>) =&gt;</span> num1 + num2;
@@ -235,6 +486,785 @@ add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <spa
 };
 </div></code></pre>
 </li>
+<li>
+<p>如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用 <code>return</code> 语句返回。<br>
+（由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错）</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> sum = <span class="hljs-function">(<span class="hljs-params">num1, num2</span>) =&gt;</span> { <span class="hljs-keyword">return</span> num1 + num2; }
+</div></code></pre>
+</li>
+</ul>
+<h3 id="注意-2">注意</h3>
+<ul>
+<li>函数体内的 <code>this</code> 对象，就是定义时所在的对象，而不是使用时所在的对象。<br>
+箭头函数 <code>没有</code> 自己的 <code>this</code>，因此其内部的 <code>this</code> 就是外层代码块的 <code>this</code>。</li>
+<li>不可以使用 <code>call()</code>、<code>apply()</code>、<code>bind()</code> 这些方法改变箭头函数中 <code>this</code> 的指向。</li>
+<li>不可以当作构造函数（因此不可以使用 <code>new</code> 命令），否则会抛出一个错误。</li>
+<li>不可以使用 <code>arguments</code> 对象，该对象在函数体内不存在。如果需要使用，可以用 <code>rest 参数</code> 代替。</li>
+<li>不可以使用 <code>yield</code> 命令（因此箭头函数不能用作 <code>Generator</code> 函数）。</li>
+</ul>
+<h1 id="字符串-1">字符串</h1>
+<h2 id="模板字符串">模板字符串</h2>
+<h3 id="简介-2">简介</h3>
+<ul>
+<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识。</li>
+<li>它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。</li>
+<li>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。</li>
+<li>模板字符串中嵌入变量，需要将变量名写在 <code>${}</code> 之中。</li>
+<li><code>${}</code> 内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。</li>
+<li>如果 <code>${}</code> 中的值不是字符串，将按照一般的规则转为字符串。<br>
+（例如，大括号中是一个对象，将默认调用对象的 <code>toString()</code> 方法）</li>
+<li>模板字符串可嵌套。</li>
+</ul>
+<h3 id="例子-1">例子</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str1 = <span class="hljs-string">&#x27;a&#x27;</span>;
+<span class="hljs-keyword">var</span> str2 = <span class="hljs-string">&#x27;b&#x27;</span>;
+<span class="hljs-keyword">var</span> str3 = <span class="hljs-string">`<span class="hljs-subst">${str1}</span><span class="hljs-subst">${str2}</span>`</span>;
+<span class="hljs-built_in">console</span>.log(str3); <span class="hljs-comment">// &#x27;ab&#x27;</span>
+</div></code></pre>
+<h2 id="新增方法">新增方法</h2>
+<h3 id="includes">includes()</h3>
+<h4 id="简介-3">简介</h4>
+<ul>
+<li><code>includes()</code> 方法用于判断字符串是否包含指定的子字符串。</li>
+<li><code>includes()</code> 方法对大小写敏感。</li>
+</ul>
+<h4 id="语法">语法</h4>
+<ul>
+<li><code>string.includes(searchString, start)</code></li>
+</ul>
+<h4 id="参数值">参数值</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>searchString</code></td>
+<td>必需，要查找的字符串。</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>可选，开始查找的位置，默认为 <code>0</code>。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回值">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Boolean</code></td>
+<td>如果找到匹配的字符串返回 <code>true</code>，否则返回 <code>false</code>。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="startswith">startsWith()</h3>
+<h4 id="简介-4">简介</h4>
+<ul>
+<li><code>startsWith()</code> 方法用于检测字符串是否以指定的子字符串开始。</li>
+<li><code>startsWith()</code> 方法对大小写敏感。</li>
+</ul>
+<h4 id="语法-1">语法</h4>
+<ul>
+<li><code>string.startsWith(searchString, start)</code></li>
+</ul>
+<h4 id="参数值-1">参数值</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>searchString</code></td>
+<td>必需，要查找的字符串。</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>可选，开始查找的位置，默认为 <code>0</code>。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回值-1">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Boolean</code></td>
+<td>如果字符串以指定的子字符串开始，返回 <code>true</code>，否则返回 <code>false</code>。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="endswith">endsWith()</h3>
+<h4 id="简介-5">简介</h4>
+<ul>
+<li><code>endsWith()</code> 方法用于检测字符串是否以指定的子字符串结束。</li>
+<li><code>endsWith()</code> 方法对大小写敏感。</li>
+</ul>
+<h4 id="语法-2">语法</h4>
+<ul>
+<li><code>string.endsWith(searchString, length)</code></li>
+</ul>
+<h4 id="参数值-2">参数值</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>searchString</code></td>
+<td>必需，要查找的字符串。</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>可选，指定字符串的长度。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回值-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Boolean</code></td>
+<td>如果字符串以指定的子字符串结束，返回 <code>true</code>，否则返回 <code>false</code>。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数组-1">数组</h1>
+<h2 id="新增方法-1">新增方法</h2>
+<h3 id="find">find()</h3>
+<h4 id="定义和用法">定义和用法</h4>
+<ul>
+<li><code>find()</code> 方法返回数组中符合条件的第一个元素的值。</li>
+<li><code>find()</code> 方法为数组中的每个元素都调用一次函数执行：
+<ul>
+<li>当数组中的元素在测试条件时返回 <code>true</code> 时, <code>find()</code> 返回符合条件的元素，之后的值不会再调用执行函数。</li>
+<li>如果没有符合条件的元素，返回 <code>undefined</code>。</li>
+</ul>
+</li>
+<li><code>find()</code> 对于空数组，函数是不会执行的。</li>
+<li><code>find()</code> 并没有改变数组的原始值。</li>
+</ul>
+<h3 id="findindex">findIndex()</h3>
+<h4 id="定义和用法-1">定义和用法</h4>
+<ul>
+<li><code>findIndex()</code> 方法返回数组中符合条件的第一个元素的位置。</li>
+<li><code>findIndex()</code> 方法为数组中的每个元素都调用一次函数执行：
+<ul>
+<li>当数组中的元素在测试条件时返回 <code>true</code> 时, <code>findIndex()</code> 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。</li>
+<li>如果没有符合条件的，元素返回 <code>-1</code>。</li>
+</ul>
+</li>
+<li><code>findIndex()</code> 对于空数组，函数是不会执行的。</li>
+<li><code>findIndex()</code> 并没有改变数组的原始值。</li>
+</ul>
+<h3 id="includes-1">includes()</h3>
+<h4 id="定义和用法-2">定义和用法</h4>
+<ul>
+<li><code>includes()</code> 方法用来判断一个数组是否包含一个指定的值。</li>
+<li>如果包含指定的值，返回 <code>true</code>，否则返回 <code>false</code>。</li>
+</ul>
+<h4 id="语法-3">语法</h4>
+<ul>
+<li><code>arr.includes(searchElement, fromIndex)</code></li>
+</ul>
+<h4 id="参数">参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>searchElement</code></td>
+<td>必需，需要查找的元素值。</td>
+</tr>
+<tr>
+<td><code>fromIndex</code></td>
+<td>可选，从该索引处开始查找 <code>searchElement</code>。<br>如果为负值，则按升序从 <code>array.length + fromIndex</code> 的索引开始搜索。<br>默认为 <code>0</code>。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="symbol">Symbol</h1>
+<h2 id="简介-6">简介</h2>
+<ul>
+<li>
+<p><code>ES5</code> 的对象属性名都是字符串，这容易造成属性名的冲突。</p>
+<blockquote>
+<p>例如，在使用他人提供的对象时想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。<br>
+如果有一种机制，保证每个属性的名字都是 <code>独一无二</code> 的就好了，这样就从根本上防止属性名的冲突。<br>
+这就是 ES6 引入 Symbol 的原因。</p>
+</blockquote>
+</li>
+<li>
+<p><code>ES6</code> 引入了一种新的原始数据类型 <code>Symbol</code>，表示独一无二的值。</p>
+</li>
+<li>
+<p>它是 JavaScript 语言的第 7 种数据类型。</p>
+<blockquote>
+<p>前 6 种数据类型：<code>undefined</code>、<code>null</code>、布尔值（<code>Boolean</code>）、字符串（<code>String</code>）、数值（<code>Number</code>）、对象（<code>Object</code>）</p>
+</blockquote>
+</li>
+<li>
+<p>Symbol 的值通过 <code>Symbol()</code> 函数生成。</p>
+<blockquote>
+<p>这就是说，对象的属性名现在可以有两种类型：一种是原来就有的 <code>字符串</code>，另一种就是新增的 <code>Symbol</code> 类型。<br>
+凡是属性名属于 <code>Symbol</code> 类型，就都是 <code>独一无二</code> 的，可以保证不会与其他属性名产生冲突。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="使用">使用</h2>
+<ul>
+<li>
+<p><code>Symbol()</code> 可以接受一个 <code>字符串</code> 作为参数，表示对 Symbol 实例的 <code>描述</code>，主要是为了在控制台显示，或者转为字符串时，比较容易区分。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;a&#x27;</span>);       <span class="hljs-comment">// Symbol(a)</span>
+<span class="hljs-keyword">let</span> s2 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;b&#x27;</span>);       <span class="hljs-comment">// Symbol(b)</span>
+<span class="hljs-keyword">let</span> s3 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;1&#x27;</span>);       <span class="hljs-comment">// Symbol(1)</span>
+<span class="hljs-keyword">let</span> s4 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;2&#x27;</span>);       <span class="hljs-comment">// Symbol(2)</span>
+
+<span class="hljs-comment">// 如果不加参数，它们在控制台的输出都是 Symbol()，不利于区分。</span>
+<span class="hljs-comment">// 有了参数以后，就等于为它们加上了描述，输出的时候就能够分清，到底是哪一个值。</span>
+
+<span class="hljs-built_in">console</span>.log(s1.toString()); <span class="hljs-comment">// &quot;Symbol(a)&quot;</span>
+<span class="hljs-built_in">console</span>.log(s2.toString()); <span class="hljs-comment">// &quot;Symbol(b)&quot;</span>
+<span class="hljs-built_in">console</span>.log(s3.toString()); <span class="hljs-comment">// &quot;Symbol(1)&quot;</span>
+<span class="hljs-built_in">console</span>.log(s4.toString()); <span class="hljs-comment">// &quot;Symbol(2)&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p><code>Symbol()</code> 前不能使用 <code>new</code> 命令，否则会报错。</p>
+<blockquote>
+<p>这是因为生成的 Symbol 是一个 <code>原始类型</code> 的值，<code>不是对象</code>。<br>
+也就是说，由于 Symbol 值不是对象，所以不能添加属性。<br>
+基本上，它是一种类似于字符串的数据类型。</p>
+</blockquote>
+</li>
+<li>
+<p><code>Symbol()</code> 的参数只是表示对当前 Symbol 值的描述，因此相同参数的 <code>Symbol()</code> 的返回值是不相等的。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 没有参数</span>
+<span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">Symbol</span>();
+<span class="hljs-keyword">let</span> s2 = <span class="hljs-built_in">Symbol</span>();
+
+<span class="hljs-built_in">console</span>.log(s1 === s2) <span class="hljs-comment">// false</span>
+</div></code></pre>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 有参数</span>
+<span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;a&#x27;</span>);
+<span class="hljs-keyword">let</span> s2 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;a&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.log(s1 === s2); <span class="hljs-comment">// false</span>
+</div></code></pre>
+</li>
+<li>
+<p>Symbol 值不能与其他类型的值进行运算</p>
+</li>
+<li>
+<p>Symbol 值可以显式转为字符串（<code>.toString()</code>）</p>
+</li>
+<li>
+<p>Symbol 值可以转为布尔值（<code>true</code>）</p>
+</li>
+</ul>
+<h2 id="作为属性名">作为属性名</h2>
+<ul>
+<li>
+<p>于每一个 Symbol 值都是不相等的，这意味着 Symbol 值可以作为标识符，用于对象的属性名，就能保证不会出现同名的属性。</p>
+</li>
+<li>
+<p>这对于一个对象由多个模块构成的情况非常有用，能防止某一个键被不小心改写或覆盖。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> mySymbol = <span class="hljs-built_in">Symbol</span>();
+
+<span class="hljs-comment">// 第一种写法</span>
+<span class="hljs-keyword">let</span> a = {};
+a[mySymbol] = <span class="hljs-string">&#x27;Hello!&#x27;</span>;
+
+<span class="hljs-comment">// 第二种写法</span>
+<span class="hljs-keyword">let</span> a = {
+  [mySymbol]: <span class="hljs-string">&#x27;Hello!&#x27;</span>
+};
+
+<span class="hljs-comment">// 第三种写法</span>
+<span class="hljs-keyword">let</span> a = {};
+<span class="hljs-built_in">Object</span>.defineProperty(a, mySymbol, { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;Hello!&#x27;</span> });
+
+<span class="hljs-comment">// 以上写法都得到同样结果</span>
+<span class="hljs-built_in">console</span>.log(a[mySymbol]); <span class="hljs-comment">// &quot;Hello!&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p>Symbol 值作为 <code>对象属性名</code> 时，不能用 <code>点运算符</code>。</p>
+</li>
+</ul>
+<h2 id="symbol-prototype-description">Symbol.prototype.description</h2>
+<ul>
+<li>
+<p>创建 Symbol 的时候，可以添加一个描述：<code>Symbol('描述')</code></p>
+</li>
+<li>
+<p>但是，读取这个描述需要将 Symbol 显式转为字符串：<code>.toString()</code>，不是很方便。</p>
+</li>
+<li>
+<p>ES2019 提供了一个实例属性 <code>description</code>，直接返回 Symbol 的描述。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;a&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.log(s1.description); <span class="hljs-comment">// &quot;a&quot;</span>
+</div></code></pre>
+</li>
+</ul>
+<h2 id="symbol-for-symbol-keyfor">Symbol.for()、Symbol.keyFor()</h2>
+<h3 id="symbol-for">Symbol.for()</h3>
+<ul>
+<li>
+<p>有时，我们希望重新使用同一个 Symbol 值，<code>Symbol.for()</code> 方法可以做到这一点。</p>
+</li>
+<li>
+<p>它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。</p>
+</li>
+<li>
+<p>如果有，就返回这个 Symbol 值，否则就新建一个以该字符串为名称的 Symbol 值，并将其 <code>注册到全局</code>。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&#x27;foo&#x27;</span>);
+<span class="hljs-keyword">let</span> s2 = <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&#x27;foo&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.log(s1 === s2); <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// s1 和 s2 都是 Symbol 值，但是它们都是由同样参数的 Symbol.for 方法生成的，所以实际上是同一个值。</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="symbol-keyfor">Symbol.keyFor()</h3>
+<ul>
+<li>
+<p><code>Symbol.keyFor()</code> 方法返回一个已注册的（使用 <code>Symbol.for()</code> 创建的）Symbol 类型值的 <code>key</code>。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&#x27;a&#x27;</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Symbol</span>.keyFor(s1)); <span class="hljs-comment">// &quot;a&quot;</span>
+
+<span class="hljs-keyword">let</span> s2 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;b&#x27;</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Symbol</span>.keyFor(s2)); <span class="hljs-comment">// undefined</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="全局注册">全局注册</h3>
+<ul>
+<li>
+<p><code>Symbol.for()</code> 为 Symbol 值注册的名字，是全局环境的，不管有没有在全局环境运行。</p>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&#x27;bar&#x27;</span>);
+}
+
+<span class="hljs-keyword">let</span> x = foo();
+<span class="hljs-keyword">let</span> y = <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&#x27;bar&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.log(x === y); <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// Symbol.for(&#x27;bar&#x27;) 是函数内部运行的，但是生成的 Symbol 值是注册在全局环境的。</span>
+<span class="hljs-comment">// 所以第二次运行 Symbol.for(&#x27;bar&#x27;) 可以取到这个 Symbol 值。</span>
+</div></code></pre>
+</li>
+<li>
+<p><code>Symbol.for()</code> 的这个全局注册特性，可以用在不同的 <code>iframe</code> 或 <code>service worker</code> 中取到同一个值。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// iframe 窗口生成的 Symbol 值，可以在主页面得到。</span>
+
+<span class="hljs-keyword">let</span> iframe = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;iframe&#x27;</span>);
+
+iframe.src = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">window</span>.location);
+<span class="hljs-built_in">document</span>.body.appendChild(iframe);
+
+<span class="hljs-built_in">console</span>.log(iframe.contentWindow.Symbol.for(<span class="hljs-string">&#x27;foo&#x27;</span>) === <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&#x27;foo&#x27;</span>)); <span class="hljs-comment">// true</span>
+</div></code></pre>
+</li>
+</ul>
+<h1 id="对象-1">对象</h1>
+<h2 id="属性的简洁表示法">属性的简洁表示法</h2>
+<ul>
+<li>ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。</li>
+<li>这样的书写更加简洁。</li>
+</ul>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> foo = <span class="hljs-string">&#x27;bar&#x27;</span>;
+<span class="hljs-keyword">let</span> baz = { foo };
+
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">let</span> baz = {<span class="hljs-attr">foo</span>: foo};
+</div></code></pre>
+<h2 id="属性名表达式">属性名表达式</h2>
+<h2 id="新增方法-2">新增方法</h2>
+<h3 id="object-assign"><code>Object.assign()</code></h3>
+<ul>
+<li>
+<p><code>Object.assign()</code> 方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> target = { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> };
+<span class="hljs-keyword">let</span> source1 = { <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> };
+<span class="hljs-keyword">let</span> source2 = { <span class="hljs-attr">c</span>: <span class="hljs-number">3</span> };
+
+<span class="hljs-built_in">Object</span>.assign(target, source1, source2);
+
+<span class="hljs-built_in">console</span>.log(target); <span class="hljs-comment">// {a:1, b:2, c:3}</span>
+</div></code></pre>
+</li>
+<li>
+<p><code>Object.assign()</code> 方法的第一个参数是目标对象，后面的参数都是源对象。</p>
+<ul>
+<li>如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。</li>
+<li>如果只有一个参数，<code>Object.assign()</code> 会直接返回该参数。</li>
+<li>如果该参数不是对象，则会先转成对象，然后返回。</li>
+<li>由于 <code>undefined</code> 和 <code>null</code> 无法转成对象，所以如果它们作为参数，就会报错。</li>
+</ul>
+</li>
+<li>
+<p><code>Object.assign()</code> 拷贝的属性是有限制的，只拷贝源对象的自身属性（不拷贝继承属性），也不拷贝不可枚举的属性（<code>enumerable: false</code>）。</p>
+</li>
+<li>
+<p><code>Object.assign()</code> 方法实行的是 <code>浅拷贝</code>，而不是深拷贝。</p>
+<ul>
+<li>如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。</li>
+<li>这个对象的任何变化，都会反映到目标对象上面。</li>
+</ul>
+</li>
+</ul>
+<h3 id="object-is"><code>Object.is()</code></h3>
+<ul>
+<li>
+<p>ES5 比较两个值是否相等，只有两个运算符：相等运算符（<code>==</code>）和严格相等运算符（<code>===</code>）。</p>
+<ul>
+<li>它们都有缺点，前者会自动转换数据类型，后者的 <code>NaN</code> 不等于自身，以及 <code>+0</code> 等于 <code>-0</code>。</li>
+<li>JavaScript 缺乏一种运算，在所有环境中，只要两个值是一样的，它们就应该相等。</li>
+</ul>
+</li>
+<li>
+<p>ES6 提出 <code>Same-value equality</code>（同值相等）算法，用来解决这个问题。</p>
+<ul>
+<li><code>Object.is()</code> 就是部署这个算法的新方法。</li>
+<li>它用来比较两个值是否 <code>严格相等</code>，与严格比较运算符（<code>===</code>）的行为基本一致。</li>
+<li>不同之处只有两个：一是 <code>+0</code> 不等于 <code>-0</code>，二是 <code>NaN</code> 等于自身。</li>
+</ul>
+</li>
+</ul>
+<h1 id="class">Class</h1>
+<blockquote>
+<p>面向对象编程</p>
+</blockquote>
+<h2 id="基本语法">基本语法</h2>
+<ul>
+<li>
+<p>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。</p>
+</li>
+<li>
+<p>通过 <code>class</code> 关键字，可以定义类。</p>
+</li>
+<li>
+<p>基本上，ES6 的 Class 可以看作只是一个 <code>语法糖</code>，它的绝大部分功能 ES5 都可以做到。</p>
+</li>
+<li>
+<p>新的 Class 写法只是让 <code>对象原型</code> 的写法更加清晰、更像面向对象编程的语法。</p>
+<pre><code class="language-javascript"><div><span class="hljs-class"><span class="hljs-keyword">class</span> 类名 </span>{
+  <span class="hljs-comment">// 构造函数</span>
+  <span class="hljs-keyword">constructor</span>() {
+      ...
+  }
+
+  <span class="hljs-comment">// 属性和方法</span>
+  ...
+}
+</div></code></pre>
+</li>
+<li>
+<p>使用的时候，也是直接对类使用 <code>new</code> 命令，跟 <code>构造函数</code> 的用法完全一致。</p>
+<pre><code class="language-javascript"><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">constructor</span>(myName) {
+        <span class="hljs-built_in">this</span>.myName = myName;
+    }
+
+    introduce() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;我是&#x27;</span> + <span class="hljs-built_in">this</span>.myName);
+    }
+}
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;张三&#x27;</span>);
+
+p1.introduce(); <span class="hljs-comment">// &quot;我是张三&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p>构造函数的 <code>prototype</code> 属性，在 ES6 的“类”上面继续存在。</p>
+<ul>
+<li>
+<p>事实上，类的所有方法都定义在类的 <code>prototype</code> 属性上面。</p>
+<pre><code class="language-javascript"><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+    <span class="hljs-keyword">constructor</span>() {
+        ...
+    }
+    
+    toString() {
+        ...
+    }
+    
+    toValue() {
+        ...
+    }
+}
+
+<span class="hljs-comment">// 等同于</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Point</span>(<span class="hljs-params"></span>) </span>{
+    ...
+}
+
+Point.prototype = {
+    <span class="hljs-keyword">constructor</span>() {
+        ...
+    },
+    toString() {
+        ...
+    },
+    toValue() {
+        ...
+    },
+};
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="静态方法">静态方法</h2>
+<ul>
+<li>类相当于实例的原型，所有在类中定义的方法，都会被实例继承。</li>
+<li>如果在一个方法前，加上 <code>static</code> 关键字，就表示该方法不会被实例继承，而是直接通过 <code>类</code> 来调用，这就称为“静态方法”。</li>
+</ul>
+<h2 id="私有方法和私有属性">私有方法和私有属性</h2>
+<h3 id="现有的解决方案">现有的解决方案</h3>
+<ul>
+<li>
+<p>私有方法和私有属性，是只能在类的内部访问的方法和属性，外部不能访问。</p>
+</li>
+<li>
+<p>这是常见需求，有利于代码的封装，但 ES6 不提供，只能通过变通方法模拟实现。</p>
+<ul>
+<li>
+<p>一种做法是在命名上加以区别：</p>
+<ul>
+<li>在属性名或方法名的前面加下划线（<code>_</code>），表示这是一个只限于内部使用的私有方法。</li>
+<li>但是，这种命名是不保险的，在类的外部还是可以调用到这个方法。</li>
+</ul>
+</li>
+<li>
+<p>另一种方法就是索性将私有方法移出类，因为类内部的所有方法都是对外可见的。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="私有属性的提案">私有属性的提案</h3>
+<ul>
+<li>目前，有一个提案，为 <code>class</code> 加了私有属性。</li>
+<li>方法是在属性名或方法名之前添加 <code>#</code>。</li>
+</ul>
+<h1 id="promise-对象">Promise 对象</h1>
+<h2 id="promise-的含义">Promise 的含义</h2>
+<ul>
+<li>Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。</li>
+<li>它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了 Promise 对象。</li>
+<li>所谓 Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。</li>
+<li>从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。</li>
+<li>Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</li>
+</ul>
+<h2 id="promise-对象的特点">Promise 对象的特点</h2>
+<ul>
+<li>
+<p>对象的状态 <code>不受外界影响</code>。</p>
+<ul>
+<li>Promise对象代表一个异步操作，有三种状态：<code>pending</code>（进行中）、<code>fulfilled</code>（已成功）和 <code>rejected</code>（已失败）。</li>
+<li>只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都 <code>无法改变</code> 这个状态。</li>
+<li>这也是 Promise 这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。</li>
+</ul>
+</li>
+<li>
+<p>一旦状态改变，就 <code>不会再变</code>，任何时候都可以得到这个结果。</p>
+<ul>
+<li>Promise 对象的状态改变，<code>只有</code> 两种可能：从 <code>pending</code> 变为 <code>fulfilled</code> 和从 <code>pending</code> 变为 <code>rejected</code>。</li>
+<li>只要这两种情况发生，状态就 <code>凝固</code> 了，不会再变了，会一直 <code>保持</code> 这个结果，这时就称为 <code>resolved</code>（已定型）。</li>
+<li>如果改变已经发生了，你再对 Promise 对象添加回调函数，也会立即得到这个结果。</li>
+<li>这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="promise-优缺点">Promise 优缺点</h2>
+<h3 id="优点">优点</h3>
+<ul>
+<li>有了 Promise 对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。</li>
+<li>此外，Promise 对象提供统一的接口，使得控制异步操作更加容易。</li>
+</ul>
+<h3 id="缺点">缺点</h3>
+<ul>
+<li>无法取消 Promise，一旦新建它就会 <code>立即执行</code>，无法中途取消。</li>
+<li>如果不设置回调函数，Promise 内部抛出的错误，不会反应到外部。</li>
+<li>当处于 <code>pending</code> 状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</li>
+</ul>
+<h2 id="promise-基本用法">Promise 基本用法</h2>
+<ul>
+<li>
+<p>ES6 规定，Promise 对象是一个 <code>构造函数</code>，用来生成 Promise 实例。</p>
+</li>
+<li>
+<p>创造一个 Promise 实例：</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+
+  ...
+
+  if (异步操作成功的条件){
+      resolve(参数);
+  } <span class="hljs-keyword">else</span> {
+      reject(参数);
+  }
+});
+</div></code></pre>
+<blockquote>
+<p>Promise 构造函数接受一个函数作为参数，该函数的两个参数分别是 <code>resolve</code> 和 <code>reject</code>。<br>
+它们是两个函数，由 JavaScript 引擎提供，不用自己部署。</p>
+<p><strong><code>resolve</code> 函数的作用：</strong><br>
+将 Promise 对象的状态从 <code>未完成</code> 变为 <code>成功</code>（即从 <code>pending</code> 变为 <code>resolved</code>），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去。</p>
+<p><strong><code>reject</code> 函数的作用：</strong><br>
+将 Promise 对象的状态从 <code>未完成</code> 变为 <code>失败</code>（即从 <code>pending</code> 变为 <code>rejected</code>），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
+</blockquote>
+</li>
+<li>
+<p>在 Promise 实例生成后，可以用 <code>then()</code> 方法分别指定 <code>resolved</code> 状态和 <code>rejected</code> 状态的回调函数：</p>
+<pre><code class="language-javascript"><div>promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
+    <span class="hljs-comment">// 成功状态的回调函数</span>
+}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    <span class="hljs-comment">// 失败状态的回调函数</span>
+});
+</div></code></pre>
+<blockquote>
+<p><code>then()</code> 方法可以接受两个回调函数作为参数：<br>
+第一个回调函数是 Promise 对象的状态变为 <code>resolved</code> 时调用（必需）<br>
+第二个回调函数是 Promise 对象的状态变为 <code>rejected</code> 时调用（可选）<br>
+其中，第二个回调函数是可选的，不一定要提供。<br>
+这两个函数都接受 Promise 对象传出的值作为参数。</p>
+</blockquote>
+</li>
+<li>
+<p>Promise 在新建后就会立即执行，<code>then()</code> 方法指定的回调函数将在当前脚本所有同步任务执行完才会执行。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">let</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Promise&#x27;</span>);
+    resolve();
+});
+
+promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resolved.&#x27;</span>);
+});
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi!&#x27;</span>);
+
+<span class="hljs-comment">// Promise</span>
+<span class="hljs-comment">// Hi!</span>
+<span class="hljs-comment">// resolved</span>
+</div></code></pre>
+</li>
+</ul>
+<h2 id="promise-对象的方法">Promise 对象的方法</h2>
+<h3 id="promise-prototype-then">Promise.prototype.then()</h3>
+<h3 id="promise-prototype-catch">Promise.prototype.catch()</h3>
+<ul>
+<li><code>Promise.prototype.catch()</code> 方法是 <code>.then(null, rejection)</code> 或 <code>.then(undefined, rejection)</code> 的别名</li>
+<li>用于指定发生错误时的回调函数</li>
+</ul>
+<h3 id="promise-prototype-finally">Promise.prototype.finally()</h3>
+<ul>
+<li><code>finally()</code> 方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。</li>
+<li>该方法是 ES2018 引入标准的。</li>
+</ul>
+<h3 id="promise-all">Promise.all()</h3>
+<ul>
+<li>
+<p><code>Promise.all()</code> 方法接受一组 Promise 实例（一般为数组）作为参数，包装成一个新的 Promise 实例。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> p = <span class="hljs-built_in">Promise</span>.all([p1, p2, p3]);
+</div></code></pre>
+</li>
+<li>
+<p>如果元素不是 Promise 实例，就会先调用 <code>Promise.resolve()</code> 方法，将参数转为 Promise 实例，再进一步处理。</p>
+</li>
+<li>
+<p><code>Promise.all()</code> 方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。</p>
+</li>
+<li>
+<p><code>p</code> 的状态由 <code>p1</code>、<code>p2</code>、<code>p3</code> 决定，有两种情况：</p>
+<ul>
+<li>
+<p>只有 <code>p1</code>、<code>p2</code>、<code>p3</code> 的状态都是 <code>fulfilled</code> 时，<code>p</code> 的状态才会变成 <code>fulfilled</code></p>
+<blockquote>
+<p>此时 <code>p1</code>、<code>p2</code>、<code>p3</code> 的返回值组成一个数组，传递给 <code>p</code> 的回调函数。</p>
+</blockquote>
+</li>
+<li>
+<p>只要 <code>p1</code>、<code>p2</code>、<code>p3</code> 之中有一个的状态都是 <code>rejected</code>，<code>p</code> 的状态就变成 <code>rejected</code></p>
+<blockquote>
+<p>此时第一个被 <code>reject</code> 的实例的返回值会传递给 <code>p</code> 的回调函数。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="promise-any">Promise.any()</h3>
+<ul>
+<li>ES2021 引入了 <code>Promise.any()</code> 方法。</li>
+<li><code>Promise.any()</code> 方法接受一组 Promise 实例（一般为数组）作为参数，包装成一个新的 Promise 实例。</li>
+<li>只要参数实例有一个变成 <code>fulfilled</code> 状态，包装实例就会变成 <code>fulfilled</code> 状态。</li>
+<li>如果所有参数实例都变成 <code>rejected</code> 状态，包装实例就会变成 <code>rejected</code> 状态。</li>
+<li><code>Promise.any()</code> 跟 <code>Promise.race()</code> 方法很像，只有一点不同：不会因为某个 Promise 变成 <code>rejected</code> 状态而结束。</li>
+</ul>
+<h3 id="promise-race">Promise.race()</h3>
+<ul>
+<li>
+<p><code>Promise.race()</code> 方法接受一组 Promise 实例（一般为数组）作为参数，包装成一个新的 Promise 实例。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> p = <span class="hljs-built_in">Promise</span>.all([p1, p2, p3]);
+</div></code></pre>
+</li>
+<li>
+<p><code>Promise.race()</code> 方法的参数与 <code>Promise.all()</code> 方法一样，如果不是 Promise 实例就会先调用 <code>Promise.resolve()</code> 方法将参数转为 Promise 实例，再进一步处理。</p>
+</li>
+<li>
+<p>只要 <code>p1</code>、<code>p2</code>、<code>p3</code> 之中有一个实例率先改变状态，<code>p</code> 的状态就跟着改变。</p>
+</li>
+<li>
+<p>率先改变的 Promise 实例的返回值会传递给 <code>p</code> 的回调函数。</p>
+</li>
+</ul>
+<h3 id="promise-allsettled">Promise.allSettled()</h3>
+<ul>
+<li>ES2020 引入了 <code>Promise.allSettled()</code> 方法。</li>
+<li><code>Promise.allSettled()</code> 方法接受一组 Promise 实例（一般为数组）作为参数，包装成一个新的 Promise 实例。</li>
+<li>只有等到所有这些参数实例都返回结果（不管是 <code>fulfilled</code> 还是 <code>rejected</code>），包装实例才会结束。</li>
+</ul>
+<h3 id="promise-resolve">Promise.resolve()</h3>
+<ul>
+<li>有时需要将现有对象转为 Promise 对象，<code>Promise.resolve()</code> 方法就起到这个作用。</li>
+</ul>
+<h3 id="promise-reject">Promise.reject()</h3>
+<ul>
+<li><code>Promise.reject()</code> 方法也会返回一个新的 Promise 实例，该实例的状态为 <code>rejected</code>。</li>
 </ul>
 
     </body>
