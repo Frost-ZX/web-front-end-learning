@@ -136,14 +136,19 @@
 </div></code></pre>
 <h3 id="new-关键字">new 关键字</h3>
 <ul>
-<li>构造函数一般会配合 <code>new</code> 关键字使用</li>
-<li><code>new</code> 关键字专门用于实例化对象</li>
-<li><code>new</code> 关键字在构造函数中实现了：
+<li>
+<p>构造函数一般会配合 <code>new</code> 关键字使用</p>
+</li>
+<li>
+<p><code>new</code> 关键字专门用于实例化对象</p>
+</li>
+<li>
+<p><code>new</code> 关键字在构造函数中实现了：</p>
 <ol>
-<li>在构造函数中创建一个空对象</li>
-<li>把构造函数中的 <code>this</code> 指向这个空对象</li>
-<li>执行构造函数中的代码，给这个空对象初始化属性和方法</li>
-<li>返回这个对象（因此使用 <code>new</code> 关键字后，不需要在构造函数中 <code>return</code> 这个对象）</li>
+<li>在构造函数中创建一个 <code>空对象</code></li>
+<li>把构造函数中的 <code>this</code> 指向这个 <code>空对象</code></li>
+<li>执行构造函数中的代码，给这个 <code>空对象</code> 初始化 <code>属性和方法</code>（继承构造函数的原型）</li>
+<li>返回这个对象（因此使用 new 关键字后，不需要在构造函数中 return 这个对象）</li>
 </ol>
 </li>
 </ul>
@@ -153,7 +158,8 @@
 <li>
 <p><code>Object.defineProperty(原对象, 属性名称, 属性配置)</code></p>
 <blockquote>
-<p>定义后的属性默认不能被修改、删除、遍历<br>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">MDN - Object.defineProperty()</a><br>
+定义后的属性默认不能被修改、删除、遍历<br>
 属性配置添加 <code>writable: true</code> 后可修改<br>
 属性配置添加 <code>configurable: true</code> 后可删除<br>
 属性配置添加 <code>enumerable: true</code> 后可遍历</p>
@@ -171,6 +177,9 @@
 <ul>
 <li>
 <p><code>Object.defineProperties(原对象, 属性集合)</code></p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">MDN - Object.defineProperties()</a></p>
+</blockquote>
 <pre><code class="language-javascript"><div><span class="hljs-built_in">Object</span>.defineProperties(原对象, {
     属性名称: {
         <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,           <span class="hljs-comment">// 值</span>
@@ -183,7 +192,8 @@
         <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment">// 修改</span>
         <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 配置（删除）</span>
         <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 枚举（遍历）</span>
-    }
+    },
+    ...
 });
 </div></code></pre>
 </li>

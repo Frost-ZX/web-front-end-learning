@@ -86,10 +86,11 @@ var 对象名 = new 构造函数名称(参数1, 参数2, ...);
 - 构造函数一般会配合 `new` 关键字使用
 - `new` 关键字专门用于实例化对象
 - `new` 关键字在构造函数中实现了：
-  1. 在构造函数中创建一个空对象
-  2. 把构造函数中的 `this` 指向这个空对象
-  3. 执行构造函数中的代码，给这个空对象初始化属性和方法
-  4. 返回这个对象（因此使用 `new` 关键字后，不需要在构造函数中 `return` 这个对象）
+
+  1. 在构造函数中创建一个 `空对象`
+  2. 把构造函数中的 `this` 指向这个 `空对象`
+  3. 执行构造函数中的代码，给这个 `空对象` 初始化 `属性和方法`（继承构造函数的原型）
+  4. 返回这个对象（因此使用 new 关键字后，不需要在构造函数中 return 这个对象）
 
 # 对象自定义属性
 
@@ -97,6 +98,7 @@ var 对象名 = new 构造函数名称(参数1, 参数2, ...);
 
 - `Object.defineProperty(原对象, 属性名称, 属性配置)`
 
+  > [MDN - Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
   > 定义后的属性默认不能被修改、删除、遍历
   > 属性配置添加 `writable: true` 后可修改
   > 属性配置添加 `configurable: true` 后可删除
@@ -115,6 +117,8 @@ var 对象名 = new 构造函数名称(参数1, 参数2, ...);
 
 - `Object.defineProperties(原对象, 属性集合)`
 
+  > [MDN - Object.defineProperties()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
+
   ```javascript
   Object.defineProperties(原对象, {
       属性名称: {
@@ -128,7 +132,8 @@ var 对象名 = new 构造函数名称(参数1, 参数2, ...);
           writable: false,     // 修改
           configurable: false, // 配置（删除）
           enumerable: false    // 枚举（遍历）
-      }
+      },
+      ...
   });
   ```
 

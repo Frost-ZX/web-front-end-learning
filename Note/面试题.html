@@ -31,6 +31,24 @@
 <h2 id="面试题">面试题</h2>
 <ul>
 <li><a href="#%E9%9D%A2%E8%AF%95%E9%A2%98">面试题</a></li>
+<li><a href="#20201217">20201217</a>
+<ul>
+<li><a href="#instanceof-%E5%92%8C-typeof-%E6%80%8E%E4%B9%88%E7%94%A8-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"># <code>instanceof</code> 和 <code>typeof</code> 怎么用？有什么区别？</a></li>
+<li><a href="#es6-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"># ES6 箭头函数与普通函数的区别</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-16">2020-12-16</a>
+<ul>
+<li><a href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95"># 编写一个数组去重的方法</a></li>
+<li><a href="#%E8%BE%B9%E8%BE%93%E5%85%A5%E8%BE%B9%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E5%80%BC-%E7%94%A8%E5%93%AA%E4%B8%AA%E4%BA%8B%E4%BB%B6%E6%AF%94%E8%BE%83%E5%A5%BD"># 边输入边获取 input 输入框的值，用哪个事件比较好？</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-15">2020-12-15</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"># 什么是严格模式？</a></li>
+<li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%A5%BD%E5%A4%84"># 严格模式的好处？</a></li>
+</ul>
+</li>
 <li><a href="#2020-12-11">2020-12-11</a>
 <ul>
 <li><a href="#less-sass-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%A4%A7%E5%AE%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"># Less、Sass 是什么？大家为什么要使用它们？</a></li>
@@ -236,6 +254,110 @@
 </li>
 </ul>
 <hr>
+<h2 id=""></h2>
+<h2 id="20201217">20201217</h2>
+<h4 id="instanceof-和-typeof-怎么用-有什么区别"># <code>instanceof</code> 和 <code>typeof</code> 怎么用？有什么区别？</h4>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof">MDN - instanceof</a><br>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof">MDN - typeof</a></p>
+</blockquote>
+<ul>
+<li>
+<p>instanceof 用法：<code>object instanceof constructor</code></p>
+<blockquote>
+<p><code>object</code> 某个实例对象<br>
+<code>constructor</code> 某个构造函数</p>
+</blockquote>
+</li>
+<li>
+<p>typeof 用法：<code>typeof operand</code> / <code>typeof(operand)</code></p>
+<blockquote>
+<p><code>operand</code> 一个表示对象或原始值的表达式（操作数），其类型将被返回。</p>
+</blockquote>
+</li>
+<li>
+<p><code>instanceof</code> 运算符用来检测构造函数的 <code>prototype</code> 属性（<code>constructor.prototype</code>）是否存在于某个实例对象的原型链上。</p>
+</li>
+<li>
+<p><code>typeof</code> 操作符返回一个字符串，表示未经计算的操作数的类型。</p>
+</li>
+</ul>
+<h4 id="es6-箭头函数与普通函数的区别"># ES6 箭头函数与普通函数的区别</h4>
+<ul>
+<li>外形不同（箭头函数使用箭头定义）</li>
+<li>箭头函数全都是匿名函数</li>
+<li>箭头函数不具有 <code>arguments</code> 对象</li>
+<li>箭头函数没有自己的 <code>this</code>（捕获其所在的上下文的 <code>this</code>，作为自己的 <code>this</code>）</li>
+<li>箭头函数不具有 <code>prototype</code> 原型对象</li>
+<li>箭头函数不能用于构造函数（不能 <code>new</code>）</li>
+</ul>
+<h2 id="2020-12-16">2020-12-16</h2>
+<hr>
+<h4 id="编写一个数组去重的方法"># 编写一个数组去重的方法</h4>
+<pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrRD</span>(<span class="hljs-params">arr</span>) </span>{
+    <span class="hljs-keyword">var</span> arrNew = [];
+
+    arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{
+        <span class="hljs-keyword">if</span> (arrNew.indexOf(item) === <span class="hljs-number">-1</span>) {
+            arrNew.push(item);
+        }
+    });
+
+    <span class="hljs-keyword">return</span> arrNew;
+}
+</div></code></pre>
+<hr>
+<h4 id="边输入边获取-input-输入框的值-用哪个事件比较好"># 边输入边获取 input 输入框的值，用哪个事件比较好？</h4>
+<ul>
+<li><code>input</code></li>
+<li><code>keyup</code></li>
+</ul>
+<h2 id="2020-12-15">2020-12-15</h2>
+<hr>
+<h4 id="什么是严格模式"># 什么是严格模式？</h4>
+<blockquote>
+<p><a href="https://www.runoob.com/js/js-strict.html">https://www.runoob.com/js/js-strict.html</a></p>
+</blockquote>
+<ul>
+<li>JavaScript 严格模式（strict mode）即 <code>代码在严格的条件下执行</code></li>
+<li>限制
+<ul>
+<li>不允许使用未声明的变量</li>
+<li>不允许删除变量、对象、函数</li>
+<li>不允许变量重名</li>
+<li>不允许使用八进制</li>
+<li>不允许使用转义字符</li>
+<li>不允许对只读属性赋值</li>
+<li>不允许对一个使用 <code>getter</code> 方法读取的属性进行赋值</li>
+<li>不允许删除一个不允许删除的属性</li>
+<li>变量名不能使用 <code>arguments</code>、<code>eval</code> 字符串</li>
+<li>不允许使用这种语句：<code>with (Math) { x = cos(2) };</code></li>
+<li><code>this</code> 关键字不能指向全局对象（变为 <code>undefined</code>）<br>
+（在使用构造函数时，如果不使用 <code>new</code>，<code>this</code> 不再指向全局对象）</li>
+<li>在作用域 <code>eval()</code> 中创建的变量不能被调用</li>
+<li>新增保留关键字
+<ul>
+<li><code>implements</code></li>
+<li><code>interface</code></li>
+<li><code>let</code></li>
+<li><code>package</code></li>
+<li><code>private</code></li>
+<li><code>protected</code></li>
+<li><code>public</code></li>
+<li><code>static</code></li>
+<li><code>yield</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="严格模式的好处"># 严格模式的好处？</h4>
+<ul>
+<li>消除代码运行的一些不安全之处，保证代码运行的安全。</li>
+<li>提高编译器的效率，增加运行速度。</li>
+<li>为未来新版本的 JavasSript 做好铺垫。</li>
+</ul>
 <h2 id="2020-12-11">2020-12-11</h2>
 <hr>
 <h4 id="less-sass-是什么-大家为什么要使用它们"># Less、Sass 是什么？大家为什么要使用它们？</h4>
@@ -681,10 +803,10 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 <h4 id="foo-foo-bar-这行代码是什么意思-为什么要这样写"># <code>foo = foo || bar</code>，这行代码是什么意思？为什么要这样写？</h4>
 <ul>
 <li>
-<p><code>if (!foo) { foo = bar }</code></p>
-<blockquote>
-<p>如果 <code>foo</code> 存在，值不变，否则把 <code>bar</code> 的值赋给 <code>foo</code>。</p>
-</blockquote>
+<p>相当于：<code>if (!foo) { foo = bar }</code></p>
+<ul>
+<li>如果 <code>foo</code> 的值存在或值为真，值不变，否则把 <code>bar</code> 的值赋给 <code>foo</code>。</li>
+</ul>
 </li>
 <li>
 <p>短路表达式</p>
