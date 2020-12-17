@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .manage {
+            display: inline-block;
+            padding: 20px 0;
+            min-width: 640px;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .manage .title {
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .manage table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .manage table caption {
+            margin-bottom: 20px;
+        }
+
+        .manage table caption input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #DDD;
+            border-radius: 0;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .manage table thead tr {
+            background-color: #2196F3;
+            color: #FFF;
+        }
+
+        .manage table thead tr th {
+            font-weight: normal;
+        }
+
+        .manage table tbody {
+            text-align: left;
+        }
+
+        .manage table tr th,
+        .manage table tr td {
+            padding: 5px;
+            border: 1px solid #DDD;
+        }
+
+        .manage table tr td[data-name="price"]::after {
+            content: "¥";
+        }
+    </style>
+</head>
+<body>
+    <div class="manage">
+        <h2 class="title">产品管理</h2>
+        <table>
+            <caption>
+                <div class="input">筛选：<input type="text" placeholder="请输入产品名称" /></div>
+            </caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        // 数据
+        const productDatas = [
+            { id: 1001, name: "iPhone", price: 7500 },
+            { id: 1002, name: "华为", price: 5300 },
+            { id: 1003, name: "荣耀", price: 3000 },
+            { id: 1004, name: "小米", price: 5500 },
+            { id: 1005, name: "Oppo", price: 5900 },
+            { id: 1006, name: "锤子", price: 5600 },
+            { id: 1007, name: "索尼", price: 4600 },
+            { id: 1008, name: "三星", price: 5200 }
+        ];
+
+        // 防抖
+        var inputting = null;
+
+        // 更新表格数据
+        function updateTableBody(elem, datas) {
+            // elem：表格 tbody 元素
+            // datas：表格数据
+
+            elem.innerHTML = '';
+
+            datas.forEach(function (item) {
+                var row = document.createElement('tr');
+
+                row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td data-name="price">${item.price}</td>`;
+
+                elem.appendChild(row);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            var elem = document.querySelector('.manage');
+            var inputElem = elem.querySelector('table .input input');
+            var tableBody = elem.querySelector('table tbody');
+
+            updateTableBody(tableBody, productDatas);
+
+            inputElem.addEventListener('input', function () {
+                clearTimeout(inputting);
+
+                inputting = setTimeout(() => {
+                    var word = this.value;
+                    var arr = productDatas.filter(function (item) {
+                        return item.name.includes(word);
+                    });
+
+                    updateTableBody(tableBody, arr);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
