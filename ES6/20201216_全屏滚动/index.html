@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全屏滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            user-select: none;
+        }
+
+        html, body,
+        .wrapper, .wrapper .pages,
+        .wrapper .pages .page {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper {
+            overflow: hidden;
+        }
+
+        .wrapper .pages {
+            position: relative;
+            text-align: center;
+            transition: transform 1s;
+            transform: translateY(0%);
+        }
+
+        .wrapper .pages .page {
+            position: relative;
+        }
+
+        .wrapper .pages .page:nth-child(odd) {
+            background-color: #EEE;
+            color: #000;
+        }
+
+        .wrapper .pages .page:nth-child(even) {
+            background-color: #222;
+            color: #FFF;
+        }
+
+        .wrapper .pages .page .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .wrapper .pages .page .content .title {
+            margin-bottom: 10px;
+            font-size: 50px;
+            font-weight: normal;
+        }
+
+        .wrapper .pages .page .content p {
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="pages">
+            <div class="page">
+                <div class="content">
+                    <h2 class="title">第一页</h2>
+                    <p>这是第一页的内容</p>
+                </div>
+            </div>
+            <div class="page">
+                <div class="content">
+                    <h2 class="title">第二页</h2>
+                    <p>这是第二页的内容</p>
+                </div>
+            </div>
+            <div class="page">
+                <div class="content">
+                    <h2 class="title">第三页</h2>
+                    <p>这是第三页的内容</p>
+                </div>
+            </div>
+            <div class="page">
+                <div class="content">
+                    <h2 class="title">第四页</h2>
+                    <p>这是第四页的内容</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
