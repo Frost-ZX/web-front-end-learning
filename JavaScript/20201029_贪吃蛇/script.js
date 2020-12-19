@@ -1,3 +1,14 @@
+/**
+ * 贪吃蛇
+ * 
+ * @param {Object} options 选项
+ * @param {boolean} [options.canCross] 是否能穿墙，默认 false
+ * @param {number} [options.foodSize] 食物大小（蛇身大小以此为参考），默认 20
+ * @param {Element} options.gameElem 游戏区域元素
+ * @param {number} [options.mapHeight] 地图大小（高度），默认 400
+ * @param {number} [options.mapWidth] 地图大小（宽度），默认 400
+ * @param {number} [options.speedUpRate] 速度增加量，默认 0.5
+ */
 function SnackGame(options) {
     this.gameElem = options.gameElem;
     this.mapElem = this.gameElem.querySelector('.map');
@@ -30,11 +41,13 @@ function SnackGame(options) {
     this.init();
 }
 
-// 提示框
+/**
+ * 提示框
+ * 
+ * @param {string} content 提示的内容
+ * @param {number} [time] 时长（秒），默认 5
+ */
 SnackGame.prototype.alert = function (content, time) {
-    // content：提示内容
-    // time：时长（秒）
-
     var alertBox = this.gameElem.querySelector('.alert-box');
 
     time = time === undefined ? 5 : time;
@@ -287,7 +300,7 @@ SnackGame.prototype.initEvents = function () {
     var self = this;
 
     // 按键
-    document.body.onkeydown = function (e) {    
+    document.body.onkeydown = function (e) {
         var ev = e || window.event;
 
         // 禁止二次转向
@@ -383,4 +396,4 @@ var game = new SnackGame({
     speedUpRate: 0.5,
     canCross: true
 });
-    
+

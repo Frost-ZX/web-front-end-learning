@@ -1,3 +1,11 @@
+/**
+ * 翻牌匹配游戏
+ * 
+ * @param {Object} options 选项
+ * @param {number} options.cardCount 已有的卡片总数（根据图片数量设置）
+ * @param {Element} options.gameElem 游戏区域元素
+ * @param {number} [options.mapSize] 地图大小，默认 4（即：4 * 4）
+ */
 function FlipGame(options) {
     this.gameElem = options.gameElem;
     this.mapElem = this.gameElem.querySelector('.map');
@@ -16,11 +24,13 @@ function FlipGame(options) {
     this.init();
 }
 
-// 提示框
+/**
+ * 提示框
+ * 
+ * @param {string} content 提示的内容
+ * @param {number} [time] 时长（秒），默认 5
+ */
 FlipGame.prototype.alert = function (content, time) {
-    // content：提示内容
-    // time：时长（秒）
-
     var alertBox = this.gameElem.querySelector('.alert-box');
 
     time = time || 5;
@@ -46,7 +56,12 @@ FlipGame.prototype.arrShuffle = function (arr) {
     });
 };
 
-// 生成卡片序列
+/**
+ * 生成卡片序列
+ * 
+ * @param {number} size 每行 & 每列的个数（实际数量 = size * size）
+ * @returns {number[]} 生成的卡片序列信息
+ */
 FlipGame.prototype.createCards = function (size) {
     // 随机数
     var random = 0;

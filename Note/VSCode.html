@@ -27,6 +27,48 @@
 <link rel="stylesheet" href="./style.css">
 <script src="./script.js"></script>
 <h2 id="javascript">JavaScript</h2>
+<h3 id="jsdoc">JSDoc</h3>
+<ul>
+<li><a href="https://jsdoc.app/tags-param.html">@param</a></li>
+<li><a href="https://jsdoc.app/tags-returns.html">@returns</a></li>
+</ul>
+<pre><code class="language-javascript"><div><span class="hljs-comment">/**
+ * 描述
+ *
+ * <span class="hljs-doctag">@param <span class="hljs-type">{数据类型}</span> </span>参数名 - 参数描述
+ * <span class="hljs-doctag">@param <span class="hljs-type">{数据类型}</span> </span>[参数名] - 参数描述
+ * <span class="hljs-doctag">@param <span class="hljs-type">{数据类型}</span> </span>[参数名=默认值] - 参数描述
+ * <span class="hljs-doctag">@param <span class="hljs-type">{(数据类型1|数据类型2|...)}</span> </span>参数名 - 参数描述
+ * <span class="hljs-doctag">@param <span class="hljs-type">{...数据类型}</span> </span>参数名 - 参数描述
+ *
+ * <span class="hljs-doctag">@param <span class="hljs-type">{Object}</span> </span>参数名 - 参数描述
+ * <span class="hljs-doctag">@param <span class="hljs-type">{数据类型}</span> </span>参数名.对象属性名 - 属性名描述
+ *
+ * <span class="hljs-doctag">@returns <span class="hljs-type">{数据类型}</span> </span>- 返回值描述
+ */</span>
+
+<span class="hljs-comment">// 数据类型：</span>
+<span class="hljs-comment">// *</span>
+<span class="hljs-comment">// boolean, number, string, Object, Promise, Element</span>
+<span class="hljs-comment">// Array, 数据类型[]</span>
+</div></code></pre>
+<pre><code class="language-javascript"><div><span class="hljs-comment">/**
+ * 回调函数 callbackFunc 的描述
+ *
+ * <span class="hljs-doctag">@callback <span class="hljs-variable">callbackFunc</span></span>
+ * <span class="hljs-doctag">@param <span class="hljs-type">{number}</span> <span class="hljs-variable">num</span></span>
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> <span class="hljs-variable">str</span></span>
+ */</span>
+
+<span class="hljs-comment">/**
+ * 函数 func 的描述
+ * 
+ * <span class="hljs-doctag">@param <span class="hljs-type">{callbackFunc}</span> <span class="hljs-variable">cb</span></span> - 参数描述
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">cb</span>) </span>{
+    ...
+}
+</div></code></pre>
 <h3 id="jsconfig-json">jsconfig.json</h3>
 <pre><code class="language-json"><div>{
     <span class="hljs-attr">&quot;typeAcquisition&quot;</span>: {
