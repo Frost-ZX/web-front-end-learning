@@ -106,6 +106,25 @@
     - [Promise.allSettled()](#promise-allsettled)
     - [Promise.resolve()](#promise-resolve)
     - [Promise.reject()](#promise-reject)
+- [Generator](#generator)
+  - [简介](#简介-7)
+- [async 函数](#async-函数)
+  - [简介](#简介-8)
+- [Set 和 Map 数据结构](#set-和-map-数据结构)
+  - [Set](#set)
+    - [简介](#简介-9)
+  - [Map](#map)
+    - [简介](#简介-10)
+- [Proxy](#proxy)
+  - [简介](#简介-11)
+- [Reflect](#reflect)
+  - [简介](#简介-12)
+- [Module（模块）](#module-模块)
+  - [简介](#简介-13)
+  - [命令](#命令)
+    - [export](#export)
+    - [import](#import)
+    - [export default](#export-default)
 
 # 简介
 
@@ -858,6 +877,8 @@ let baz = {foo: foo};
 
 # Promise 对象
 
+> [MDN - Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
 ## Promise 的含义
 
 - Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。
@@ -1023,3 +1044,253 @@ let baz = {foo: foo};
 ### Promise.reject()
 
 - `Promise.reject()` 方法也会返回一个新的 Promise 实例，该实例的状态为 `rejected`。
+
+# Generator
+
+## 简介
+
+- Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。
+- Generator 函数有多种理解角度。
+
+  - 语法上，Generator 函数是一个 `状态机`，封装了多个内部状态。
+
+    - 执行 Generator 函数会返回一个 `遍历器` 对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。
+    - 返回的遍历器对象，可以 `依次遍历` Generator 函数内部的 `每一个状态`。
+
+  - 形式上，Generator 函数是一个 `普通函数`，但是有两个特征：
+
+    - `function` 关键字与函数名之间有一个星号 `*`。
+    - 函数体内部使用 `yield` 表达式，定义不同的内部状态。
+
+# async 函数
+
+> [ECMAScript 6 入门 - async 函数](https://es6.ruanyifeng.com/#docs/async)
+> [MDN - AsyncFunction](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction)
+> [理解 JavaScript 的 async / await](https://segmentfault.com/a/1190000007535316)
+
+## 简介
+
+- ES2017 标准引入了 async 函数，使得异步操作变得更加方便。
+- async 函数是 Generator 函数的语法糖。
+- async 函数对 Generator 函数的改进，体现在以下四点：
+
+  - 内置执行器
+  - 更好的语义
+  - 更广的适用性
+  - 返回值是 Promise
+
+# Set 和 Map 数据结构
+
+## Set
+
+### 简介
+
+- ES6 提供了新的数据结构 Set，它类似于数组，但是成员的值都是 `唯一` 的，`没有重复` 的值。
+- Set 本身是一个 `构造函数`，用来生成 Set 数据结构。
+
+## Map
+
+### 简介
+
+- JavaScript 的对象（Object），本质上是键值对的集合（Hash 结构），但是传统上只能用字符串当作键，这给它的使用带来了很大的限制。
+- 为了解决这个问题，ES6 提供了 Map 数据结构：
+
+  - 它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
+  - 也就是说，Object 结构提供了 `字符串 - 值` 的对应，Map 结构提供了 `值 - 值` 的对应，是一种更完善的 Hash 结构实现。
+  - 对于 `键值对` 的数据结构，Map 比 Object 更合适。
+
+# Proxy
+
+## 简介
+
+- Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
+- Proxy 可以理解为在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截。
+- 因此，Proxy 提供了一种机制，可以对外界的访问进行过滤和改写。
+- Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
+
+# Reflect
+
+## 简介
+
+- Reflect 对象与 Proxy 对象一样，也是 ES6 为了操作对象而提供的新 API。
+- Reflect 对象的设计目的：
+
+  - 将 Object 对象的一些明显属于语言内部的方法（例如 `Object.defineProperty()`），放到 Reflect 对象上。
+
+    > 现阶段，某些方法同时在 Object 和 Reflect 对象上部署，未来的新方法将只部署在 Reflect 对象上。
+    > 也就是说，从 Reflect 对象上可以拿到语言内部的方法。
+
+  - 修改某些 Object 方法的返回结果，让其变得更合理。
+
+    > 例如 `Object.defineProperty()` 在无法定义属性时，会抛出一个错误，而 `Reflect.defineProperty()` 则会返回 `false`。
+
+  - 让 `Object` 操作都变成函数行为。
+
+    > 某些 Object 操作是命令式，例如 `name in obj` 和 `delete obj[name]`。
+    > 而 `Reflect.has(obj, name)` 和 `Reflect.deleteProperty(obj, name)` 让它们变成了函数行为。
+
+  - Reflect 对象的方法与 Proxy 对象的方法一一对应，只要是 Proxy 对象的方法，就能在 Reflect 对象上找到对应的方法。
+
+    > 这就让 Proxy 对象可以方便地调用对应的 Reflect 方法，完成默认行为，作为修改行为的基础。
+    > 也就是说，不管 Proxy 怎么修改默认行为，总可以在 Reflect 上获取默认行为。
+
+# Module（模块）
+
+## 简介
+
+- 历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。
+- 其他语言都有这项功能，例如 Ruby 的 `require`、Python 的 `import`，甚至就连 CSS 都有 `@import`，但是 JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。
+- 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 `CommonJS` 和 `AMD` 两种，前者用于服务器，后者用于浏览器。
+- ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 `CommonJS` 和 `AMD` 规范，成为浏览器和服务器通用的模块解决方案。
+- ES6 模块的设计思想是尽量的 `静态化`，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。
+- `CommonJS` 和 `AMD` 模块都只能在运行时确定这些东西（例如 `CommonJS` 模块就是对象，输入时必须查找对象属性）。
+- ES6 的模块自动采用 `严格模式`，不管有没有在模块的头部加上 `"use strict";`。
+
+## 命令
+
+- 模块功能主要由两个命令构成：`export` 和 `import`。
+- `export` 命令用于规定模块的对外接口，`import` 命令用于输入其他模块提供的功能。
+
+### export
+
+- 一个模块就是一个独立的文件，该文件内部的所有变量，外部无法获取。
+- 如果希望外部能够读取模块内部的某个变量，就必须使用 `export` 关键字输出该变量。
+
+  ```javascript
+  // profile.js，保存了用户信息。
+  // ES6 将其视为一个模块，里面用 export 命令对外部输出了三个变量。
+  export var firstName = 'Michael';
+  export var lastName = 'Jackson';
+  export var year = 1958;
+  ```
+
+- `export` 的写法，除了像上面这样，还有另外一种：
+
+  ```javascript
+  // 在 export 命令后面，使用大括号指定所要输出的一组变量。
+  // 它与前一种写法是等价的，但是应该优先考虑使用这种写法。
+  // 因为这样就可以在脚本尾部一眼看清楚输出了哪些变量。
+  var firstName = 'Michael';
+  var lastName = 'Jackson';
+  var year = 1958;
+
+  export { firstName, lastName, year };
+  ```
+
+- `export` 命令除了输出变量，还可以输出函数或类（class）。
+
+  ```javascript
+  // 对外输出一个函数 multiply
+  export function multiply(x, y) {
+    return x * y;
+  };
+  ```
+
+- 通常情况下，`export` 输出的变量就是本来的名字，但是可以使用 `as` 关键字重命名。
+
+  ```javascript
+  // 使用 as 关键字，重命名了函数 v1 和 v2 的对外接口。
+  // 重命名后，v2 可以用不同的名字输出两次。
+  function v1() { ... }
+  function v2() { ... }
+
+  export {
+    v1 as streamV1,
+    v2 as streamV2,
+    v2 as streamLatestVersion
+  };
+  ```
+
+- `export` 语句输出的接口，与其对应的值是 `动态绑定` 关系（通过该接口，可以取到模块内部实时的值）。
+
+  > 这一点与 CommonJS 规范完全不同。
+  > CommonJS 模块输出的是值的缓存，不存在动态更新。
+
+  ```javascript
+  // 输出变量 foo，值为 bar，500 毫秒之后值变为 baz
+  export var foo = 'bar';
+  setTimeout(() => foo = 'baz', 500);
+  ```
+
+- `export` 命令可以出现在模块的 `任何位置`，只要处于 `模块顶层`。
+
+  > 如果处于块级作用域内，就会报错，`import` 命令也是如此。
+  > 这是因为处于条件代码块之中，就没法做静态优化了，违背了 ES6 模块的设计初衷。
+
+### import
+
+- 使用 `export` 命令定义了模块的对外接口以后，其他 JavaScript 文件就可以通过 `import` 命令加载这个模块。
+
+  ```javascript
+  // main.js
+  // import 命令用于加载 profile.js 文件，并从中输入变量。
+  import { firstName, lastName, year } from './profile.js';
+
+  function setName(element) {
+    element.textContent = firstName + ' ' + lastName;
+  }
+  ```
+
+- `import` 命令接受一对大括号，里面指定要从其他模块导入的变量名。
+
+  > 大括号里面的变量名，必须与被导入的模块的对外接口的名称相同。
+
+- 如果想为输入的变量重新取一个名字，`import` 命令要使用 `as` 关键字，将输入的变量重命名。
+
+  ```javascript
+  import { lastName as surname } from './profile.js';
+  ```
+
+- `import` 命令输入的变量都是 `只读` 的，因为它的本质是输入接口。
+
+  > 也就是说，不允许在加载模块的脚本里面，改写接口。
+  > 但是如果变量是一个对象，改写其属性是允许的，并且其他模块也可以读到改写后的值。
+  > 不过，这种写法很难查错，建议凡是输入的变量，都当作完全只读，不要轻易改变它的属性。
+
+- `import` 后面的 `from` 指定模块文件的位置。
+
+  > 可以是相对路径，也可以是绝对路径。
+  > 如果不带有路径，只是一个模块名，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。
+
+- `import` 命令具有 `提升` 效果，会提升到整个模块的头部，首先执行。
+
+- `import` 是静态执行，不能使用表达式和变量这些只有在运行时才能得到结果的语法结构。
+
+  ```javascript
+  // 报错
+  import { 'f' + 'oo' } from 'my_module';
+
+  // 报错
+  let module = 'my_module';
+  import { foo } from module;
+
+  // 报错
+  if (x === 1) {
+      import { foo } from 'module1';
+  } else {
+      import { foo } from 'module2';
+  }
+  ```
+
+- `import` 语句会执行所加载的模块，但是不输入任何值。
+
+  > 多次 `重复` 执行同一句 `import` 语句，只会 `执行一次`，而不会执行多次。
+
+- 除了指定加载某个输出值，还可以使用 `整体加载`，即用星号（`*`）指定一个对象，所有输出值都加载在这个对象上面。
+
+  ```javascript
+  import * as circle from './circle';
+
+  console.log('圆面积：' + circle.area(4));
+  console.log('圆周长：' + circle.circumference(14));
+  ```
+
+### export default
+
+- 使用 `import` 命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。
+- 但是，用户肯定希望快速上手，未必愿意阅读文档，去了解模块有哪些属性和方法。
+- 为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到 `export default` 命令，为模块指定默认输出。
+- 其他模块加载该模块时，`import` 命令可以为该模块指定 `任意名字`。
+- 本质上，`export default` 就是输出一个叫做 `default` 的变量或方法，然后系统允许你为它取任意名字。
+
+  > 因此，它的后面不能跟变量声明语句。
