@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布订阅模式</title>
+</head>
+<body>
+    <script>
+        var utilPubAndSub = {
+            // 主题
+            topics: {},
+
+            //订阅
+            subscribe(channel, fun) {
+                // 判断是否存在这个频道
+                // 如果有返回，没有则创建空数组
+                let subList = this.topics[channel] || (this.topics[channel] = []);
+                //把订阅者函数放入数组
+                subList.push(fun);
+
+                return this.topics;
+            },
+
+            // 发布
+            publish(channel, content) {
+                // 取出频道
+                let ch = this.topics[channel];
+
+                // 如果没有该频道
+                if (!ch) {
+                    return false;
+                }
+
+                // 循环频道所有订阅者的函数
+                for (let fn of ch) {
+                    // 执行订阅者的函数，并且传入消息
+                    fn(content);
+                }
+            }
+        };
+
+        var s1 = utilPubAndSub.subscribe('A', function (msg) {
+            console.log('订阅者1：' + msg);
+        });
+        var s2 = utilPubAndSub.subscribe('A', function (msg) {
+            console.log('订阅者2：' + msg);
+        });
+        var s3 = utilPubAndSub.subscribe('B', function (msg) {
+            console.log('订阅者3：' + msg);
+        });
+        var s4 = utilPubAndSub.subscribe('B', function (msg) {
+            console.log('订阅者4：' + msg);
+        });
+
+        utilPubAndSub.publish('A', '频道 A 消息 1');
+        utilPubAndSub.publish('A', '频道 A 消息 2');
+        utilPubAndSub.publish('B', '频道 B 消息 1');
+        utilPubAndSub.publish('B', '频道 B 消息 2');
+    </script>
+</body>
+</html>

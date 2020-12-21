@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+</head>
+<body>
+    <script>
+        var arr = [10, 20, 30, 40, 90, 20, 50, 40];
+
+        console.log('原数组：');
+        console.log(arr);
+
+        // indexOf
+
+        (function () {
+            function arrUnique(arr) {
+                var arrNew = [];
+
+                arr.forEach(function (item) {
+                    if (arrNew.indexOf(item) === -1) {
+                        arrNew.push(item);
+                    }
+                });
+
+                return arrNew;
+            }
+            
+            var result = arrUnique(arr);
+            
+            console.log('方法一：');
+            console.log(result);
+        })();
+
+        // includes
+
+        (function () {
+            function arrUnique(arr) {
+                var arrNew = [];
+
+                arr.forEach(function (item) {
+                    if (!arrNew.includes(item)) {
+                        arrNew.push(item);
+                    }
+                });
+
+                return arrNew;
+            }
+
+            var result = arrUnique(arr);
+            
+            console.log('方法二：');
+            console.log(result);
+        })();
+
+        // Set
+
+        (function () {
+            function arrUnique(arr) {
+                var numSet = new Set(arr);
+
+                return [...numSet];
+            }
+
+            var result = arrUnique(arr);
+            
+            console.log('方法三：');
+            console.log(result);
+        })();
+    </script>
+</body>
+</html>
