@@ -1,4 +1,45 @@
 window.addEventListener('load', function () {
+    // 设置 td 标签属性
+    // {{属性名=属性值,属性名=属性值,...}}
+    (function () {
+        var tdElem = document.querySelectorAll('td');
+        tdElem.forEach(function (elem) {
+            var html = elem.innerHTML;
+            var htmlNew = '';
+            // 正则
+            var reg = new RegExp('(\{\{)(.*)(\}\})', 'g');
+            // 正则匹配结果
+            var result = '';
+            var resultArr = [];
+
+            // 判断是否匹配
+            if (!reg.test(html)) {
+                return false;
+            }
+
+            result = RegExp.$2;
+
+            // 移除
+            if (result == 'REMOVE') {
+                elem.remove();
+                return false;
+            }
+
+            htmlNew = html.replace(reg, '');
+            resultArr = result.split(',');
+
+            // 设置属性
+            resultArr.forEach(function (attr) {
+                var arr = attr.split('=');
+
+                elem.setAttribute(arr[0], arr[1]);
+            });
+
+            // 更新 HTML 内容
+            elem.innerHTML = htmlNew;
+        });
+    })();
+
     // 悬浮按钮
     (function () {
         var btnFloat = document.createElement('div');
