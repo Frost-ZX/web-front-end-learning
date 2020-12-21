@@ -36,6 +36,9 @@ blockquote {
 code {
     color: var(--color-primary);
 }
+code > div {
+    font-size: 14px;
+}
 
 h1, h2, h3, h4 {
     margin-top: 20px !important;
@@ -100,6 +103,7 @@ hr {
 }
 .contents+h1+ul,
 .contents+h2+ul {
+    --border-color: var(--color-secondary);
     display: block;
     position: fixed;
     z-index: 100;
@@ -109,17 +113,29 @@ hr {
     max-width: 80%;
     top: 0;
     right: 0;
-    box-shadow: 0 0 10px rgb(0 0 0 / 0.2);
-    border-left: 1px solid var(--color-primary);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-left: 1px solid var(--border-color);
     background-color: #FFF;
     font-family: monospace;
     font-size: 16px;
     overflow-y: auto;
+    animation: borderFade 2s linear infinite;
     transform: translateX(calc(100% - 20px));
-    transition: border 0.5s, transform 0.5s;
+    transition: transform 0.5s 0.5s;
 }
 .contents+h1+ul:hover,
 .contents+h2+ul:hover {
-    border-left-color: transparent;
     transform: translateX(0);
+}
+
+@keyframes borderFade {
+    0% {
+        border-color: var(--border-color);
+    }
+    50% {
+        border-color: transparent;
+    }
+    100% {
+        border-color: var(--border-color);
+    }
 }
