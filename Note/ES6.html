@@ -25,8 +25,8 @@
     </head>
     <body class="vscode-body vscode-light">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
+<link rel="stylesheet" href="./assets/style.css">
+<script src="./assets/script.js"></script>
 <div class="contents"></div>
 <h1 id="es6-ecmascript-6-0">ES6（ECMAScript 6.0）</h1>
 <ul>
@@ -272,10 +272,8 @@
 </li>
 </ul>
 <h1 id="简介">简介</h1>
-<ul>
-<li>ECMAScript 6.0 是 JavaScript 语言的下一代标准，在 2015 年 6 月正式发布。</li>
-<li>它的目标是使 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</li>
-</ul>
+<p>ECMAScript 6.0 是 JavaScript 语言的下一代标准，在 2015 年 6 月正式发布。<br>
+它的目标是使 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
 <h1 id="相关网站">相关网站</h1>
 <ul>
 <li><a href="https://es6.ruanyifeng.com/">https://es6.ruanyifeng.com/</a></li>
@@ -455,10 +453,8 @@
 </ul>
 <h2 id="rest-参数">rest 参数</h2>
 <h3 id="简介-1">简介</h3>
-<ul>
-<li>ES6 引入 <code>rest 参数</code>（形式为 <code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用 <code>arguments</code> 了。</li>
-<li>rest 参数搭配的变量是一个 <code>数组</code>，该变量将多余的参数放入数组中。</li>
-</ul>
+<p>ES6 引入 <code>rest 参数</code>（形式为 <code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用 <code>arguments</code> 了。<br>
+<code>rest 参数</code> 搭配的变量是一个 <code>数组</code>，该变量将多余的参数放入数组中。</p>
 <h3 id="例子">例子</h3>
 <pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">...values</span>) </span>{
     <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
@@ -759,32 +755,21 @@ add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <spa
 </table>
 <h1 id="symbol">Symbol</h1>
 <h2 id="简介-6">简介</h2>
-<ul>
-<li>
 <p><code>ES5</code> 的对象属性名都是字符串，这容易造成属性名的冲突。</p>
 <blockquote>
 <p>例如，在使用他人提供的对象时想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。<br>
 如果有一种机制，保证每个属性的名字都是 <code>独一无二</code> 的就好了，这样就从根本上防止属性名的冲突。<br>
 这就是 ES6 引入 Symbol 的原因。</p>
 </blockquote>
-</li>
-<li>
-<p><code>ES6</code> 引入了一种新的原始数据类型 <code>Symbol</code>，表示独一无二的值。</p>
-</li>
-<li>
-<p>它是 JavaScript 语言的第 7 种数据类型。</p>
+<p><code>ES6</code> 引入了一种新的原始数据类型 <code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第 7 种数据类型。</p>
 <blockquote>
 <p>前 6 种数据类型：<code>undefined</code>、<code>null</code>、布尔值（<code>Boolean</code>）、字符串（<code>String</code>）、数值（<code>Number</code>）、对象（<code>Object</code>）</p>
 </blockquote>
-</li>
-<li>
 <p>Symbol 的值通过 <code>Symbol()</code> 函数生成。</p>
 <blockquote>
-<p>这就是说，对象的属性名现在可以有两种类型：一种是原来就有的 <code>字符串</code>，另一种就是新增的 <code>Symbol</code> 类型。<br>
+<p>也就是说，对象的属性名现在可以有两种类型：一种是原来就有的 <code>字符串</code>，另一种就是新增的 <code>Symbol</code> 类型。<br>
 凡是属性名属于 <code>Symbol</code> 类型，就都是 <code>独一无二</code> 的，可以保证不会与其他属性名产生冲突。</p>
 </blockquote>
-</li>
-</ul>
 <h2 id="使用">使用</h2>
 <ul>
 <li>
@@ -1132,13 +1117,11 @@ Point.prototype = {
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN - Promise</a></p>
 </blockquote>
 <h2 id="promise-的含义">Promise 的含义</h2>
-<ul>
-<li>Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。</li>
-<li>它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了 Promise 对象。</li>
-<li>所谓 Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。</li>
-<li>从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。</li>
-<li>Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</li>
-</ul>
+<p>Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。<br>
+它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了 Promise 对象。<br>
+所谓 Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。<br>
+从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。<br>
+Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
 <h2 id="promise-对象的特点">Promise 对象的特点</h2>
 <ul>
 <li>
@@ -1391,8 +1374,8 @@ promise.then(<span class="hljs-function"><span class="hljs-keyword">function</sp
 <h2 id="简介-11">简介</h2>
 <ul>
 <li>Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。</li>
-<li>Proxy 可以理解为在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截。</li>
-<li>因此，Proxy 提供了一种机制，可以对外界的访问进行过滤和改写。</li>
+<li>Proxy 可以理解为在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截。<br>
+因此，Proxy 提供了一种机制，可以对外界的访问进行过滤和改写。</li>
 <li>Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。</li>
 </ul>
 <h1 id="reflect">Reflect</h1>
