@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue&period;js&#xFF08;2&period;x&#xFF09;</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./assets/style.css">
+<script src="./assets/script.js"></script>
+<div class="contents"></div>
+<h1 id="vue-js-2-x">Vue.js（2.x）</h1>
+<ul>
+<li><a href="#vue-js-2-x">Vue.js（2.x）</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">相关网站</a></li>
+<li><a href="#data-%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1">data（数据对象）</a>
+<ul>
+<li><a href="#%E8%AE%BF%E9%97%AE">访问</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95">模板语法</a>
+<ul>
+<li><a href="#%E6%8F%92%E5%80%BC">插值</a>
+<ul>
+<li><a href="#%E6%96%87%E6%9C%AC">文本</a></li>
+<li><a href="#html">HTML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8C%87%E4%BB%A4">指令</a>
+<ul>
+<li><a href="#v-bind">v-bind</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-1">简介</a></li>
+<li><a href="#%E7%94%A8%E6%B3%95">用法</a></li>
+</ul>
+</li>
+<li><a href="#v-on">v-on</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-2">简介</a></li>
+<li><a href="#%E7%94%A8%E6%B3%95-1">用法</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6">事件修饰符</a></li>
+<li><a href="#%E6%8C%89%E9%94%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6">按键修饰符</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E4%BF%AE%E9%A5%B0%E9%94%AE">系统修饰键</a></li>
+</ul>
+</li>
+<li><a href="#v-if-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93">v-if（条件渲染）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-3">简介</a></li>
+<li><a href="#%E7%94%A8%E6%B3%95-2">用法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-1">注意</a></li>
+</ul>
+</li>
+<li><a href="#v-show-%E6%9D%A1%E4%BB%B6%E6%98%BE%E7%A4%BA">v-show（条件显示）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-4">简介</a></li>
+<li><a href="#%E7%94%A8%E6%B3%95-3">用法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-2">注意</a></li>
+</ul>
+</li>
+<li><a href="#v-for-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93">v-for（列表渲染）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-5">简介</a></li>
+<li><a href="#%E7%94%A8%E6%B3%95-4">用法</a></li>
+<li><a href="#%E7%BB%B4%E6%8A%A4%E7%8A%B6%E6%80%81">维护状态</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E6%9B%B4%E6%96%B0%E6%A3%80%E6%B5%8B">数组更新检测</a>
+<ul>
+<li><a href="#%E5%8F%98%E6%9B%B4%E6%96%B9%E6%B3%95">变更方法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#v-model-%E8%A1%A8%E5%8D%95%E8%BE%93%E5%85%A5%E7%BB%91%E5%AE%9A">v-model（表单输入绑定）</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95">基础用法</a></li>
+<li><a href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6">修饰符</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">事件处理方法</a>
+<ul>
+<li><a href="#%E7%94%A8%E6%B3%95-5">用法</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-3">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%84%E4%BB%B6">组件</a>
+<ul>
+<li><a href="#transition-%E7%BB%84%E4%BB%B6">transition 组件</a>
+<ul>
+<li><a href="#%E5%8D%95%E5%85%83%E7%B4%A0-%E7%BB%84%E4%BB%B6%E7%9A%84%E8%BF%87%E6%B8%A1-transition">单元素 / 组件的过渡（transition）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-6">简介</a></li>
+<li><a href="#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">过渡的类名</a></li>
+<li><a href="#javascript-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0">JavaScript 钩子函数</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%9B%E5%85%A5-%E7%A6%BB%E5%BC%80%E8%BF%87%E6%B8%A1-transition-group">列表的进入 / 离开过渡（transition-group）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B-7">简介</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="简介">简介</h1>
+<p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。<br>
+与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。<br>
+Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。<br>
+另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<h1 id="相关网站">相关网站</h1>
+<ul>
+<li><a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></li>
+<li><a href="https://www.runoob.com/vue2/vue-tutorial.html">https://www.runoob.com/vue2/vue-tutorial.html</a></li>
+</ul>
+<h1 id="data-数据对象">data（数据对象）</h1>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">new</span> Vue({
+    <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;...&#x27;</span>,
+    <span class="hljs-attr">data</span>: {
+        <span class="hljs-comment">// 数据对象</span>
+        ...
+    }
+});
+</div></code></pre>
+<h3 id="访问">访问</h3>
+<ul>
+<li><code>实例对象.$data.属性名</code></li>
+<li><code>实例对象._data.属性名</code></li>
+</ul>
+<h3 id="注意">注意</h3>
+<ul>
+<li>Vue 对 <code>data</code> 对象中的属性递归设置 <code>getter</code> &amp; <code>setter</code> 观察数据变化</li>
+<li>不会观察 <code>prototype</code> 原型中的数据变化</li>
+<li>不推荐把 DOM 元素设置为 <code>data</code> 对象中的属性值</li>
+</ul>
+<h1 id="模板语法">模板语法</h1>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/syntax.html">https://cn.vuejs.org/v2/guide/syntax.html</a></p>
+</blockquote>
+<h2 id="插值">插值</h2>
+<h3 id="文本">文本</h3>
+<ul>
+<li>
+<p>数据绑定最常见的形式就是使用 <code>Mustache</code> 语法 (双大括号) 的文本插值：</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Message: {{ msg }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>Mustache 标签将会被替代为对应 <code>数据对象</code> 上 <code>msg</code> 属性的值。</p>
+<p>无论何时，绑定的数据对象上的 <code>msg</code> 属性发生了改变，插值处的内容都会更新。<br>
+通过使用 <code>v-once</code> 指令，可以执行一次性插值，当数据改变时，插值处的内容不会更新。<br>
+注意：这会影响到该节点上的其它数据绑定。</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-once</span>&gt;</span>Message: {{ msg }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>也可以使用 <code>v-text</code> 指令显示文本</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-text</span>=<span class="hljs-string">&quot;msg&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="html">HTML</h3>
+<ul>
+<li>
+<p><code>双大括号</code> 会将数据解析为 <code>普通文本</code>，而非 HTML 代码。</p>
+</li>
+<li>
+<p>为了输出真正的 <code>HTML</code>，需要使用 <code>v-html</code> 指令：</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;rawHtml&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>在站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。</li>
+<li>建议只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。</li>
+</ul>
+</li>
+</ul>
+<h1 id="指令">指令</h1>
+<h2 id="v-bind">v-bind</h2>
+<h3 id="简介-1">简介</h3>
+<p><code>v-bind</code> 指令可以用于响应式地更新 <code>HTML attribute</code></p>
+<h3 id="用法">用法</h3>
+<ul>
+<li>
+<p><code>v-bind:参数=&quot;表达式&quot;</code></p>
+<blockquote>
+<p><code>参数</code> 为 HTML 标签属性名<br>
+<code>表达式</code> 可以是 <code>data</code> 对象中的属性名，也可以是表达式（例如 <code>num * num</code>、<code>num &gt; 10</code>）</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-bind:href</span>=<span class="hljs-string">&quot;url&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">new</span> Vue({
+    ...
+    data: {
+        <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;链接&#x27;</span>
+    }
+});
+</div></code></pre>
+</li>
+<li>
+<p>动态参数：<code>v-bind:[属性名]=&quot;表达式&quot;</code></p>
+<blockquote>
+<p><code>属性名</code> 为 <code>data</code> 对象中的属性名<br>
+<code>属性名</code> 会被转换为小写，因此不能使用大写字母<br>
+动态参数表达式有一些语法约束，某些字符（例如空格、引号）是无效的。</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-bind:</span>[<span class="hljs-attr">attr_name</span>]=<span class="hljs-string">&quot;url&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">new</span> Vue({
+    ...
+    data: {
+        <span class="hljs-attr">attr_name</span>: <span class="hljs-string">&#x27;href&#x27;</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;链接&#x27;</span>
+    }
+});
+</div></code></pre>
+</li>
+<li>
+<p>添加类名（对象方式）<br>
+<code>v-bind:class=&quot;{类名: 表达式, 类名: 表达式, ...}&quot;</code></p>
+<blockquote>
+<p>当表达式结果为 <code>true</code> 时添加对应的类名</p>
+</blockquote>
+</li>
+<li>
+<p>添加类名（数组方式）<br>
+<code>v-bind:class=&quot;[{类名: 表达式, 类名: 表达式, ...}, 表达式, '类名', ...]&quot;</code></p>
+<blockquote>
+<p>数组中可以写 <code>对象</code>、<code>表达式</code>，也可以直接写 <code>类名</code></p>
+</blockquote>
+</li>
+<li>
+<p>通过 <code>v-bind</code> 指令添加的类名与通过 <code>class</code> 属性添加的类名共存。</p>
+</li>
+<li>
+<p>添加样式：<code>v-bind:style=&quot;表达式&quot;</code></p>
+<ul>
+<li>
+<p>表达式有以下写法</p>
+<ul>
+<li>
+<p><code>{'属性名': '属性值', '属性名': '属性值', ...}</code></p>
+</li>
+<li>
+<p><code>{属性名, 属性名, ...}</code><br>
+属性名为 <code>data</code> 对象中的属性名（获取对应的变量值）</p>
+</li>
+<li>
+<p><code>{'属性名': ['属性值', '属性值', ...]}</code><br>
+多重值，主要用于兼容（自动选择浏览器支持的最后一个值）</p>
+</li>
+<li>
+<p>直接写 <code>data</code> 对象中的属性名（获取对应的对象）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>若 <code>属性名</code> 有 <code>-</code>，需要使用驼峰命名法</p>
+</li>
+<li>
+<p>通过 <code>v-bind</code> 指令添加的样式会根据实际自动添加兼容性前缀（<code>-webkit-</code>、<code>-moz-</code>、<code>-ms-</code>、<code>-o-</code>、）</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>v-bind:</code> 可缩写为 <code>:</code></p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 完整 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-bind:href</span>=<span class="hljs-string">&quot;url&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 缩写 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">:href</span>=<span class="hljs-string">&quot;url&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">:</span>[<span class="hljs-attr">key</span>]=<span class="hljs-string">&quot;url&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h2 id="v-on">v-on</h2>
+<h3 id="简介-2">简介</h3>
+<p><code>v-on</code> 指令用于绑定监听事件</p>
+<h3 id="用法-1">用法</h3>
+<ul>
+<li>
+<p><code>v-on:事件名.事件修饰符=&quot;表达式&quot;</code></p>
+</li>
+<li>
+<p>当表达式为调用事件处理方法，且不需要传递参数时，可省略方法名后的 <code>()</code>（第一个参数为原生事件对象）。</p>
+</li>
+<li>
+<p>当表达式为调用事件处理方法，且需要传递参数时，可通过形参 <code>$event</code> 传递原生事件对象。</p>
+</li>
+<li>
+<p><code>v-on:</code> 可缩写为 <code>@</code></p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 完整 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;doSomething&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 缩写 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;doSomething&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> @[<span class="hljs-attr">event</span>]=<span class="hljs-string">&quot;doSomething&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="事件修饰符">事件修饰符</h3>
+<p><code>事件修饰符</code> 是可选的，有以下值可用（多个值可串联使用）：</p>
+<ul>
+<li>
+<p><code>.stop</code> - 阻止冒泡</p>
+</li>
+<li>
+<p><code>.prevent</code> - 阻止默认行为</p>
+</li>
+<li>
+<p><code>.capture</code> - 使用事件捕获模式</p>
+</li>
+<li>
+<p><code>.self</code> - 只在 <code>event.target</code> 是当前元素时才触发</p>
+</li>
+<li>
+<p><code>.once</code> - 事件将只会触发一次</p>
+</li>
+<li>
+<p><code>.passive</code> - 跳过检查是否阻止冒泡、是否阻止默认行为，可提升移动端 scroll 事件的性能</p>
+<blockquote>
+<p><code>.passive</code> 会告诉浏览器不想阻止事件的默认行为，因此不要把 <code>.passive</code> 和 <code>.prevent</code> 一起使用，<br>
+否则 <code>.prevent</code> 将会被忽略，同时浏览器可能展示一个警告。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="按键修饰符">按键修饰符</h3>
+<ul>
+<li>
+<p>在监听键盘事件时，可能需要判断按下的按键。</p>
+</li>
+<li>
+<p>Vue 允许为 <code>v-on</code> 在监听 <code>键盘事件</code> 时添加按键修饰符：</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 只有在 key 是 Enter 时调用事件处理方法 submit() --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-on:keyup.enter</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>可以直接将 <code>KeyboardEvent.key</code> 暴露的任意有效按键名转换为 <code>kebab-case</code> 来作为修饰符：</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 只有在 $event.key 等于 PageDown 时调用事件处理方法 onPageDown() --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-on:keyup.page-down</span>=<span class="hljs-string">&quot;onPageDown&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>按键码</p>
+<ul>
+<li>
+<p>使用 <code>keyCode attribute</code> 是允许的</p>
+<blockquote>
+<p><code>keyCode</code> 的事件用法已经被废弃了并可能不会被最新的浏览器支持</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-on:keyup.13</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>为了在必要的情况下支持旧浏览器，Vue 提供了绝大多数常用的按键码的别名</p>
+<ul>
+<li><code>.enter</code></li>
+<li><code>.tab</code></li>
+<li><code>.delete</code> - 捕获 <code>删除</code> 和 <code>退格</code> 键</li>
+<li><code>.esc</code></li>
+<li><code>.space</code></li>
+<li><code>.up</code></li>
+<li><code>.down</code></li>
+<li><code>.left</code></li>
+<li><code>.right</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="系统修饰键">系统修饰键</h3>
+<ul>
+<li>
+<p>可以用如下修饰符来实现仅在按下相应按键时才触发鼠标或键盘事件的监听器</p>
+<ul>
+<li><code>.ctrl</code></li>
+<li><code>.alt</code></li>
+<li><code>.shift</code></li>
+<li><code>.meta</code></li>
+</ul>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>在 Mac 系统键盘上，<code>meta</code> 对应 command 键 (<code>⌘</code>)。<br>
+在 Windows 系统键盘 <code>meta</code> 对应 Windows 徽标键 (<code>⊞</code>)。<br>
+在 Sun 操作系统键盘上，<code>meta</code> 对应实心宝石键 (<code>◆</code>)。<br>
+在其他特定键盘上，尤其在 MIT 和 Lisp 机器的键盘、以及其后继产品（例如 Knight、space-cadet），<code>meta</code> 被标记为“META”。<br>
+在 Symbolics 键盘上，<code>meta</code> 被标记为“META”或者“Meta”。</p>
+<p><code>修饰键</code> 与 <code>常规按键</code> 不同，在和 <code>keyup</code> 事件一起用时，事件触发时 <code>修饰键</code> 必须处于 <code>按下</code> 状态。<br>
+换句话说，只有在按住 <code>Ctrl</code> 的情况下释放其它按键，才能触发 <code>keyup.ctrl</code>。</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- Alt + C --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-on:keyup.alt.67</span>=<span class="hljs-string">&quot;clear&quot;</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Ctrl + 点击 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-on:click.ctrl</span>=<span class="hljs-string">&quot;doSomething&quot;</span>&gt;</span>Do something<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p><code>.exact</code> 修饰符（控制由精确的系统修饰符组合触发的事件）</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 即使 Alt 或 Shift 被一同按下时也会触发 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click.ctrl</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 有且只有 Ctrl 被按下的时候才触发 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click.ctrl.exact</span>=<span class="hljs-string">&quot;onCtrlClick&quot;</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 没有任何系统修饰符被按下的时候才触发 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click.exact</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>鼠标按钮修饰符（限制处理函数仅响应特定的鼠标按钮）</p>
+<ul>
+<li><code>.left</code> - 左键</li>
+<li><code>.right</code> - 右键</li>
+<li><code>.middle</code> - 中建</li>
+</ul>
+</li>
+</ul>
+<h2 id="v-if-条件渲染">v-if（条件渲染）</h2>
+<h3 id="简介-3">简介</h3>
+<ul>
+<li><code>v-if</code> 指令用于条件性地渲染一块内容</li>
+<li>当指令的表达式值为 <code>true</code> 时渲染内容</li>
+<li>当指令的表达式值为 <code>false</code> 时 DOM 元素被移除</li>
+</ul>
+<h3 id="用法-2">用法</h3>
+<ul>
+<li>
+<p><code>v-if=&quot;表达式&quot;</code></p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isShow&quot;</span>&gt;</span>条件渲染<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>可以使用 <code>v-else</code> 添加一个 <code>else</code> 块</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isShow&quot;</span>&gt;</span>条件渲染（if）<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-else</span>&gt;</span>条件渲染（else）<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>可以使用 <code>v-else-if</code>，充当 <code>v-if</code> 的 <code>else-if</code> 块（可以连续使用）</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;type === &#x27;A&#x27;&quot;</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;type === &#x27;B&#x27;&quot;</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;type === &#x27;C&#x27;&quot;</span>&gt;</span>C<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span>Not A / B / C<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="注意-1">注意</h3>
+<ul>
+<li>在 <code>v-if</code> ... <code>v-else-if</code> ... <code>v-else</code> 之间不能加入非 <code>v-if</code> 指令的元素。</li>
+<li>类似于 <code>v-else</code>，<code>v-else-if</code> 也必须紧跟在带 <code>v-if</code> 或者 <code>v-else-if</code> 的元素之后。</li>
+</ul>
+<h2 id="v-show-条件显示">v-show（条件显示）</h2>
+<h3 id="简介-4">简介</h3>
+<p>另一个用于根据条件展示元素的选项是 <code>v-show</code> 指令，用法大致一样。<br>
+不同的是：带有 <code>v-show</code> 的元素始终会被渲染并保留在 DOM 中，<code>v-show</code> 只是简单地切换元素的 CSS 的 <code>display</code> 属性。</p>
+<h3 id="用法-3">用法</h3>
+<ul>
+<li>
+<p><code>v-show=&quot;表达式&quot;</code></p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;isShow&quot;</span>&gt;</span>条件显示<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="注意-2">注意</h3>
+<ul>
+<li><code>v-show</code> 不支持 <code>&lt;template&gt;</code> 元素，也不支持 <code>v-else</code>。</li>
+</ul>
+<h2 id="v-for-列表渲染">v-for（列表渲染）</h2>
+<h3 id="简介-5">简介</h3>
+<ul>
+<li>可以用 <code>v-for</code> 指令基于一个数组来渲染一个列表，类似于 <code>forEach()</code>。</li>
+<li><code>v-for</code> 指令需要使用 <code>item in items</code> 形式的特殊语法（<code>items</code> - 源数据数组，<code>item</code> - 被迭代的数组元素的别名）。</li>
+</ul>
+<h3 id="用法-4">用法</h3>
+<ul>
+<li>
+<p><code>v-for=&quot;item in items&quot;</code></p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in info&quot;</span> <span class="hljs-attr">v-bind:data-id</span>=<span class="hljs-string">&quot;item.id&quot;</span>&gt;</span>{{ item.message }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">new</span> Vue({
+    ...
+    data: {
+        <span class="hljs-attr">info</span>: [
+            { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;一&#x27;</span> },
+            { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;二&#x27;</span> },
+            { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;三&#x27;</span> },
+            { <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;四&#x27;</span> }
+        ]
+    }
+});
+</div></code></pre>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 结果 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>一<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>二<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>三<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>四<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>在 <code>v-for</code> 块中，可以访问所有父作用域的 <code>property</code>。</p>
+</li>
+<li>
+<p><code>v-for</code> 还支持一个可选的第二个参数（当前项的索引）。</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in items&quot;</span>&gt;</span>{{ index }} - {{ item.message }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 结果 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-2&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>0 - 一<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>1 - 二<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>2 - 三<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>3 - 四<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>可以用 <code>of</code> 替代 <code>in</code> 作为分隔符（它更接近 JavaScript 迭代器的语法）</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item of info&quot;</span>&gt;</span>{{ item.message }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>可以用 <code>v-for</code> 来遍历一个对象的 <code>property</code></p>
+<blockquote>
+<p><code>object</code> 为对象，<code>value</code> 为属性值。</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;value in object&quot;</span>&gt;</span>{{ value }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>可以提供第二个参数作为对象的属性名</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(value, name) in object&quot;</span>&gt;</span>{{ name }}: {{ value }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>还可以提供第三个参数作为索引</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(value, name, index) in object&quot;</span>&gt;</span>{{ index }} - {{ name }}: {{ value }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="维护状态">维护状态</h3>
+<ul>
+<li>
+<p>当 Vue 更新使用 <code>v-for</code> 渲染的元素列表时，它默认使用 <code>就地更新</code> 的策略。</p>
+</li>
+<li>
+<p>如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序，而是就地更新每个元素，并且确保它们在每个索引位置正确渲染。</p>
+</li>
+<li>
+<p>这个默认的模式是高效的，但是只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出。</p>
+</li>
+<li>
+<p>为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，需要为每项提供一个唯一 <code>key</code> 属性：</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in items&quot;</span> <span class="hljs-attr">v-bind:key</span>=<span class="hljs-string">&quot;item.id&quot;</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>尽可能在使用 <code>v-for</code> 时提供 <code>key</code> 属性，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。<br>
+因为它是 Vue 识别节点的一个通用机制，<code>key</code> 并不仅与 <code>v-for</code> 特别关联，它还具有其它用途。</p>
+</li>
+<li>
+<p>不要使用对象或数组之类的非基本类型值作为 <code>v-for</code> 的 <code>key</code>，需要使用 <code>字符串</code> 或 <code>数值</code> 类型的值。</p>
+</li>
+</ul>
+<h3 id="数组更新检测">数组更新检测</h3>
+<h4 id="变更方法">变更方法</h4>
+<p>Vue 将被侦听的数组的变更方法进行了包裹，所以它们也将会触发视图更新。<br>
+这些被包裹过的方法包括：</p>
+<ul>
+<li><code>push()</code></li>
+<li><code>pop()</code></li>
+<li><code>shift()</code></li>
+<li><code>unshift()</code></li>
+<li><code>splice()</code></li>
+<li><code>sort()</code></li>
+<li><code>reverse()</code></li>
+</ul>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>
+<p>由于 JavaScript 的限制，Vue 不能检测数组和对象的变化。</p>
+</li>
+<li>
+<p><code>data</code> 对象中的数据通过绑定 <code>getter</code> 和 <code>setter</code> 观察数据变化并同步更新到页面中，<br>
+但是数组中的元素没有 <code>getter</code> 和 <code>setter</code>，所以如果通过下标更新数组数据，页面数据不会跟随改变。</p>
+</li>
+<li>
+<p>如果需要手动更新数组数据并同步到页面中，有以下的方式：</p>
+<ul>
+<li>
+<p>使用被 Vue 包裹过的方法</p>
+</li>
+<li>
+<p>直接替换整个数组（可使用 <code>展开</code> 保留原有数据）</p>
+</li>
+<li>
+<p>使用 Vue 对象或 Vue 的静态 <code>set</code>、<code>delete</code> 方法</p>
+<blockquote>
+<p><code>vm</code> 为实例化的 Vue 对象</p>
+</blockquote>
+<ul>
+<li><code>vm.$set(vm.数组, 下标，值)</code></li>
+<li><code>vm.$delete(vm.数组, 下标)</code></li>
+<li><code>Vue.set(vm.数组, 下标, 值)</code></li>
+<li><code>Vue.delete(vm.数组, 下标)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>如果需要手动更新对象数据并同步到页面中，有以下的方式：</p>
+<ul>
+<li>
+<p>直接替换整个对象（可使用 <code>展开</code> 保留原有数据）</p>
+</li>
+<li>
+<p>使用 Vue 对象或 Vue 的静态 <code>set</code>、<code>delete</code> 方法</p>
+<blockquote>
+<p><code>vm</code> 为实例化的 Vue 对象</p>
+</blockquote>
+<ul>
+<li><code>vm.$set(vm.对象, 属性名，属性值)</code></li>
+<li><code>vm.$delete(vm.对象, 属性名)</code></li>
+<li><code>Vue.set(vm.对象, 属性名, 属性值)</code></li>
+<li><code>Vue.delete(vm.对象, 属性名)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="v-model-表单输入绑定">v-model（表单输入绑定）</h2>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/forms.html">https://cn.vuejs.org/v2/guide/forms.html</a></p>
+</blockquote>
+<h3 id="基础用法">基础用法</h3>
+<ul>
+<li>
+<p>可以用 <code>v-model</code> 指令在表单元素（<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;select&gt;</code>）上创建双向数据绑定。</p>
+<ul>
+<li>它会根据控件类型自动选取正确的方法来更新元素。</li>
+<li>尽管有些神奇，但 v-model 本质上是语法糖。</li>
+<li>它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。</li>
+</ul>
+</li>
+<li>
+<p><code>v-model</code> 总是将 Vue 实例的数据作为数据来源，会忽略所有表单元素的 <code>value</code>、<code>checked</code>、<code>selected</code> 属性的初始值。<br>
+因此应该通过 JavaScript 在组件的 <code>data</code> 对象中声明初始值。</p>
+</li>
+<li>
+<p><code>v-model</code> 在内部为不同的输入元素使用不同的属性并抛出不同的事件：</p>
+<ul>
+<li><code>text</code> 和 <code>textarea</code> 元素使用 <code>value</code> 属性和 <code>input</code> 事件</li>
+<li><code>checkbox</code> 和 <code>radio</code> 元素使用 <code>checked</code> 属性和 <code>change</code> 事件</li>
+<li><code>select</code> 元素使用 <code>value</code> 属性和 <code>change</code> 事件</li>
+<li>对于需要使用输入法（例如中文、日文、韩文等）的语言，<code>v-model</code> 不会在输入法组合文字过程中得到更新。<br>
+如果要处理这个过程，需要使用 <code>input</code> 事件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="修饰符">修饰符</h3>
+<ul>
+<li>
+<p><code>.lazy</code></p>
+<ul>
+<li>
+<p>在默认情况下，<code>v-model</code> 在每次 <code>input</code> 事件触发后将输入框的值与数据进行同步（除了输入法组合文字时）。</p>
+</li>
+<li>
+<p>可以添加 <code>.lazy</code> 修饰符，从而转为在 <code>change</code> 事件之后进行同步。</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 在“change”时而非“input”时更新 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.lazy</span>=<span class="hljs-string">&quot;msg&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>.number</code></p>
+<ul>
+<li>
+<p>如果想自动将用户的输入值转为数值类型，可以给 <code>v-model</code> 添加 <code>number</code> 修饰符。</p>
+</li>
+<li>
+<p>这通常很有用，因为即使在 <code>type=&quot;number&quot;</code> 时，HTML 输入元素的值也总会返回字符串。</p>
+</li>
+<li>
+<p>如果这个值无法被 <code>parseFloat()</code> 解析，则会返回原始的值。</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>.trim</code></p>
+<ul>
+<li>
+<p>如果要自动过滤用户输入的首尾空白字符，可以给 <code>v-model</code> 添加 <code>trim</code> 修饰符</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.trim</span>=<span class="hljs-string">&quot;msg&quot;</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="事件处理方法">事件处理方法</h1>
+<h3 id="用法-5">用法</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">new</span> Vue({
+  ...
+  methods: {
+    方法名: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">参数</span>) </span>{
+      ...
+    },
+    方法名: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">参数</span>) </span>{
+      ...
+    },
+    ...
+  }
+});
+</div></code></pre>
+<h3 id="注意-3">注意</h3>
+<ul>
+<li>事件处理方法中的 <code>this</code> 指向当前的 Vue 对象。</li>
+</ul>
+<h1 id="组件">组件</h1>
+<h2 id="transition-组件">transition 组件</h2>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/transitions.html">https://cn.vuejs.org/v2/guide/transitions.html</a></p>
+</blockquote>
+<h3 id="单元素-组件的过渡-transition">单元素 / 组件的过渡（transition）</h3>
+<h4 id="简介-6">简介</h4>
+<p>Vue 提供了 <code>transition</code> 的封装组件，在以下的情形中，可以给任何元素和组件添加进入 / 离开过渡：</p>
+<ul>
+<li>条件渲染 (使用 <code>v-if)</code></li>
+<li>条件显示 (使用 <code>v-show</code>)</li>
+<li>动态组件</li>
+<li>组件根节点</li>
+</ul>
+<p>当插入或删除包含在 <code>transition</code> 组件中的元素时，Vue 将会做以下处理：</p>
+<ul>
+<li>自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加 / 删除 CSS 类名。</li>
+<li>如果过渡组件提供了 <code>JavaScript 钩子函数</code>，这些钩子函数将在恰当的时机被调用。</li>
+<li>如果没有找到 <code>JavaScript 钩子函数</code> 并且也没有检测到 CSS 过渡或动画，DOM 操作（插入 / 删除）在下一帧会立即执行。<br>
+（注意：此指浏览器逐帧动画机制，和 Vue 的 <code>nextTick</code> 概念不同）</li>
+</ul>
+<h4 id="过渡的类名">过渡的类名</h4>
+<p>在 <code>进入</code> / <code>离开</code> 的过渡中，会有 6 个 <code>class</code> 切换：</p>
+<ul>
+<li>
+<p><code>v-enter</code></p>
+<ul>
+<li>定义进入过渡的开始状态。</li>
+<li>在元素被插入之前生效，在元素被插入之后的下一帧移除。</li>
+</ul>
+</li>
+<li>
+<p><code>v-enter-active</code></p>
+<ul>
+<li>定义进入过渡生效时的状态。</li>
+<li>在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡动画完成之后移除。</li>
+<li>这个类可以被用来定义进入过渡的过程时间、延迟和曲线函数。</li>
+</ul>
+</li>
+<li>
+<p><code>v-enter-to</code></p>
+<ul>
+<li>定义进入过渡的结束状态（2.1.8 版及以上）。</li>
+<li>在元素被插入之后下一帧生效（与此同时 <code>v-enter</code> 被移除），在过渡动画完成之后移除。</li>
+</ul>
+</li>
+<li>
+<p><code>v-leave</code></p>
+<ul>
+<li>定义离开过渡的开始状态。</li>
+<li>在离开过渡被触发时立刻生效，下一帧被移除。</li>
+</ul>
+</li>
+<li>
+<p><code>v-leave-active</code></p>
+<ul>
+<li>定义离开过渡生效时的状态。</li>
+<li>在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡动画完成之后移除。</li>
+<li>这个类可以被用来定义离开过渡的过程时间、延迟和曲线函数。</li>
+</ul>
+</li>
+<li>
+<p><code>v-leave-to</code></p>
+<ul>
+<li>定义离开过渡的结束状态（2.1.8 版及以上）。</li>
+<li>在离开过渡被触发之后下一帧生效（与此同时 <code>v-leave</code> 被删除），在过渡动画完成之后移除。</li>
+</ul>
+</li>
+</ul>
+<p><img src="./assets/note-vue/transition.png" alt="过渡"></p>
+<p>对于这些在过渡中切换的类名，如果使用一个没有名字的 <code>&lt;transition&gt;</code>，则 <code>v-</code> 是这些类名的 <code>默认前缀</code>。<br>
+如果使用了 <code>&lt;transition name=&quot;example&quot;&gt;</code>，前缀会变为 <code>example-</code>（<code>v-enter</code> 变为 <code>example-enter</code>）。<br>
+<code>v-enter-active</code> 和 <code>v-leave-active</code> 可以控制进入 / 离开过渡的不同的缓和曲线。</p>
+<h4 id="javascript-钩子函数">JavaScript 钩子函数</h4>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/transitions.html#JavaScript-%E9%92%A9%E5%AD%90">https://cn.vuejs.org/v2/guide/transitions.html#JavaScript-钩子</a></p>
+</blockquote>
+<p>可以在 <code>attribute</code> 中声明 JavaScript 钩子（<code>v-on:事件=&quot;事件处理函数&quot;</code>）</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">transition</span>
+    <span class="hljs-attr">v-on:before-enter</span>=<span class="hljs-string">&quot;beforeEnter&quot;</span> <span class="hljs-attr">v-on:enter</span>=<span class="hljs-string">&quot;enter&quot;</span>
+    <span class="hljs-attr">v-on:after-enter</span>=<span class="hljs-string">&quot;afterEnter&quot;</span> <span class="hljs-attr">v-on:enter-cancelled</span>=<span class="hljs-string">&quot;enterCancelled&quot;</span>
+    <span class="hljs-attr">v-on:before-leave</span>=<span class="hljs-string">&quot;beforeLeave&quot;</span> <span class="hljs-attr">v-on:leave</span>=<span class="hljs-string">&quot;leave&quot;</span>
+    <span class="hljs-attr">v-on:after-leave</span>=<span class="hljs-string">&quot;afterLeave&quot;</span> <span class="hljs-attr">v-on:leave-cancelled</span>=<span class="hljs-string">&quot;leaveCancelled&quot;</span>
+&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">transition</span>&gt;</span>
+</div></code></pre>
+<p>这些钩子函数可以结合 CSS <code>transitions</code> / <code>animations</code> 使用，也可以单独使用。</p>
+<blockquote>
+<p>当只用 JavaScript 过渡的时候，在 <code>enter</code> 和 <code>leave</code> 函数中必须使用 <code>done</code> 进行回调。<br>
+否则，它们将被同步调用，过渡会立即完成。</p>
+<p>推荐对于仅使用 JavaScript 过渡的元素添加 <code>v-bind:css=&quot;false&quot;</code>，Vue 会跳过 CSS 的检测。<br>
+这也可以避免过渡过程中 CSS 的影响。</p>
+</blockquote>
+<h3 id="列表的进入-离开过渡-transition-group">列表的进入 / 离开过渡（transition-group）</h3>
+<h4 id="简介-7">简介</h4>
+<p>特点：</p>
+<ul>
+<li>不同于 <code>&lt;transition&gt;</code>，它会以一个真实元素呈现：默认为一个 <code>&lt;span&gt;</code>（可以通过 <code>tag</code> 属性更换为其他元素）。</li>
+<li><code>过渡模式</code> 不可用，因为不再相互切换特有的元素。</li>
+<li>内部元素需要提供唯一的 <code>key</code> 属性值。</li>
+<li>CSS 过渡的类将会应用在内部的元素中，而不是这个组 / 容器本身。</li>
+</ul>
+
+    </body>
+    </html>
