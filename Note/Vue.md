@@ -46,14 +46,39 @@
 - [事件处理方法](#事件处理方法)
     - [用法](#用法-5)
     - [注意](#注意-3)
+- [计算属性](#计算属性)
+  - [简介](#简介-6)
+  - [基础用法](#基础用法-1)
+  - [setter](#setter)
+- [侦听器](#侦听器)
+  - [简介](#简介-7)
+  - [用法](#用法-6)
 - [组件](#组件)
+  - [简介](#简介-8)
+  - [基础用法](#基础用法-2)
+    - [定义](#定义)
+    - [使用](#使用)
+    - [注意](#注意-4)
+  - [data](#data)
+  - [通过 Prop 向子组件传递数据](#通过-prop-向子组件传递数据)
+    - [简介](#简介-9)
+    - [使用方式](#使用方式)
+    - [单向数据流](#单向数据流)
+  - [访问元素 & 组件](#访问元素-组件)
+    - [访问子组件实例或子元素（$refs）](#访问子组件实例或子元素-refs)
+    - [触发父组件的自定义事件（$emit）](#触发父组件的自定义事件-emit)
+      - [使用方式](#使用方式-1)
+      - [例子](#例子)
+  - [插槽](#插槽)
+    - [普通插槽](#普通插槽)
+    - [具名插槽](#具名插槽)
   - [transition 组件](#transition-组件)
     - [单元素 / 组件的过渡（transition）](#单元素-组件的过渡-transition)
-      - [简介](#简介-6)
+      - [简介](#简介-10)
       - [过渡的类名](#过渡的类名)
       - [JavaScript 钩子函数](#javascript-钩子函数)
     - [列表的进入 / 离开过渡（transition-group）](#列表的进入-离开过渡-transition-group)
-      - [简介](#简介-7)
+      - [简介](#简介-11)
 
 # 简介
 
@@ -631,7 +656,309 @@ new Vue({
 
 - 事件处理方法中的 `this` 指向当前的 Vue 对象。
 
+# 计算属性
+
+> https://cn.vuejs.org/v2/guide/computed.html
+
+## 简介
+
+模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。
+在模板中放入太多的逻辑会让模板过重且难以维护。
+所以，对于任何复杂逻辑，都应当使用计算属性。
+
+## 基础用法
+
+```html
+<div id="app">
+    <p>原始内容：{{ msgOrigin }}</p>
+    <p>新的内容：{{ msgNew }}</p>
+</div>
+```
+
+```javascript
+var vm = new Vue({
+    el: '#app',
+    data: {
+        msgOrigin: 'example'
+    },
+    computed: {
+        msgNew: function () {
+            // this 指向 vm 实例
+            return this.msgOrigin.split('').reverse().join('');
+        }
+    }
+});
+```
+
+```html
+<!-- 结果 -->
+<div id="app">
+    <p>原始内容：example</p>
+    <p>新的内容：elpmaxe</p>
+</div>
+```
+
+## setter
+
+计算属性默认只有 `getter`，如果需要，可以提供一个 `setter`
+
+```javascript
+new Vue({
+    ...
+    computed: {
+        example: {
+            // getter
+            get: function () {
+                return ...
+            },
+            // setter
+            set: function () {
+                ...
+            }
+        }
+    }
+});
+```
+
+# 侦听器
+
+## 简介
+
+虽然计算属性在大多数情况下更合适，但有时也需要一个自定义的侦听器。
+因此 Vue 通过 `watch` 选项提供了一个更通用的方法，来响应数据的变化。
+当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
+
+## 用法
+
+```javascript
+new Vue({
+    ...
+    watch: {
+        侦听属性名: function (newValue, oldValue) {
+            ...
+        }
+    }
+});
+```
+
 # 组件
+
+## 简介
+
+组件是可复用的 Vue 实例，且带有一个名字。
+可以在一个通过 `new Vue` 创建的 Vue 根实例中，把这个组件作为自定义元素来使用。
+
+## 基础用法
+
+### 定义
+
+```javascript
+// 方式一（全局）
+
+Vue.component('组件名称', {
+    template: '内容' // 例如：<h2>这是一个标题</h2>
+});
+
+// 方式二（局部）
+
+new Vue({
+    ...
+    components: {
+        '组件名称': {
+            template: '内容'
+        }
+    }
+});
+```
+
+### 使用
+
+```html
+<组件名称></组件名称>
+```
+
+### 注意
+
+- 组件模板（`template`）有且只有一个根节点。
+- 组件中可以有子组件，且父组件可调用子组件。
+
+  ```javascript
+  new Vue({
+      ...
+      components: {
+          '组件名称': {
+              template: '内容',
+              '组件名称': {
+                  template: '内容'
+              }
+          }
+      }
+  });
+  ```
+
+## data
+
+一个组件的 `data` 选项必须是一个函数，因此每个实例可以维护一份被返回对象的 `独立` 的拷贝。
+否则，进行操作时可能会影响到其它所有的实例（因为对象是引用类型）。
+
+```javascript
+Vue.component('组件名称', {
+    ...
+    data: function () {
+        return {
+            属性名1: 属性值1,
+            属性名2: 属性值2,
+            ...
+        }
+    }
+});
+```
+
+## 通过 Prop 向子组件传递数据
+
+> https://cn.vuejs.org/v2/guide/components-props.html)
+
+### 简介
+
+Prop 是在组件上注册的一些自定义 attribute。
+
+### 使用方式
+
+当一个值传递给一个 `prop` attribute 的时候，它就变成了那个组件实例的一个 `property`。
+
+```javascript
+Vue.component('blog-post', {
+    props: ['title'],
+    template: '<h3>{{ title }}</h3>'
+});
+```
+
+一个组件默认可以拥有任意数量的 `prop`，任何值都可以传递给任何 `prop`。
+一个 `prop` 被注册之后，就可以像这样把数据作为一个自定义 `attribute` 传递到子组件：
+
+```html
+<!-- 静态 -->
+<blog-post title="标题1"></blog-post>
+<blog-post title="标题2"></blog-post>
+<!-- 动态 -->
+<blog-post :title="data 中的属性名"></blog-post>
+<blog-post :title="data 中的属性名"></blog-post>
+```
+
+### 单向数据流
+
+所有的 `prop` 都使得其父子 `prop` 之间形成了一个单向下行绑定：
+
+- 父级 prop 的更新会向下流动到子组件中，但是反过来则不行。
+- 这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。
+
+额外的，每次父级组件发生变更时，子组件中所有的 `prop` 都将会刷新为最新的值。
+这意味着不应该在一个子组件内部改变 `prop`，否则 Vue 会在浏览器的控制台中发出警告。
+
+## 访问元素 & 组件
+
+### 访问子组件实例或子元素（$refs）
+
+> https://cn.vuejs.org/v2/guide/components-edge-cases.html#访问子组件实例或子元素
+
+尽管存在 `prop` 和事件，有的时候仍可能需要在 JavaScript 里直接访问一个子组件。
+为了达到这个目的，可以通过 `ref` 这个 `attribute` 为子组件赋予一个 ID 引用，例如：
+
+```html
+<base-input ref="usernameInput"></base-input>
+```
+
+在已经定义了这个 `ref` 的组件里，可以使用：
+
+```javascript
+this.$refs.usernameInput
+```
+
+来访问这个 `<base-input>` 实例，以便不时之需（例如程序化地从一个父级组件聚焦这个输入框）。
+该 `<base-input>` 组件也可以使用一个类似的 `ref` 提供对内部这个指定元素的访问，例如：
+
+```html
+<input ref="input">
+```
+
+甚至可以通过其父级组件定义方法：
+
+```javascript
+new Vue({
+    ...
+    methods: {
+        // 从父级组件聚焦输入框
+        focus: function () {
+            this.$refs.input.focus();
+        }
+    }
+});
+```
+
+这样就允许父级组件通过下面的代码聚焦 `<base-input>` 里的输入框：
+
+```javascript
+this.$refs.usernameInput.focus()
+```
+
+> 通过 `$refs` 获取同名 `ref` 的普通元素时，只能获取最后一个。
+> 当 `ref` 和 `v-for` 一起使用的时候，得到的 `ref` 将会是一个包含了对应数据源的这些子组件的数组。
+> 
+> `$refs` 只会在组件渲染完成之后生效，并且它们不是响应式的。
+> 这仅作为一个用于直接操作子组件的“逃生舱”，应该避免在模板或计算属性中访问 `$refs`。
+
+### 触发父组件的自定义事件（$emit）
+
+> https://cn.vuejs.org/v2/api/#vm-emit
+
+#### 使用方式
+
+- `vm.$emit( eventName, […args] )`
+
+  - 触发当前实例上的事件
+  - 附加参数都会传给监听器回调
+
+- `vm.$on( eventName, fn )`
+
+  - 监听事件 `eventName` 触发后调用 `fn()`
+
+#### 例子
+
+```javascript
+Vue.component('welcome-btn', {
+    // 事件名：welcome
+    // 参数：张三
+    template: `<button v-on:click="$emit('welcome', '张三')">欢迎</button>`
+});
+
+new Vue({
+    el: '#emit-example-simple',
+    methods: {
+        // 事件处理方法
+        sayHi: function (name) {
+            alert(`您好，${name}！`)
+        }
+    }
+});
+```
+
+```html
+<div id="emit-example-simple">
+    <!--
+        事件名：welcome
+        回调（事件处理方法）：sayHi()
+    -->
+    <welcome-btn v-on:welcome="sayHi"></welcome-btn>
+</div>
+```
+
+## 插槽
+
+> https://cn.vuejs.org/v2/guide/components-slots.html
+
+### 普通插槽
+
+### 具名插槽
 
 ## transition 组件
 
