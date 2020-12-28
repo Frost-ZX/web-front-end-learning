@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签页</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="tab">
+            <div class="tabs">
+                <div :class="['tab-item', {active: current == 0}]" @click="changeTab(0)">产品详情</div>
+                <div :class="['tab-item', {active: current == 1}]" @click="changeTab(1)">评价</div>
+                <div :class="['tab-item', {active: current == 2}]" @click="changeTab(2)">售后</div>
+            </div>
+            <div class="contents">
+                <transition-group tag="div" @after-enter="isChanging = false" :name="isNext ? 'v-next' : 'v-prev'">
+                    <div class="content-item" key="detail" v-show="current == 0">
+                        <p>产品详情 产品详情</p>
+                        <p>产品详情 产品详情</p>
+                        <p>产品详情 产品详情</p>
+                    </div>
+                    <div class="content-item" key="comment" v-show="current == 1">
+                        <p>评价内容 评价内容</p>
+                        <p>评价内容 评价内容</p>
+                        <p>评价内容 评价内容</p>
+                    </div>
+                    <div class="content-item" key="service" v-show="current == 2">
+                        <p>售后内容 售后内容</p>
+                        <p>售后内容 售后内容</p>
+                        <p>售后内容 售后内容</p>
+                    </div>
+                </transition-group>
+            </div>
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

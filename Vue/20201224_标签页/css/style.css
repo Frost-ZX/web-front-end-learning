@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FFF;
+    text-align: center;
+}
+
+.tab {
+    display: inline-block;
+    position: relative;
+    margin-top: 50px;
+    width: 650px;
+    border: 2px solid #DDD;
+    background-color: #FFF;
+    text-align: left;
+    font-size: 0;
+    user-select: none;
+}
+
+.tab .tab-item,
+.tab .content-item {
+    font-size: 16px;
+}
+
+.tab .tabs {
+    border-bottom: 1px solid #DDD;
+}
+
+.tab .tabs .tab-item {
+    display: inline-block;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #DDD;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+}
+
+.tab .tabs .tab-item.active {
+    background-color: #999;
+    color: #FFF;
+}
+
+.tab .contents {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.tab .contents .content-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: #FFF;
+    color: #000;
+}
+
+.tab .contents .content-item.v-next-enter-active,
+.tab .contents .content-item.v-next-leave-active,
+.tab .contents .content-item.v-prev-enter-active,
+.tab .contents .content-item.v-prev-leave-active {
+    transition: transform 1s;
+}
+
+.tab .contents .content-item.v-next-enter-active {
+    transform: translate(100%);
+}
+
+.tab .contents .content-item.v-next-enter-to,
+.tab .contents .content-item.v-next-leave-active {
+    transform: translate(0%);
+}
+
+.tab .contents .content-item.v-prev-enter-active,
+.tab .contents .content-item.v-next-leave-to {
+    transform: translate(-100%);
+}
+
+.tab .contents .content-item.v-prev-enter-to,
+.tab .contents .content-item.v-prev-leave-active {
+    transform: translate(0%);
+}
+
+.tab .contents .content-item.v-prev-leave-to {
+    transform: translate(100%);
+}
