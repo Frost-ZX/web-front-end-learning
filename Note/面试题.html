@@ -25,124 +25,157 @@
     </head>
     <body class="vscode-body vscode-light">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
+<link rel="stylesheet" href="./assets/style.css">
+<script src="./assets/script.js"></script>
 <div class="contents"></div>
 <h2 id="面试题">面试题</h2>
 <ul>
 <li><a href="#%E9%9D%A2%E8%AF%95%E9%A2%98">面试题</a></li>
-<li><a href="#20201217">20201217</a>
+<li><a href="#2020-12-28">2020-12-28</a>
 <ul>
-<li><a href="#instanceof-%E5%92%8C-typeof-%E6%80%8E%E4%B9%88%E7%94%A8-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"># <code>instanceof</code> 和 <code>typeof</code> 怎么用？有什么区别？</a></li>
-<li><a href="#es6-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"># ES6 箭头函数与普通函数的区别</a></li>
+<li><a href="#call-%E5%92%8C-apply-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><code>call</code> 和 <code>apply</code> 的区别是什么？</a></li>
+<li><a href="#%E5%88%97%E4%B8%BE%E5%B8%B8%E7%94%A8%E7%9A%84-bom-%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B8%B8%E7%94%A8-window-%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95">列举常用的 BOM 对象和常用 window 对象方法</a></li>
+<li><a href="#%E7%AE%80%E8%BF%B0-sass-%E5%92%8C-less-%E4%BB%A5%E5%8F%8A%E5%8C%BA%E5%88%AB">简述 Sass 和 Less，以及区别</a></li>
+<li><a href="#javascript-%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9">JavaScript 原型、原型链是什么，有什么特点？</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-25">2020-12-25</a>
+<ul>
+<li><a href="#javascript-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0-javascript-%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BB%A7%E6%89%BF">JavaScript 如何实现 JavaScript 对象的继承？</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1-obj-%E6%8B%A5%E6%9C%89%E7%9A%84%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7-%E5%8F%AF%E6%9E%9A%E4%B8%BE%E7%9A%84-%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE%E7%9A%84-%E4%B8%8D%E5%8C%85%E6%8B%AC%E7%BB%A7%E6%89%BF%E6%9D%A5%E7%9A%84%E5%B1%9E%E6%80%A7">如何获取对象 obj 拥有的所有属性（可枚举的、不可枚举的，不包括继承来的属性）</a></li>
+<li><a href="#vue-%E4%B8%AD-v-if-%E5%92%8C-v-show-%E6%8C%87%E4%BB%A4%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E5%92%8C%E4%B8%8D%E5%90%8C%E7%82%B9">Vue 中，<code>v-if</code> 和 <code>v-show</code> 指令的共同点和不同点</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-24">2020-12-24</a>
+<ul>
+<li><a href="#javascript-%E7%9A%84-this-%E4%BD%9C%E7%94%A8%E5%9F%9F">JavaScript 的 this、作用域</a></li>
+<li><a href="#%E9%97%AD%E5%8C%85%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E6%80%A7-%E5%AF%B9%E9%A1%B5%E9%9D%A2%E6%9C%89%E4%BB%80%E4%B9%88%E5%BD%B1%E5%93%8D">闭包是什么？有什么特性？对页面有什么影响？</a></li>
+<li><a href="#vue-%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0%E6%95%B0%E7%BB%84%E6%95%B0%E6%8D%AE-%E5%AF%B9%E8%B1%A1%E6%95%B0%E6%8D%AE">Vue 如何更新数组数据、对象数据？</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-22">2020-12-22</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-mvvm">什么是 MVVM？</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-21">2020-12-21</a>
+<ul>
+<li><a href="#cookies-sessionstorage-%E5%92%8C-localstorage-%E7%9A%84%E5%8C%BA%E5%88%AB">cookies、sessionStorage 和 localStorage 的区别</a></li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E7%9A%84%E5%8C%BA%E5%88%AB-javascript-%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B">同步和异步的区别？JavaScript 实现异步的方式有哪些？</a></li>
+</ul>
+</li>
+<li><a href="#2020-12-17">2020-12-17</a>
+<ul>
+<li><a href="#instanceof-%E5%92%8C-typeof-%E6%80%8E%E4%B9%88%E7%94%A8-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><code>instanceof</code> 和 <code>typeof</code> 怎么用？有什么区别？</a></li>
+<li><a href="#es6-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB">ES6 箭头函数与普通函数的区别</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-16">2020-12-16</a>
 <ul>
-<li><a href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95"># 编写一个数组去重的方法</a></li>
-<li><a href="#%E8%BE%B9%E8%BE%93%E5%85%A5%E8%BE%B9%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E5%80%BC-%E7%94%A8%E5%93%AA%E4%B8%AA%E4%BA%8B%E4%BB%B6%E6%AF%94%E8%BE%83%E5%A5%BD"># 边输入边获取 input 输入框的值，用哪个事件比较好？</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95">编写一个数组去重的方法</a></li>
+<li><a href="#%E8%BE%B9%E8%BE%93%E5%85%A5%E8%BE%B9%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E5%80%BC-%E7%94%A8%E5%93%AA%E4%B8%AA%E4%BA%8B%E4%BB%B6%E6%AF%94%E8%BE%83%E5%A5%BD">边输入边获取 input 输入框的值，用哪个事件比较好？</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-15">2020-12-15</a>
 <ul>
-<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"># 什么是严格模式？</a></li>
-<li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%A5%BD%E5%A4%84"># 严格模式的好处？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F">什么是严格模式？</a></li>
+<li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%A5%BD%E5%A4%84">严格模式的好处？</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-11">2020-12-11</a>
 <ul>
-<li><a href="#less-sass-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%A4%A7%E5%AE%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"># Less、Sass 是什么？大家为什么要使用它们？</a></li>
-<li><a href="#%E5%85%B3%E4%BA%8E%E4%BA%8B%E4%BB%B6-ie-%E4%B8%8E-firefox-%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"># 关于事件，IE 与 FireFox 的事件机制有什么区别？</a></li>
+<li><a href="#less-sass-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%A4%A7%E5%AE%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC">Less、Sass 是什么？大家为什么要使用它们？</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E4%BA%8B%E4%BB%B6-ie-%E4%B8%8E-firefox-%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">关于事件，IE 与 FireFox 的事件机制有什么区别？</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-10">2020-12-10</a>
 <ul>
-<li><a href="#%E5%B0%86%E6%95%B0%E5%AD%97-12345678-%E8%BD%AC%E5%8C%96%E6%88%90-rmb-%E5%BD%A2%E5%BC%8F-12-345-678"># 将数字 <code>12345678</code> 转化成 RMB 形式（<code>12,345,678</code>）</a></li>
+<li><a href="#%E5%B0%86%E6%95%B0%E5%AD%97-12345678-%E8%BD%AC%E5%8C%96%E6%88%90-rmb-%E5%BD%A2%E5%BC%8F-12-345-678">将数字 <code>12345678</code> 转化成 RMB 形式（<code>12,345,678</code>）</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-08">2020-12-08</a>
 <ul>
-<li><a href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E7%9A%84%E5%8C%BA%E5%88%AB"># 同步和异步的区别</a></li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E7%9A%84%E5%8C%BA%E5%88%AB">同步和异步的区别</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-04">2020-12-04</a>
 <ul>
-<li><a href="#%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0"># 去除数组中重复的元素</a></li>
+<li><a href="#%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0">去除数组中重复的元素</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-03">2020-12-03</a>
 <ul>
-<li><a href="#javascript-%E4%B8%AD-ie-%E5%92%8C%E6%A0%87%E5%87%86%E4%B8%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E5%86%99%E6%B3%95"># JavaScript 中，IE 和标准下有哪些兼容性的写法</a></li>
-<li><a href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA-dom-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%9D%9E%E8%A1%8C%E5%86%85%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%87%BD%E6%95%B0"># 获取某个 DOM 对象的非行内样式的函数</a></li>
-<li><a href="#%E5%B0%86-12345678-%E5%8F%98%E6%88%90-87654321-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"># 将 <code>12345678</code> 变成 <code>87654321</code>（反转字符串）</a></li>
+<li><a href="#javascript-%E4%B8%AD-ie-%E5%92%8C%E6%A0%87%E5%87%86%E4%B8%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E5%86%99%E6%B3%95">JavaScript 中，IE 和标准下有哪些兼容性的写法</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA-dom-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%9D%9E%E8%A1%8C%E5%86%85%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%87%BD%E6%95%B0">获取某个 DOM 对象的非行内样式的函数</a></li>
+<li><a href="#%E5%B0%86-12345678-%E5%8F%98%E6%88%90-87654321-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2">将 <code>12345678</code> 变成 <code>87654321</code>（反转字符串）</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-02">2020-12-02</a>
 <ul>
-<li><a href="#dom-%E6%93%8D%E4%BD%9C%E4%B8%AD-%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9%E7%9A%84%E6%96%B9%E6%B3%95"># DOM 操作中，查找节点的方法</a></li>
-<li><a href="#%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95-pop-push-shift-unshift-%E7%9A%84%E4%BD%9C%E7%94%A8"># 数组方法 <code>pop()</code>、<code>push()</code>、<code>shift()</code>、<code>unshift()</code> 的作用</a></li>
-<li><a href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2-asdfssaaasasasasaa-%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%BB%A5%E5%8F%8A%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"># 判断字符串 <code>asdfssaaasasasasaa</code> 中出现次数最多的字符以及出现的次数</a></li>
+<li><a href="#dom-%E6%93%8D%E4%BD%9C%E4%B8%AD-%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9%E7%9A%84%E6%96%B9%E6%B3%95">DOM 操作中，查找节点的方法</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95-pop-push-shift-unshift-%E7%9A%84%E4%BD%9C%E7%94%A8">数组方法 <code>pop()</code>、<code>push()</code>、<code>shift()</code>、<code>unshift()</code> 的作用</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2-asdfssaaasasasasaa-%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%BB%A5%E5%8F%8A%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0">判断字符串 <code>asdfssaaasasasasaa</code> 中出现次数最多的字符以及出现的次数</a></li>
 </ul>
 </li>
 <li><a href="#2020-12-01">2020-12-01</a>
 <ul>
-<li><a href="#%E8%8E%B7%E5%8F%96%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84-checkbox-%E6%A0%87%E7%AD%BE-%E5%B9%B6%E6%8A%8A%E8%BF%99%E4%BA%9B-dom-%E5%AF%B9%E8%B1%A1%E6%94%BE%E8%BF%9B%E6%95%B0%E7%BB%84%E4%B8%AD"># 获取到页面中所有的 <code>checkbox</code> 标签，并把这些 DOM 对象放进数组中</a></li>
-<li><a href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E5%87%BA%E7%8E%B0-undefined-%E5%80%BC"># 什么时候会出现 <code>undefined</code> 值</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84-checkbox-%E6%A0%87%E7%AD%BE-%E5%B9%B6%E6%8A%8A%E8%BF%99%E4%BA%9B-dom-%E5%AF%B9%E8%B1%A1%E6%94%BE%E8%BF%9B%E6%95%B0%E7%BB%84%E4%B8%AD">获取到页面中所有的 <code>checkbox</code> 标签，并把这些 DOM 对象放进数组中</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E5%87%BA%E7%8E%B0-undefined-%E5%80%BC">什么时候会出现 <code>undefined</code> 值</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-27">2020-11-27</a>
 <ul>
-<li><a href="#%E5%AF%B9-json-%E7%9A%84%E4%BA%86%E8%A7%A3"># 对 JSON 的了解</a></li>
-<li><a href="#document-write-%E5%92%8C-innerhtml-%E7%9A%84%E5%8C%BA%E5%88%AB"># <code>document.write</code> 和 <code>innerHTML</code> 的区别</a></li>
-<li><a href="#%E6%95%B0%E7%BB%84%E5%92%8C%E5%AF%B9%E8%B1%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95"># 数组和对象有哪些原生方法？</a></li>
+<li><a href="#%E5%AF%B9-json-%E7%9A%84%E4%BA%86%E8%A7%A3">对 JSON 的了解</a></li>
+<li><a href="#document-write-%E5%92%8C-innerhtml-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>document.write</code> 和 <code>innerHTML</code> 的区别</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%92%8C%E5%AF%B9%E8%B1%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95">数组和对象有哪些原生方法？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-26">2020-11-26</a>
 <ul>
-<li><a href="#css-%E7%9A%84-content-%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%BA%94%E7%94%A8"># CSS 的 <code>content</code> 属性的作用和应用</a></li>
-<li><a href="#%E5%87%8F%E5%B0%91%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95"># 减少页面加载时间的方法</a></li>
-<li><a href="#new-%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%85%B7%E4%BD%93%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"># <code>new</code> 操作符具体做了什么？</a></li>
+<li><a href="#css-%E7%9A%84-content-%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%BA%94%E7%94%A8">CSS 的 <code>content</code> 属性的作用和应用</a></li>
+<li><a href="#%E5%87%8F%E5%B0%91%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95">减少页面加载时间的方法</a></li>
+<li><a href="#new-%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%85%B7%E4%BD%93%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><code>new</code> 操作符具体做了什么？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-25">2020-11-25</a>
 <ul>
-<li><a href="#css3-%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7"># CSS3 的新特性</a></li>
-<li><a href="#%E6%96%B0%E7%9A%84-html5-%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%AD%97%E7%AC%A6%E9%9B%86"># 新的 HTML5 文档类型和字符集</a></li>
-<li><a href="#css3-%E6%96%B0%E5%A2%9E%E4%BC%AA%E7%B1%BB"># CSS3 新增伪类</a></li>
+<li><a href="#css3-%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7">CSS3 的新特性</a></li>
+<li><a href="#%E6%96%B0%E7%9A%84-html5-%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%AD%97%E7%AC%A6%E9%9B%86">新的 HTML5 文档类型和字符集</a></li>
+<li><a href="#css3-%E6%96%B0%E5%A2%9E%E4%BC%AA%E7%B1%BB">CSS3 新增伪类</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-24">2020-11-24</a>
 <ul>
-<li><a href="#px-%E5%92%8C-em-%E7%9A%84%E5%8C%BA%E5%88%AB"># <code>px</code> 和 <code>em</code> 的区别</a></li>
-<li><a href="#foo-foo-bar-%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%99%E6%A0%B7%E5%86%99"># <code>foo = foo || bar</code>，这行代码是什么意思？为什么要这样写？</a></li>
+<li><a href="#px-%E5%92%8C-em-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>px</code> 和 <code>em</code> 的区别</a></li>
+<li><a href="#foo-foo-bar-%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%99%E6%A0%B7%E5%86%99"><code>foo = foo || bar</code>，这行代码是什么意思？为什么要这样写？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-20">2020-11-20</a>
 <ul>
-<li><a href="#%E8%A7%A3%E9%87%8A-javascript-%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"># 解释 JavaScript 的同源策略</a></li>
-<li><a href="#get-%E5%92%8C-post-%E7%9A%84%E5%8C%BA%E5%88%AB-%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-post"># GET 和 POST 的区别？何时使用 POST？</a></li>
-<li><a href="#%E5%B8%B8%E8%A7%81%E7%9A%84-http-%E7%8A%B6%E6%80%81%E7%A0%81-%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"># 常见的 HTTP 状态码？分别是什么意思？</a></li>
+<li><a href="#%E8%A7%A3%E9%87%8A-javascript-%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5">解释 JavaScript 的同源策略</a></li>
+<li><a href="#get-%E5%92%8C-post-%E7%9A%84%E5%8C%BA%E5%88%AB-%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-post">GET 和 POST 的区别？何时使用 POST？</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E7%9A%84-http-%E7%8A%B6%E6%80%81%E7%A0%81-%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D">常见的 HTTP 状态码？分别是什么意思？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-19">2020-11-19</a>
 <ul>
-<li><a href="#jsonp-%E7%9A%84%E5%8E%9F%E7%90%86-%E4%B8%BA%E4%BB%80%E4%B9%88-jsonp-%E4%B8%8D%E6%98%AF%E7%9C%9F%E6%AD%A3%E7%9A%84-ajax"># JSONP 的原理？为什么 JSONP 不是真正的 AJAX？</a></li>
-<li><a href="#ajax-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-ajax"># AJAX 是什么？如何创建一个 AJAX？</a></li>
-<li><a href="#%E7%AE%80%E8%BF%B0-ajax-%E7%9A%84%E8%BF%87%E7%A8%8B"># 简述 AJAX 的过程?</a></li>
+<li><a href="#jsonp-%E7%9A%84%E5%8E%9F%E7%90%86-%E4%B8%BA%E4%BB%80%E4%B9%88-jsonp-%E4%B8%8D%E6%98%AF%E7%9C%9F%E6%AD%A3%E7%9A%84-ajax">JSONP 的原理？为什么 JSONP 不是真正的 AJAX？</a></li>
+<li><a href="#ajax-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-ajax">AJAX 是什么？如何创建一个 AJAX？</a></li>
+<li><a href="#%E7%AE%80%E8%BF%B0-ajax-%E7%9A%84%E8%BF%87%E7%A8%8B">简述 AJAX 的过程?</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-18">2020-11-18</a>
 <ul>
-<li><a href="#%E7%94%A8-javascript-%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E9%80%89%E5%8F%96-10-100-%E4%B9%8B%E9%97%B4%E7%9A%84-10-%E4%B8%AA%E6%95%B0%E5%AD%97-%E5%AD%98%E5%85%A5%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84-%E5%B9%B6%E6%8E%92%E5%BA%8F"># 用 JavaScript 实现随机选取 10-100 之间的 10 个数字，存入一个数组，并排序</a></li>
-<li><a href="#%E6%8A%8A%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%90%88%E5%B9%B6-%E5%B9%B6%E5%88%A0%E9%99%A4%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%85%83%E7%B4%A0"># 把两个数组合并，并删除第二个元素</a></li>
-<li><a href="#%E4%BB%A5%E4%B8%8B%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C"># 以下代码的执行结果</a></li>
+<li><a href="#%E7%94%A8-javascript-%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E9%80%89%E5%8F%96-10-100-%E4%B9%8B%E9%97%B4%E7%9A%84-10-%E4%B8%AA%E6%95%B0%E5%AD%97-%E5%AD%98%E5%85%A5%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84-%E5%B9%B6%E6%8E%92%E5%BA%8F">用 JavaScript 实现随机选取 10-100 之间的 10 个数字，存入一个数组，并排序</a></li>
+<li><a href="#%E6%8A%8A%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%90%88%E5%B9%B6-%E5%B9%B6%E5%88%A0%E9%99%A4%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%85%83%E7%B4%A0">把两个数组合并，并删除第二个元素</a></li>
+<li><a href="#%E4%BB%A5%E4%B8%8B%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C">以下代码的执行结果</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-17">2020-11-17</a>
 <ul>
-<li><a href="#%E4%BB%A5-yyyy-mm-dd-%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BE%93%E5%87%BA%E4%BB%8A%E5%A4%A9%E7%9A%84%E6%97%A5%E6%9C%9F-%E4%BE%8B%E5%A6%82-2014-%E5%B9%B4-9-%E6%9C%88-26-%E6%97%A5%E8%BE%93%E5%87%BA-2014-09-26"># 以 YYYY-MM-DD 的方式输出今天的日期（例如 2014 年 9 月 26 日输出 2014-09-26）</a></li>
-<li><a href="#%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2-tr-td-id-td-td-name-td-tr-%E4%B8%AD%E7%9A%84-id-%E6%9B%BF%E6%8D%A2%E4%B8%BA-10-name-%E6%9B%BF%E6%8D%A2%E4%B8%BA-tony"># 将字符串 <code>&lt;tr&gt;&lt;td&gt;{$id}&lt;/td&gt;&lt;td&gt;{$name}&lt;/td&gt;&lt;/tr&gt;</code> 中的 <code>{$id}</code> 替换为 <code>10</code>，<code>{$name}</code> 替换为 <code>Tony</code></a></li>
-<li><a href="#%E4%B8%8B%E5%88%97%E4%BB%A3%E7%A0%81%E4%BC%9A%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88"># 下列代码会输出什么？为什么？</a></li>
+<li><a href="#%E4%BB%A5-yyyy-mm-dd-%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BE%93%E5%87%BA%E4%BB%8A%E5%A4%A9%E7%9A%84%E6%97%A5%E6%9C%9F-%E4%BE%8B%E5%A6%82-2014-%E5%B9%B4-9-%E6%9C%88-26-%E6%97%A5%E8%BE%93%E5%87%BA-2014-09-26">以 YYYY-MM-DD 的方式输出今天的日期（例如 2014 年 9 月 26 日输出 2014-09-26）</a></li>
+<li><a href="#%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2-tr-td-id-td-td-name-td-tr-%E4%B8%AD%E7%9A%84-id-%E6%9B%BF%E6%8D%A2%E4%B8%BA-10-name-%E6%9B%BF%E6%8D%A2%E4%B8%BA-tony">将字符串 <code>&lt;tr&gt;&lt;td&gt;{$id}&lt;/td&gt;&lt;td&gt;{$name}&lt;/td&gt;&lt;/tr&gt;</code> 中的 <code>{$id}</code> 替换为 <code>10</code>，<code>{$name}</code> 替换为 <code>Tony</code></a></li>
+<li><a href="#%E4%B8%8B%E5%88%97%E4%BB%A3%E7%A0%81%E4%BC%9A%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88">下列代码会输出什么？为什么？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-13">2020-11-13</a>
@@ -153,110 +186,348 @@
 </li>
 <li><a href="#2020-11-12">2020-11-12</a>
 <ul>
-<li><a href="#javascript-%E7%9A%84-typeof-%E8%BF%94%E5%9B%9E%E5%93%AA%E4%BA%9B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"># JavaScript 的 <code>typeof</code> 返回哪些数据类型</a></li>
-<li><a href="#%E4%BE%8B%E4%B8%BE-3-%E7%A7%8D%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%92%8C-2-%E7%A7%8D%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"># 例举 3 种强制类型转换和 2 种隐式类型转换</a></li>
-<li><a href="#split-%E5%92%8C-join-%E7%9A%84%E5%8C%BA%E5%88%AB"># <code>split()</code> 和 <code>join()</code> 的区别</a></li>
+<li><a href="#javascript-%E7%9A%84-typeof-%E8%BF%94%E5%9B%9E%E5%93%AA%E4%BA%9B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">JavaScript 的 <code>typeof</code> 返回哪些数据类型</a></li>
+<li><a href="#%E4%BE%8B%E4%B8%BE-3-%E7%A7%8D%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%92%8C-2-%E7%A7%8D%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">例举 3 种强制类型转换和 2 种隐式类型转换</a></li>
+<li><a href="#split-%E5%92%8C-join-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>split()</code> 和 <code>join()</code> 的区别</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-11">2020-11-11</a>
 <ul>
-<li><a href="#%E5%8E%9F%E7%94%9F-javascript-%E7%9A%84-window-onload-%E4%B8%8E-jquery-%E7%9A%84-document-ready-function-%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"># 原生 JavaScript 的 <code>window.onload</code> 与 jQuery 的 <code>$(document).ready(function () { })</code> 有什么不同？</a></li>
-<li><a href="#img-%E7%9A%84-alt-%E4%B8%8E-title-%E7%9A%84%E5%BC%82%E5%90%8C-strong-%E4%B8%8E-em-%E7%9A%84%E5%BC%82%E5%90%8C"># <code>img</code> 的 <code>alt</code> 与 <code>title</code> 的异同？<code>strong</code> 与 <code>em</code> 的异同?</a></li>
-<li><a href="#%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C%E4%BC%9A%E7%94%A8%E5%88%B0%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F"># 网页制作会用到的图片格式</a></li>
+<li><a href="#%E5%8E%9F%E7%94%9F-javascript-%E7%9A%84-window-onload-%E4%B8%8E-jquery-%E7%9A%84-document-ready-function-%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C">原生 JavaScript 的 <code>window.onload</code> 与 jQuery 的 <code>$(document).ready(function () { })</code> 有什么不同？</a></li>
+<li><a href="#img-%E7%9A%84-alt-%E4%B8%8E-title-%E7%9A%84%E5%BC%82%E5%90%8C-strong-%E4%B8%8E-em-%E7%9A%84%E5%BC%82%E5%90%8C"><code>img</code> 的 <code>alt</code> 与 <code>title</code> 的异同？<code>strong</code> 与 <code>em</code> 的异同?</a></li>
+<li><a href="#%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C%E4%BC%9A%E7%94%A8%E5%88%B0%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F">网页制作会用到的图片格式</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-10">2020-11-10</a>
 <ul>
-<li><a href="#%E4%BD%BF%E7%94%A8-link-%E5%92%8C-import-%E5%BC%95%E5%85%A5-css-%E7%9A%84%E5%8C%BA%E5%88%AB"># 使用 <code>link</code> 和 <code>@import</code> 引入 CSS 的区别？</a></li>
-<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81-%E5%88%9D%E5%A7%8B%E5%8C%96-%E6%A0%B7%E5%BC%8F"># 为什么要 <code>初始化</code> 样式？</a></li>
-<li><a href="#bfc-%E6%98%AF%E4%BB%80%E4%B9%88"># <code>BFC</code> 是什么？</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-link-%E5%92%8C-import-%E5%BC%95%E5%85%A5-css-%E7%9A%84%E5%8C%BA%E5%88%AB">使用 <code>link</code> 和 <code>@import</code> 引入 CSS 的区别？</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81-%E5%88%9D%E5%A7%8B%E5%8C%96-%E6%A0%B7%E5%BC%8F">为什么要 <code>初始化</code> 样式？</a></li>
+<li><a href="#bfc-%E6%98%AF%E4%BB%80%E4%B9%88"><code>BFC</code> 是什么？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-08">2020-11-08</a>
 <ul>
-<li><a href="#%E4%B8%8B%E5%88%97-javascript-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%90%8E-%E4%BE%9D%E6%AC%A1-alert-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF"># 下列 JavaScript 代码执行后，依次 alert() 的结果是？</a></li>
-<li><a href="#%E4%B8%8B%E5%88%97-javascript-%E4%BB%A3%E7%A0%81%E7%9A%84%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E4%B8%BA"># 下列 JavaScript 代码的输出结果为？</a></li>
-<li><a href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0-%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0-%E5%92%8C%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E7%9A%84%E5%85%B7%E4%BD%93%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88-%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84-padding-%E5%92%8C-margin-%E5%8F%AF%E8%AE%BE%E7%BD%AE%E5%90%97"># 行内元素（内联元素）和块级元素的具体区别是什么？行内元素的 padding 和 margin 可设置吗？</a></li>
+<li><a href="#%E4%B8%8B%E5%88%97-javascript-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%90%8E-%E4%BE%9D%E6%AC%A1-alert-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF">下列 JavaScript 代码执行后，依次 alert() 的结果是？</a></li>
+<li><a href="#%E4%B8%8B%E5%88%97-javascript-%E4%BB%A3%E7%A0%81%E7%9A%84%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E4%B8%BA">下列 JavaScript 代码的输出结果为？</a></li>
+<li><a href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0-%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0-%E5%92%8C%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E7%9A%84%E5%85%B7%E4%BD%93%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88-%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84-padding-%E5%92%8C-margin-%E5%8F%AF%E8%AE%BE%E7%BD%AE%E5%90%97">行内元素（内联元素）和块级元素的具体区别是什么？行内元素的 padding 和 margin 可设置吗？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-06">2020-11-06</a>
 <ul>
-<li><a href="#%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%8F%96%E8%BF%99%E4%B8%AA-div-%E7%9A%84-dom-%E5%AF%B9%E8%B1%A1-%E5%A6%82%E4%BD%95%E6%8A%8A-dom-%E5%AF%B9%E8%B1%A1-%E8%BD%AC%E6%8D%A2%E4%B8%BA-jquery-%E5%AF%B9%E8%B1%A1"># 有哪几种方式可以直接获取这个 div 的 <code>DOM 对象</code> ？如何把 <code>DOM 对象</code> 转换为 <code>jQuery 对象</code> ？</a></li>
-<li><a href="#%E5%8E%9F%E7%94%9F%E7%9A%84-javascript-%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E6%88%96%E9%9A%90%E8%97%8F%E4%B8%80%E4%B8%AA-dom-%E5%85%83%E7%B4%A0"># 原生的 JavaScript 如何显示或隐藏一个 DOM 元素？</a></li>
-<li><a href="#javascript-%E7%9A%84%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E6%9C%89%E5%93%AA%E4%BA%9B"># JavaScript 的循环语句有哪些？</a></li>
+<li><a href="#%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%8F%96%E8%BF%99%E4%B8%AA-div-%E7%9A%84-dom-%E5%AF%B9%E8%B1%A1-%E5%A6%82%E4%BD%95%E6%8A%8A-dom-%E5%AF%B9%E8%B1%A1-%E8%BD%AC%E6%8D%A2%E4%B8%BA-jquery-%E5%AF%B9%E8%B1%A1">有哪几种方式可以直接获取这个 div 的 <code>DOM 对象</code> ？如何把 <code>DOM 对象</code> 转换为 <code>jQuery 对象</code> ？</a></li>
+<li><a href="#%E5%8E%9F%E7%94%9F%E7%9A%84-javascript-%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E6%88%96%E9%9A%90%E8%97%8F%E4%B8%80%E4%B8%AA-dom-%E5%85%83%E7%B4%A0">原生的 JavaScript 如何显示或隐藏一个 DOM 元素？</a></li>
+<li><a href="#javascript-%E7%9A%84%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E6%9C%89%E5%93%AA%E4%BA%9B">JavaScript 的循环语句有哪些？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-05">2020-11-05</a>
 <ul>
-<li><a href="#console-log-8-1-%E7%9A%84%E8%BE%93%E5%87%BA%E5%80%BC"># <code>console.log(8 | 1)</code> 的输出值</a></li>
-<li><a href="#alert-0-4-0-2-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%E5%A4%9A%E5%B0%91-%E5%92%8C%E4%BD%A0%E9%A2%84%E6%9C%9F%E7%9A%84%E4%B8%80%E6%A0%B7%E5%90%97-%E5%A6%82%E6%9E%9C%E4%B8%8D%E4%B8%80%E6%A0%B7%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3"># <code>alert(0.4 * 0.2)</code> 的结果是多少？和你预期的一样吗？如果不一样怎么解决？</a></li>
+<li><a href="#console-log-8-1-%E7%9A%84%E8%BE%93%E5%87%BA%E5%80%BC"><code>console.log(8 | 1)</code> 的输出值</a></li>
+<li><a href="#alert-0-4-0-2-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%E5%A4%9A%E5%B0%91-%E5%92%8C%E4%BD%A0%E9%A2%84%E6%9C%9F%E7%9A%84%E4%B8%80%E6%A0%B7%E5%90%97-%E5%A6%82%E6%9E%9C%E4%B8%8D%E4%B8%80%E6%A0%B7%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3"><code>alert(0.4 * 0.2)</code> 的结果是多少？和你预期的一样吗？如果不一样怎么解决？</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-04">2020-11-04</a>
 <ul>
-<li><a href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA-javascript-%E5%8F%98%E9%87%8F%E6%98%AF%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"># 如何判断一个 JavaScript 变量是数组类型</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA-javascript-%E5%8F%98%E9%87%8F%E6%98%AF%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B">如何判断一个 JavaScript 变量是数组类型</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-03">2020-11-03</a>
 <ul>
-<li><a href="#%E7%AE%80%E8%BF%B0-readonly-%E4%B8%8E-disabled-%E7%9A%84%E5%8C%BA%E5%88%AB"># 简述 <code>readonly</code> 与 <code>disabled</code> 的区别</a></li>
-<li><a href="#%E5%B7%B2%E7%9F%A5%E6%9C%89%E5%AD%97%E7%AC%A6%E4%B8%B2-get-element-by-id-%E5%86%99%E4%B8%80%E4%B8%AA-function-%E5%B0%86%E5%85%B6%E8%BD%AC%E5%8C%96%E6%88%90%E9%A9%BC%E5%B3%B0%E8%A1%A8%E7%A4%BA%E6%B3%95-getelementbyid"># 已知有字符串 get-element-by-id，写一个 function 将其转化成驼峰表示法 getElementById</a></li>
+<li><a href="#%E7%AE%80%E8%BF%B0-readonly-%E4%B8%8E-disabled-%E7%9A%84%E5%8C%BA%E5%88%AB">简述 <code>readonly</code> 与 <code>disabled</code> 的区别</a></li>
+<li><a href="#%E5%B7%B2%E7%9F%A5%E6%9C%89%E5%AD%97%E7%AC%A6%E4%B8%B2-get-element-by-id-%E5%86%99%E4%B8%80%E4%B8%AA-function-%E5%B0%86%E5%85%B6%E8%BD%AC%E5%8C%96%E6%88%90%E9%A9%BC%E5%B3%B0%E8%A1%A8%E7%A4%BA%E6%B3%95-getelementbyid">已知有字符串 get-element-by-id，写一个 function 将其转化成驼峰表示法 getElementById</a></li>
 </ul>
 </li>
 <li><a href="#2020-11-01">2020-11-01</a>
 <ul>
-<li><a href="#%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"># 阻止事件冒泡和默认事件的方法</a></li>
-<li><a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9-%E6%9B%BF%E6%8D%A2%E8%8A%82%E7%82%B9-%E6%8F%92%E5%85%A5%E5%88%B0%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%96%B9%E6%B3%95"># 添加节点、删除节点、替换节点、插入到某个节点的方法</a></li>
-<li><a href="#javascript-%E4%B8%AD%E4%BC%9A%E8%A2%AB%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%BA-false-%E7%9A%84%E5%80%BC"># JavaScript 中会被隐式转换为 false 的值</a></li>
+<li><a href="#%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95">阻止事件冒泡和默认事件的方法</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9-%E6%9B%BF%E6%8D%A2%E8%8A%82%E7%82%B9-%E6%8F%92%E5%85%A5%E5%88%B0%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%96%B9%E6%B3%95">添加节点、删除节点、替换节点、插入到某个节点的方法</a></li>
+<li><a href="#javascript-%E4%B8%AD%E4%BC%9A%E8%A2%AB%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%BA-false-%E7%9A%84%E5%80%BC">JavaScript 中会被隐式转换为 false 的值</a></li>
 </ul>
 </li>
 <li><a href="#2020-10-30">2020-10-30</a>
 <ul>
-<li><a href="#css-%E4%B8%AD-rgba-%E4%B8%8E-opacity-%E7%9A%84%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9A%84%E5%8C%BA%E5%88%AB"># CSS 中 <code>rgba()</code> 与 <code>opacity</code> 的透明效果的区别</a></li>
-<li><a href="#javascript-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"># JavaScript 事件委托</a></li>
+<li><a href="#css-%E4%B8%AD-rgba-%E4%B8%8E-opacity-%E7%9A%84%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9A%84%E5%8C%BA%E5%88%AB">CSS 中 <code>rgba()</code> 与 <code>opacity</code> 的透明效果的区别</a></li>
+<li><a href="#javascript-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">JavaScript 事件委托</a></li>
 </ul>
 </li>
 <li><a href="#2020-10-29">2020-10-29</a>
 <ul>
-<li><a href="#css-%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5%E6%9E%84%E6%88%90"># CSS 的基本语句构成</a></li>
-<li><a href="#%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA-dom-%E8%8A%82%E7%82%B9%E5%9C%A8%E8%A2%AB%E7%82%B9%E5%87%BB%E6%97%B6%E5%80%99%E6%89%A7%E8%A1%8C%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0"># 如何让一个 DOM 节点在被点击时候执行一个函数？</a></li>
-<li><a href="#%E7%AE%80%E8%BF%B0%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"># 简述定义函数的几种方式</a></li>
+<li><a href="#css-%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5%E6%9E%84%E6%88%90">CSS 的基本语句构成</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA-dom-%E8%8A%82%E7%82%B9%E5%9C%A8%E8%A2%AB%E7%82%B9%E5%87%BB%E6%97%B6%E5%80%99%E6%89%A7%E8%A1%8C%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0">如何让一个 DOM 节点在被点击时候执行一个函数？</a></li>
+<li><a href="#%E7%AE%80%E8%BF%B0%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F">简述定义函数的几种方式</a></li>
 </ul>
 </li>
 <li><a href="#2020-10-24">2020-10-24</a>
 <ul>
-<li><a href="#%E7%AE%80%E8%BF%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E6%9C%BA%E5%88%B6"># 简述浏览器渲染页面机制</a></li>
-<li><a href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84-http-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"># 简述一个完整的 HTTP 事务处理过程</a></li>
-<li><a href="#%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%9C%89%E5%93%AA%E4%BA%9B"># 前端性能优化有哪些？</a></li>
+<li><a href="#%E7%AE%80%E8%BF%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E6%9C%BA%E5%88%B6">简述浏览器渲染页面机制</a></li>
+<li><a href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84-http-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B">简述一个完整的 HTTP 事务处理过程</a></li>
+<li><a href="#%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%9C%89%E5%93%AA%E4%BA%9B">前端性能优化有哪些？</a></li>
 </ul>
 </li>
 <li><a href="#2020-10-23">2020-10-23</a>
 <ul>
-<li><a href="#var-%E5%92%8C-const-%E7%9A%84%E5%8C%BA%E5%88%AB"># <code>var</code> 和 <code>const</code> 的区别</a></li>
-<li><a href="#%E5%9C%A8-css-%E5%B8%83%E5%B1%80%E4%B8%AD-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"># 在 CSS 布局中，什么场景下会出现外边距合并问题？如何解决？</a></li>
-<li><a href="#break-continue-return-throw-%E7%9A%84%E4%BD%9C%E7%94%A8"># <code>break</code>、<code>continue</code>、<code>return</code>、<code>throw</code> 的作用</a></li>
-<li><a href="#xss-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86%E4%B8%8E%E9%98%B2%E5%BE%A1"># <code>XSS</code> 攻击原理与防御</a></li>
+<li><a href="#var-%E5%92%8C-const-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>var</code> 和 <code>const</code> 的区别</a></li>
+<li><a href="#%E5%9C%A8-css-%E5%B8%83%E5%B1%80%E4%B8%AD-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3">在 CSS 布局中，什么场景下会出现外边距合并问题？如何解决？</a></li>
+<li><a href="#break-continue-return-throw-%E7%9A%84%E4%BD%9C%E7%94%A8"><code>break</code>、<code>continue</code>、<code>return</code>、<code>throw</code> 的作用</a></li>
+<li><a href="#xss-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86%E4%B8%8E%E9%98%B2%E5%BE%A1"><code>XSS</code> 攻击原理与防御</a></li>
 </ul>
 </li>
 <li><a href="#2020-10-22">2020-10-22</a>
 <ul>
-<li><a href="#%E5%9C%A8-css-%E5%B8%83%E5%B1%80%E4%B8%AD-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%87%BA%E7%8E%B0%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98"># 在 CSS 布局中，什么场景下出现元素高度塌陷，如何解决元素高度塌陷问题？</a></li>
-<li><a href="#display-none-%E5%92%8C-visibility-hidden-%E7%9A%84%E5%8C%BA%E5%88%AB"># <code>display: none</code> 和 <code>visibility: hidden</code> 的区别？</a></li>
-<li><a href="#css-%E5%AE%9A%E4%BD%8D%E6%9C%89%E5%87%A0%E7%A7%8D-%E5%90%84%E4%B8%AA%E5%AE%9A%E4%BD%8D%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"># CSS 定位有几种，各个定位方式有什么区别？</a></li>
-<li><a href="#javascript-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%9C%89%E5%93%AA%E4%BA%9B-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"># JavaScript 原始数据类型有哪些？引用类型数据有哪些？原始数据类型和引用类型的区别?</a></li>
+<li><a href="#%E5%9C%A8-css-%E5%B8%83%E5%B1%80%E4%B8%AD-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%87%BA%E7%8E%B0%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98">在 CSS 布局中，什么场景下出现元素高度塌陷，如何解决元素高度塌陷问题？</a></li>
+<li><a href="#display-none-%E5%92%8C-visibility-hidden-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>display: none</code> 和 <code>visibility: hidden</code> 的区别？</a></li>
+<li><a href="#css-%E5%AE%9A%E4%BD%8D%E6%9C%89%E5%87%A0%E7%A7%8D-%E5%90%84%E4%B8%AA%E5%AE%9A%E4%BD%8D%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">CSS 定位有几种，各个定位方式有什么区别？</a></li>
+<li><a href="#javascript-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%9C%89%E5%93%AA%E4%BA%9B-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB">JavaScript 原始数据类型有哪些？引用类型数据有哪些？原始数据类型和引用类型的区别?</a></li>
 </ul>
 </li>
 <li><a href="#2020-10-20">2020-10-20</a>
 <ul>
-<li><a href="#%E5%AF%B9-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B-%E8%BF%99%E4%B8%AA%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%E4%BB%A5%E5%8F%8A%E5%AE%83%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84-css-%E5%B1%9E%E6%80%A7"># 对 <code>盒子模型</code> 这个概念的理解以及它涉及到的 CSS 属性</a></li>
-<li><a href="#%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%9C%89%E5%93%AA%E4%B8%89%E5%B1%82%E6%9E%84%E6%88%90-%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88-%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"># 前端页面有哪三层构成，分别是什么？作用是什么？</a></li>
+<li><a href="#%E5%AF%B9-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B-%E8%BF%99%E4%B8%AA%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%E4%BB%A5%E5%8F%8A%E5%AE%83%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84-css-%E5%B1%9E%E6%80%A7">对 <code>盒子模型</code> 这个概念的理解以及它涉及到的 CSS 属性</a></li>
+<li><a href="#%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%9C%89%E5%93%AA%E4%B8%89%E5%B1%82%E6%9E%84%E6%88%90-%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88-%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88">前端页面有哪三层构成，分别是什么？作用是什么？</a></li>
 </ul>
 </li>
 </ul>
-<hr>
 <h2 id=""></h2>
-<h2 id="20201217">20201217</h2>
-<h4 id="instanceof-和-typeof-怎么用-有什么区别"># <code>instanceof</code> 和 <code>typeof</code> 怎么用？有什么区别？</h4>
+<h2 id="2020-12-28">2020-12-28</h2>
+<h4 id="call-和-apply-的区别是什么"><code>call</code> 和 <code>apply</code> 的区别是什么？</h4>
+<ul>
+<li><code>call(修改后的 this 指向, 函数参数1, 函数参数2, ...)</code></li>
+<li><code>apply(修改后的 this 指向, [函数参数1, 函数参数2, ...])</code></li>
+</ul>
+<h4 id="列举常用的-bom-对象和常用-window-对象方法">列举常用的 BOM 对象和常用 window 对象方法</h4>
+<p>常用 BOM 对象</p>
+<ul>
+<li>window</li>
+<li>document</li>
+<li>location</li>
+<li>screen</li>
+<li>history</li>
+<li>navigator</li>
+</ul>
+<p>常用方法</p>
+<ul>
+<li>alert()</li>
+<li>confirm()</li>
+<li>prompt()</li>
+<li>open()</li>
+<li>close()</li>
+</ul>
+<h4 id="简述-sass-和-less-以及区别">简述 Sass 和 Less，以及区别</h4>
+<p>简述</p>
+<ul>
+<li>动态样式语言</li>
+</ul>
+<p>区别</p>
+<ul>
+<li>
+<p>实现方式</p>
+<ul>
+<li>Less 基于 JavaScript，可以在客户端或服务端处理。</li>
+<li>Sass 基于 Ruby，需要在服务器端处理。</li>
+</ul>
+</li>
+<li>
+<p>变量</p>
+<ul>
+<li>Less - <code>@</code> 前缀</li>
+<li>Sass - <code>$</code> 前缀</li>
+</ul>
+</li>
+</ul>
+<h4 id="javascript-原型-原型链是什么-有什么特点">JavaScript 原型、原型链是什么，有什么特点？</h4>
+<ul>
+<li>原型对象也是普通的对象，是对象自带的隐式 <code>__proto__</code> 属性。</li>
+<li>原型也有可能有自己的原型，如果一个原型对象的原型不为 <code>null</code>，就称之为原型链。</li>
+<li>原型链是由一些用来继承和共享属性的对象组成的（有限的）对象链。</li>
+<li>当需要一个属性时，Javascript 会先看当前对象中是否有这个属性，如果没有，就会查找其 <code>Prototype</code> 对象是否有这个属性。</li>
+</ul>
+<h2 id="2020-12-25">2020-12-25</h2>
+<h4 id="javascript-如何实现-javascript-对象的继承">JavaScript 如何实现 JavaScript 对象的继承？</h4>
+<blockquote>
+<p><a href="https://www.cnblogs.com/chaixiaozhi/p/8515087.html">https://www.cnblogs.com/chaixiaozhi/p/8515087.html</a></p>
+</blockquote>
+<ul>
+<li>
+<p>原型链继承</p>
+<ul>
+<li>核心：将父类的实例作为子类的原型</li>
+<li>缺点：父类新增原型方法 / 原型属性，子类都能访问到，父类一变其它的都变了</li>
+</ul>
+</li>
+<li>
+<p>构造继承</p>
+</li>
+<li>
+<p>组合继承</p>
+</li>
+<li>
+<p>寄生组合继承</p>
+</li>
+</ul>
+<h4 id="如何获取对象-obj-拥有的所有属性-可枚举的-不可枚举的-不包括继承来的属性">如何获取对象 obj 拥有的所有属性（可枚举的、不可枚举的，不包括继承来的属性）</h4>
+<ul>
+<li>
+<p>获取对象可遍历和不可遍历的属性（键名）</p>
+<pre><code class="language-javascript"><div><span class="hljs-built_in">Object</span>.getOwnPropertyNames(a)
+</div></code></pre>
+</li>
+<li>
+<p>使用 <code>for...in</code> 并过滤继承的属性</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> arr = [];
+<span class="hljs-keyword">for</span> (prop <span class="hljs-keyword">in</span> obj) {
+    <span class="hljs-keyword">if</span>(obj.hasOwnproperty(prop)) {
+        arr.push(prop);
+    }
+}
+</div></code></pre>
+</li>
+</ul>
+<h4 id="vue-中-v-if-和-v-show-指令的共同点和不同点">Vue 中，<code>v-if</code> 和 <code>v-show</code> 指令的共同点和不同点</h4>
+<ul>
+<li><code>v-if</code> 隐藏元素后，元素不存在 DOM 中。</li>
+<li><code>v-show</code> 通过 <code>display: none</code> 隐藏元素。</li>
+</ul>
+<h2 id="2020-12-24">2020-12-24</h2>
+<h4 id="javascript-的-this-作用域">JavaScript 的 this、作用域</h4>
+<ul>
+<li>
+<p>this（指向调用者，会随着执行环境的改变而改变）</p>
+<ul>
+<li>在方法中，<code>this</code> 表示该方法所属的对象。</li>
+<li>如果单独使用，<code>this</code> 表示全局对象。</li>
+<li>在函数中，<code>this</code> 表示全局对象。</li>
+<li>在函数中，在严格模式下，<code>this</code> 是未定义的（<code>undefined</code>）。</li>
+<li>在事件中，<code>this</code> 表示接收事件的元素。</li>
+<li>类似 <code>call()</code> 和 <code>apply()</code> 方法可以将 <code>this</code> 引用到任何对象。</li>
+</ul>
+</li>
+<li>
+<p>作用域（可访问的变量的集合）</p>
+<ul>
+<li>变量在函数内声明，为局部变量（只能在函数内部访问）</li>
+<li>变量在函数外定义，为全局变量（网页中所有脚本和函数均可使用）</li>
+<li><code>let</code>、<code>const</code> 声明的变量在块级作用域（<code>{ ... }</code>）中有效</li>
+</ul>
+</li>
+</ul>
+<h4 id="闭包是什么-有什么特性-对页面有什么影响">闭包是什么？有什么特性？对页面有什么影响？</h4>
+<ul>
+<li>闭包就是能够读取其他函数内部变量的函数。</li>
+<li>内部函数总是可以访问其所在的外部函数中声明的参数和变量，即使在其外部函数被返回（寿命终结）了之后。</li>
+<li>特性
+<ul>
+<li>让外部访问函数内部变量成为可能。</li>
+<li>局部变量会常驻在内存中。</li>
+<li>可以避免使用全局变量，防止全局变量污染。</li>
+</ul>
+</li>
+<li>影响
+<ul>
+<li>可能会造成内存泄漏（有一块内存空间被长期占用，而不被释放）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="vue-如何更新数组数据-对象数据">Vue 如何更新数组数据、对象数据？</h4>
+<ul>
+<li>
+<p><code>data</code> 对象中的数据通过绑定 <code>getter</code> 和 <code>setter</code> 观察数据变化并同步更新到页面中。</p>
+</li>
+<li>
+<p>手动更新数组数据并同步到页面中：</p>
+<ul>
+<li>使用被 Vue 包裹过的方法</li>
+<li>直接替换整个数组（可使用 <code>展开</code> 保留原有数据）</li>
+<li>使用 Vue 对象或 Vue 的静态 <code>set</code>、<code>delete</code> 方法
+<ul>
+<li><code>vm.$set(vm.数组, 下标，值)</code></li>
+<li><code>vm.$delete(vm.数组, 下标)</code></li>
+<li><code>Vue.set(vm.数组, 下标, 值)</code></li>
+<li><code>Vue.delete(vm.数组, 下标)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>手动更新对象数据并同步到页面中：</p>
+<ul>
+<li>直接替换整个对象（可使用 <code>展开</code> 保留原有数据）</li>
+<li>使用 Vue 对象或 Vue 的静态 <code>set</code>、<code>delete</code> 方法
+<ul>
+<li><code>vm.$set(vm.对象, 属性名，属性值)</code></li>
+<li><code>vm.$delete(vm.对象, 属性名)</code></li>
+<li><code>Vue.set(vm.对象, 属性名, 属性值)</code></li>
+<li><code>Vue.delete(vm.对象, 属性名)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2020-12-22">2020-12-22</h2>
+<h4 id="什么是-mvvm">什么是 MVVM？</h4>
+<ul>
+<li>MVVM（Model-View-ViewModel）最早由微软提出来，它借鉴了桌面应用程序的 MVC（Model-View-Controller）思想。</li>
+<li>在前端页面中，把 Model（数据模型）用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。</li>
+<li>把 Model 和 View 关联起来的就是 ViewModel。</li>
+<li>ViewModel 负责把 Model 的数据同步到 View 显示出来，还负责把 View 的修改同步回 Model。</li>
+</ul>
+<h2 id="2020-12-21">2020-12-21</h2>
+<h4 id="cookies-sessionstorage-和-localstorage-的区别">cookies、sessionStorage 和 localStorage 的区别</h4>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>cookie</th>
+<th>sessionStorage</th>
+<th>localStorage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据生命周期</td>
+<td>生成时指定 maxAge（默认关闭浏览器时失效）</td>
+<td>页面会话期间可用</td>
+<td>一直存在，直到被清除</td>
+</tr>
+<tr>
+<td>存放数据大小</td>
+<td>4KB 左右</td>
+<td>{{colspan=2}}&gt;= 5MB</td>
+<td>{{REMOVE}}</td>
+</tr>
+<tr>
+<td>与服务器通信</td>
+<td>每次 HTTP 请求时都会在 HTTP 请求头中携带</td>
+<td>{{colspan=2}}需要时使用，不参与和服务器的通信</td>
+<td>{{REMOVE}}</td>
+</tr>
+<tr>
+<td>易用性</td>
+<td>需要自己封装方法（setCookie、getCookie）</td>
+<td>{{colspan=2}}可以使用原生接口，也可以封装</td>
+<td>{{REMOVE}}</td>
+</tr>
+<tr>
+<td>共同点</td>
+<td>{{colspan=3}}保存在客户端（浏览器）</td>
+<td>{{REMOVE}}</td>
+<td>{{REMOVE}}</td>
+</tr>
+</tbody>
+</table>
+<h4 id="同步和异步的区别-javascript-实现异步的方式有哪些">同步和异步的区别？JavaScript 实现异步的方式有哪些？</h4>
+<ul>
+<li>方式
+<ul>
+<li>回调函数</li>
+<li>事件监听</li>
+<li>发布 / 订阅模式</li>
+<li>Promise</li>
+<li>Generator (ES6)</li>
+<li>async / await (ES7)</li>
+</ul>
+</li>
+</ul>
+<h2 id="2020-12-17">2020-12-17</h2>
+<h4 id="instanceof-和-typeof-怎么用-有什么区别"><code>instanceof</code> 和 <code>typeof</code> 怎么用？有什么区别？</h4>
 <blockquote>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof">MDN - instanceof</a><br>
 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof">MDN - typeof</a></p>
@@ -282,7 +553,7 @@
 <p><code>typeof</code> 操作符返回一个字符串，表示未经计算的操作数的类型。</p>
 </li>
 </ul>
-<h4 id="es6-箭头函数与普通函数的区别"># ES6 箭头函数与普通函数的区别</h4>
+<h4 id="es6-箭头函数与普通函数的区别">ES6 箭头函数与普通函数的区别</h4>
 <ul>
 <li>外形不同（箭头函数使用箭头定义）</li>
 <li>箭头函数全都是匿名函数</li>
@@ -292,8 +563,7 @@
 <li>箭头函数不能用于构造函数（不能 <code>new</code>）</li>
 </ul>
 <h2 id="2020-12-16">2020-12-16</h2>
-<hr>
-<h4 id="编写一个数组去重的方法"># 编写一个数组去重的方法</h4>
+<h4 id="编写一个数组去重的方法">编写一个数组去重的方法</h4>
 <pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrRD</span>(<span class="hljs-params">arr</span>) </span>{
     <span class="hljs-keyword">var</span> arrNew = [];
 
@@ -306,15 +576,14 @@
     <span class="hljs-keyword">return</span> arrNew;
 }
 </div></code></pre>
-<hr>
-<h4 id="边输入边获取-input-输入框的值-用哪个事件比较好"># 边输入边获取 input 输入框的值，用哪个事件比较好？</h4>
+<h4 id="边输入边获取-input-输入框的值-用哪个事件比较好">边输入边获取 input 输入框的值，用哪个事件比较好？</h4>
 <ul>
 <li><code>input</code></li>
 <li><code>keyup</code></li>
 </ul>
+<p>--</p>
 <h2 id="2020-12-15">2020-12-15</h2>
-<hr>
-<h4 id="什么是严格模式"># 什么是严格模式？</h4>
+<h4 id="什么是严格模式">什么是严格模式？</h4>
 <blockquote>
 <p><a href="https://www.runoob.com/js/js-strict.html">https://www.runoob.com/js/js-strict.html</a></p>
 </blockquote>
@@ -351,16 +620,14 @@
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="严格模式的好处"># 严格模式的好处？</h4>
+<h4 id="严格模式的好处">严格模式的好处？</h4>
 <ul>
 <li>消除代码运行的一些不安全之处，保证代码运行的安全。</li>
 <li>提高编译器的效率，增加运行速度。</li>
 <li>为未来新版本的 JavasSript 做好铺垫。</li>
 </ul>
 <h2 id="2020-12-11">2020-12-11</h2>
-<hr>
-<h4 id="less-sass-是什么-大家为什么要使用它们"># Less、Sass 是什么？大家为什么要使用它们？</h4>
+<h4 id="less-sass-是什么-大家为什么要使用它们">Less、Sass 是什么？大家为什么要使用它们？</h4>
 <ul>
 <li>
 <p>它们是 CSS 的预处理器，是 CSS 上的一种抽象层，是一种特殊的语法 / 语言，可编译为 CSS。</p>
@@ -393,8 +660,7 @@
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="关于事件-ie-与-firefox-的事件机制有什么区别"># 关于事件，IE 与 FireFox 的事件机制有什么区别？</h4>
+<h4 id="关于事件-ie-与-firefox-的事件机制有什么区别">关于事件，IE 与 FireFox 的事件机制有什么区别？</h4>
 <ul>
 <li>IE
 <ul>
@@ -413,8 +679,7 @@
 </li>
 </ul>
 <h2 id="2020-12-10">2020-12-10</h2>
-<hr>
-<h4 id="将数字-12345678-转化成-rmb-形式-12-345-678"># 将数字 <code>12345678</code> 转化成 RMB 形式（<code>12,345,678</code>）</h4>
+<h4 id="将数字-12345678-转化成-rmb-形式-12-345-678">将数字 <code>12345678</code> 转化成 RMB 形式（<code>12,345,678</code>）</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;12345678&#x27;</span>;
 <span class="hljs-keyword">var</span> strArr = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse();
 
@@ -429,16 +694,14 @@ strArr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</
 str = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse(<span class="hljs-string">&#x27;&#x27;</span>).join(<span class="hljs-string">&#x27;&#x27;</span>);
 </div></code></pre>
 <h2 id="2020-12-08">2020-12-08</h2>
-<hr>
-<h4 id="同步和异步的区别"># 同步和异步的区别</h4>
+<h4 id="同步和异步的区别">同步和异步的区别</h4>
 <ul>
 <li>同步：阻塞的</li>
 <li>异步：非阻塞的</li>
 <li>在同步任务完成后再进行异步任务</li>
 </ul>
 <h2 id="2020-12-04">2020-12-04</h2>
-<hr>
-<h4 id="去除数组中重复的元素"># 去除数组中重复的元素</h4>
+<h4 id="去除数组中重复的元素">去除数组中重复的元素</h4>
 <blockquote>
 <p><code>['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b']</code></p>
 </blockquote>
@@ -454,8 +717,7 @@ arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</spa
 <span class="hljs-built_in">console</span>.log(arrNew); <span class="hljs-comment">// [&#x27;c&#x27;, &#x27;a&#x27;, &#x27;z&#x27;, &#x27;x&#x27;, &#x27;b&#x27;]</span>
 </div></code></pre>
 <h2 id="2020-12-03">2020-12-03</h2>
-<hr>
-<h4 id="javascript-中-ie-和标准下有哪些兼容性的写法"># JavaScript 中，IE 和标准下有哪些兼容性的写法</h4>
+<h4 id="javascript-中-ie-和标准下有哪些兼容性的写法">JavaScript 中，IE 和标准下有哪些兼容性的写法</h4>
 <pre><code class="language-javascript"><div><span class="hljs-comment">// 获取页面可视区的宽度</span>
 <span class="hljs-keyword">var</span> visibleWidth = <span class="hljs-built_in">document</span>.documentElement.clientWidth || <span class="hljs-built_in">document</span>.body.clientWidth;
 
@@ -474,21 +736,18 @@ ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = <span class="hljs-
 <span class="hljs-comment">// 阻止默认事件</span>
 ev.preventDefault ? ev.preventDefault() : ev.returnValue = <span class="hljs-literal">false</span>;
 </div></code></pre>
-<hr>
-<h4 id="获取某个-dom-对象的非行内样式的函数"># 获取某个 DOM 对象的非行内样式的函数</h4>
+<h4 id="获取某个-dom-对象的非行内样式的函数">获取某个 DOM 对象的非行内样式的函数</h4>
 <pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStyle</span>(<span class="hljs-params">elem, attr</span>) </span>{
     <span class="hljs-keyword">return</span> elem.currentStyle ? elem.currentStyle[attr] : <span class="hljs-built_in">window</span>.getComputedStyle(elem, <span class="hljs-literal">null</span>)[attr];
 }
 getStyle(box, <span class="hljs-string">&#x27;width&#x27;</span>);
 </div></code></pre>
-<hr>
-<h4 id="将-12345678-变成-87654321-反转字符串"># 将 <code>12345678</code> 变成 <code>87654321</code>（反转字符串）</h4>
+<h4 id="将-12345678-变成-87654321-反转字符串">将 <code>12345678</code> 变成 <code>87654321</code>（反转字符串）</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;12345678&#x27;</span>;
 str = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>);
 </div></code></pre>
 <h2 id="2020-12-02">2020-12-02</h2>
-<hr>
-<h4 id="dom-操作中-查找节点的方法"># DOM 操作中，查找节点的方法</h4>
+<h4 id="dom-操作中-查找节点的方法">DOM 操作中，查找节点的方法</h4>
 <ul>
 <li><code>getElementById()</code></li>
 <li><code>getElementsByName()</code></li>
@@ -497,8 +756,7 @@ str = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<s
 <li><code>querySelector()</code></li>
 <li><code>querySelectorAll()</code></li>
 </ul>
-<hr>
-<h4 id="数组方法-pop-push-shift-unshift-的作用"># 数组方法 <code>pop()</code>、<code>push()</code>、<code>shift()</code>、<code>unshift()</code> 的作用</h4>
+<h4 id="数组方法-pop-push-shift-unshift-的作用">数组方法 <code>pop()</code>、<code>push()</code>、<code>shift()</code>、<code>unshift()</code> 的作用</h4>
 <table>
 <thead>
 <tr>
@@ -525,8 +783,7 @@ str = str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<s
 </tr>
 </tbody>
 </table>
-<hr>
-<h4 id="判断字符串-asdfssaaasasasasaa-中出现次数最多的字符以及出现的次数"># 判断字符串 <code>asdfssaaasasasasaa</code> 中出现次数最多的字符以及出现的次数</h4>
+<h4 id="判断字符串-asdfssaaasasasasaa-中出现次数最多的字符以及出现的次数">判断字符串 <code>asdfssaaasasasasaa</code> 中出现次数最多的字符以及出现的次数</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;asdfssaaasasasasaa&#x27;</span>;
 <span class="hljs-keyword">var</span> count = {};
 <span class="hljs-keyword">var</span> maxCount = <span class="hljs-number">0</span>;
@@ -546,8 +803,7 @@ str.split(<span class="hljs-string">&#x27;&#x27;</span>).forEach(<span class="hl
 alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> + maxChar + <span class="hljs-string">&#x27;”，出现了 &#x27;</span> + maxCount + <span class="hljs-string">&#x27; 次&#x27;</span>);
 </div></code></pre>
 <h2 id="2020-12-01">2020-12-01</h2>
-<hr>
-<h4 id="获取到页面中所有的-checkbox-标签-并把这些-dom-对象放进数组中"># 获取到页面中所有的 <code>checkbox</code> 标签，并把这些 DOM 对象放进数组中</h4>
+<h4 id="获取到页面中所有的-checkbox-标签-并把这些-dom-对象放进数组中">获取到页面中所有的 <code>checkbox</code> 标签，并把这些 DOM 对象放进数组中</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> checkboxList = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;input[type=&quot;checkbox&quot;]&#x27;</span>);
 <span class="hljs-keyword">var</span> checkboxArr = [];
 <span class="hljs-keyword">var</span> pos = checkboxList.length;
@@ -555,8 +811,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
     checkboxArr.push(checkboxList[pos]);
 }
 </div></code></pre>
-<hr>
-<h4 id="什么时候会出现-undefined-值"># 什么时候会出现 <code>undefined</code> 值</h4>
+<h4 id="什么时候会出现-undefined-值">什么时候会出现 <code>undefined</code> 值</h4>
 <ul>
 <li>定义了变量但未初始化（赋值）</li>
 <li>定义了一个值是 <code>undefined</code> 的变量</li>
@@ -566,21 +821,18 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 <li>输出没有返回值的函数的调用结果</li>
 </ul>
 <h2 id="2020-11-27">2020-11-27</h2>
-<hr>
-<h4 id="对-json-的了解"># 对 JSON 的了解</h4>
+<h4 id="对-json-的了解">对 JSON 的了解</h4>
 <ul>
 <li>轻量级数据交互格式</li>
 <li>可以形成复杂的嵌套格式</li>
 <li>解析非常方便</li>
 </ul>
-<hr>
-<h4 id="document-write-和-innerhtml-的区别"># <code>document.write</code> 和 <code>innerHTML</code> 的区别</h4>
+<h4 id="document-write-和-innerhtml-的区别"><code>document.write</code> 和 <code>innerHTML</code> 的区别</h4>
 <ul>
 <li><code>document.write</code> 重写整个 <code>document</code>，写入字符串类型的 HTML 内容。</li>
 <li><code>innerHTML</code> 是 <code>HTMLElement</code> 的属性，是一个元素的内部 HTML 内容。</li>
 </ul>
-<hr>
-<h4 id="数组和对象有哪些原生方法"># 数组和对象有哪些原生方法？</h4>
+<h4 id="数组和对象有哪些原生方法">数组和对象有哪些原生方法？</h4>
 <ul>
 <li>
 <p>数组（Array）</p>
@@ -696,8 +948,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 </li>
 </ul>
 <h2 id="2020-11-26">2020-11-26</h2>
-<hr>
-<h4 id="css-的-content-属性的作用和应用"># CSS 的 <code>content</code> 属性的作用和应用</h4>
+<h4 id="css-的-content-属性的作用和应用">CSS 的 <code>content</code> 属性的作用和应用</h4>
 <ul>
 <li>
 <p>作用：应用在伪元素 <code>::before</code> / <code>::after</code> 上，用于插入生成内容。</p>
@@ -733,8 +984,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="减少页面加载时间的方法"># 减少页面加载时间的方法</h4>
+<h4 id="减少页面加载时间的方法">减少页面加载时间的方法</h4>
 <ul>
 <li>使用压缩的 CSS、JavaScript 文件。</li>
 <li>合并 CSS、JavaScript 文件，减少 HTTP 请求。</li>
@@ -743,8 +993,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 <li>外部引入的 CSS、JavaScript 文件放在末尾。</li>
 <li>减少 DOM 操作，尽可能用变量替代不必要的 DOM 操作。</li>
 </ul>
-<hr>
-<h4 id="new-操作符具体做了什么"># <code>new</code> 操作符具体做了什么？</h4>
+<h4 id="new-操作符具体做了什么"><code>new</code> 操作符具体做了什么？</h4>
 <ol>
 <li>在构造函数中创建一个 <code>空对象</code></li>
 <li>把构造函数中的 <code>this</code> 指向这个 <code>空对象</code></li>
@@ -752,8 +1001,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 <li>返回这个对象（因此使用 new 关键字后，不需要在构造函数中 return 这个对象）</li>
 </ol>
 <h2 id="2020-11-25">2020-11-25</h2>
-<hr>
-<h4 id="css3-的新特性"># CSS3 的新特性</h4>
+<h4 id="css3-的新特性">CSS3 的新特性</h4>
 <blockquote>
 <p><a href="https://www.runoob.com/css3/css3-tutorial.html">CSS3</a></p>
 </blockquote>
@@ -774,14 +1022,12 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 <li>圆角（border-radius）</li>
 <li>...</li>
 </ul>
-<hr>
-<h4 id="新的-html5-文档类型和字符集"># 新的 HTML5 文档类型和字符集</h4>
+<h4 id="新的-html5-文档类型和字符集">新的 HTML5 文档类型和字符集</h4>
 <ul>
 <li>HTML5 文档类型：html（<code>&lt;!DOCTYPE html&gt;</code>）</li>
 <li>HTML5 字符集：UTF-8（<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>）</li>
 </ul>
-<hr>
-<h4 id="css3-新增伪类"># CSS3 新增伪类</h4>
+<h4 id="css3-新增伪类">CSS3 新增伪类</h4>
 <ul>
 <li><code>:first-of-type</code></li>
 <li><code>:last-of-type</code></li>
@@ -791,16 +1037,14 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 <li><code>:enabled</code>、<code>:disabled</code>、<code>:checked</code></li>
 </ul>
 <h2 id="2020-11-24">2020-11-24</h2>
-<hr>
-<h4 id="px-和-em-的区别"># <code>px</code> 和 <code>em</code> 的区别</h4>
+<h4 id="px-和-em-的区别"><code>px</code> 和 <code>em</code> 的区别</h4>
 <ul>
 <li><code>px</code> 的值是固定的，指定是多少就是多少.</li>
 <li><code>em</code> 的值不是固定的，<code>1em</code> 为当前元素的字体大小。<br>
 （若当前元素未设置字体大小，则继承父元素的字体大小）</li>
 <li>浏览器的默认字体大小为 <code>16px</code>（默认情况下 <code>1em = 16px</code>）</li>
 </ul>
-<hr>
-<h4 id="foo-foo-bar-这行代码是什么意思-为什么要这样写"># <code>foo = foo || bar</code>，这行代码是什么意思？为什么要这样写？</h4>
+<h4 id="foo-foo-bar-这行代码是什么意思-为什么要这样写"><code>foo = foo || bar</code>，这行代码是什么意思？为什么要这样写？</h4>
 <ul>
 <li>
 <p>相当于：<code>if (!foo) { foo = bar }</code></p>
@@ -818,8 +1062,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 </li>
 </ul>
 <h2 id="2020-11-20">2020-11-20</h2>
-<hr>
-<h4 id="解释-javascript-的同源策略"># 解释 JavaScript 的同源策略</h4>
+<h4 id="解释-javascript-的同源策略">解释 JavaScript 的同源策略</h4>
 <ul>
 <li>
 <p>同源策略</p>
@@ -835,8 +1078,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="get-和-post-的区别-何时使用-post"># GET 和 POST 的区别？何时使用 POST？</h4>
+<h4 id="get-和-post-的区别-何时使用-post">GET 和 POST 的区别？何时使用 POST？</h4>
 <ul>
 <li>
 <p>GET 请求</p>
@@ -862,8 +1104,7 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="常见的-http-状态码-分别是什么意思"># 常见的 HTTP 状态码？分别是什么意思？</h4>
+<h4 id="常见的-http-状态码-分别是什么意思">常见的 HTTP 状态码？分别是什么意思？</h4>
 <table>
 <thead>
 <tr>
@@ -899,14 +1140,12 @@ alert(<span class="hljs-string">&#x27;出现次数最多的是“&#x27;</span> +
 </tbody>
 </table>
 <h2 id="2020-11-19">2020-11-19</h2>
-<hr>
-<h4 id="jsonp-的原理-为什么-jsonp-不是真正的-ajax"># JSONP 的原理？为什么 JSONP 不是真正的 AJAX？</h4>
+<h4 id="jsonp-的原理-为什么-jsonp-不是真正的-ajax">JSONP 的原理？为什么 JSONP 不是真正的 AJAX？</h4>
 <ul>
 <li>原理：动态创建 <code>script</code> 标签，回调函数</li>
 <li>原因：AJAX 是页面无刷新请求数据操作</li>
 </ul>
-<hr>
-<h4 id="ajax-是什么-如何创建一个-ajax"># AJAX 是什么？如何创建一个 AJAX？</h4>
+<h4 id="ajax-是什么-如何创建一个-ajax">AJAX 是什么？如何创建一个 AJAX？</h4>
 <ul>
 <li>
 <p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
@@ -948,8 +1187,7 @@ xhr.send();
 </div></code></pre>
 </li>
 </ul>
-<hr>
-<h4 id="简述-ajax-的过程"># 简述 AJAX 的过程?</h4>
+<h4 id="简述-ajax-的过程">简述 AJAX 的过程?</h4>
 <ol>
 <li>创建 XMLHttpRequest 对象（创建一个异步调用对象）</li>
 <li>创建一个新的 HTTP 请求，并指定该 HTTP 请求的请求方式、URL 和验证信息</li>
@@ -959,8 +1197,7 @@ xhr.send();
 <li>使用 JavaScript 和 DOM 实现局部刷新</li>
 </ol>
 <h2 id="2020-11-18">2020-11-18</h2>
-<hr>
-<h4 id="用-javascript-实现随机选取-10-100-之间的-10-个数字-存入一个数组-并排序"># 用 JavaScript 实现随机选取 10-100 之间的 10 个数字，存入一个数组，并排序</h4>
+<h4 id="用-javascript-实现随机选取-10-100-之间的-10-个数字-存入一个数组-并排序">用 JavaScript 实现随机选取 10-100 之间的 10 个数字，存入一个数组，并排序</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> arr = [];
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
     <span class="hljs-keyword">var</span> num = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">91</span> + <span class="hljs-number">10</span>);
@@ -970,15 +1207,13 @@ arr.sort(<span class="hljs-function"><span class="hljs-keyword">function</span> 
     <span class="hljs-keyword">return</span> a - b
 });
 </div></code></pre>
-<hr>
-<h4 id="把两个数组合并-并删除第二个元素"># 把两个数组合并，并删除第二个元素</h4>
+<h4 id="把两个数组合并-并删除第二个元素">把两个数组合并，并删除第二个元素</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];
 <span class="hljs-keyword">var</span> arr2 = [<span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;f&#x27;</span>];
 <span class="hljs-keyword">var</span> arr3 = arr1.concat(arr2);
 arr3.splice(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
 </div></code></pre>
-<hr>
-<h4 id="以下代码的执行结果"># 以下代码的执行结果</h4>
+<h4 id="以下代码的执行结果">以下代码的执行结果</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
 b = <span class="hljs-number">20</span>;
 c = <span class="hljs-number">4</span>;
@@ -990,8 +1225,7 @@ c = <span class="hljs-number">4</span>;
 <li><code>35</code></li>
 </ul>
 <h2 id="2020-11-17">2020-11-17</h2>
-<hr>
-<h4 id="以-yyyy-mm-dd-的方式输出今天的日期-例如-2014-年-9-月-26-日输出-2014-09-26"># 以 YYYY-MM-DD 的方式输出今天的日期（例如 2014 年 9 月 26 日输出 2014-09-26）</h4>
+<h4 id="以-yyyy-mm-dd-的方式输出今天的日期-例如-2014-年-9-月-26-日输出-2014-09-26">以 YYYY-MM-DD 的方式输出今天的日期（例如 2014 年 9 月 26 日输出 2014-09-26）</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
 <span class="hljs-keyword">var</span> year = date.getFullYear();
 <span class="hljs-keyword">var</span> month = date.getMonth() + <span class="hljs-number">1</span>;
@@ -1000,13 +1234,11 @@ month = month &lt; <span class="hljs-number">10</span> ? <span class="hljs-strin
 day = day &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&#x27;0&#x27;</span> + day : day;
 alert(year + <span class="hljs-string">&#x27;-&#x27;</span> + month + <span class="hljs-string">&#x27;-&#x27;</span> + day);
 </div></code></pre>
-<hr>
-<h4 id="将字符串-tr-td-id-td-td-name-td-tr-中的-id-替换为-10-name-替换为-tony"># 将字符串 <code>&lt;tr&gt;&lt;td&gt;{$id}&lt;/td&gt;&lt;td&gt;{$name}&lt;/td&gt;&lt;/tr&gt;</code> 中的 <code>{$id}</code> 替换为 <code>10</code>，<code>{$name}</code> 替换为 <code>Tony</code></h4>
+<h4 id="将字符串-tr-td-id-td-td-name-td-tr-中的-id-替换为-10-name-替换为-tony">将字符串 <code>&lt;tr&gt;&lt;td&gt;{$id}&lt;/td&gt;&lt;td&gt;{$name}&lt;/td&gt;&lt;/tr&gt;</code> 中的 <code>{$id}</code> 替换为 <code>10</code>，<code>{$name}</code> 替换为 <code>Tony</code></h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&lt;tr&gt;&lt;td&gt;{$id}&lt;/td&gt;&lt;td&gt;{$name}&lt;/td&gt;&lt;/tr&gt;&#x27;</span>;
 str = str.replace(<span class="hljs-regexp">/\{\$id\}/g</span>, <span class="hljs-string">&#x27;10&#x27;</span>).replace(<span class="hljs-regexp">/\{\$name\}/g</span>, <span class="hljs-string">&#x27;Tony&#x27;</span>);
 </div></code></pre>
-<hr>
-<h4 id="下列代码会输出什么-为什么"># 下列代码会输出什么？为什么？</h4>
+<h4 id="下列代码会输出什么-为什么">下列代码会输出什么？为什么？</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> foo = <span class="hljs-number">1</span>;
 (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(foo);
@@ -1040,34 +1272,29 @@ str = str.replace(<span class="hljs-regexp">/\{\$id\}/g</span>, <span class="hlj
 <li><code>===</code> 先判断数据类型，如果数据类型不一致，直接返回 false，之后再判断值。</li>
 </ul>
 <h2 id="2020-11-12">2020-11-12</h2>
-<hr>
-<h4 id="javascript-的-typeof-返回哪些数据类型"># JavaScript 的 <code>typeof</code> 返回哪些数据类型</h4>
+<h4 id="javascript-的-typeof-返回哪些数据类型">JavaScript 的 <code>typeof</code> 返回哪些数据类型</h4>
 <ul>
 <li><code>number</code>、<code>string</code>、<code>boolean</code>、<code>function</code>、<code>object</code>、<code>undefined</code>、<code>symbol</code></li>
 </ul>
-<hr>
-<h4 id="例举-3-种强制类型转换和-2-种隐式类型转换"># 例举 3 种强制类型转换和 2 种隐式类型转换</h4>
+<h4 id="例举-3-种强制类型转换和-2-种隐式类型转换">例举 3 种强制类型转换和 2 种隐式类型转换</h4>
 <ul>
 <li>强制类型转换：<code>parseInt()</code>、<code>parseFloat()</code>、<code>Number()</code>、<code>toString()</code></li>
 <li>隐式类型转换：<code>1 == '1'</code>（true）、<code>0 == false</code>（true）、<code>null == undefined</code>（true）</li>
 </ul>
-<hr>
-<h4 id="split-和-join-的区别"># <code>split()</code> 和 <code>join()</code> 的区别</h4>
+<h4 id="split-和-join-的区别"><code>split()</code> 和 <code>join()</code> 的区别</h4>
 <ul>
 <li><code>split()</code> 分割字符串</li>
 <li><code>join()</code> 将数组拼接为字符串</li>
 </ul>
 <h2 id="2020-11-11">2020-11-11</h2>
-<hr>
-<h4 id="原生-javascript-的-window-onload-与-jquery-的-document-ready-function-有什么不同"># 原生 JavaScript 的 <code>window.onload</code> 与 jQuery 的 <code>$(document).ready(function () { })</code> 有什么不同？</h4>
+<h4 id="原生-javascript-的-window-onload-与-jquery-的-document-ready-function-有什么不同">原生 JavaScript 的 <code>window.onload</code> 与 jQuery 的 <code>$(document).ready(function () { })</code> 有什么不同？</h4>
 <ul>
 <li><code>window.onload</code><br>
 在所有资源文件加载完毕后执行</li>
 <li><code>$(document).ready(function () { })</code><br>
 在文档结构准备好后执行</li>
 </ul>
-<hr>
-<h4 id="img-的-alt-与-title-的异同-strong-与-em-的异同"># <code>img</code> 的 <code>alt</code> 与 <code>title</code> 的异同？<code>strong</code> 与 <code>em</code> 的异同?</h4>
+<h4 id="img-的-alt-与-title-的异同-strong-与-em-的异同"><code>img</code> 的 <code>alt</code> 与 <code>title</code> 的异同？<code>strong</code> 与 <code>em</code> 的异同?</h4>
 <ul>
 <li><code>alt</code> (alttext)
 <ul>
@@ -1093,41 +1320,37 @@ str = str.replace(<span class="hljs-regexp">/\{\$id\}/g</span>, <span class="hlj
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="网页制作会用到的图片格式"># 网页制作会用到的图片格式</h4>
+<h4 id="网页制作会用到的图片格式">网页制作会用到的图片格式</h4>
 <ul>
 <li><code>PNG</code>（PNG-8、PNG-24）、<code>JPEG</code>、<code>GIF</code>、<code>SVG</code>、<code>WebP</code></li>
 <li>在质量相同的情况下，WebP 格式的图像的体积要比 JPEG 格式图像小 40%</li>
 </ul>
 <h2 id="2020-11-10">2020-11-10</h2>
-<hr>
-<h4 id="使用-link-和-import-引入-css-的区别"># 使用 <code>link</code> 和 <code>@import</code> 引入 CSS 的区别？</h4>
+<h4 id="使用-link-和-import-引入-css-的区别">使用 <code>link</code> 和 <code>@import</code> 引入 CSS 的区别？</h4>
 <ul>
 <li><code>link</code> 属于 <code>HTML 标签</code>，而 <code>@import</code> 是由 <code>CSS</code> 提供的。</li>
 <li><code>@import</code> 只在 <code>IE5</code> 以上可以被识别，而 <code>link</code> 不存在浏览器兼容性问题（link 属于 HTML 标签）。</li>
 <li>页面加载时，<code>link</code> 引入的 CSS 会 <code>同时</code> 被加载，而 <code>@import</code> 引入的 CSS 会在页面 <code>加载完成后</code> 才会被加载。</li>
 <li>CSS 权重：<code>link</code> &gt; <code>@import</code>（@import 是将引入的样式导入到当前的页面中）</li>
 </ul>
-<hr>
-<h4 id="为什么要-初始化-样式"># 为什么要 <code>初始化</code> 样式？</h4>
+<h4 id="为什么要-初始化-样式">为什么要 <code>初始化</code> 样式？</h4>
 <ul>
 <li>由于浏览器兼容问题，在不同的浏览器下，标签的 <code>默认样式</code> 不同，若不初始化会导致不同浏览器之间产生 <code>显示差异</code>。</li>
 <li>初始化 CSS 对 <code>搜索引擎优化</code> 产生小 <code>影响</code>。</li>
 </ul>
-<hr>
-<h4 id="bfc-是什么"># <code>BFC</code> 是什么？</h4>
+<h4 id="bfc-是什么"><code>BFC</code> 是什么？</h4>
 <blockquote>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts">格式化上下文简介</a></p>
 </blockquote>
 <ul>
+<li>块级元素布局规范。</li>
 <li>BFC（块级格式化上下文）是指在浏览器中创建的一个 <code>独立的渲染区域</code>，<br>
 该区域内所有元素的布局 <code>不会影响到区域外</code> 元素的布局，这个渲染区域只对 <code>块级元素</code> 起作用。</li>
 <li>一个创建了新的 BFC 的盒子是独立布局的，盒子内的元素的布局不会影响盒子外面的元素。</li>
 <li>在同一个 BFC 中的两个相邻的盒子会在垂直方向产生 <code>外边距（margin）重叠</code> 问题。</li>
 </ul>
 <h2 id="2020-11-08">2020-11-08</h2>
-<hr>
-<h4 id="下列-javascript-代码执行后-依次-alert-的结果是"># 下列 JavaScript 代码执行后，依次 alert() 的结果是？</h4>
+<h4 id="下列-javascript-代码执行后-依次-alert-的结果是">下列 JavaScript 代码执行后，依次 alert() 的结果是？</h4>
 <pre><code class="language-javascript"><div>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> a = b = <span class="hljs-number">5</span>;
     alert(<span class="hljs-keyword">typeof</span> a);
@@ -1139,8 +1362,7 @@ alert(<span class="hljs-keyword">typeof</span> b);
 <ul>
 <li><code>number</code> -&gt; <code>number</code> -&gt; <code>undefined</code> -&gt; <code>number</code></li>
 </ul>
-<hr>
-<h4 id="下列-javascript-代码的输出结果为"># 下列 JavaScript 代码的输出结果为？</h4>
+<h4 id="下列-javascript-代码的输出结果为">下列 JavaScript 代码的输出结果为？</h4>
 <pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">a</span>) </span>{
     alert(<span class="hljs-built_in">arguments</span>.length);
 }
@@ -1150,8 +1372,7 @@ foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <spa
 <li><code>3</code></li>
 <li>实参的长度（数量）</li>
 </ul>
-<hr>
-<h4 id="行内元素-内联元素-和块级元素的具体区别是什么-行内元素的-padding-和-margin-可设置吗"># 行内元素（内联元素）和块级元素的具体区别是什么？行内元素的 padding 和 margin 可设置吗？</h4>
+<h4 id="行内元素-内联元素-和块级元素的具体区别是什么-行内元素的-padding-和-margin-可设置吗">行内元素（内联元素）和块级元素的具体区别是什么？行内元素的 padding 和 margin 可设置吗？</h4>
 <ul>
 <li>
 <p>行内元素（inline）特性</p>
@@ -1176,8 +1397,7 @@ foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <spa
 </li>
 </ul>
 <h2 id="2020-11-06">2020-11-06</h2>
-<hr>
-<h4 id="有哪几种方式可以直接获取这个-div-的-dom-对象-如何把-dom-对象-转换为-jquery-对象"># 有哪几种方式可以直接获取这个 div 的 <code>DOM 对象</code> ？如何把 <code>DOM 对象</code> 转换为 <code>jQuery 对象</code> ？</h4>
+<h4 id="有哪几种方式可以直接获取这个-div-的-dom-对象-如何把-dom-对象-转换为-jquery-对象">有哪几种方式可以直接获取这个 div 的 <code>DOM 对象</code> ？如何把 <code>DOM 对象</code> 转换为 <code>jQuery 对象</code> ？</h4>
 <blockquote>
 <p><code>&lt;div class='aabbcc' id='nodesView'&gt;&lt;/div&gt;</code></p>
 </blockquote>
@@ -1188,16 +1408,14 @@ foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <spa
 <li><code>document.querySelector('.aabbcc')</code></li>
 <li>转换为 jQuery 对象：<code>$(DOM 对象)</code></li>
 </ul>
-<hr>
-<h4 id="原生的-javascript-如何显示或隐藏一个-dom-元素"># 原生的 JavaScript 如何显示或隐藏一个 DOM 元素？</h4>
+<h4 id="原生的-javascript-如何显示或隐藏一个-dom-元素">原生的 JavaScript 如何显示或隐藏一个 DOM 元素？</h4>
 <ul>
 <li><code>DOM.style.display = 'block'</code></li>
 <li><code>DOM.style.display = 'none'</code></li>
 <li><code>DOM.style.visibility = 'visible'</code></li>
 <li><code>DOM.style.visibility = 'hidden'</code></li>
 </ul>
-<hr>
-<h4 id="javascript-的循环语句有哪些"># JavaScript 的循环语句有哪些？</h4>
+<h4 id="javascript-的循环语句有哪些">JavaScript 的循环语句有哪些？</h4>
 <ul>
 <li><code>for (...; ...; ...) { }</code></li>
 <li><code>for (... in ...) { }</code></li>
@@ -1205,8 +1423,7 @@ foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <spa
 <li><code>do { } while ( )</code></li>
 </ul>
 <h2 id="2020-11-05">2020-11-05</h2>
-<hr>
-<h4 id="console-log-8-1-的输出值"># <code>console.log(8 | 1)</code> 的输出值</h4>
+<h4 id="console-log-8-1-的输出值"><code>console.log(8 | 1)</code> 的输出值</h4>
 <ul>
 <li>输出值：9</li>
 </ul>
@@ -1270,8 +1487,7 @@ foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <spa
 </tr>
 </tbody>
 </table>
-<hr>
-<h4 id="alert-0-4-0-2-的结果是多少-和你预期的一样吗-如果不一样怎么解决"># <code>alert(0.4 * 0.2)</code> 的结果是多少？和你预期的一样吗？如果不一样怎么解决？</h4>
+<h4 id="alert-0-4-0-2-的结果是多少-和你预期的一样吗-如果不一样怎么解决"><code>alert(0.4 * 0.2)</code> 的结果是多少？和你预期的一样吗？如果不一样怎么解决？</h4>
 <ul>
 <li>结果：0.08000000000000002</li>
 <li>有误差，比准确结果偏大。</li>
@@ -1285,22 +1501,19 @@ foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <spa
 </li>
 </ul>
 <h2 id="2020-11-04">2020-11-04</h2>
-<hr>
-<h4 id="如何判断一个-javascript-变量是数组类型"># 如何判断一个 JavaScript 变量是数组类型</h4>
+<h4 id="如何判断一个-javascript-变量是数组类型">如何判断一个 JavaScript 变量是数组类型</h4>
 <pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
 <span class="hljs-built_in">Array</span>.isArray(arr);                  <span class="hljs-comment">// true</span>
 arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>;                <span class="hljs-comment">// true</span>
 <span class="hljs-built_in">Object</span>.prototype.toString.call(arr); <span class="hljs-comment">// &quot;[object Array]&quot;</span>
 </div></code></pre>
 <h2 id="2020-11-03">2020-11-03</h2>
-<hr>
-<h4 id="简述-readonly-与-disabled-的区别"># 简述 <code>readonly</code> 与 <code>disabled</code> 的区别</h4>
+<h4 id="简述-readonly-与-disabled-的区别">简述 <code>readonly</code> 与 <code>disabled</code> 的区别</h4>
 <ul>
 <li><code>readonly</code> 只对 <code>input</code>（text / password）和 <code>textarea</code> 有效，<code>disabled</code> 对于所有的表单元素都有效。</li>
 <li>表单元素设置 <code>disabled</code> 属性后，将表单以 <code>POST</code> 或 <code>GET</code> 的方式提交，该元素的值不会被传递出去，而 <code>readonly</code> 会将该值传递出去。</li>
 </ul>
-<hr>
-<h4 id="已知有字符串-get-element-by-id-写一个-function-将其转化成驼峰表示法-getelementbyid"># 已知有字符串 get-element-by-id，写一个 function 将其转化成驼峰表示法 getElementById</h4>
+<h4 id="已知有字符串-get-element-by-id-写一个-function-将其转化成驼峰表示法-getelementbyid">已知有字符串 get-element-by-id，写一个 function 将其转化成驼峰表示法 getElementById</h4>
 <pre><code class="language-javascript"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combo</span>(<span class="hljs-params">str</span>)</span>{
   <span class="hljs-keyword">var</span> arr = str.split(<span class="hljs-string">&#x27;-&#x27;</span>);
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) {
@@ -1311,8 +1524,7 @@ arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Arr
 }
 </div></code></pre>
 <h2 id="2020-11-01">2020-11-01</h2>
-<hr>
-<h4 id="阻止事件冒泡和默认事件的方法"># 阻止事件冒泡和默认事件的方法</h4>
+<h4 id="阻止事件冒泡和默认事件的方法">阻止事件冒泡和默认事件的方法</h4>
 <pre><code class="language-javascript"><div><span class="hljs-comment">// 阻止事件冒泡</span>
 ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = <span class="hljs-literal">true</span>;
 
@@ -1323,41 +1535,35 @@ ev.preventDefault ? ev.preventDefault() : ev.returnValue = <span class="hljs-lit
 <p>原生 JavaScript：<code>return false</code> 只阻止默认行为，不阻止事件冒泡。<br>
 jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡。</p>
 </blockquote>
-<hr>
-<h4 id="添加节点-删除节点-替换节点-插入到某个节点的方法"># 添加节点、删除节点、替换节点、插入到某个节点的方法</h4>
+<h4 id="添加节点-删除节点-替换节点-插入到某个节点的方法">添加节点、删除节点、替换节点、插入到某个节点的方法</h4>
 <ul>
 <li><code>DOM节点.appendChild()</code></li>
 <li><code>DOM节点.removeChild()</code></li>
 <li><code>DOM节点.replaceChild()</code></li>
 <li><code>DOM节点.insertBefore()</code>、<code>DOM节点.insertAfter()</code></li>
 </ul>
-<hr>
-<h4 id="javascript-中会被隐式转换为-false-的值"># JavaScript 中会被隐式转换为 false 的值</h4>
+<h4 id="javascript-中会被隐式转换为-false-的值">JavaScript 中会被隐式转换为 false 的值</h4>
 <ul>
 <li><code>undefined</code>、<code>null</code>、<code>NaN</code>、<code>0</code>、<code>空字符串</code></li>
 </ul>
 <h2 id="2020-10-30">2020-10-30</h2>
-<hr>
-<h4 id="css-中-rgba-与-opacity-的透明效果的区别"># CSS 中 <code>rgba()</code> 与 <code>opacity</code> 的透明效果的区别</h4>
+<h4 id="css-中-rgba-与-opacity-的透明效果的区别">CSS 中 <code>rgba()</code> 与 <code>opacity</code> 的透明效果的区别</h4>
 <ul>
 <li><code>rgba()</code> 作用于对应的属性（子元素不会继承透明效果），<code>opacity</code> 作用于当前元素。</li>
 </ul>
-<hr>
-<h4 id="javascript-事件委托"># JavaScript 事件委托</h4>
+<h4 id="javascript-事件委托">JavaScript 事件委托</h4>
 <ul>
 <li>符合 W3C 标准的事件绑定 <code>addEventLisntener</code> / <code>attachEvent</code></li>
 <li>不把事件要绑定到 <code>子元素</code>，而是绑定到该元素的 <code>父元素（或祖先元素）</code> 上，利用 <code>事件冒泡</code> 原理，触发执行效果。</li>
 </ul>
 <h2 id="2020-10-29">2020-10-29</h2>
-<hr>
-<h4 id="css-的基本语句构成"># CSS 的基本语句构成</h4>
+<h4 id="css-的基本语句构成">CSS 的基本语句构成</h4>
 <pre><code class="language-text"><div>一个或多个选择器 {
     属性名: 属性值;
     属性名: 属性值;
 }
 </div></code></pre>
-<hr>
-<h4 id="如何让一个-dom-节点在被点击时候执行一个函数"># 如何让一个 DOM 节点在被点击时候执行一个函数？</h4>
+<h4 id="如何让一个-dom-节点在被点击时候执行一个函数">如何让一个 DOM 节点在被点击时候执行一个函数？</h4>
 <ul>
 <li>
 <p>在元素中添加 <code>onclick</code> 属性（静态绑定）</p>
@@ -1377,8 +1583,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 </div></code></pre>
 </li>
 </ul>
-<hr>
-<h4 id="简述定义函数的几种方式"># 简述定义函数的几种方式</h4>
+<h4 id="简述定义函数的几种方式">简述定义函数的几种方式</h4>
 <blockquote>
 <p>匿名函数不能单独存在，需要赋值给一个变量、一个事件。<br>
 若匿名函数单独存在，需要 <code>立即执行函数表达式</code>（IIFE）。</p>
@@ -1429,8 +1634,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 </li>
 </ul>
 <h2 id="2020-10-24">2020-10-24</h2>
-<hr>
-<h4 id="简述浏览器渲染页面机制"># 简述浏览器渲染页面机制</h4>
+<h4 id="简述浏览器渲染页面机制">简述浏览器渲染页面机制</h4>
 <ol>
 <li>解析 HTML 生成 <code>DOM 树</code></li>
 <li>解析 CSS 生成 <code>CSSOM 规则树</code></li>
@@ -1438,8 +1642,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 <li>遍历 <code>渲染树</code> 开始布局，计算每个节点的位置大小信息</li>
 <li>将 <code>渲染树</code> 每个节点绘制到屏幕</li>
 </ol>
-<hr>
-<h4 id="简述一个完整的-http-事务处理过程"># 简述一个完整的 HTTP 事务处理过程</h4>
+<h4 id="简述一个完整的-http-事务处理过程">简述一个完整的 HTTP 事务处理过程</h4>
 <ol>
 <li>域名解析</li>
 <li>发起 TCP 的 3 次握手</li>
@@ -1448,8 +1651,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 <li>浏览器解析 HTML 代码，并请求 HTML 代码中的资源</li>
 <li>浏览器对页面进行渲染</li>
 </ol>
-<hr>
-<h4 id="前端性能优化有哪些"># 前端性能优化有哪些？</h4>
+<h4 id="前端性能优化有哪些">前端性能优化有哪些？</h4>
 <ul>
 <li>减少请求资源的大小或次数
 <ul>
@@ -1467,14 +1669,12 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 <li>前端与后端协商，合理使用 keep-alive（持久连接）。</li>
 </ul>
 <h2 id="2020-10-23">2020-10-23</h2>
-<hr>
-<h4 id="var-和-const-的区别"># <code>var</code> 和 <code>const</code> 的区别</h4>
+<h4 id="var-和-const-的区别"><code>var</code> 和 <code>const</code> 的区别</h4>
 <ul>
 <li><code>var</code> 定义的变量可以修改，可以不初始化（未初始化时为 <code>undefined</code>）。</li>
 <li><code>const</code> 定义的变量不可以修改，而且必须初始化。</li>
 </ul>
-<hr>
-<h4 id="在-css-布局中-什么场景下会出现外边距合并问题-如何解决"># 在 CSS 布局中，什么场景下会出现外边距合并问题？如何解决？</h4>
+<h4 id="在-css-布局中-什么场景下会出现外边距合并问题-如何解决">在 CSS 布局中，什么场景下会出现外边距合并问题？如何解决？</h4>
 <blockquote>
 <p><a href="https://www.w3school.com.cn/css/css_margin_collapsing.asp">https://www.w3school.com.cn/css/css_margin_collapsing.asp</a></p>
 </blockquote>
@@ -1491,16 +1691,14 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="break-continue-return-throw-的作用"># <code>break</code>、<code>continue</code>、<code>return</code>、<code>throw</code> 的作用</h4>
+<h4 id="break-continue-return-throw-的作用"><code>break</code>、<code>continue</code>、<code>return</code>、<code>throw</code> 的作用</h4>
 <ul>
 <li><code>break</code>：跳出循环（结束）</li>
 <li><code>continue</code>：跳出本次循环，进入下次循环</li>
 <li><code>return</code>：在函数中使用，指定返回值，中止当前函数的执行。</li>
 <li><code>throw</code>：中止程序，抛出异常。</li>
 </ul>
-<hr>
-<h4 id="xss-攻击原理与防御"># <code>XSS</code> 攻击原理与防御</h4>
+<h4 id="xss-攻击原理与防御"><code>XSS</code> 攻击原理与防御</h4>
 <ul>
 <li>
 <p>原理<br>
@@ -1512,8 +1710,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 </li>
 </ul>
 <h2 id="2020-10-22">2020-10-22</h2>
-<hr>
-<h4 id="在-css-布局中-什么场景下出现元素高度塌陷-如何解决元素高度塌陷问题"># 在 CSS 布局中，什么场景下出现元素高度塌陷，如何解决元素高度塌陷问题？</h4>
+<h4 id="在-css-布局中-什么场景下出现元素高度塌陷-如何解决元素高度塌陷问题">在 CSS 布局中，什么场景下出现元素高度塌陷，如何解决元素高度塌陷问题？</h4>
 <ul>
 <li>元素浮动时脱离文档流，导致不占据页面空间，会对父元素的高度造成一定的影响。</li>
 <li>解决元素高度塌陷问题
@@ -1536,8 +1733,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="display-none-和-visibility-hidden-的区别"># <code>display: none</code> 和 <code>visibility: hidden</code> 的区别？</h4>
+<h4 id="display-none-和-visibility-hidden-的区别"><code>display: none</code> 和 <code>visibility: hidden</code> 的区别？</h4>
 <ul>
 <li><code>display: none</code> 隐藏后的元素不占据任何空间（文档流）</li>
 <li><code>visibility: hidden</code> 隐藏后的元素仍然占据空间（文档流）</li>
@@ -1546,8 +1742,7 @@ jQuery：<code>return false</code> 既阻止默认行为，也阻止事件冒泡
 如果同时给子元素设置 <code>visibility: visible</code>，则子元素会显示出来。</li>
 <li><code>visibility: hidden</code> 不会影响计数器的计数（例如 <code>&lt;ol&gt;&lt;li&gt;&lt;/li&gt;&lt;/ol&gt;</code>）。</li>
 </ul>
-<hr>
-<h4 id="css-定位有几种-各个定位方式有什么区别"># CSS 定位有几种，各个定位方式有什么区别？</h4>
+<h4 id="css-定位有几种-各个定位方式有什么区别">CSS 定位有几种，各个定位方式有什么区别？</h4>
 <ul>
 <li><code>static</code>（静态定位）、<code>relative</code>（相对定位）、<code>fixed</code>（固定定位）、<code>absolute</code>（绝对定位）、<code>sticky</code>（粘性定位）</li>
 <li><code>static</code> 定位：<br>
@@ -1564,8 +1759,7 @@ HTML 元素的默认值，遵循正常的文档流对象。<br>
 基于滚动位置进行定位<br>
 在跨越特定阈值（<code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code>）前为相对定位，之后为固定定位。</li>
 </ul>
-<hr>
-<h4 id="javascript-原始数据类型有哪些-引用类型数据有哪些-原始数据类型和引用类型的区别"># JavaScript 原始数据类型有哪些？引用类型数据有哪些？原始数据类型和引用类型的区别?</h4>
+<h4 id="javascript-原始数据类型有哪些-引用类型数据有哪些-原始数据类型和引用类型的区别">JavaScript 原始数据类型有哪些？引用类型数据有哪些？原始数据类型和引用类型的区别?</h4>
 <ul>
 <li>原始数据类型（栈）：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code></li>
 <li>引用数据类型（堆）：对象（数组、函数等）</li>
@@ -1577,27 +1771,33 @@ HTML 元素的默认值，遵循正常的文档流对象。<br>
 </li>
 </ul>
 <h2 id="2020-10-20">2020-10-20</h2>
-<hr>
-<h4 id="对-盒子模型-这个概念的理解以及它涉及到的-css-属性"># 对 <code>盒子模型</code> 这个概念的理解以及它涉及到的 CSS 属性</h4>
+<h4 id="对-盒子模型-这个概念的理解以及它涉及到的-css-属性">对 <code>盒子模型</code> 这个概念的理解以及它涉及到的 CSS 属性</h4>
 <ul>
 <li>涉及属性：边界（margin）、边框（border）、填充（padding）、内容（content）</li>
 <li>这些属性我们可以用日常生活中的常见事物 —— 盒子作一个比喻来理解，所以叫它盒子模型。</li>
 <li>CSS 盒子模型就是在网页设计中经常用到的 CSS 技术所使用的一种思维模型。</li>
 </ul>
-<hr>
-<h4 id="前端页面有哪三层构成-分别是什么-作用是什么"># 前端页面有哪三层构成，分别是什么？作用是什么？</h4>
+<h4 id="前端页面有哪三层构成-分别是什么-作用是什么">前端页面有哪三层构成，分别是什么？作用是什么？</h4>
 <ul>
-<li>结构层、表示层、行为层</li>
-<li>结构层：<br>
+<li>
+<p>结构层、表示层、行为层</p>
+</li>
+<li>
+<p>结构层：<br>
 由 HTML 或 XHTML 之类的标记语言负责创建。<br>
 标签对网页内容的语义含义做出了描述，但这些标签不包含任何关于如何显示有关内容的信息。<br>
-例如，P 标签表达了这样一种语义：“这是一个文本段。”</li>
-<li>表示层：<br>
+例如，P 标签表达了这样一种语义：“这是一个文本段。”</p>
+</li>
+<li>
+<p>表示层：<br>
 由 CSS 负责创建。<br>
-CSS 对“如何显示有关内容”的问题做出了回答。</li>
-<li>行为层：<br>
+CSS 对“如何显示有关内容”的问题做出了回答。</p>
+</li>
+<li>
+<p>行为层：<br>
 负责回答“内容应该如何对事件做出反应”这一问题。<br>
-这是 JavasSript 语言和 DOM 主宰的领域。</li>
+这是 JavasSript 语言和 DOM 主宰的领域。</p>
+</li>
 </ul>
 
     </body>
