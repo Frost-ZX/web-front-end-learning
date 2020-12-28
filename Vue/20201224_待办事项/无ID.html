@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .todo .list ul {
+            padding-left: 1.5em;
+        }
+
+        .todo .list ul li .item-text {
+            max-width: 20em;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo-list" class="todo">
+        <!-- 输入 -->
+        <div class="input">
+            <input type="text" placeholder="请输入内容，按下 Ctrl + Enter 添加到列表中" @keyup.ctrl.enter.extract="addNew" />
+        </div>
+        <!-- 列表 -->
+        <div class="list">
+            <ul>
+                <transition-group :name="isAnimate ? 'todo-item' : 'todo-item-alt'" tag="div">
+                    <li v-for="(item, id) in todoList" :key="'item-' + id" :class="{'completed': item.completed}"
+                        v-if="isShow(item.completed)" @click="markComplete(id)">
+                        <!-- 文本 -->
+                        <span class="item-text" :title="item.text">{{ item.text }}</span>
+                        <!-- 按钮 -->
+                        <input  class="btn-del" type="button" value="删除" @click="delItem($event, id)" />
+                    </li>
+                </transition-group>
+            </ul>
+        </div>
+        <!-- 操作 -->
+        <div class="ctrl">
+            <div :class="['show-all', {'active': (showType == 'all')}]"
+                 @click="switchType('all')">所有</div>
+            <div :class="['show-incomplete', {'active': (showType == 'incomplete')}]"
+                 @click="switchType('incomplete')">未完成</div>
+            <div :class="['show-complete', {'active': (showType == 'complete')}]"
+                 @click="switchType('complete')">已完成</div>
+            <div class="del-all active" @click="delAll()">删除全部</div>
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .todo .list ul {
+            list-style-type: none;
+        }
+
+        .todo .list ul li::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 0.15em;
+            left: 0;
+            width: 2px;
+            height: 1.5em;
+            background-color: transparent;
+        }
+
+        .todo .list ul li:hover::before {
+            background-color: #4CAF50;
+        }
+
+        .todo .list ul li.completed:hover::before {
+            background-color: #888;
+        }
+
+        .todo .list ul li .item-id {
+            display: inline-block;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo-list" class="todo">
+        <!-- 输入 -->
+        <div class="input">
+            <input type="text" placeholder="请输入内容，按下 Ctrl + Enter 添加到列表中" @keyup.ctrl.enter.extract="addNew" />
+        </div>
+        <!-- 列表 -->
+        <div class="list">
+            <ul>
+                <transition-group :name="isAnimate ? 'todo-item' : 'todo-item-alt'" tag="div">
+                    <li v-for="(item, id) in todoList" :key="'item-' + id" :class="{'completed': item.completed}"
+                        v-if="isShow(item.completed)" @click="markComplete(id)">
+                        <!-- ID -->
+                        <span class="item-id" :style="{'width': `${lastID.toString().length / 2 + 1}em`}">{{ id }}.</span>
+                        <!-- 文本 -->
+                        <span class="item-text" :style="{'max-width': `${20 - lastID.toString().length / 2}em`}"
+                              :title="item.text">{{ item.text }}</span>
+                        <!-- 按钮 -->
+                        <input class="btn-del" type="button" value="删除" @click="delItem($event, id)" />
+                    </li>
+                </transition-group>
+            </ul>
+        </div>
+        <!-- 操作 -->
+        <div class="ctrl">
+            <div :class="['show-all', {'active': (showType == 'all')}]"
+                 @click="switchType('all')">所有</div>
+            <div :class="['show-incomplete', {'active': (showType == 'incomplete')}]"
+                 @click="switchType('incomplete')">未完成</div>
+            <div :class="['show-complete', {'active': (showType == 'complete')}]"
+                 @click="switchType('complete')">已完成</div>
+            <div class="del-all active" @click="delAll()">删除全部</div>
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
