@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.slide {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 750px;
+    height: 315px;
+    font-size: 0;
+    background-color: #000;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+/*
+img {
+    opacity: 0.5
+}
+*/
+
+.slide .img-box,
+.slide .img-box *,
+.slide .ctrl {
+    width: 100%;
+    height: 100%;
+}
+
+.slide .img-box,
+.slide .ctrl {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slide .img-box ul {
+    list-style: none;
+    white-space: nowrap;
+}
+
+.slide .img-box ul li {
+    display: inline-block;
+}
+
+.slide .ctrl > div {
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    padding: 10px 6px;
+    background-color: #000;
+    text-align: center;
+    font-size: 16px;
+    color: #FFF;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.5;
+    transition: opacity 0.25s;
+}
+
+.slide .ctrl > div:hover {
+    opacity: 0.8;
+}
+
+.slide .ctrl .btn-pre {
+    left: 0;
+}
+
+.slide .ctrl .btn-next {
+    right: 0;
+}
+
+.slide .points {
+    position: absolute;
+    z-index: 10;
+    right: 10px;
+    bottom: 10px;
+}
+
+.slide .points > div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    background-color: #FFF;
+    transition: background 0.25s;
+    cursor: pointer;
+}
+
+.slide .points > div:not(:last-child) {
+    margin-right: 5px;
+}
+
+.slide .points > div.active {
+    background-color: #FF5722;
+}

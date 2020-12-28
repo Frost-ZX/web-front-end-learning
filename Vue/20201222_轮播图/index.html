@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="slide" @mouseenter="isAuto = false" @mouseleave="isAuto = true">
+            <div class="img-box">
+                <ul class="content" v-on:transitionend="handleEnd"
+                    v-bind:style="{
+                        'transform': `translateX(${current * -100}%)`,
+                        'transition': isAnimate ? 'transform 0.5s' : 'none'
+                    }" >
+                    <!-- 克隆 -->
+                    <li><img src="./img/05.jpg" /></li>
+                    <!-- 实际 -->
+                    <li><img src="./img/01.jpg" /></li>
+                    <li><img src="./img/02.jpg" /></li>
+                    <li><img src="./img/03.jpg" /></li>
+                    <li><img src="./img/04.jpg" /></li>
+                    <li><img src="./img/05.jpg" /></li>
+                    <!-- 克隆 -->
+                    <li><img src="./img/01.jpg" /></li>
+                </ul>
+            </div>
+            <div class="points">
+                <div @click="current = 1" :class="{active: (current == 1) || (current == 6)}"></div>
+                <div @click="current = 2" :class="{active: current == 2}"></div>
+                <div @click="current = 3" :class="{active: current == 3}"></div>
+                <div @click="current = 4" :class="{active: current == 4}"></div>
+                <div @click="current = 5" :class="{active: (current == 5) || (current == 0)}"></div>
+            </div>
+            <div class="ctrl">
+                <div class="btn-pre" v-on:click="switchImg('pre')">&lt;</div>
+                <div class="btn-next" v-on:click="switchImg('next')">&gt;</div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
