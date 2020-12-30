@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.random-question {
+    display: block;
+    position: fixed;
+    z-index: 200;
+    top: 50px;
+    padding: 20px;
+    left: 50%;
+    width: 90%;
+    max-width: 750px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: #FFF;
+    line-height: 1.5em;
+    font-size: 18px;
+    transform: translateX(-50%);
+    user-select: none;
+}
+
+.random-question {
+    animation: hide 0.5s linear forwards;
+}
+
+.random-question.show {
+    animation: show 0.5s linear forwards;
+}
+
+.random-question .question {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    /* min-height 与行高相同 */
+    min-height: 1.5em;
+    outline: 1px solid #DDD;
+}
+
+.random-question .ctrl {
+    font-size: 0;
+}
+
+.random-question .ctrl>div {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #2196F3;
+    font-size: 16px;
+    color: #FFF;
+    transition: opacity 0.25s;
+    cursor: pointer;
+}
+
+.random-question .ctrl>div:hover {
+    opacity: 0.8;
+}
+
+.random-question .ctrl>div:not(:last-child) {
+    margin-right: 8px;
+}
+
+/* 显示 */
+
+@keyframes show {
+    0% {
+        visibility: visible;
+        opacity: 0;
+    }
+
+    50% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+/* 隐藏 */
+
+@keyframes hide {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    50% {
+        visibility: visible;
+        opacity: 0;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}

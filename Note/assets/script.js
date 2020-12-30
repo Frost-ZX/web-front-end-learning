@@ -110,3 +110,10 @@ window.addEventListener('load', function () {
 
     })();
 });
+
+function getRandomElem(selector) {
+    var elems = document.querySelectorAll(selector);
+    var random = Math.floor(Math.random() * elems.length)
+
+    return elems[random];
+}
