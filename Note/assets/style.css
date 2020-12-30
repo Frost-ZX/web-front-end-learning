@@ -75,6 +75,10 @@ hr {
     background-size: 25px 100%;
 }
 
+img {
+    max-width: 640px;
+}
+
 /* Visual Studio Code */
 
 .vscode-light pre {
