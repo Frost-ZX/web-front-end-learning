@@ -69,9 +69,13 @@
     - [触发父组件的自定义事件（$emit）](#触发父组件的自定义事件-emit)
       - [使用方式](#使用方式-1)
       - [例子](#例子)
-  - [插槽](#插槽)
-    - [普通插槽](#普通插槽)
+  - [插槽（slot）](#插槽-slot)
+    - [默认插槽](#默认插槽)
+      - [例子](#例子-1)
     - [具名插槽](#具名插槽)
+      - [例子](#例子-2)
+      - [注意](#注意-5)
+    - [作用域插槽（slot-scope）](#作用域插槽-slot-scope)
   - [transition 组件](#transition-组件)
     - [单元素 / 组件的过渡（transition）](#单元素-组件的过渡-transition)
       - [简介](#简介-10)
@@ -79,6 +83,18 @@
       - [JavaScript 钩子函数](#javascript-钩子函数)
     - [列表的进入 / 离开过渡（transition-group）](#列表的进入-离开过渡-transition-group)
       - [简介](#简介-11)
+- [过滤器](#过滤器)
+  - [定义过滤器](#定义过滤器)
+    - [局部](#局部)
+    - [全局](#全局)
+  - [使用](#使用-1)
+    - [普通方式](#普通方式)
+    - [串联](#串联)
+    - [接收参数](#接收参数)
+- [生命周期](#生命周期)
+  - [生命周期图示](#生命周期图示)
+  - [生命周期钩子](#生命周期钩子)
+    - [注意](#注意-6)
 
 # 简介
 
@@ -952,13 +968,130 @@ new Vue({
 </div>
 ```
 
-## 插槽
+## 插槽（slot）
 
 > https://cn.vuejs.org/v2/guide/components-slots.html
 
-### 普通插槽
+### 默认插槽
+
+#### 例子
+
+模板
+
+> 如果没有包含一个 `<slot>` 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃。
+
+```html
+<a v-bind:href="url" class="nav-link">
+  <slot></slot>
+</a>
+```
+
+页面
+
+```html
+<navigation-link url="/profile">
+  <span class="fa fa-user"></span>
+  Your Profile
+</navigation-link>
+```
+
+结果
+
+```html
+<a href="/profile" class="nav-link">
+  <span class="fa fa-user"></span>
+  Your Profile
+</a>
+```
 
 ### 具名插槽
+
+#### 例子
+
+模板
+
+> `<slot>` 元素有一个特殊的 attribute：`name`
+> 这个 attribute 可以用来定义额外的插槽
+> 一个不带 `name` 的 `<slot>` 出口会带有隐含的名称 `default`
+
+```html
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+```
+
+页面
+
+> 在向具名插槽提供内容的时候，可以在一个 `<template>` 元素上使用 `v-slot` 指令，并以 `v-slot` 的参数的形式提供其名称。
+> `<template>` 元素中的所有内容都将会被传入相应的插槽。
+> 任何没有被包裹在带有 `v-slot` 的 `<template>` 中的内容都会被视为默认插槽的内容。
+
+```html
+<base-layout>
+  <template v-slot:header>
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template v-slot:footer>
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+```
+
+> 仍然可以在一个 `<template>` 中包裹默认插槽的内容：
+
+```html
+<base-layout>
+  <template v-slot:header>
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <template v-slot:default>
+    <p>A paragraph for the main content.</p>
+    <p>And another one.</p>
+  </template>
+
+  <template v-slot:footer>
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+```
+
+结果
+
+```html
+<div class="container">
+  <header>
+    <h1>Here might be a page title</h1>
+  </header>
+  <main>
+    <p>A paragraph for the main content.</p>
+    <p>And another one.</p>
+  </main>
+  <footer>
+    <p>Here's some contact info</p>
+  </footer>
+</div>
+```
+
+#### 注意
+
+- `v-slot` 只能添加在 `<template>` 上（只有一种例外情况），这一点和已经废弃的 `slot` attribute 不同。
+
+### 作用域插槽（slot-scope）
+
+> https://cn.vuejs.org/v2/guide/components-slots.html#作用域插槽
 
 ## transition 组件
 
@@ -1059,3 +1192,112 @@ Vue 提供了 `transition` 的封装组件，在以下的情形中，可以给�
 - `过渡模式` 不可用，因为不再相互切换特有的元素。
 - 内部元素需要提供唯一的 `key` 属性值。
 - CSS 过渡的类将会应用在内部的元素中，而不是这个组 / 容器本身。
+
+# 过滤器
+
+## 定义过滤器
+
+### 局部
+
+```javascript
+new Vue({
+    ...
+    filters: {
+        // capitalize：过滤器名称
+        // value：原始值
+        // return：返回过滤操作后的内容
+        capitalize: function (value) {
+            if (!value) {
+                return '';
+            }
+            return value.charAt(0).toUpperCase() + value.substr(1);
+        },
+        // substr：过滤器名称
+        // value：原始值
+        // start、length：参数
+        // return：返回过滤操作后的内容
+        substr: function (value, start, length) {
+            if (!value) {
+                return '';
+            }
+            return value.substr(start, length);
+        }
+    }
+});
+```
+
+### 全局
+
+```javascript
+Vue.filter('capitalize', function (value) {
+    if (!value) {
+        return '';
+    }
+    return value.charAt(0).toUpperCase() + value.substr(1);
+});
+
+new Vue({
+    ...
+});
+```
+
+## 使用
+
+### 普通方式
+
+```html
+<!-- 方式一 -->
+{{ 原始值 | 过滤器名称 }}
+
+<!-- 方式二 -->
+<div v-bind:属性名="原始值 | 过滤器名称"></div>
+```
+
+### 串联
+
+```html
+{{ 原始值 | 过滤器1 | 过滤器2 | ... }}
+```
+
+原始值 -> 过滤器1 -> 过滤器2 -> ...
+
+### 接收参数
+
+```html
+{{ 原始值 | 过滤器名称(参数1, 参数2, ...) }}
+```
+
+```javascript
+Vue.filter('过滤器名称', function (value, 参数1, 参数2, ...) {
+    return ...
+});
+```
+
+# 生命周期
+
+## 生命周期图示
+
+![生命周期图示](./assets/note-vue/lifecycle.png)
+
+## 生命周期钩子
+
+每个 Vue 实例在被创建时都要经过一系列的初始化过程：设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。
+同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
+
+### 注意
+
+不要在选项 `property` 或回调上使用箭头函数，例如：
+
+```javascript
+created: () => {
+    console.log(this.a);
+}
+```
+
+```javascript
+vm.$watch('a', newValue => this.myMethod());
+```
+
+因为箭头函数并没有 this，this 会作为变量一直向上级词法作用域查找，直至找到为止，
+经常导致 `Uncaught TypeError: Cannot read property of undefined`
+或 `Uncaught TypeError: this.myMethod is not a function` 之类的错误。

@@ -149,10 +149,20 @@
 </li>
 </ul>
 </li>
-<li><a href="#%E6%8F%92%E6%A7%BD">插槽</a>
+<li><a href="#%E6%8F%92%E6%A7%BD-slot">插槽（slot）</a>
 <ul>
-<li><a href="#%E6%99%AE%E9%80%9A%E6%8F%92%E6%A7%BD">普通插槽</a></li>
-<li><a href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD">具名插槽</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD">默认插槽</a>
+<ul>
+<li><a href="#%E4%BE%8B%E5%AD%90-1">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD">具名插槽</a>
+<ul>
+<li><a href="#%E4%BE%8B%E5%AD%90-2">例子</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F-5">注意</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD-slot-scope">作用域插槽（slot-scope）</a></li>
 </ul>
 </li>
 <li><a href="#transition-%E7%BB%84%E4%BB%B6">transition 组件</a>
@@ -169,6 +179,33 @@
 <li><a href="#%E7%AE%80%E4%BB%8B-11">简介</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%BF%87%E6%BB%A4%E5%99%A8">过滤器</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8">定义过滤器</a>
+<ul>
+<li><a href="#%E5%B1%80%E9%83%A8">局部</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80">全局</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-1">使用</a>
+<ul>
+<li><a href="#%E6%99%AE%E9%80%9A%E6%96%B9%E5%BC%8F">普通方式</a></li>
+<li><a href="#%E4%B8%B2%E8%81%94">串联</a></li>
+<li><a href="#%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0">接收参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a>
+<ul>
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA">生命周期图示</a></li>
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90">生命周期钩子</a>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F-6">注意</a></li>
 </ul>
 </li>
 </ul>
@@ -1044,12 +1081,111 @@ Vue.component(<span class="hljs-string">&#x27;组件名称&#x27;</span>, {
     <span class="hljs-tag">&lt;<span class="hljs-name">welcome-btn</span> <span class="hljs-attr">v-on:welcome</span>=<span class="hljs-string">&quot;sayHi&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">welcome-btn</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h2 id="插槽">插槽</h2>
+<h2 id="插槽-slot">插槽（slot）</h2>
 <blockquote>
 <p><a href="https://cn.vuejs.org/v2/guide/components-slots.html">https://cn.vuejs.org/v2/guide/components-slots.html</a></p>
 </blockquote>
-<h3 id="普通插槽">普通插槽</h3>
+<h3 id="默认插槽">默认插槽</h3>
+<h4 id="例子-1">例子</h4>
+<p>模板</p>
+<blockquote>
+<p>如果没有包含一个 <code>&lt;slot&gt;</code> 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃。</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-bind:href</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<p>页面</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">navigation-link</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;/profile&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-user&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  Your Profile
+<span class="hljs-tag">&lt;/<span class="hljs-name">navigation-link</span>&gt;</span>
+</div></code></pre>
+<p>结果</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/profile&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-user&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  Your Profile
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
 <h3 id="具名插槽">具名插槽</h3>
+<h4 id="例子-2">例子</h4>
+<p>模板</p>
+<blockquote>
+<p><code>&lt;slot&gt;</code> 元素有一个特殊的 attribute：<code>name</code><br>
+这个 attribute 可以用来定义额外的插槽<br>
+一个不带 <code>name</code> 的 <code>&lt;slot&gt;</code> 出口会带有隐含的名称 <code>default</code></p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<p>页面</p>
+<blockquote>
+<p>在向具名插槽提供内容的时候，可以在一个 <code>&lt;template&gt;</code> 元素上使用 <code>v-slot</code> 指令，并以 <code>v-slot</code> 的参数的形式提供其名称。<br>
+<code>&lt;template&gt;</code> 元素中的所有内容都将会被传入相应的插槽。<br>
+任何没有被包裹在带有 <code>v-slot</code> 的 <code>&lt;template&gt;</code> 中的内容都会被视为默认插槽的内容。</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">base-layout</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Here might be a page title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A paragraph for the main content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>And another one.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Here&#x27;s some contact info<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">base-layout</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>仍然可以在一个 <code>&lt;template&gt;</code> 中包裹默认插槽的内容：</p>
+</blockquote>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">base-layout</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Here might be a page title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:default</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A paragraph for the main content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>And another one.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Here&#x27;s some contact info<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">base-layout</span>&gt;</span>
+</div></code></pre>
+<p>结果</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Here might be a page title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A paragraph for the main content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>And another one.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Here&#x27;s some contact info<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<h4 id="注意-5">注意</h4>
+<ul>
+<li><code>v-slot</code> 只能添加在 <code>&lt;template&gt;</code> 上（只有一种例外情况），这一点和已经废弃的 <code>slot</code> attribute 不同。</li>
+</ul>
+<h3 id="作用域插槽-slot-scope">作用域插槽（slot-scope）</h3>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/components-slots.html#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD">https://cn.vuejs.org/v2/guide/components-slots.html#作用域插槽</a></p>
+</blockquote>
 <h2 id="transition-组件">transition 组件</h2>
 <blockquote>
 <p><a href="https://cn.vuejs.org/v2/guide/transitions.html">https://cn.vuejs.org/v2/guide/transitions.html</a></p>
@@ -1152,6 +1288,82 @@ Vue.component(<span class="hljs-string">&#x27;组件名称&#x27;</span>, {
 <li>内部元素需要提供唯一的 <code>key</code> 属性值。</li>
 <li>CSS 过渡的类将会应用在内部的元素中，而不是这个组 / 容器本身。</li>
 </ul>
+<h1 id="过滤器">过滤器</h1>
+<h2 id="定义过滤器">定义过滤器</h2>
+<h3 id="局部">局部</h3>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">new</span> Vue({
+    ...
+    filters: {
+        <span class="hljs-comment">// capitalize：过滤器名称</span>
+        <span class="hljs-comment">// value：原始值</span>
+        <span class="hljs-comment">// return：返回过滤操作后的内容</span>
+        <span class="hljs-attr">capitalize</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>{
+            <span class="hljs-keyword">if</span> (!value) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+            }
+            <span class="hljs-keyword">return</span> value.charAt(<span class="hljs-number">0</span>).toUpperCase() + value.substr(<span class="hljs-number">1</span>);
+        },
+        <span class="hljs-comment">// substr：过滤器名称</span>
+        <span class="hljs-comment">// value：原始值</span>
+        <span class="hljs-comment">// start、length：参数</span>
+        <span class="hljs-comment">// return：返回过滤操作后的内容</span>
+        <span class="hljs-attr">substr</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value, start, length</span>) </span>{
+            <span class="hljs-keyword">if</span> (!value) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+            }
+            <span class="hljs-keyword">return</span> value.substr(start, length);
+        }
+    }
+});
+</div></code></pre>
+<h3 id="全局">全局</h3>
+<pre><code class="language-javascript"><div>Vue.filter(<span class="hljs-string">&#x27;capitalize&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>{
+    <span class="hljs-keyword">if</span> (!value) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+    }
+    <span class="hljs-keyword">return</span> value.charAt(<span class="hljs-number">0</span>).toUpperCase() + value.substr(<span class="hljs-number">1</span>);
+});
+
+<span class="hljs-keyword">new</span> Vue({
+    ...
+});
+</div></code></pre>
+<h2 id="使用-1">使用</h2>
+<h3 id="普通方式">普通方式</h3>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- 方式一 --&gt;</span>
+{{ 原始值 | 过滤器名称 }}
+
+<span class="hljs-comment">&lt;!-- 方式二 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-bind:</span>属性名=<span class="hljs-string">&quot;原始值 | 过滤器名称&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<h3 id="串联">串联</h3>
+<pre><code class="language-html"><div>{{ 原始值 | 过滤器1 | 过滤器2 | ... }}
+</div></code></pre>
+<p>原始值 -&gt; 过滤器1 -&gt; 过滤器2 -&gt; ...</p>
+<h3 id="接收参数">接收参数</h3>
+<pre><code class="language-html"><div>{{ 原始值 | 过滤器名称(参数1, 参数2, ...) }}
+</div></code></pre>
+<pre><code class="language-javascript"><div>Vue.filter(<span class="hljs-string">&#x27;过滤器名称&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value, 参数<span class="hljs-number">1</span>, 参数<span class="hljs-number">2</span>, ...</span>) </span>{
+    <span class="hljs-keyword">return</span> ...
+});
+</div></code></pre>
+<h1 id="生命周期">生命周期</h1>
+<h2 id="生命周期图示">生命周期图示</h2>
+<p><img src="./assets/note-vue/lifecycle.png" alt="生命周期图示"></p>
+<h2 id="生命周期钩子">生命周期钩子</h2>
+<p>每个 Vue 实例在被创建时都要经过一系列的初始化过程：设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。<br>
+同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。</p>
+<h3 id="注意-6">注意</h3>
+<p>不要在选项 <code>property</code> 或回调上使用箭头函数，例如：</p>
+<pre><code class="language-javascript"><div>created: <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a);
+}
+</div></code></pre>
+<pre><code class="language-javascript"><div>vm.$watch(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-function"><span class="hljs-params">newValue</span> =&gt;</span> <span class="hljs-built_in">this</span>.myMethod());
+</div></code></pre>
+<p>因为箭头函数并没有 this，this 会作为变量一直向上级词法作用域查找，直至找到为止，<br>
+经常导致 <code>Uncaught TypeError: Cannot read property of undefined</code><br>
+或 <code>Uncaught TypeError: this.myMethod is not a function</code> 之类的错误。</p>
 
     </body>
     </html>
