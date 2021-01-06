@@ -1,0 +1,274 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* 滚动条 */
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: #FFF;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: #9E9E9E;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    overflow: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    user-select: none;
+    background-color: #F9F9F9;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.shop .cart {
+    position: fixed;
+    z-index: 99;
+    right: -305px;
+    width: 300px;
+    height: 100%;
+    border-left: 5px solid #F44336;
+    backdrop-filter: blur(40px) saturate(0.5);
+}
+
+/* 箭头 */
+
+.shop .cart input[type="number"],
+.shop .cart input::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.shop .cart button {
+    border: none;
+    outline: none;
+    background-color: #F44336;
+    line-height: 36px;
+    text-align: left;
+    color: white;
+}
+
+.shop .cart>button {
+    position: absolute;
+    left: -80px;
+    bottom: 14px;
+    margin-top: -20px;
+    width: 80px;
+    border: none;
+    cursor: pointer;
+}
+
+.shop .cart .bottom {
+    line-height: 50px;
+}
+
+.shop .cart .bottom>button {
+    float: right;
+    margin: 5px 10px 0px 0px;
+    width: 70px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.shop .cart>button span {
+    position: absolute;
+    z-index: 100;
+    left: 8px;
+    top: -12px;
+    min-width: 24px;
+    border-radius: 12px;
+    background-color: #FF0000;
+    line-height: 24px;
+    text-align: center;
+    color: white;
+}
+
+.shop .cart>button::before {
+    content: '';
+    display: block;
+    float: left;
+    width: 28px;
+    height: 36px;
+    background: url("../img/toolbars.png") transparent no-repeat -50px 0px;
+}
+
+.shop .cart h6 {
+    background-color: #F44336;
+    line-height: 50px;
+    color: #FFF;
+}
+
+.shop .cart h6::before {
+    content: '';
+    display: block;
+    float: left;
+    width: 28px;
+    height: 28px;
+    margin: 7px 0px 0px 0px;
+    background: url("../img/toolbars.png") transparent no-repeat -50px 0px;
+}
+
+.shop .cart #btn-clearcart {
+    display: block;
+    float: right;
+    margin: 0px 10px 0px 0px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.shop .cart .shop .cartlist {
+    height: calc(100% - 50px - 50px);
+    overflow-y: auto;
+}
+
+.shop .cart ul img,
+.shop .cart ul li>a:first-child {
+    float: left;
+    width: 60px;
+}
+
+.shop .cart ul li div {
+    float: left;
+    margin-left: 20px;
+}
+
+.shop .cart p input[type="number"] {
+    vertical-align: middle;
+    width: 3em;
+    height: 22px;
+    border-radius: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.shop .cart ul li p span {
+    vertical-align: middle;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+
+.shop .cart ul li p span:not(:first-child) {
+    display: inline-block;
+    width: 10px;
+    border-radius: 5px;
+    background-color: #F44336;
+    text-align: center;
+    color: #FFF;
+}
+
+.shop .cart ul li span.price {
+    padding: 0 15px 0 0;
+    border: none;
+    color: #F44336;
+}
+
+.shop .cart ul li {
+    padding: 10px 10px;
+    overflow: hidden;
+}
+
+.shop .cart .bottom {
+    position: absolute;
+    bottom: 0px;
+    padding-left: 10px;
+    width: 100%;
+    height: 50px;
+    background-color: #F44336;
+    color: #FFF;
+}
+
+.shop .prolist {
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 850px;
+}
+
+.shop .prolist li {
+    position: relative;
+    float: left;
+    margin-left: 15px;
+    margin-top: 15px;
+    padding: 10px 5px;
+    width: 142px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.shop .prolist li:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.shop .prolist li a,
+.shop .prolist li span {
+    display: block;
+    color: #000;
+    font-size: 14px;
+}
+
+.shop .prolist li a.img {
+    text-align: center;
+}
+
+.shop .prolist li a.img img {
+    width: 130px;
+    height: 130px;
+}
+
+.shop .prolist li a.title {
+    padding: 0 5px;
+    line-height: 30px;
+}
+
+.shop .prolist li span {
+    margin-bottom: 10px;
+    padding: 0 5px;
+    font-weight: bold;
+    color: #F44336;
+}
+
+.shop .prolist li a.addcart {
+    margin: 0 auto;
+    width: 100px;
+    background-color: #F44336;
+    line-height: 30px;
+    text-align: center;
+    color: #FFF;
+    transition: opacity 0.25s;
+}
+
+.shop .prolist li a.addcart:hover {
+    opacity: 0.8;
+}
+
+#ball {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #F44336;
+}

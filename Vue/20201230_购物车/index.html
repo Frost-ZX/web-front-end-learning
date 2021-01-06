@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- 页面 -->
+    <div id="shop" class="shop">
+        <div class="cart">
+            <button id="btn-shopcart">购物车<span v-show="shopcart.count > 0">{{ shopcart.count }}</span></button>
+            <h6>购物车<div id="btn-clearcart" @click="clearCart()">清空</div></h6>
+            <cart-list :data="shopcart"></cart-list>
+            <div class="bottom">总计：&yen;<span>{{ sumPrice }}</span><button>结算</button></div>
+        </div>
+        <product-list :data="products" :cart="shopcart"></product-list>
+        <div id="ball"></div>
+    </div>
+    <!-- JavaScript -->
+    <script src="../../jQuery/js/jquery.3.5.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/parabola.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
