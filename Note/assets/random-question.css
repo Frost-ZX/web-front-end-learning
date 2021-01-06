@@ -2,6 +2,7 @@
 
 .random-question {
     display: block;
+    visibility: hidden;
     position: fixed;
     z-index: 200;
     top: 50px;
@@ -10,6 +11,7 @@
     width: 90%;
     max-width: 750px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
     background-color: #FFF;
     line-height: 1.5em;
     font-size: 18px;
@@ -17,7 +19,7 @@
     user-select: none;
 }
 
-.random-question {
+.random-question.hide {
     animation: hide 0.5s linear forwards;
 }
 
@@ -26,11 +28,29 @@
 }
 
 .random-question .question {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 5px 10px;
     /* min-height 与行高相同 */
     min-height: 1.5em;
-    outline: 1px solid #DDD;
+    outline: 2px solid #EEE;
+}
+
+.random-question .anwser {
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 4em;
+    min-height: 4em;
+    border: none;
+    outline: 2px solid #EEE;
+    font-size: 18px;
+    transition: outline 0.25s;
+    resize: vertical;
+}
+
+.random-question .anwser:focus {
+    outline: 2px solid #DDD;
 }
 
 .random-question .ctrl {
@@ -40,7 +60,8 @@
 .random-question .ctrl>div {
     display: inline-block;
     padding: 5px 10px;
-    background-color: #2196F3;
+    border-radius: 5px;
+    background-color: var(--color-secondary);
     font-size: 16px;
     color: #FFF;
     transition: opacity 0.25s;
@@ -52,7 +73,7 @@
 }
 
 .random-question .ctrl>div:not(:last-child) {
-    margin-right: 8px;
+    margin-right: 11px;
 }
 
 /* 显示 */

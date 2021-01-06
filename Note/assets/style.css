@@ -97,7 +97,7 @@ img {
     display: block;
     padding: 12px 10px;
     border-radius: 5px;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     font-weight: normal;
     color: #FFF;
     opacity: 0.8;
