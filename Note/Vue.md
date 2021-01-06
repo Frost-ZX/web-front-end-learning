@@ -64,6 +64,7 @@
     - [简介](#简介-9)
     - [使用方式](#使用方式)
     - [单向数据流](#单向数据流)
+    - [Prop 验证](#prop-验证)
   - [访问元素 & 组件](#访问元素-组件)
     - [访问子组件实例或子元素（$refs）](#访问子组件实例或子元素-refs)
     - [触发父组件的自定义事件（$emit）](#触发父组件的自定义事件-emit)
@@ -76,6 +77,8 @@
       - [例子](#例子-2)
       - [注意](#注意-5)
     - [作用域插槽（slot-scope）](#作用域插槽-slot-scope)
+  - [动态组件 & 异步组件](#动态组件-异步组件)
+    - [动态组件](#动态组件)
   - [transition 组件](#transition-组件)
     - [单元素 / 组件的过渡（transition）](#单元素-组件的过渡-transition)
       - [简介](#简介-10)
@@ -94,7 +97,47 @@
 - [生命周期](#生命周期)
   - [生命周期图示](#生命周期图示)
   - [生命周期钩子](#生命周期钩子)
+    - [beforeCreate](#beforecreate)
+    - [created](#created)
+    - [beforeMount](#beforemount)
+    - [mounted](#mounted)
+    - [beforeUpdate](#beforeupdate)
+    - [updated](#updated)
+    - [beforeDestroy](#beforedestroy)
+    - [destroyed](#destroyed)
     - [注意](#注意-6)
+- [Vue CLI（脚手架）](#vue-cli-脚手架)
+  - [简介](#简介-12)
+  - [相关链接](#相关链接)
+  - [配置 webpack](#配置-webpack)
+    - [代理服务器](#代理服务器)
+- [Vue Router（路由）](#vue-router-路由)
+  - [相关链接](#相关链接-1)
+  - [安装](#安装)
+    - [直接下载 / CDN](#直接下载-cdn)
+    - [NPM](#npm)
+    - [注意](#注意-7)
+  - [配置](#配置)
+    - [router/index.js](#router-index-js)
+      - [例子](#例子-3)
+    - [动态路由匹配](#动态路由匹配)
+    - [重定向（redirect）和别名（alias）](#重定向-redirect-和别名-alias)
+    - [路由组件传参（props）](#路由组件传参-props)
+      - [布尔模式](#布尔模式)
+      - [对象模式](#对象模式)
+      - [函数模式](#函数模式)
+    - [嵌套路由（children）](#嵌套路由-children)
+  - [router-link](#router-link)
+    - [to 属性](#to-属性)
+    - [replace 属性](#replace-属性)
+    - [append 属性](#append-属性)
+    - [tag 属性](#tag-属性)
+    - [active-class 属性](#active-class-属性)
+    - [exact-active-class 属性](#exact-active-class-属性)
+    - [exact 属性](#exact-属性)
+    - [event 属性](#event-属性)
+    - [接收数据](#接收数据)
+  - [router-view](#router-view)
 
 # 简介
 
@@ -871,6 +914,10 @@ Vue.component('blog-post', {
 额外的，每次父级组件发生变更时，子组件中所有的 `prop` 都将会刷新为最新的值。
 这意味着不应该在一个子组件内部改变 `prop`，否则 Vue 会在浏览器的控制台中发出警告。
 
+### Prop 验证
+
+> https://cn.vuejs.org/v2/guide/components-props.html#Prop-%E9%AA%8C%E8%AF%81
+
 ## 访问元素 & 组件
 
 ### 访问子组件实例或子元素（$refs）
@@ -1093,6 +1140,14 @@ new Vue({
 
 > https://cn.vuejs.org/v2/guide/components-slots.html#作用域插槽
 
+## 动态组件 & 异步组件
+
+### 动态组件
+
+```html
+<component v-bind:is="组件名称"></component>
+```
+
 ## transition 组件
 
 > https://cn.vuejs.org/v2/guide/transitions.html
@@ -1284,6 +1339,87 @@ Vue.filter('过滤器名称', function (value, 参数1, 参数2, ...) {
 每个 Vue 实例在被创建时都要经过一系列的初始化过程：设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。
 同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
 
+### beforeCreate
+
+在实例初始化之后，数据观测（data observer）和 event / watcher 事件配置之前被调用。
+
+### created
+
+在实例创建完成后被立即调用。
+在这一步，实例已完成以下的配置：
+
+- 数据观测（data observer）
+- property 和方法的运算
+- watch / event 事件回调
+
+然而，挂载阶段还没开始，`$el` property 目前尚不可用。
+
+### beforeMount
+
+在挂载开始之前被调用：相关的 render 函数首次被调用。
+该钩子在服务器端渲染期间不被调用。
+
+### mounted
+
+实例被挂载后调用，这时 `el` 被新创建的 `vm.$el `替换了。
+如果根实例挂载到了一个文档内的元素上，当 `mounted` 被调用时 `vm.$el` 也在文档内。
+
+注意：
+
+- `mounted` 不会保证所有的子组件也都一起被挂载。
+- 如果希望等到整个视图都渲染完毕，可以在 `mounted` 内部使用 `vm.$nextTick`：
+
+  ```javascript
+  mounted: function () {
+      this.$nextTick(function () {
+          ...
+      });
+  }
+  ```
+
+> 该钩子在服务器端渲染期间不被调用。
+
+### beforeUpdate
+
+数据更新时调用，发生在虚拟 DOM 打补丁之前。
+这里适合在更新之前访问现有的 DOM（例如手动移除已添加的事件监听器）。
+
+> 该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。
+
+### updated
+
+由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+当这个钩子被调用时，组件 DOM 已经更新，所以现在可以执行依赖于 DOM 的操作。
+然而在大多数情况下，应该避免在此期间更改状态。
+如果要相应状态改变，通常最好使用 `计算属性` 或 `watcher` 取而代之。
+
+注意：
+
+- `updated` 不会保证所有的子组件也都一起被重绘。
+- 如果希望等到整个视图都重绘完毕，可以在 `updated` 内部使用 `vm.$nextTick`：
+
+  ```javascript
+  updated: function () {
+     this.$nextTick(function () {
+         ...
+     });
+  }
+  ```
+
+> 该钩子在服务器端渲染期间不被调用。
+
+### beforeDestroy
+
+被 `keep-alive` 缓存的组件激活时调用。
+
+> 该钩子在服务器端渲染期间不被调用。
+
+### destroyed
+
+被 `keep-alive` 缓存的组件停用时调用。
+
+> 该钩子在服务器端渲染期间不被调用。
+
 ### 注意
 
 不要在选项 `property` 或回调上使用箭头函数，例如：
@@ -1301,3 +1437,313 @@ vm.$watch('a', newValue => this.myMethod());
 因为箭头函数并没有 this，this 会作为变量一直向上级词法作用域查找，直至找到为止，
 经常导致 `Uncaught TypeError: Cannot read property of undefined`
 或 `Uncaught TypeError: this.myMethod is not a function` 之类的错误。
+
+# Vue CLI（脚手架）
+
+## 简介
+
+Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统，提供：
+
+- 通过 `@vue/cli` 实现的交互式的项目脚手架。
+- 通过 `@vue/cli` + `@vue/cli-service-global` 实现的零配置原型开发。
+- 一个运行时依赖 (`@vue/cli-service`)，该依赖：
+  - 可升级；
+  - 基于 webpack 构建，并带有合理的默认配置；
+  - 可以通过项目内的配置文件进行配置；
+  - 可以通过插件进行扩展。
+- 一个丰富的官方插件集合，集成了前端生态中最好的工具。
+- 一套完全图形化的创建和管理 Vue.js 项目的用户界面。
+
+Vue CLI 致力于将 Vue 生态中的工具基础标准化。它确保了各种构建工具能够基于智能的默认配置即可平稳衔接，这样你可以专注在撰写应用上，而不必花好几天去纠结配置的问题。与此同时，它也为每个工具提供了调整配置的灵活性，无需 eject。
+
+## 相关链接
+
+- https://cli.vuejs.org/zh/
+
+## 配置 webpack
+
+### 代理服务器
+
+```javascript
+module.exports = {
+    // 配置 webpack
+    configureWebpack: {
+        // 配置开发服务器
+        devServer: {
+            // 配置代理
+            proxy: {
+                // 请求路径
+                '/example/a': {
+                    // 实际请求的服务器根地址
+                    target: 'https://example.com',
+                    // 是否修改 origin（解决跨域）
+                    changeorigin: true
+                }
+            }
+        }
+    }
+}
+```
+
+# Vue Router（路由）
+
+## 相关链接
+
+- https://cn.vuejs.org/v2/guide/routing.html
+- https://router.vuejs.org/zh/
+
+## 安装
+
+### 直接下载 / CDN
+
+- `https://unpkg.com/vue-router/dist/vue-router.js`
+- 在 `Vue` 后面加载 `vue-router`
+
+  ```html
+  <script src="/path/to/vue.js"></script>
+  <script src="/path/to/vue-router.js"></script>
+  ```
+
+### NPM
+
+- `npm install vue-router`
+
+### 注意
+
+如果在一个模块化工程中使用它，必须要通过 `Vue.use()` 明确地安装路由功能：
+
+```javascript
+import Vue from 'vue'；
+import VueRouter from 'vue-router'；
+
+Vue.use(VueRouter)；
+```
+
+如果使用全局的 `script` 标签，则不需要进行该操作。
+
+## 配置
+
+### router/index.js
+
+#### 例子
+
+```javascript
+// 导入 Vue
+import Vue from 'vue';
+// 导入 VueRouter
+import VueRouter from 'vue-router';
+// 导入组件
+// @ 表示 /src
+import Home from '@/pages/Home.vue';
+
+// 使用 VueRouter 插件
+Vue.use(VueRouter);
+
+// 路由节点
+const routes = [
+    {
+        // 路由路径标记（匹配字符串，以 / 开头）
+        // string
+        path: '/',
+        // 当前路由匹配时显示的路由组件
+        // Component
+        component: Example,
+        // 路由名称，设置为具名路由
+        // string，可选
+        name: '',
+        // 路由重定向
+        // string | Location | Function，可选
+        redirect: '',
+        // 路由组件传参
+        // boolean | Object | Function，默认值为 false，可选
+        props: '',
+        // 路由别名
+        // string | Array < string >，可选
+        alias: '',
+        // 嵌套路由
+        // Array < RouteConfig >，可选
+        children: [],
+        // 路由守卫
+        // 可选
+        beforeEnter: (to: Route, from: Route, next: Function) => void,
+        // 匹配规则是否大小写敏感
+        // boolean，默认值为 false，可选
+        caseSensitive: false
+    },
+    {
+        path: '/',
+        name: 'Default',
+        component: Home
+    },
+    {
+        path: '/home',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/about',
+        name: 'About',
+        // 导入并使用组件
+        // 代码拆分方式，会为此路由生成一个独立的 chunk 文件（about.[hash].js）
+        // 访问时使用 lazy-loaded 加载方式
+        component: () => import(/* webpackChunkName: "about" */ '../pages/About.vue')
+    }
+];
+
+// 创建路由对象
+const router = new VueRouter({
+    routes,
+    // 模式
+    // hash：默认，使用锚标记（#），刷新后可保持
+    // history：使用 BOM 对象 history
+    mode: 'hash',
+    // 全局设置匹配路由时（匹配一部分即可）的链接标签类名
+    linkActiveClass: 'router-link-active',
+    // 全局设置匹配路由时（需要全匹配）的链接标签类名
+    linkExactActiveClass: 'router-link-extract-active'
+});
+
+// 导出
+export default router;
+```
+
+
+### 动态路由匹配
+
+> https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html
+
+有时候需要把某种模式匹配到的所有路由，全都映射到相同的组件中。
+例如：有一个 User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染。
+那么，可以在 vue-router 的路由路径中使用“动态路径参数”（dynamic segment）来达到这个效果：
+
+```javascript
+const User = {
+    template: '<div>User</div>'
+};
+
+const router = new VueRouter({
+    routes: [
+        {
+            // 动态路径参数，以冒号开头
+            path: '/user/:id',
+            component: User
+        }
+    ];
+});
+```
+
+之后，`/user/*` 都会映射到相同的路由（例如 `/user/foo`、`/user/bar`）。
+
+一个“路径参数”使用冒号 `:` 标记。
+当匹配到一个路由时，参数值会被设置到 `this.$route.params`，可以在每个组件内使用。
+因此可以通过以下方法输出当前用户的 ID：
+
+```javascript
+const User = {
+    template: '<div>User ID: {{ $route.params.id }}</div>'
+};
+```
+
+### 重定向（redirect）和别名（alias）
+
+> https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html
+
+### 路由组件传参（props）
+
+> https://router.vuejs.org/zh/guide/essentials/passing-props.html
+
+#### 布尔模式
+
+#### 对象模式
+
+#### 函数模式
+
+### 嵌套路由（children）
+
+> https://router.vuejs.org/zh/guide/essentials/nested-routes.html
+
+## router-link
+
+### to 属性
+
+```html
+<router-link :to="{ ... }"></router-link>
+```
+
+```javascript
+{
+    // 要跳转到的锚标记路径
+    path: '',
+    // 要跳转到的具名路由名称
+    name: '',
+    // 锚标记
+    hash: '',
+    // 通过 GET 方式方式传递参数
+    query: {
+        属性名: 属性值,
+        属性名: 属性值,
+        ...
+    },
+    // 通过路由传递参数（需要 name）
+    // 刷新后会丢失
+    params: {
+        属性名: 属性值,
+        属性名: 属性值,
+        ...
+    }
+}
+```
+
+### replace 属性
+
+- 默认值为 `false`
+- 属性值为 `true` 时，路由的跳转将以替换的形式跳转到下一个页面
+  （下一个路由会把当前浏览器历史记录栈中的 URL 替换成将要跳转的路由）
+
+### append 属性
+
+- 默认值为 `false`
+- 属性值为 `true` 时，若当前路由是相对路径（开头没有 `/`）路由的跳转将会基于当前路径进行下一级的跳转（附加）
+
+### tag 属性
+
+- 默认值为 `a`
+- 指定该 `router-link` 标签渲染时的 DOM 元素
+
+### active-class 属性
+
+- 设置匹配路由时（匹配一部分即可），`router-link` 的类名。
+
+### exact-active-class 属性
+
+- 设置匹配路由时（需要全匹配），`router-link` 的类名。
+
+### exact 属性
+
+- 默认值为 `false`
+- 指定当前 `router-link` 元素使用严格匹配
+  此时 `active-class` 只能在严格匹配的模式下被激活
+
+### event 属性
+
+- 默认值为 `click`
+- 指定可以用来触发当前 `router-link` 元素导航事件的事件
+  可以是一个字符串，也可以是一个字符串数组
+
+### 接收数据
+
+- `this.$route.query`（接收 `to - query`）
+- `this.$route.params`（接收 `to - params`）
+- 组件 `props`（接收 `to - params`）
+
+> 注意：
+> `$route` - 当前路由对象
+> `$router` - 全局路由对象
+
+## router-view
+
+当路由路由路径发生改变时，根据当前 VueRouter 的配置渲染对应的路由视图组件。
+`router-view` 组件是一个 `functional` 组件，渲染路径匹配到的视图组件。
+`router-view` 渲染的组件还可以内嵌自己的 `router-view`，根据嵌套路径，渲染嵌套组件。
+其他属性（除 `name` 以外的非 `router-view` 使用的属性）都可以直接传给渲染的组件，很多时候，每个路由的数据都包含在路由参数中。
+因为它是个组件，所以也可以配合 `<transition>` 和 `<keep-alive>` 使用（如果两个结合一起用，要确保在内层使用 `<keep-alive>`）。
