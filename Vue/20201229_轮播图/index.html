@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!--
+            图片：imgs
+            方向：horizon - 左右轮播，vertical - 上下轮播
+            圆点颜色：normalcolor - 默认状态，activecolor - 激活状态
+            自动轮播：auto - yes / no
+            自动轮播间隔： interval - 毫秒数
+        -->
+        <my-carousel :imgs="imgs" direction="horizon" auto="yes" interval="2000"
+            normalcolor="#607D8B" activecolor="#F44336"></my-carousel>
+        <my-carousel :imgs="imgs" direction="vertical" auto="yes" interval="2000"
+            normalcolor="#607D8B" activecolor="#F44336"></my-carousel>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
