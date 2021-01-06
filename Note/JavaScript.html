@@ -279,9 +279,17 @@
 <li><a href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E8%B7%AF%E5%BE%84">完整的路径</a></li>
 <li><a href="#%E8%B7%B3%E8%BD%AC">跳转</a></li>
 <li><a href="#%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2">刷新页面</a></li>
+<li><a href="#%E9%94%9A%E7%82%B9">锚点</a></li>
 </ul>
 </li>
-<li><a href="#history">history</a></li>
+<li><a href="#history">history</a>
+<ul>
+<li><a href="#history-back">history.back()</a></li>
+<li><a href="#history-forward">history.forward()</a></li>
+<li><a href="#history-go-n">history.go(n)</a></li>
+<li><a href="#history-pushstate">history.pushState()</a></li>
+</ul>
+</li>
 <li><a href="#screen">screen</a>
 <ul>
 <li><a href="#%E8%8E%B7%E5%8F%96%E5%B1%8F%E5%B9%95%E5%88%86%E8%BE%A8%E7%8E%87">获取屏幕分辨率</a></li>
@@ -1112,18 +1120,46 @@ BOM (Browser Object Model)</p>
 </ul>
 <h3 id="刷新页面">刷新页面</h3>
 <ul>
-<li><code>location.reload(目标路径);</code></li>
+<li><code>location.reload(目标路径)</code></li>
+</ul>
+<h3 id="锚点">锚点</h3>
+<p>获取</p>
+<ul>
+<li><code>location.hash</code></li>
+</ul>
+<p>事件</p>
+<ul>
+<li><code>window.onhashchange</code></li>
 </ul>
 <h2 id="history">history</h2>
+<h3 id="history-back">history.back()</h3>
+<p>与在浏览器点击 <code>后退</code> 按钮相同</p>
+<h3 id="history-forward">history.forward()</h3>
+<p>与在浏览器点击 <code>向前</code> 按钮相同</p>
+<h3 id="history-go-n">history.go(n)</h3>
 <ul>
-<li><code>history.go(n)</code></li>
+<li>
+<p>n 为整数</p>
+<ul>
+<li>n &lt; 0：返回上级</li>
+<li>n = 0：刷新页面</li>
+<li>n &gt; 0：前进</li>
 </ul>
+</li>
+</ul>
+<h3 id="history-pushstate">history.pushState()</h3>
 <blockquote>
-<p>n 为整数<br>
-n &lt; 0：返回上级<br>
-n = 0：刷新页面<br>
-n &gt; 0：前进</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/History/pushState">https://developer.mozilla.org/zh-CN/docs/Web/API/History/pushState</a></p>
 </blockquote>
+<ul>
+<li>
+<p>HTML5 新增</p>
+</li>
+<li>
+<p>用法</p>
+<p><code>history.pushState(state, title[, url])</code></p>
+</li>
+</ul>
 <h2 id="screen">screen</h2>
 <h3 id="获取屏幕分辨率">获取屏幕分辨率</h3>
 <ul>

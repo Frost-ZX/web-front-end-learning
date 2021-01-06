@@ -138,7 +138,12 @@
     - [完整的路径](#完整的路径)
     - [跳转](#跳转)
     - [刷新页面](#刷新页面)
+    - [锚点](#锚点)
   - [history](#history)
+    - [history.back()](#history-back)
+    - [history.forward()](#history-forward)
+    - [history.go(n)](#history-go-n)
+    - [history.pushState()](#history-pushstate)
   - [screen](#screen)
     - [获取屏幕分辨率](#获取屏幕分辨率)
 - [正则表达式](#正则表达式)
@@ -894,16 +899,44 @@ var arr = [
 
 ### 刷新页面
 
-- `location.reload(目标路径);`
+- `location.reload(目标路径)`
+
+### 锚点
+
+获取
+
+- `location.hash`
+
+事件
+
+- `window.onhashchange`
 
 ## history
 
-- `history.go(n)`
+### history.back()
 
-> n 为整数
-> n < 0：返回上级
-> n = 0：刷新页面
-> n > 0：前进
+与在浏览器点击 `后退` 按钮相同
+
+### history.forward()
+
+与在浏览器点击 `向前` 按钮相同
+
+### history.go(n)
+
+- n 为整数
+
+  - n < 0：返回上级
+  - n = 0：刷新页面
+  - n > 0：前进
+
+### history.pushState()
+
+> https://developer.mozilla.org/zh-CN/docs/Web/API/History/pushState
+
+- HTML5 新增
+- 用法
+
+  `history.pushState(state, title[, url])`
 
 ## screen
 
