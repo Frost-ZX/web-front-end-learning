@@ -21,6 +21,9 @@
     15.1 Vue.js
     15.2 Vue CLI
     15.3 Vue Router
+    15.4 Vuex
+
+16. Node.js
 
 ## 文件说明
 
