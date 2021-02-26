@@ -262,6 +262,22 @@
 </ul>
 </li>
 <li><a href="#%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1-children">嵌套路由（children）</a></li>
+<li><a href="#%E7%BC%96%E7%A8%8B%E5%BC%8F%E5%AF%BC%E8%88%AA">编程式导航</a>
+<ul>
+<li><a href="#router-push">router.push()</a></li>
+<li><a href="#router-replace">router.replace()</a></li>
+<li><a href="#router-go">router.go()</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB">导航守卫</a>
+<ul>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB-beforeeach">全局前置守卫（beforeEach）</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E8%A7%A3%E6%9E%90%E5%AE%88%E5%8D%AB-beforeresolve">全局解析守卫（beforeResolve）</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%90%8E%E7%BD%AE%E9%92%A9%E5%AD%90-aftereach">全局后置钩子（afterEach）</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AE%88%E5%8D%AB-beforeenter">路由独享的守卫（beforeEnter）</a></li>
+<li><a href="#%E7%BB%84%E4%BB%B6%E5%86%85%E7%9A%84%E5%AE%88%E5%8D%AB">组件内的守卫</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#router-link">router-link</a>
@@ -278,6 +294,23 @@
 </ul>
 </li>
 <li><a href="#router-view">router-view</a></li>
+</ul>
+</li>
+<li><a href="#vuex">Vuex</a>
+<ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5-2">相关链接</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-1">安装</a>
+<ul>
+<li><a href="#%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD-cdn-1">直接下载 / CDN</a></li>
+<li><a href="#npm-1">NPM</a></li>
+<li><a href="#vue">Vue</a></li>
+</ul>
+</li>
+<li><a href="#state">State</a></li>
+<li><a href="#getters">Getters</a></li>
+<li><a href="#mutations">Mutations</a></li>
+<li><a href="#actions">Actions</a></li>
+<li><a href="#modules">Modules</a></li>
 </ul>
 </li>
 </ul>
@@ -1572,7 +1605,7 @@ Vue.component(<span class="hljs-string">&#x27;组件名称&#x27;</span>, {
 <p><code>https://unpkg.com/vue-router/dist/vue-router.js</code></p>
 </li>
 <li>
-<p>在 <code>Vue</code> 后面加载 <code>vue-router</code></p>
+<p>在 <code>Vue</code> 后面引入 <code>vue-router</code></p>
 <pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/path/to/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/path/to/vue-router.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </div></code></pre>
@@ -1580,7 +1613,7 @@ Vue.component(<span class="hljs-string">&#x27;组件名称&#x27;</span>, {
 </ul>
 <h3 id="npm">NPM</h3>
 <ul>
-<li><code>npm install vue-router</code></li>
+<li><code>npm install vue-router --save</code></li>
 </ul>
 <h3 id="注意-7">注意</h3>
 <p>如果在一个模块化工程中使用它，必须要通过 <code>Vue.use()</code> 明确地安装路由功能：</p>
@@ -1715,6 +1748,173 @@ Vue.use(VueRouter);
 <blockquote>
 <p><a href="https://router.vuejs.org/zh/guide/essentials/nested-routes.html">https://router.vuejs.org/zh/guide/essentials/nested-routes.html</a></p>
 </blockquote>
+<pre><code class="language-text"><div>/user/foo/profile        /user/foo/posts
++------------------+     +------------------+
+| User             |     | User             |
+| +--------------+ |     | +--------------+ |
+| | Profile      | |     | | Posts        | |
+| |              | |     | |              | |
+| +--------------+ |     | +--------------+ |
++------------------+     +------------------+
+</div></code></pre>
+<h3 id="编程式导航">编程式导航</h3>
+<blockquote>
+<p><a href="https://router.vuejs.org/zh/guide/essentials/navigation.html">https://router.vuejs.org/zh/guide/essentials/navigation.html</a></p>
+</blockquote>
+<p>除了使用 <code>&lt;router-link&gt;</code> 创建标签来定义导航链接，还可以借助 <code>router</code> 的实例方法，通过编写代码来实现。</p>
+<blockquote>
+<p>注意：<br>
+在 Vue 实例内部可以通过 <code>$router</code> 访问路由实例，<br>
+因此，可以使用 <code>this.$router</code>。</p>
+</blockquote>
+<h4 id="router-push">router.push()</h4>
+<p>用法：</p>
+<p><code>router.push(location, onComplete?, onAbort?)</code></p>
+<h4 id="router-replace">router.replace()</h4>
+<p>用法：</p>
+<p><code>router.replace(location, onComplete?, onAbort?)</code></p>
+<h4 id="router-go">router.go()</h4>
+<p>用法：</p>
+<p><code>router.go(n)</code></p>
+<h3 id="导航守卫">导航守卫</h3>
+<blockquote>
+<p><a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html">https://router.vuejs.org/zh/guide/advanced/navigation-guards.html</a></p>
+</blockquote>
+<h4 id="全局前置守卫-beforeeach">全局前置守卫（beforeEach）</h4>
+<p>可以使用 <code>router.beforeEach()</code> 注册全局前置守卫：</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({
+    ...
+});
+
+router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> {
+    ...
+});
+</div></code></pre>
+<p>当一个导航触发时，全局前置守卫按照创建顺序调用。<br>
+守卫是 <code>异步解析执行</code>，此时导航在所有守卫 <code>resolve</code> 完之前一直处于 <code>等待中</code>。</p>
+<p>每个守卫方法接收三个参数：</p>
+<ul>
+<li>
+<p><code>to: Route</code></p>
+<p>即将要进入的目标 <code>路由对象</code></p>
+</li>
+<li>
+<p><code>from: Route</code></p>
+<p>当前导航正要离开的 <code>路由对象</code></p>
+</li>
+<li>
+<p><code>next: Function</code></p>
+<p>调用该方法来 <code>resolve</code> 这个钩子（必须）<br>
+执行效果依赖 <code>next</code> 方法的调用参数</p>
+<ul>
+<li>
+<p><code>next()</code></p>
+<p>进行管道中的下一个钩子。<br>
+如果全部钩子执行完了，则导航的状态就是 <code>confirmed</code>（确认的）。</p>
+</li>
+<li>
+<p><code>next(false)</code></p>
+<p>中断当前的导航。<br>
+如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 <code>from</code> 路由对应的地址。</p>
+</li>
+<li>
+<p><code>next('/')</code> 或 <code>next({ path: '/' })</code></p>
+<p>跳转到一个不同的地址。<br>
+当前的导航被中断，然后进行一个新的导航。<br>
+可以向 <code>next</code> 传递任意位置对象，且允许设置如 <code>replace: true</code>、<code>name: 'home'</code> 之类的选项，<br>
+以及任何用在 <code>router-link</code> 的 <code>to</code> 属性或 <code>router.push()</code> 中的选项。</p>
+</li>
+<li>
+<p><code>next(error)</code>（2.4.0+）</p>
+<p>如果传入 <code>next</code> 的参数是一个 <code>Error</code> 实例，则导航会被终止，且该错误会被传递给 <code>router.onError()</code> 注册过的回调。</p>
+</li>
+</ul>
+<blockquote>
+<p>确保 <code>next</code> 函数在任何给定的导航守卫中都被严格调用一次。<br>
+它可以出现多于一次，但是只能在所有的逻辑路径都不重叠的情况下，否则钩子永远都不会被解析或报错。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="全局解析守卫-beforeresolve">全局解析守卫（beforeResolve）</h4>
+<blockquote>
+<p>2.5.0 新增</p>
+</blockquote>
+<p>可以使用 <code>router.beforeResolve()</code> 注册全局解析守卫。<br>
+这和 <code>router.beforeEach()</code> 类似，区别是：<br>
+在导航被确认之前，同时在所有 <code>组件内守卫</code> 和 <code>异步路由组件</code> 被解析之后，解析守卫就被调用。</p>
+<h4 id="全局后置钩子-aftereach">全局后置钩子（afterEach）</h4>
+<p>可以使用 <code>router.afterEach()</code> 注册全局后置钩子。<br>
+与守卫不同的是，这些钩子不会接受 <code>next</code> 函数，也不会改变导航本身。</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({
+    ...
+});
+
+router.afterEach(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> {
+    ...
+});
+</div></code></pre>
+<h4 id="路由独享的守卫-beforeenter">路由独享的守卫（beforeEnter）</h4>
+<p>可以在路由配置上直接定义 beforeEnter 守卫<br>
+这些守卫与 <code>全局前置守卫</code> 的方法参数相同</p>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({
+    <span class="hljs-attr">routes</span>: [
+        {
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/example&#x27;</span>,
+            <span class="hljs-attr">component</span>: Example,
+            <span class="hljs-attr">beforeEnter</span>: <span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> {
+                ...
+            }
+        }
+    ];
+});
+</div></code></pre>
+<h4 id="组件内的守卫">组件内的守卫</h4>
+<p>可以在路由组件内直接定义以下路由导航守卫</p>
+<ul>
+<li>
+<p><code>beforeRouteEnter</code></p>
+<ul>
+<li>在渲染该组件的对应路由被 confirm 前调用</li>
+<li><strong>不能获取组件实例 <code>this</code></strong>（在守卫执行前，组件实例还没被创建）</li>
+</ul>
+</li>
+<li>
+<p><code>beforeRouteUpdate</code>（2.2 新增）</p>
+<ul>
+<li>
+<p>在当前路由改变，但是该组件被复用时调用</p>
+<blockquote>
+<p>例如：<br>
+对于一个带有动态参数的路径 <code>/example/:id</code>，在 <code>/example/1</code> 和 <code>/example/2</code> 之间跳转时，<br>
+由于会渲染同样的 <code>Example</code> 组件，组件实例会被复用，而这个钩子就会在这个情况下被调用。</p>
+</blockquote>
+</li>
+<li>
+<p>可以访问组件实例 <code>this</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>beforeRouteLeave</code></p>
+<ul>
+<li>导航离开该组件的对应路由时调用</li>
+<li>可以访问组件实例 <code>this</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> Foo = {
+    <span class="hljs-attr">template</span>: ...,
+    beforeRouteEnter (to, <span class="hljs-keyword">from</span>, next) {
+        ...
+    },
+    beforeRouteUpdate (to, <span class="hljs-keyword">from</span>, next) {
+        ...
+    },
+    beforeRouteLeave (to, <span class="hljs-keyword">from</span>, next) {
+        ...
+    }
+}
+</div></code></pre>
 <h2 id="router-link">router-link</h2>
 <h3 id="to-属性">to 属性</h3>
 <pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;{ ... }&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span>
@@ -1794,6 +1994,41 @@ Vue.use(VueRouter);
 <code>router-view</code> 渲染的组件还可以内嵌自己的 <code>router-view</code>，根据嵌套路径，渲染嵌套组件。<br>
 其他属性（除 <code>name</code> 以外的非 <code>router-view</code> 使用的属性）都可以直接传给渲染的组件，很多时候，每个路由的数据都包含在路由参数中。<br>
 因为它是个组件，所以也可以配合 <code>&lt;transition&gt;</code> 和 <code>&lt;keep-alive&gt;</code> 使用（如果两个结合一起用，要确保在内层使用 <code>&lt;keep-alive&gt;</code>）。</p>
+<h1 id="vuex">Vuex</h1>
+<h2 id="相关链接-2">相关链接</h2>
+<ul>
+<li><a href="https://vuex.vuejs.org/zh/">https://vuex.vuejs.org/zh/</a></li>
+</ul>
+<h2 id="安装-1">安装</h2>
+<h3 id="直接下载-cdn-1">直接下载 / CDN</h3>
+<ul>
+<li>
+<p><code>https://unpkg.com/vuex</code></p>
+</li>
+<li>
+<p>在 <code>Vue</code> 后面引入 <code>vuex</code></p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/path/to/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/path/to/vuex.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="npm-1">NPM</h3>
+<ul>
+<li><code>npm install vuex --save</code></li>
+</ul>
+<h3 id="vue">Vue</h3>
+<ul>
+<li><code>vue add vuex</code>（改变项目结构）</li>
+</ul>
+<h2 id="state">State</h2>
+<h2 id="getters">Getters</h2>
+<h2 id="mutations">Mutations</h2>
+<h2 id="actions">Actions</h2>
+<h2 id="modules">Modules</h2>
+<p>由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。<br>
+当应用变得非常复杂时，<code>store</code> 对象就有可能变得相当臃肿。<br>
+为了解决以上问题，Vuex 允许将 <code>store</code> 分割成模块（<code>module</code>）。<br>
+每个模块拥有自己的 <code>state</code>、<code>mutation</code>、<code>action</code>、<code>getter</code>，甚至是嵌套子模块（从上至下进行同样方式的分割）。</p>
 
     </body>
     </html>

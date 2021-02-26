@@ -127,6 +127,16 @@
       - [对象模式](#对象模式)
       - [函数模式](#函数模式)
     - [嵌套路由（children）](#嵌套路由-children)
+    - [编程式导航](#编程式导航)
+      - [router.push()](#router-push)
+      - [router.replace()](#router-replace)
+      - [router.go()](#router-go)
+    - [导航守卫](#导航守卫)
+      - [全局前置守卫（beforeEach）](#全局前置守卫-beforeeach)
+      - [全局解析守卫（beforeResolve）](#全局解析守卫-beforeresolve)
+      - [全局后置钩子（afterEach）](#全局后置钩子-aftereach)
+      - [路由独享的守卫（beforeEnter）](#路由独享的守卫-beforeenter)
+      - [组件内的守卫](#组件内的守卫)
   - [router-link](#router-link)
     - [to 属性](#to-属性)
     - [replace 属性](#replace-属性)
@@ -138,6 +148,17 @@
     - [event 属性](#event-属性)
     - [接收数据](#接收数据)
   - [router-view](#router-view)
+- [Vuex](#vuex)
+  - [相关链接](#相关链接-2)
+  - [安装](#安装-1)
+    - [直接下载 / CDN](#直接下载-cdn-1)
+    - [NPM](#npm-1)
+    - [Vue](#vue)
+  - [State](#state)
+  - [Getters](#getters)
+  - [Mutations](#mutations)
+  - [Actions](#actions)
+  - [Modules](#modules)
 
 # 简介
 
@@ -1497,7 +1518,7 @@ module.exports = {
 ### 直接下载 / CDN
 
 - `https://unpkg.com/vue-router/dist/vue-router.js`
-- 在 `Vue` 后面加载 `vue-router`
+- 在 `Vue` 后面引入 `vue-router`
 
   ```html
   <script src="/path/to/vue.js"></script>
@@ -1506,7 +1527,7 @@ module.exports = {
 
 ### NPM
 
-- `npm install vue-router`
+- `npm install vue-router --save`
 
 ### 注意
 
@@ -1607,7 +1628,6 @@ const router = new VueRouter({
 export default router;
 ```
 
-
 ### 动态路由匹配
 
 > https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html
@@ -1661,6 +1681,186 @@ const User = {
 ### 嵌套路由（children）
 
 > https://router.vuejs.org/zh/guide/essentials/nested-routes.html
+
+```text
+/user/foo/profile        /user/foo/posts
++------------------+     +------------------+
+| User             |     | User             |
+| +--------------+ |     | +--------------+ |
+| | Profile      | |     | | Posts        | |
+| |              | |     | |              | |
+| +--------------+ |     | +--------------+ |
++------------------+     +------------------+
+```
+
+### 编程式导航
+
+> https://router.vuejs.org/zh/guide/essentials/navigation.html
+
+除了使用 `<router-link>` 创建标签来定义导航链接，还可以借助 `router` 的实例方法，通过编写代码来实现。
+
+> 注意：
+> 在 Vue 实例内部可以通过 `$router` 访问路由实例，
+> 因此，可以使用 `this.$router`。
+
+#### router.push()
+
+用法：
+
+`router.push(location, onComplete?, onAbort?)`
+
+#### router.replace()
+
+用法：
+
+`router.replace(location, onComplete?, onAbort?)`
+
+#### router.go()
+
+用法：
+
+`router.go(n)`
+
+### 导航守卫
+
+> https://router.vuejs.org/zh/guide/advanced/navigation-guards.html
+
+#### 全局前置守卫（beforeEach）
+
+可以使用 `router.beforeEach()` 注册全局前置守卫：
+
+```javascript
+const router = new VueRouter({
+    ...
+});
+
+router.beforeEach((to, from, next) => {
+    ...
+});
+```
+
+当一个导航触发时，全局前置守卫按照创建顺序调用。
+守卫是 `异步解析执行`，此时导航在所有守卫 `resolve` 完之前一直处于 `等待中`。
+
+每个守卫方法接收三个参数：
+
+- `to: Route`
+
+  即将要进入的目标 `路由对象`
+
+- `from: Route`
+
+  当前导航正要离开的 `路由对象`
+
+- `next: Function`
+
+  调用该方法来 `resolve` 这个钩子（必须）
+  执行效果依赖 `next` 方法的调用参数
+
+  - `next()`
+
+    进行管道中的下一个钩子。
+    如果全部钩子执行完了，则导航的状态就是 `confirmed`（确认的）。
+
+  - `next(false)`
+
+    中断当前的导航。
+    如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 `from` 路由对应的地址。
+
+  - `next('/')` 或 `next({ path: '/' })`
+
+    跳转到一个不同的地址。
+    当前的导航被中断，然后进行一个新的导航。
+    可以向 `next` 传递任意位置对象，且允许设置如 `replace: true`、`name: 'home'` 之类的选项，
+    以及任何用在 `router-link` 的 `to` 属性或 `router.push()` 中的选项。
+
+  - `next(error)`（2.4.0+）
+
+    如果传入 `next` 的参数是一个 `Error` 实例，则导航会被终止，且该错误会被传递给 `router.onError()` 注册过的回调。
+
+  > 确保 `next` 函数在任何给定的导航守卫中都被严格调用一次。
+  > 它可以出现多于一次，但是只能在所有的逻辑路径都不重叠的情况下，否则钩子永远都不会被解析或报错。
+
+#### 全局解析守卫（beforeResolve）
+
+> 2.5.0 新增
+
+可以使用 `router.beforeResolve()` 注册全局解析守卫。
+这和 `router.beforeEach()` 类似，区别是：
+在导航被确认之前，同时在所有 `组件内守卫` 和 `异步路由组件` 被解析之后，解析守卫就被调用。
+
+#### 全局后置钩子（afterEach）
+
+可以使用 `router.afterEach()` 注册全局后置钩子。
+与守卫不同的是，这些钩子不会接受 `next` 函数，也不会改变导航本身。
+
+```javascript
+const router = new VueRouter({
+    ...
+});
+
+router.afterEach((to, from) => {
+    ...
+});
+```
+
+#### 路由独享的守卫（beforeEnter）
+
+可以在路由配置上直接定义 beforeEnter 守卫
+这些守卫与 `全局前置守卫` 的方法参数相同
+
+```javascript
+const router = new VueRouter({
+    routes: [
+        {
+            path: '/example',
+            component: Example,
+            beforeEnter: (to, from, next) => {
+                ...
+            }
+        }
+    ];
+});
+```
+
+#### 组件内的守卫
+
+可以在路由组件内直接定义以下路由导航守卫
+
+- `beforeRouteEnter`
+
+  - 在渲染该组件的对应路由被 confirm 前调用
+  - **不能获取组件实例 `this`**（在守卫执行前，组件实例还没被创建）
+
+- `beforeRouteUpdate`（2.2 新增）
+
+  - 在当前路由改变，但是该组件被复用时调用
+    
+    > 例如：
+    > 对于一个带有动态参数的路径 `/example/:id`，在 `/example/1` 和 `/example/2` 之间跳转时，
+    > 由于会渲染同样的 `Example` 组件，组件实例会被复用，而这个钩子就会在这个情况下被调用。
+
+  - 可以访问组件实例 `this`
+
+- `beforeRouteLeave`
+
+  - 导航离开该组件的对应路由时调用
+  - 可以访问组件实例 `this`
+
+```javascript
+const Foo = {
+    template: ...,
+    beforeRouteEnter (to, from, next) {
+        ...
+    },
+    beforeRouteUpdate (to, from, next) {
+        ...
+    },
+    beforeRouteLeave (to, from, next) {
+        ...
+    }
+}
+```
 
 ## router-link
 
@@ -1747,3 +1947,44 @@ const User = {
 `router-view` 渲染的组件还可以内嵌自己的 `router-view`，根据嵌套路径，渲染嵌套组件。
 其他属性（除 `name` 以外的非 `router-view` 使用的属性）都可以直接传给渲染的组件，很多时候，每个路由的数据都包含在路由参数中。
 因为它是个组件，所以也可以配合 `<transition>` 和 `<keep-alive>` 使用（如果两个结合一起用，要确保在内层使用 `<keep-alive>`）。
+
+# Vuex
+
+## 相关链接
+
+- https://vuex.vuejs.org/zh/
+
+## 安装
+
+### 直接下载 / CDN
+
+- `https://unpkg.com/vuex`
+- 在 `Vue` 后面引入 `vuex`
+
+  ```html
+  <script src="/path/to/vue.js"></script>
+  <script src="/path/to/vuex.js"></script>
+  ```
+
+### NPM
+
+- `npm install vuex --save`
+
+### Vue
+
+- `vue add vuex`（改变项目结构）
+
+## State
+
+## Getters
+
+## Mutations
+
+## Actions
+
+## Modules
+
+由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。
+当应用变得非常复杂时，`store` 对象就有可能变得相当臃肿。
+为了解决以上问题，Vuex 允许将 `store` 分割成模块（`module`）。
+每个模块拥有自己的 `state`、`mutation`、`action`、`getter`，甚至是嵌套子模块（从上至下进行同样方式的分割）。
