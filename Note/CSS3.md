@@ -574,7 +574,18 @@ unicode-range | unicode-range | 可选，定义字体支持的 UNICODE 字符范
 ### 上
 
 ```css
-选择器 {
+/* 方法一 */
+.triangle {
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-bottom: 100px solid #2196F3;
+}
+```
+
+```css
+/* 方法二 */
+.triangle {
     width: 0;
     height: 0;
     border-left: 50px solid transparent;
@@ -591,7 +602,7 @@ border-bottom: 100px solid #2196F3;"></div>
 ### 下
 
 ```css
-选择器 {
+.triangle {
     width: 0;
     height: 0;
     border-top: 100px solid #2196F3;
@@ -608,7 +619,7 @@ border-right: 50px solid transparent;"></div>
 ### 左
 
 ```css
-选择器 {
+.triangle {
     width: 0;
     height: 0;
     border-top: 50px solid transparent;
@@ -625,7 +636,7 @@ border-bottom: 50px solid transparent;"></div>
 ### 右
 
 ```css
-选择器 {
+.triangle {
     width: 0;
     height: 0;
     border-top: 50px solid transparent;

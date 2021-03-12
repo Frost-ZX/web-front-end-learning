@@ -1077,7 +1077,16 @@
 </blockquote>
 <h1 id="绘制三角形">绘制三角形</h1>
 <h3 id="上">上</h3>
-<pre><code class="language-css"><div>选择器 {
+<pre><code class="language-css"><div><span class="hljs-comment">/* 方法一 */</span>
+<span class="hljs-selector-class">.triangle</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">50px</span> solid transparent;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">100px</span> solid <span class="hljs-number">#2196F3</span>;
+}
+</div></code></pre>
+<pre><code class="language-css"><div><span class="hljs-comment">/* 方法二 */</span>
+<span class="hljs-selector-class">.triangle</span> {
     <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">border-left</span>: <span class="hljs-number">50px</span> solid transparent;
@@ -1090,7 +1099,7 @@ border-left: 50px solid transparent;
 border-right: 50px solid transparent;
 border-bottom: 100px solid #2196F3;"></div>
 <h3 id="下">下</h3>
-<pre><code class="language-css"><div>选择器 {
+<pre><code class="language-css"><div><span class="hljs-selector-class">.triangle</span> {
     <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">border-top</span>: <span class="hljs-number">100px</span> solid <span class="hljs-number">#2196F3</span>;
@@ -1103,7 +1112,7 @@ border-top: 100px solid #2196F3;
 border-left: 50px solid transparent;
 border-right: 50px solid transparent;"></div>
 <h3 id="左">左</h3>
-<pre><code class="language-css"><div>选择器 {
+<pre><code class="language-css"><div><span class="hljs-selector-class">.triangle</span> {
     <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">border-top</span>: <span class="hljs-number">50px</span> solid transparent;
@@ -1116,7 +1125,7 @@ border-top: 50px solid transparent;
 border-right: 100px solid #2196F3;
 border-bottom: 50px solid transparent;"></div>
 <h3 id="右">右</h3>
-<pre><code class="language-css"><div>选择器 {
+<pre><code class="language-css"><div><span class="hljs-selector-class">.triangle</span> {
     <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">border-top</span>: <span class="hljs-number">50px</span> solid transparent;
