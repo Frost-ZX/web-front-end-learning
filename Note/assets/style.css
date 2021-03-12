@@ -9,13 +9,13 @@
 
 html, body {
     font-size: 16px;
-    color: var(--color-font);
     scroll-behavior: smooth;
 }
-
 body {
     padding-bottom: 50px;
-    background-color: #FFF;
+}
+body.vscode-light {
+    color: var(--color-font);
 }
 
 a {
@@ -34,7 +34,6 @@ blockquote {
     padding: 11px 15px 1px 15px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-left-color: var(--color-primary);
-    /* background-color: #FFF; */
 }
 
 code {
@@ -135,7 +134,7 @@ img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-left: 1px solid var(--border-color);
     background-color: #FFF;
-    font-family: monospace;
+    font-family: '等距更纱黑体 SC', monospace;
     font-size: 16px;
     overflow-y: auto;
     animation: borderFade 2s linear infinite;
